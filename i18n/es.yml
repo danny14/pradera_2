@@ -1,0 +1,76 @@
+# Diccionario de ejemplo
+culture:                  Español
+dictionary:
+  default:
+    id:                   ID
+    user:                 USUARIO
+    user_id:              Usuario ID
+    pass:                 Contraseña
+    writ:                 Cedula
+    name:                 Nombre
+    last_name:            Apellido
+    register:             Registrar
+    created_at:           Creado en
+    updated_at:           Actualizado en
+    deleted_at:           Eliminado en
+    credencial:           CREDENCIAL
+    credencial_id:        CREDENCIAL ID
+    data:                 DATOS
+    action:               Accion
+    update:               Actualizar
+    description:          Descripcion
+    start:                Inicio
+    end:                  Fin
+    id_city:              ID Ciudad
+    city:                 Ciudad
+    animal:               Animal
+    name:                 Nombre
+    last_name:            Apellido
+    address:              Direccion
+    phone:                Telefono
+    mail:                 Correo
+    gender:               Genero
+    age:                  Edad
+    weight:               Peso
+    date_entry:           Fecha Ingreso
+    number_births:        Numero Partos
+    id_raza:              ID Raza
+    id_status:            ID Estado
+    id_type_doc:          ID Tipo Documento
+    id_employee:          ID Trabajador
+    id_provider:          ID Proveedor
+    status:               Estado
+    new:                  Nuevo
+    edit:                 Editar
+    delete:               Borrar
+    provider:             Proveedor
+    breed:                Raza
+    logbook:              Bitacora
+    record:               Registro
+    date:                 Fecha
+    observation:          Observacion
+    table:                Tabla
+    credential:           Credencial
+    entrance_cellar:      Entrada Bodega
+    turn:                 Turno
+    start_turn:           Inicio Turno
+    end_turn:             Fin Turno
+    input_type:           Tipo Insumo
+    fecundador:           Fecundador
+    animal:               Animal
+    filters:              Filtros
+    confirm:              Confirmar
+    confirm_delete:       Confirmar Eliminar
+    selected_items:       Elementos seleccionados
+    close:                Cerrar
+    Do you want to delete the record?:       ¿Desea eliminar el registro?
+    Do you want to remove the selected records?: ¿Deseas eliminar los registros seleccionados?
+  errors:
+    00001:                El módulo y la acción solicitada, no existe.
+    00002:                La dirección que solicita no está registrada.
+    00003:                Los datos de usuario y contrseña son inválidos.
+#    00001:  Lo que buscas no existe
+#    10001:  Existe un error en la definición de los includes
+#    10002:  No hay definido un ambito (dev o prod) para la aplicación
+#    10003:  El arhivo %file% no existe
+#    10004:  El directorio %path% no pudo ser creado

@@ -1,0 +1,479 @@
+homepage:
+  url:    /
+  param:  { module: default, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+##-------------------------- shfSecurity --------------------------##
+shfSecurity_index:
+  url:    /signin
+  param:  { module: shfSecurity, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+shfSecurity_login:
+  url:    /login
+  param:  { module: shfSecurity, action: login, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/recordarMeBaseTableClass.php
+    - model/recordarMeTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+shfSecurity_logout:
+  url:    /logout
+  param:  { module: shfSecurity, action: logout, format: html }
+  load:
+    - model/base/recordarMeBaseTableClass.php
+    - model/recordarMeTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+shfSecurity_noPermission:
+  url:    /sin_permisos
+  param:  { module: shfSecurity, action: noPermission, format: html }
+
+shfSecurity_exception:
+  url:    /exception
+  param:  { module: shfSecurity, action: exception, format: html }
+##-------------------------- shfSecurity --------------------------##
+
+##-------------------------- EJEMPLO --------------------------##
+default_index:
+  url:    /usuarios/index
+  param:  { module: default, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+default_insert:
+  url:    /usuarios/insertar
+  param:  { module: default, action: insert, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+default_create:
+  url:    /usuarios/crear
+  param:  { module: default, action: create, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+default_edit:
+  url:    /usuario/editar
+  param:  { module: default, action: edit, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+default_update:
+  url:    /usuario/actualizar
+  param:  { module: default, action: update, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+default_delete:
+  url:    /usuario/eliminar
+  param:  { module: default, action: delete, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+default_deleteSelect:
+  url:    /usuario/eliminarSeleccion
+  param:  { module: default, action: deleteSelect, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+default_reporte:
+  url:    /usuario/reporte
+  param:  { module: default, action: report, format: pdf }
+##-------------------------- Animal --------------------------##
+animal_index:
+  url:    /animal/index
+  param:  { module: animal, action: index, format: html }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    
+animal_insert:
+  url:    /animal/insertar
+  param:  { module: animal, action: insert, format: html }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+
+animal_create:
+  url:    /animal/crear
+  param:  { module: animal, action: create, format: html }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - 
+    
+animal_edit:
+  url:    /animal/editar
+  param:  { module: animal, action: edit, format: html }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+
+animal_update:
+  url:    /animal/actualizar
+  param:  { module: animal, action: update, format: html }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    
+animal_delete:
+  url:    /animal/eliminar
+  param:  { module: animal, action: delete, format: json }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    
+animal_deleteSelect:
+  url:    /animal/eliminarSeleccion
+  param:  { module: animal, action: deleteSelect, format: json }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    
+animal_view:
+  url:    /animal/vista
+  param:  { module: animal, action: view, format: html }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+##----------------------Bitacora------------------------------##
+bitacora_index:
+  url:    /bitacora/index
+  param:  { module: bitacora, action: index, format: html }
+  load:
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+##-------------------------Ciudad-----------------------------##
+ciudad_index:
+  url:    /ciudad/index
+  param:  { module: ciudad, action: index, format: html }
+  load:
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
+ciudad_insert:
+  url:    /ciudad/insertar
+  param:  { module: ciudad, action: insert, format: html }
+  load:
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+ciudad_create:
+  url:    /ciudad/crear
+  param:  { module: ciudad, action: create, format: html }
+  load:
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+ciudad_edit:
+  url:    /ciudad/editar
+  param:  { module: ciudad, action: edit, format: html }
+  load:
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+ciudad_update:
+  url:    /ciudad/actualizar
+  param:  { module: ciudad, action: update, format: html }
+  load:
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+##------------------------Credencial-------------------------##
+credencial_index:
+  url:    /credencial/index
+  param:  { module: credencial, action: index, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+credencial_insert:
+  url:    /credencial/insertar
+  param:  { module: credencial, action: insert, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+credencial_create:
+  url:    /credencial/crear
+  param:  { module: credencial, action: create, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+
+credencial_edit:
+  url:    /credencial/editar
+  param:  { module: credencial, action: edit, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+credencial_update:
+  url:    /credencial/actualizar
+  param:  { module: credencial, action: update, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+##------------------------Entrada Bodega--------------------##
+entradaBodega_index:
+  url:    /entrada_bodega/index
+  param:  { module: entrada_bodega, action: index, format: html }
+  load:
+    - model/base/entradaBodegaBaseTableClass.php
+    - model/entradaBodegaTableClass.php
+
+entradaBodega_insert:
+  url:    /entrada_bodega/insertar
+  param:  { module: entrada_bodega, action: insert, format: html }
+  load:
+    - model/base/entradaBodegaBaseTableClass.php
+    - model/entradaBodegaTableClass.php
+    
+entradaBodega_create:
+  url:    /entrada_bodega/crear
+  param:  { module: entrada_bodega, action: create, format: html }
+  load:
+    - model/base/entradaBodegaBaseTableClass.php
+    - model/entradaBodegaTableClass.php
+
+entradaBodega_edit:
+  url:    /entrada_bodega/editar
+  param:  { module: entrada_bodega, action: edit, format: html }
+  load:
+    - model/base/entradaBodegaBaseTableClass.php
+    - model/entradaBodegaTableClass.php
+
+entradaBodega_update:
+  url:    /entrada_bodega/actualizar
+  param:  { module: entrada_bodega, action: update, format: html }
+  load:
+    - model/base/entradaBodegaBaseTableClass.php
+    - model/entradaBodegaTableClass.php
+
+
+##------------------------Estado-----------------------------##
+estado_index:
+  url:    /estado/index
+  param:  { module: estado, action: index, format: html }
+  load:
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+
+estado_insert:
+  url:    /estado/insertar
+  param:  { module: estado, action: insert, format: html }
+  load:
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    
+estado_create:
+  url:    /estado/crear
+  param:  { module: estado, action: create, format: html }
+  load:
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+
+estado_edit:
+  url:    /estado/editar
+  param:  { module: estado, action: edit, format: html }
+  load:
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+
+estado_update:
+  url:    /estado/actualizar
+  param:  { module: estado, action: update, format: html }
+  load:
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+##-----------------------Fecundador--------------------------##
+fecundador_index:
+  url:    /fecundador/index
+  param:  { module: fecundador, action: index, format: html }
+  load:
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    
+fecundador_insert:
+  url:    /fecundador/insertar
+  param:  { module: fecundador, action: insert, format: html }
+  load:
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    
+fecundador_create:
+  url:    /fecundador/crear
+  param:  { module: fecundador, action: create, format: html }
+  load:
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    
+fecundador_edit:
+  url:    /fecundador/editar
+  param:  { module: fecundador, action: edit, format: html }
+  load:
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+
+fecundador_update:
+  url:    /fecundador/actualizar
+  param:  { module: fecundador, action: update, format: html }
+  load:
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+
+##-----------------------Insumo------------------------------##
+
+##-----------------------Inventario--------------------------##
+
+##-----------------------Ordeño------------------------------##
+
+##-----------------------Pago Trabajadores-------------------##
+
+##-----------------------Proveedor---------------------------##
+proveedor_index:
+  url:    /proveedor/index
+  param:  { module: proveedor, action: index, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+
+proveedor_insert:
+  url:    /proveedor/insertar
+  param:  { module: proveedor, action: insert, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+proveedor_create:
+  url:    /proveedor/crear
+  param:  { module: proveedor, action: create, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+proveedor_edit:
+  url:    /proveedor/editar
+  param:  { module: proveedor, action: edit, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+
+proveedor_update:
+  url:    /proveedor/actualizar
+  param:  { module: proveedor, action: update, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+##------------------------Raza-------------------------------##
+raza_index:
+  url:    /raza/index
+  param:  { module: raza, action: index, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_insert:
+  url:    /raza/insertar
+  param:  { module: raza, action: insert, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    
+raza_create:
+  url:    /raza/crear
+  param:  { module: raza, action: create, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_edit:
+  url:    /raza/editar
+  param:  { module: raza, action: edit, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    
+raza_update:
+  url:    /raza/actualizar
+  param:  { module: raza, action: update, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    
+raza_delete:
+  url:    /raza/eliminar
+  param:  { module: raza, action: delete, format: json }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    
+raza_deleteSelect:
+  url:    /raza/eliminarSeleccion
+  param:  { module: raza, action: deleteSelect, format: json }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    
+animal_view:
+  url:    /raza/vista
+  param:  { module: raza, action: view, format: html }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+
+##------------------------Registro Celo---------------------##
+
+##------------------------Registro Vacunacion---------------##
+
+##------------------------Reporte Parto---------------------##
+
+##------------------------Salida Bodega---------------------##
+
+##------------------------Tipo Documento--------------------##
+
+##------------------------Tipo_insumo-----------------------##
+tipo_insumo_index:
+  url:    /tipo_insumo/index
+  param:  { module: tipo_insumo, action: index, format: html }
+  load:
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    
+##-------------------------Trabajador----------------------##
+
+##-------------------------Turno---------------------------##
+
+##-------------------------Usuario Credencial--------------##
+
+##---------------------------------------------------------##

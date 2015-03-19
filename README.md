@@ -1,2 +1,4 @@
-# pradera_2
-Proyecto  Corral de Piedras
+Soho Framework
+=============
+
+Implementación MVC para los aprendices del SENA

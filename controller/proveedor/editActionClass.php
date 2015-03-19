@@ -1,0 +1,43 @@
+<?php
+
+use mvc\interfaces\controllerActionInterface;
+use mvc\controller\controllerClass;
+use mvc\config\configClass as config;
+use mvc\request\requestClass as request;
+use mvc\routing\routingClass as routing;
+use mvc\session\sessionClass as session;
+use mvc\i18n\i18nClass as i18n;
+
+class editActionClass extends controllerClass implements controllerActionInterface {
+
+    public function execute() {
+        try {
+                if (request::getInstance()->hasRequest(proveedorTableClass::ID)) {
+
+                    $fields = array(
+                        proveedorTableClass::NOMBRE,
+                        proveedorTableClass::APELLIDO,
+                        proveedorTableClass::DIRECCION,
+                        proveedorBaseTableClass::TELEFONO,
+                        proveedorTableClass::CORREO,
+                        proveedorTableClass::ID_CIUDAD,
+                    );
+                    $where = array(
+                        
+                    proveedorTableClass::ID => request::getInstance()->getRequest(proveedorTableClass::ID)
+                            
+                    );
+                    
+                    $this->objProveedor = proveedorTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
+                    $this->defineView('edit', 'proveedor', session::getInstance()->getFormatOutput());
+                }else {
+                routing::getInstance()->redirect('proveedor', 'index');
+            }
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+            echo "<br>";
+            echo $exc->getTraceAsString();
+        }
+    }
+
+}
