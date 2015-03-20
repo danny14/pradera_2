@@ -108,6 +108,11 @@ animal_index:
   load:
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+
     
 animal_insert:
   url:    /animal/insertar
@@ -173,6 +178,10 @@ animal_view:
   load:
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
     
 ##----------------------Bitacora------------------------------##
 bitacora_index:
@@ -360,6 +369,13 @@ fecundador_update:
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
 
+fecundador_view:
+  url:    /fecundador/mirar
+  param:  { module: fecundador, action: view, format: html }
+  load:
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+
 ##-----------------------Insumo------------------------------##
 
 ##-----------------------Inventario--------------------------##
@@ -453,7 +469,7 @@ raza_deleteSelect:
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
     
-animal_view:
+raza_view:
   url:    /raza/vista
   param:  { module: raza, action: view, format: html }
   load:

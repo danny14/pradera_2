@@ -12,8 +12,9 @@
 <?php $id_estado = animalTableClass::ID_ESTADO ?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
-    
+    <div class="page page-header text-center">
     <h1><?php echo i18n::__('animal') ?></h1>
+    </div>
     <div class="row">
         <header>
 
@@ -28,7 +29,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filters')?></h4>
                         </div>
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>">
@@ -96,11 +97,11 @@
                                 <td><?php echo $animal->$peso ?></td>
                                 <td><?php echo $animal->$fecha_ingreso ?></td>
                                 <td><?php echo $animal->$numero_partos ?></td>
-                                <td><?php echo $animal->$id_raza ?></td>
-                                <td><?php echo $animal->$id_estado ?></td>
+                                <td><?php echo animalTableClass::getNameFieldForaneaRaza($animal->$id_raza) ?></td>
+                                <td><?php echo animalTableClass::getNameFieldForaneaEstado($animal->$id_estado) ?></td>
                                 <td>
                                     <div class="btn btn-group btn-xs">
-                                        <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index', array(animalTableClass::ID => $animal->$id)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                        <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'view', array(animalTableClass::ID => $animal->$id)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'edit', array(animalTableClass::ID => $animal->$id, animalTableClass::ID_RAZA => $animal->$id_raza, animalTableClass::ID_ESTADO => $animal->$id_estado)) ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                         <a data-toggle="modal" data-target="#myModalDelete<?php echo $animal->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
                                     </div>

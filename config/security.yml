@@ -17,3 +17,13 @@ default:
       - [admin, cajero]
   insert:
     security: true
+    
+animal:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]

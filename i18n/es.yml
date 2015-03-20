@@ -58,6 +58,7 @@ dictionary:
     input_type:           Tipo Insumo
     fecundador:           Fecundador
     animal:               Animal
+    return:               Volver
     filters:              Filtros
     filter:               Filtrar
     confirm:              Confirmar

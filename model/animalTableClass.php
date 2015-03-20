@@ -34,5 +34,47 @@ class animalTableClass extends animalBaseTableClass {
             throw $exc;
         }
     }
+    
+    /**
+     * Recordar hacer otra funcion general
+     * @param type $id
+     * @return type
+     * @throws PDOException
+     */
+    
+    public static function getNameFieldForaneaRaza($id){
+        try{
+            $sql = 'SELECT '. razaTableClass::DESCRIPCION . ' AS nom_raza '
+                   .' FROM '.razaTableClass::getNameTable() . ' '
+                   . ' WHERE ' .razaTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->nom_raza;
+        }
+        catch (PDOException $exc){
+            throw $exc;
+        }
+    }
+    public static function getNameFieldForaneaEstado($id){
+        try{
+            $sql = 'SELECT '. estadoTableClass::DESCRIPCION . ' AS nom_estado '
+                   .' FROM '.estadoTableClass::getNameTable() . ' '
+                   . ' WHERE ' .estadoTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->nom_estado;
+        }
+        catch (PDOException $exc){
+            throw $exc;
+        }
+    }
 
 }

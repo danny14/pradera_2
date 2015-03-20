@@ -42,7 +42,7 @@ class createActionClass extends controllerClass implements controllerActionInter
                 if (strlen($nombre) > animalTableClass::NOMBRE_LENGTH) {
                     throw new PDOException('el nombre no puede ser mayor a ' . animalTableClass::NOMBRE_LENGTH . ' caracteres');
                 }
-                if($genero !== "F" or $genero !== "M" or $genero !== "f" or $genero !== "m"){
+                if($genero !== "F" and $genero !== "f" ){//or $genero !== "M" or $genero !== "f" or $genero !== "m"){
                     throw new PDOException('Solo puede escoger entre el genero F y M');
                 }
                 if(!is_numeric($edad)){
@@ -73,7 +73,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         } catch (PDOException $exc) {
             switch ($exc->getCode()) {
                 case 23505:
-                    session::getInstance()->setError('duplicado ya existe');
+                    session::getInstance()->setError($exc->getMessage());
                 break;
                 default :
                     session::getInstance()->setError($exc->getMessage());
