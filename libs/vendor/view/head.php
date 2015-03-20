@@ -8,5 +8,3 @@
     <?php echo \mvc\view\viewClass::genJavascript() ?>
   </head>
   <body>
-    <?php if(\mvc\config\configClass::getScope() === 'dev'): ?>
-    <?php endif; ?>

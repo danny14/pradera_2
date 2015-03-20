@@ -265,6 +265,7 @@ namespace mvc\model\table {
         model::getInstance()->beginTransaction();
         model::getInstance()->exec($sql);
         model::getInstance()->commit();
+
         $row = model::getInstance()->query($sqlID);
         $answer = $row->fetch(\PDO::FETCH_OBJ);
 

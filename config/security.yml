@@ -1,7 +1,7 @@
 shfSecurity:
   index:
     security: false
-  logoin:
+  login:
     security: false
   logout:
     security: true

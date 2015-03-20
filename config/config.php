@@ -29,16 +29,16 @@ if (config::getDbUnixSocket() !== null) {
   );
 }
 
-config::setPathAbsolute('C:/xampp/htdocs/xampp/pradera_2/');
-config::setUrlBase('http://localhost/xampp/pradera_2/web/');
+config::setPathAbsolute('/var/www/html/pradera_lasso/');
+config::setUrlBase('http://localhost/pradera_lasso/web/');
 
 config::setScope('dev'); // prod
-config::setDefaultCulture('es');
-//if (session::getInstance()->hasDefaultCulture() === false) {
+
+if (session::getInstance()->hasDefaultCulture() === false) {
   config::setDefaultCulture('es');
-//} else {
-//  config::setDefaultCulture(session::getInstance()->getDefaultCulture());
-//}
+} else {
+  config::setDefaultCulture(session::getInstance()->getDefaultCulture());
+}
 config::setIndexFile('index.php');
 
 config::setFormatTimestamp('Y-m-d H:i:s');
@@ -53,7 +53,7 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 
 config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
-config::setCookiePath('/pradera_2/web/' . config::getIndexFile());
+config::setCookiePath('/pradera_lasso/web/' . config::getIndexFile());
 config::setCookieDomain('http://localhost/');
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 
