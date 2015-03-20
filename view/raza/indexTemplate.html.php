@@ -1,7 +1,9 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
+<?php use mvc\view\viewClass as view;?>
 <?php $id = razaTableClass::ID?>
 <?php $descripcion = razaTableClass::DESCRIPCION?>
+<?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('breed')?></h1>
     <div class="row">
@@ -12,11 +14,41 @@
             
         </nav>
         <section>
+        <!-- Ventana Modal para los Filtros -->
+            <div class="modal fade" id="myModalFILTROS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filters')?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('raza', 'index')?>">
+                                <div class="form-group">
+                                    <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('description')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="<?php echo i18n::__('description')?>">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close')?></button>
+                            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filter')?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fin Ventana Modal Filtros-->
+            
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
             <div>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('raza', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
-                <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs" onclick="borrarSeleccion" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
+                <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
+                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
+                <a class="btn btn-default btn-xs" href="<?php // routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
             </div>
+                <?php view::includeHandlerMessage() ?>
             <table class="table table-bordered table-responsive table-striped table-condensed">
                 <thead>
                     <tr>
@@ -34,9 +66,9 @@
                         <td><?php echo $raza->$descripcion ?></td>
                         <td>
                             <div class="btn btn-group btn-xs">
-                                <a href="#" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"><?php?></i></a>
+                                <a href="<?php echo routing::getInstance()->getUrlWeb('raza', 'view',array(razaTableClass::ID => $raza->$id))?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"><?php?></i></a>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('raza', 'edit', array(razaTableClass::ID => $raza->$id));?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                                <a href="#" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                <a data-toggle="modal" data-target="#myModalDelete<?php echo $raza->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
                             </div>
                         </td>
                     </tr>

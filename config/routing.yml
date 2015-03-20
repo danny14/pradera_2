@@ -159,13 +159,21 @@ animal_deleteSelect:
   load:
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
-    
+
+animal_deleteFilters:
+  url:    /animal/borrar_filtros
+  param:  { module: animal, action: deleteFilters, format: html }
+#  load:
+#    - model/base/animalBaseTableClass.php
+#    - model/animalTableClass.php
+
 animal_view:
   url:    /animal/vista
   param:  { module: animal, action: view, format: html }
   load:
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
+    
 ##----------------------Bitacora------------------------------##
 bitacora_index:
   url:    /bitacora/index
@@ -449,8 +457,8 @@ animal_view:
   url:    /raza/vista
   param:  { module: raza, action: view, format: html }
   load:
-    - model/base/animalBaseTableClass.php
-    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
 
 ##------------------------Registro Celo---------------------##
 

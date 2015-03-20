@@ -59,6 +59,7 @@ dictionary:
     fecundador:           Fecundador
     animal:               Animal
     filters:              Filtros
+    filter:               Filtrar
     confirm:              Confirmar
     confirm_delete:       Confirmar Eliminar
     selected_items:       Elementos seleccionados

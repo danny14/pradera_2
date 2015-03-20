@@ -22,7 +22,7 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
                 $this->objRaza = razaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 $this->defineView('view', 'raza', session::getInstance()->getFormatOutput());
             }else{
-                routing::getInstance()->redirect('raza', 'view');
+                routing::getInstance()->redirect('raza', 'index');
             }
         } catch (PDOException $exc) {
             echo $exc->getMessage();

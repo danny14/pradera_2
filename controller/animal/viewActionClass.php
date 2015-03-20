@@ -29,7 +29,8 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
                 $this->objAnimal = animalTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 $this->defineView('view', 'animal', session::getInstance()->getFormatOutput());
             }else{
-                routing::getInstance()->redirect('animal', 'view');
+                session::getInstance()->setError('Error no se pudo visualizar correctamente');
+                routing::getInstance()->redirect('animal', 'index');
             }
         } catch (PDOException $exc) {
             echo $exc->getMessage();

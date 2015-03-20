@@ -7,16 +7,20 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-class insertActionClass extends controllerClass implements controllerActionInterface{
+class deleteFiltersActionClass extends controllerClass implements controllerActionInterface {
+
     public function execute() {
         try {
-            $this->defineView('insert', 'estado', session::getInstance()->getFormatOutput());
+            if(session::getInstance()->hasAttribute('animalIndexFilters')) {
+                session::getInstance()->deleteAttribute('animalIndexFilters');
+            } else {
+                routing::getInstance()->redirect('animal', 'index');
+            }
         } catch (PDOException $exc) {
             echo $exc->getMessage();
             echo "<br>";
             echo $exc->getTraceAsString();
-            
         }
     }
-}
 
+}

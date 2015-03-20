@@ -10,17 +10,19 @@
 <?php $numero_partos = animalTableClass::NUMERO_PARTOS ?>
 <?php $id_raza = animalTableClass::ID_RAZA ?>
 <?php $id_estado = animalTableClass::ID_ESTADO ?>
+<?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
+    
     <h1><?php echo i18n::__('animal') ?></h1>
     <div class="row">
         <header>
 
         </header>
         <nav>
-            <?php // view::includePartial('default/menuPrincipal'); ?>
+            
         </nav>
         <section>
-            <!-- Ventana Modal para los Filtros-->
+            <!-- Ventana Modal para los Filtros -->
             <div class="modal fade" id="myModalFILTROS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -29,33 +31,30 @@
                             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>">
+                            <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>">
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterName" placeholder="<?php echo i18n::__('name')?>">
+                                        <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name')?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="filterDate" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
+                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="filterDate" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
-                                    </div>
-                                    <label for="filterDate" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
-                                    <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="filterDate" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                        <input type="date" name="filter[fechaCreacion1]" class="form-control" id="filterCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default">Sign in</button>
+                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="filter[fechaCreacion2]" class="form-control" id="filterCreacion2" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close')?></button>
+                            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filter')?></button>
                         </div>
                     </div>
                 </div>
@@ -67,7 +66,7 @@
                     <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'insert') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
                     <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs" onclick="borrarSeleccion" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                     <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                    <a class="btn btn-default btn-xs"><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                    <a class="btn btn-default btn-xs" href="<?php routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
                 </div>
                     <?php view::includeHandlerMessage() ?>
                 <table class="table table-bordered table-responsive table-condensed">
@@ -101,9 +100,9 @@
                                 <td><?php echo $animal->$id_estado ?></td>
                                 <td>
                                     <div class="btn btn-group btn-xs">
-                                        <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'view', array(animalTableClass::ID => $animal->$id)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                        <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index', array(animalTableClass::ID => $animal->$id)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'edit', array(animalTableClass::ID => $animal->$id, animalTableClass::ID_RAZA => $animal->$id_raza, animalTableClass::ID_ESTADO => $animal->$id_estado)) ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                                        <a href="#" data-toggle="modal" data-target="#myModalDelete<?php echo $animal->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a data-toggle="modal" data-target="#myModalDelete<?php echo $animal->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>

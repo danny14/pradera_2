@@ -1,4 +1,5 @@
 <?php
+
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
@@ -11,7 +12,7 @@ class createActionClass extends controllerClass implements controllerActionInter
 
     public function execute() {
         try {
-            if(request::getInstance()->isMethod('POST')) {
+            if (request::getInstance()->isMethod('POST')) {
                 $nombre = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NOMBRE, true));
                 $genero = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::GENERO, true));
                 $edad = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::EDAD, true));
@@ -20,28 +21,65 @@ class createActionClass extends controllerClass implements controllerActionInter
                 $numero_partos = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NUMERO_PARTOS, true));
                 $id_raza = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_RAZA, true));
                 $id_estado = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_ESTADO, true));
-       
-                $data = array(
-                animalTableClass::NOMBRE => $nombre,
-                animalTableClass::GENERO => $genero,
-                animalTableClass::EDAD => $edad,
-                animalTableClass::PESO => $peso,
-                animalTableClass::FECHA_INGRESO => $fecha_ingreso,
-                animalTableClass::NUMERO_PARTOS => $numero_partos,
-                animalTableClass::ID_RAZA => $id_raza,
-                animalTableClass::ID_ESTADO => $id_estado
+
+                $post = array(
+                    animalTableClass::NOMBRE => $nombre,
+                    animalTableClass::GENERO => $genero,
+                    animalTableClass::EDAD => $edad,
+                    animalTableClass::PESO => $peso,
+                    animalTableClass::FECHA_INGRESO => $fecha_ingreso,
+                    animalTableClass::NUMERO_PARTOS => $numero_partos,
+                    animalTableClass::ID_RAZA => $id_raza,
+                    animalTableClass::ID_ESTADO => $id_estado
                 );
-                
+                /**
+                 * Guarda los datos del formulario en la sesion iniciada 
+                 */
+                session::getInstance()->setAttribute('form_' . animalTableClass::getNameTable(), $post);
+                /**
+                 * Validaciones para el Animal o Hoja de vida
+                 */
+                if (strlen($nombre) > animalTableClass::NOMBRE_LENGTH) {
+                    throw new PDOException('el nombre no puede ser mayor a ' . animalTableClass::NOMBRE_LENGTH . ' caracteres');
+                }
+                if($genero !== "F" or $genero !== "M" or $genero !== "f" or $genero !== "m"){
+                    throw new PDOException('Solo puede escoger entre el genero F y M');
+                }
+                if(!is_numeric($edad)){
+                    throw new PDOException('Solo se puede ingresar caracteres numericos');
+                }
+                /* _______________________________ */
+                $data = array(
+                    animalTableClass::NOMBRE => $nombre,
+                    animalTableClass::GENERO => $genero,
+                    animalTableClass::EDAD => $edad,
+                    animalTableClass::PESO => $peso,
+                    animalTableClass::FECHA_INGRESO => $fecha_ingreso,
+                    animalTableClass::NUMERO_PARTOS => $numero_partos,
+                    animalTableClass::ID_RAZA => $id_raza,
+                    animalTableClass::ID_ESTADO => $id_estado
+                );
+
                 animalTableClass::insert($data);
                 session::getInstance()->setSuccess('Los datos fueron registrados de forma exitosa');
                 routing::getInstance()->redirect('animal', 'index');
             } else {
                 routing::getInstance()->redirect('animal', 'index');
             }
+            /*
+             * Limpia Variables en session correspondientes al formulario
+             */
+            session::getInstance()->setAttribute('form_' . animalTableClass::getNameTable(), NULL);
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
+            switch ($exc->getCode()) {
+                case 23505:
+                    session::getInstance()->setError('duplicado ya existe');
+                break;
+                default :
+                    session::getInstance()->setError($exc->getMessage());
+                break;
+            }
+            routing::getInstance()->redirect('animal', 'insert');
         }
     }
 

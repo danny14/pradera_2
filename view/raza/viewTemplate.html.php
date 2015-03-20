@@ -25,12 +25,13 @@
                     <?php foreach ($objRaza as $raza): ?>
                         <tr>
                             <td><?php echo $raza->$id ?></td>
-                            <td><?php echo $raza->$nombre ?></td>
+                            <td><?php echo $raza->$descripcion ?></td>
                         </tr>
                     <?php endforeach; ?> 
                 </tbody>
 
             </table>
+            <a href="<?php echo routing::getInstance()->getUrlWeb('raza', 'index')?>" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-arrow-left"></i></a>
         </section>
         <footer>
 

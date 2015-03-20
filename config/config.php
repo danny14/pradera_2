@@ -29,8 +29,8 @@ if (config::getDbUnixSocket() !== null) {
   );
 }
 
-config::setPathAbsolute('/var/www/html/pradera_lasso/');
-config::setUrlBase('http://localhost/pradera_lasso/web/');
+config::setPathAbsolute('C:/xampp/htdocs/xampp/pradera_2/');
+config::setUrlBase('http://localhost/xampp/pradera_2/web/');
 
 config::setScope('dev'); // prod
 
@@ -53,7 +53,7 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 
 config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
-config::setCookiePath('/pradera_lasso/web/' . config::getIndexFile());
+config::setCookiePath('/pradera_2/web/' . config::getIndexFile());
 config::setCookieDomain('http://localhost/');
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 
