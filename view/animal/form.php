@@ -15,7 +15,7 @@
 <?php $descripcionestado = estadoTableClass::DESCRIPCION?>
 <form method="POST" action="<?php echo routing::getInstance()->getUrlWeb('animal', ((isset($objAnimal)) ? 'update' : 'create' ))?>">
     <?php if (isset($objAnimal)== true):?>
-    <input name="<?php echo animalTableClass::getNameField(animalTableClass::ID,TRUE)?>" value="<?php echo $objAnimal[0]->$id ?>" type="hidden">
+    <input name="<?php echo animalTableClass::getNameField(animalTableClass::ID,TRUE)?>" value="<?php echo ((isset($objAnimal))? $objAnimal[0]->$id : $animal[$id]) ?>" type="hidden">
     <?php endif ?>
     <div class="form-group">
    <?php echo i18n::__('name')?>: <input class="form-control" type="text" value="<?php echo ((isset($objAnimal)) ? $objAnimal[0]->$nombre : ((isset($animal[$nombre]))? $animal[$nombre] : '') ) ?>" name="<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE, true )?>">

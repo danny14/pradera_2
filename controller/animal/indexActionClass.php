@@ -4,7 +4,7 @@ use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
-use mvc\routing\routingClass as routing;
+use mvc\routing\routingClass as routing; 
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
@@ -27,10 +27,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
                     );
                 }
-                //session::getInstance()->setAttribute('animalIndexFilters', $where);
-            } //else if(session::getInstance()->hasAttribute('animalIndexFilters')){
-//                $where = session::getInstance()->getAttribute('animalIndexFilters');
-//            }
+                session::getInstance()->setAttribute('animalIndexFilters', $where);
+            } else if(session::getInstance()->hasAttribute('animalIndexFilters')){
+            $where = session::getInstance()->getAttribute('animalIndexFilters');
+            }
             $fields = array(
             animalTableClass::ID,
             animalTableClass::NOMBRE,

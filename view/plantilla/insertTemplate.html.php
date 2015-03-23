@@ -4,6 +4,7 @@
 <div class="container container-fluid">
     <div class="row">
 <h1><?php echo i18n::__('new')." "; echo i18n::__('TABLA')?></h1>
-<?php view::includePartial('TABLA/form')?>
+<?php view::includeHandlerMessage()?>
+<?php view::includePartial('TABLA/form',array('objRaza' => $objRaza,'objEstado' => $objEstado))?>
     </div>
 </div>

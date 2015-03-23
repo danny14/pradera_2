@@ -5,7 +5,7 @@
 <?php $descripcion = razaTableClass::DESCRIPCION?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
-    <h1><?php echo i18n::__('breed')?></h1>
+    <h1><i class="fa fa-paw"><?php echo i18n::__('breed')?></i></h1>
     <div class="row">
         <header>
             

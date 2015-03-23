@@ -1,8 +1,8 @@
 <?php use mvc\routing\routingClass as routing; ?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
-<?php use mvc\view\viewClass as view ?>
-<?php $id = animalTableClass::ID ?>
-<?php $nombre = animalTableClass::NOMBRE ?>
+<?php use mvc\view\viewClass as view; ?>
+<?php $id = animalTableClass::ID ;?>
+<?php $nombre = animalTableClass::NOMBRE ;?>
 <?php $genero = animalTableClass::GENERO ?>
 <?php $edad = animalTableClass::EDAD ?>
 <?php $peso = animalTableClass::PESO; ?>
@@ -65,9 +65,9 @@
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
                 <div>
                     <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'insert') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
-                    <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs" onclick="borrarSeleccion" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
+                    <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                     <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                    <a class="btn btn-default btn-xs" href="<?php routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                    <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
                 </div>
                     <?php view::includeHandlerMessage() ?>
                 <table class="table table-bordered table-responsive table-condensed">
@@ -89,7 +89,7 @@
                     <tbody>
                         <?php foreach ($objAnimal as $animal): ?>
                             <tr>
-                                <td><input type="checkbox" name="chk[]" value="<?php ?>"></td>
+                                <td><input type="checkbox" name="chk[]" value="<?php echo $animal->$id ?>"></td>
                                 <td><?php echo $animal->$id ?></td>
                                 <td><?php echo $animal->$nombre ?></td>
                                 <td><?php echo $animal->$genero ?></td>

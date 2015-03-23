@@ -13,6 +13,7 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
         try {
             if(session::getInstance()->hasAttribute('animalIndexFilters')) {
                 session::getInstance()->deleteAttribute('animalIndexFilters');
+                routing::getInstance()->redirect('animal', 'index');
             } else {
                 routing::getInstance()->redirect('animal', 'index');
             }
