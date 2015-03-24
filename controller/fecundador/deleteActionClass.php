@@ -12,21 +12,22 @@ class deleteActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
-                $id = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID, TRUE));
+                $id = request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::ID, TRUE));
                 
                 $ids = array(
-                animalTableClass::ID => $id
+                fecundadorTableClass::ID => $id
                 );
                 
-            animalTableClass::delete($ids, FALSE);
+            fecundadorTableClass::delete($ids, FALSE);
             $this->arrayAjax = array(
                 'code' => 200,
                 'msg' => 'La Eliminacion de registro fue exitosa'
             );
+            
+            $this->defineView('delete', 'fecundador', session::getInstance()->getFormatOutput());
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
-            $this->defineView('delete', 'animal', session::getInstance()->getFormatOutput());
             } else {
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('fecundador', 'index');
             }
         } catch (PDOException $exc) {
             echo $exc->getMessage();

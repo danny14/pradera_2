@@ -6,7 +6,6 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-
 class createActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
@@ -29,7 +28,6 @@ class createActionClass extends controllerClass implements controllerActionInter
             }else{
                 routing::getInstance()->redirect('fecundador', 'index');
             }
-            
         } catch (PDOException $exc) {
             echo $exc->getMessage();
             echo "<br>";
@@ -37,5 +35,5 @@ class createActionClass extends controllerClass implements controllerActionInter
             
         }
     }
-}
+    }
 

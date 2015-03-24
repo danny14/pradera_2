@@ -27,6 +27,11 @@ animal:
   index:
     javascript:
       - index.js
+      
+fecundador:
+  index:
+    javascript:
+      - index.js
 
 raza:
   index:

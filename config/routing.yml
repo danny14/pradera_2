@@ -4,6 +4,13 @@ homepage:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    
+traduccion:
+  url:    /traducion
+  param:  { module: animal, action: traductor, format: html }
+#  load:
+#    - model/base/usuarioBaseTableClass.php
+#    - model/usuarioTableClass.php
 
 ##-------------------------- shfSecurity --------------------------##
 shfSecurity_index:
@@ -347,6 +354,8 @@ fecundador_insert:
   load:
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
     
 fecundador_create:
   url:    /fecundador/crear
@@ -361,6 +370,8 @@ fecundador_edit:
   load:
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
 
 fecundador_update:
   url:    /fecundador/actualizar
@@ -368,7 +379,25 @@ fecundador_update:
   load:
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
+    
+fecundador_delete:
+  url:    /fecundador/eliminar
+  param:  { module: fecundador, action: delete, format: json }
+  load:
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
 
+fecundador_deleteSelect:
+  url:    /fecundador/eliminarSeleccion
+  param:  { module: fecundador, action: deleteSelect, format: json }
+  load:
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    
+fecundador_deleteFilters:
+  url:    /fecundador/borrar_filtros
+  param:  { module: fecundador, action: deleteFilters, format: html }
+       
 fecundador_view:
   url:    /fecundador/mirar
   param:  { module: fecundador, action: view, format: html }

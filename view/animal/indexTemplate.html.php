@@ -1,6 +1,8 @@
 <?php use mvc\routing\routingClass as routing; ?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
 <?php use mvc\view\viewClass as view; ?>
+<?php use mvc\config\configClass as config?>
+<?php use mvc\request\requestClass as request?>
 <?php $id = animalTableClass::ID ;?>
 <?php $nombre = animalTableClass::NOMBRE ;?>
 <?php $genero = animalTableClass::GENERO ?>
@@ -61,7 +63,16 @@
                 </div>
             </div>
             <!--Fin Ventana Modal Filtros-->
-            
+            <!--Formulario para el Cambio de Idiomas-->
+            <form id="frmTraductor" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'traductor')?>" method="POST" >
+                <select name="language" onchange="$('#frmTraductor').submit()">
+                    <option <?php echo (config::getDefaultModule() == 'es') ? 'selected' : '' ?> value="es">Español</option>
+                    <option <?php echo (config::getDefaultModule() == 'en') ? 'selected' : '' ?> value="en">English</option>
+                 </select> 
+                <input type="hidden" name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO')?>"
+            </form>
+            <!-- Fin del Formulario de Cambio de Idiomas-->
+
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
                 <div>
                     <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'insert') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
