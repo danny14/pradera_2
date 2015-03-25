@@ -13,19 +13,14 @@ class traductorActionClass extends controllerClass implements controllerActionIn
     public function execute() {
         try {
             if (request::getInstance()->isMethod('POST') === TRUE) {
-                $language = request::getInstance()->getCookie('language');
+                $language = request::getInstance()->getPost('language');
                 $PATH_INFO = request::getInstance()->getServer('PATH_INFO');
-                config::setDefaultCulture($language);
-                config::getUrlBase() . config::getIndexFile() . $PATH_INFO;
-                
-                
+                session::getInstance()->setDefaultCulture($language);
+                $dir = config::getUrlBase() . config::getIndexFile() . $PATH_INFO;
+                header('Location: '.$dir);
             } else {
                 routing::getInstance()->redirect('animal', 'index');
             }
-            /*
-             * Limpia Variables en session correspondientes al formulario
-             */
-            session::getInstance()->setAttribute('form_' . animalTableClass::getNameTable(), NULL);
         } catch (PDOException $exc) {
             switch ($exc->getCode()) {
                 case 23505:

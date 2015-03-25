@@ -23,8 +23,8 @@ class createActionClass extends controllerClass implements controllerActionInter
                 fecundadorTableClass::OBSERVACION => $observacion,
                 fecundadorTableClass::ID_RAZA => $id_raza
                 );
-                
                 fecundadorTableClass::insert($data);
+                routing::getInstance()->redirect('fecundador','index');
             }else{
                 routing::getInstance()->redirect('fecundador', 'index');
             }

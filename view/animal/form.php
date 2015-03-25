@@ -35,7 +35,7 @@
    <select class="form-control" id="<?php animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE)?>" name="<?php echo animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE);?>">
        <option>Seleccione el estado</option>
        <?php foreach($objEstado as $estado):?>
-       <option value="<?php echo $estado->$id_estado?>"><?php echo $estado->$descripcionestado?></option>
+       <option value="<?php echo $estado->id?>"><?php echo $estado->$descripcionestado?></option>
        <?php endforeach;?>
    </select>
    <br>

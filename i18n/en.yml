@@ -1,0 +1,76 @@
+# Diccionario de ejemplo
+culture:                  English
+dictionary:
+  default:
+    id:                   ID
+    user:                 User
+    user_id:              User ID
+    pass:                 Password
+    writ:                 citizenship card
+    name:                 Name
+    last_name:            Last Name
+    register:             Register
+    created_at:           Created at
+    updated_at:           Update at
+    deleted_at:           Deleted at
+    credencial:           CREDENCIAL
+    credencial_id:        CREDENCIAL ID
+    data:                 Data
+    action:               Action
+    update:               Update
+    description:          Description
+    start:                Start
+    end:                  End
+    id_city:              ID City
+    city:                 City
+    animal:               Animal
+    address:              Address
+    phone:                Phone
+    mail:                 Mail
+    gender:               Gender
+    age:                  Age
+    weight:               Weight
+    date_entry:           Date of entry
+    number_births:        Number of births
+    id_raza:              ID Raza
+    id_status:            ID Status
+    id_type_doc:          ID Type Document
+    id_employee:          ID employee
+    id_provider:          ID Provider
+    status:               Status
+    new:                  New
+    edit:                 Edit
+    delete:               Delete
+    provider:             Provider
+    breed:                Breed
+    logbook:              Logbook
+    record:               Record
+    date:                 Date
+    observation:          Observation
+    table:                Table
+    credential:           Credential
+    entrance_cellar:      Entrance of the cellar
+    turn:                 Turn
+    start_turn:           Start Turn
+    end_turn:             End Turn
+    input_type:           Type Input
+    fecundador:           Fecundador
+    animal:               Animal
+    return:               Return
+    filters:              Filters
+    filter:               Filter
+    confirm:              Confirm
+    confirm_delete:       Confirm Delete
+    selected_items:       items selected
+    close:                Close
+    Do you want to delete the record?:       ¿Do you want to delete the record?
+    Do you want to remove the selected records?: ¿Do you want to remove the selected records?
+  errors:
+    00001:                The module and the action requested does not exist.
+    00002:                The requested address is not registered.
+    00003:                Data username and password are invalid.
+#    00001:  Lo que buscas no existe
+#    10001:  Existe un error en la definición de los includes
+#    10002:  No hay definido un ambito (dev o prod) para la aplicación
+#    10003:  El arhivo %file% no existe
+#    10004:  El directorio %path% no pudo ser creado

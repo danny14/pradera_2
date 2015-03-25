@@ -38,6 +38,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 $this->objRaza = razaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
                 
                 $fields = array(
+                estadoTableClass::ID,
                 estadoTableClass::DESCRIPCION
                 );
 //                $where = array(
