@@ -10,12 +10,7 @@ use mvc\i18n\i18nClass as i18n;
 class indexActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            $fields = array(
-            estadoTableClass::ID,
-            estadoTableClass::DESCRIPCION
-            );
-            $this->objEstado = estadoTableClass::getAll($fields, false);
-            $this->defineView('index', 'estado',  session::getInstance()->getFormatOutput());
+            $this->defineView('index', 'config',  session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();
             echo "<br>";

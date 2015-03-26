@@ -14,7 +14,7 @@ class traductorActionClass extends controllerClass implements controllerActionIn
         try {
             if (request::getInstance()->isMethod('POST') === TRUE) {
                 $language = request::getInstance()->getPost('language');
-                $PATH_INFO = request::getInstance()->getServer('PATH_INFO');
+                $PATH_INFO = request::getInstance()->getPost('PATH_INFO');
                 session::getInstance()->setDefaultCulture($language);
                 $dir = config::getUrlBase() . config::getIndexFile() . $PATH_INFO;
                 header('Location: '.$dir);
@@ -22,15 +22,7 @@ class traductorActionClass extends controllerClass implements controllerActionIn
                 routing::getInstance()->redirect('animal', 'index');
             }
         } catch (PDOException $exc) {
-            switch ($exc->getCode()) {
-                case 23505:
-                    session::getInstance()->setError($exc->getMessage());
-                break;
-                default :
-                    session::getInstance()->setError($exc->getMessage());
-                break;
-            }
-            routing::getInstance()->redirect('animal', 'insert');
+            routing::getInstance()->redirect('animal', 'index');
         }
     }
 

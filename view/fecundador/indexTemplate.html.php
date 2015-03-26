@@ -58,7 +58,9 @@
                 </div>
             </div>
             <!--Fin Ventana Modal Filtros-->
-
+            <!--Formulario de Traductor-->
+            <?php view::includePartial('animal/formTraductor')?>
+            <!--Fin de formulario Traductor -->
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'deleteSelect') ?>" method="POST">
             <div>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>

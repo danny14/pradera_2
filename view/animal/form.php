@@ -17,8 +17,10 @@
     <?php if (isset($objAnimal)== true):?>
     <input name="<?php echo animalTableClass::getNameField(animalTableClass::ID,TRUE)?>" value="<?php echo ((isset($objAnimal))? $objAnimal[0]->$id : $animal[$id]) ?>" type="hidden">
     <?php endif ?>
-    <div class="form-group">
-   <?php echo i18n::__('name')?>: <input class="form-control" type="text" value="<?php echo ((isset($objAnimal)) ? $objAnimal[0]->$nombre : ((isset($animal[$nombre]))? $animal[$nombre] : '') ) ?>" name="<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE, true )?>">
+   <div class="form-group <?php echo ((isset($animal[$nombre])) ? 'has-error has-feedback' : '') ?>">
+   <label class="control-label" for="inputError2"><?php echo i18n::__('name')?>: </label><input class="form-control" type="text" value="<?php echo ((isset($objAnimal)) ? $objAnimal[0]->$nombre : ((isset($animal[$nombre]))? $animal[$nombre] : '') ) ?>" name="<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE, true )?>">
+   <?php if (isset($animal[$nombre])): ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
+   </div>
    <?php echo i18n::__('gender')?>: <input class="form-control" type="text" value="<?php echo ((isset($objAnimal)) ? $objAnimal[0]->$genero : ((isset($animal[$genero])) ? $animal[$genero] : '') ) ?>" name="<?php echo animalTableClass::getNameField(animalTableClass::GENERO, true )?>">
    <?php echo i18n::__('age')?>: <input class="form-control" type="text" value="<?php echo ((isset($objAnimal)) ? $objAnimal[0]->$edad : ((isset($animal[$edad]))? $animal[$edad] : '' ) ) ?>" name="<?php echo animalTableClass::getNameField(animalTableClass::EDAD, true )?>">
    <?php echo i18n::__('weight')?>: <input class="form-control" type="text" value="<?php echo ((isset($objAnimal)) ? $objAnimal[0]->$peso : ((isset($animal[$peso])) ? $animal[$peso] : '') ) ?>" name="<?php echo animalTableClass::getNameField(animalTableClass::PESO, true )?>">

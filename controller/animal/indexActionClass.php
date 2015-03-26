@@ -49,10 +49,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             if(request::getInstance()->hasGet('page')){
                 $this->page = request::getInstance()->getGet('page');
                 $page = request::getInstance()->getGet('page') - 1;
-                $page = $page * 3;
+                $page = $page * config::getRowGrid();
             }
-            $this->cntPages = animalTableClass::getTotalPages(3,$where);
-            $this->objAnimal = animalTableClass::getAll($fields, FALSE ,$orderBy,'ASC',  3,$page,$where);
+            $this->cntPages = animalTableClass::getTotalPages(config::getRowGrid(),$where);
+            $this->objAnimal = animalTableClass::getAll($fields, FALSE ,$orderBy,'ASC', config::getRowGrid(),$page,$where);
             $this->defineView('index', 'animal',  session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage()."<BR>".print_r($exc->getTraceAsString());

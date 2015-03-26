@@ -61,6 +61,9 @@ dictionary:
     return:               Volver
     filters:              Filtros
     filter:               Filtrar
+    report:               Reporte
+    generate report:      Generar Reporte
+    generate:             Generar
     confirm:              Confirmar
     confirm_delete:       Confirmar Eliminar
     selected_items:       Elementos seleccionados

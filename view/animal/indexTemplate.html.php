@@ -63,14 +63,47 @@
                 </div>
             </div>
             <!--Fin Ventana Modal Filtros-->
+            <!-- VENTANA MODAL PARA REPORTES CON FILTROS -->
+            <div class="modal fade" id="myModalFILTROSREPORTE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('generate report')?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" class="form-horizontal" id="reportFilterForm" action="<?php  echo routing::getInstance()->getUrlWeb('animal', 'report')?>">
+                                <div class="form-group">
+                                    <label for="reportName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="filterNombre" name="report[nombre]" placeholder="<?php echo i18n::__('name')?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="report[fechaCreacion1]" class="form-control" id="filterCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="report[fechaCreacion2]" class="form-control" id="filterCreacion2" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close')?></button>
+                            <button type="button" onclick="$('#reportFilterForm').submit()" class="btn btn-primary"><?php echo i18n::__('generate')?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN DE LOS FILTROS PARA REPORTE -->
+            
             <!--Formulario para el Cambio de Idiomas-->
-            <form id="frmTraductor" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'traductor')?>" method="POST" >
-                <select name="language" onchange="$('#frmTraductor').submit()">
-                    <option <?php echo (config::getDefaultCulture() == 'es') ? 'selected' : '' ?> value="es">Español</option>
-                    <option <?php echo (config::getDefaultCulture() == 'en') ? 'selected' : '' ?> value="en">English</option>
-                 </select> 
-                <input type="hidden" name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO')?>"
-            </form>
+            <?php view::includePartial('animal/formTraductor')?>
             <!-- Fin del Formulario de Cambio de Idiomas-->
 
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
@@ -79,6 +112,7 @@
                     <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                     <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
                     <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                    <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalFILTROSREPORTE" ><?php echo i18n::__('report')?></a>
                 </div>
                     <?php view::includeHandlerMessage() ?>
                 <table class="table table-bordered table-responsive table-condensed">

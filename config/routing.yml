@@ -4,10 +4,19 @@ homepage:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
-    
+
+install_index:
+  url:    /install
+  param:  { module: config, action: index, format: html }
+
+install_create:
+  url:    /crear
+  param:  { module: config, action: create, format: html }
+
 traduccion:
-  url:    /traducion
+  url:    /traduccion
   param:  { module: animal, action: traductor, format: html }
+  
 #  load:
 #    - model/base/usuarioBaseTableClass.php
 #    - model/usuarioTableClass.php
@@ -189,6 +198,18 @@ animal_view:
     - model/razaTableClass.php
     - model/base/estadoBaseTableClass.php
     - model/estadoTableClass.php
+
+animal_view:
+  url:    /animal/reporte
+  param:  { module: animal, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
     
 ##----------------------Bitacora------------------------------##
 bitacora_index:
@@ -347,6 +368,8 @@ fecundador_index:
   load:
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
     
 fecundador_insert:
   url:    /fecundador/insertar

@@ -59,6 +59,9 @@ dictionary:
     return:               Return
     filters:              Filters
     filter:               Filter
+    report:               Report
+    generate report:      Generate report
+    generate:             Generate
     confirm:              Confirm
     confirm_delete:       Confirm Delete
     selected_items:       items selected
