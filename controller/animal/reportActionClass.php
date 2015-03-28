@@ -45,29 +45,6 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 $this->objAnimal = animalTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL,NULL, $where);
                 $this->defineView('report', 'animal', session::getInstance()->getFormatOutput());
             }
-//            $fields = array(
-//            animalTableClass::ID,
-//            animalTableClass::NOMBRE,
-//            animalTableClass::GENERO,
-//            animalTableClass::EDAD,
-//            animalTableClass::PESO,
-//            animalTableClass::FECHA_INGRESO,
-//            animalTableClass::NUMERO_PARTOS,
-//            animalTableClass::ID_RAZA,
-//            animalTableClass::ID_ESTADO
-//            );
-//            $orderBy = array(
-//            animalTableClass::ID
-//            );
-//            $page = 0;
-//            if(request::getInstance()->hasGet('page')){
-//                $this->page = request::getInstance()->getGet('page');
-//                $page = request::getInstance()->getGet('page') - 1;
-//                $page = $page * config::getRowGrid();
-//            }
-//            $this->cntPages = animalTableClass::getTotalPages(config::getRowGrid(),$where);
-//            $this->objAnimal = animalTableClass::getAll($fields, FALSE ,$orderBy,'ASC', config::getRowGrid(),$page,$where);
-//            $this->defineView('index', 'animal',  session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage()."<BR>".print_r($exc->getTraceAsString());
             

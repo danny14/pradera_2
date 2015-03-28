@@ -66,6 +66,7 @@ dictionary:
     confirm_delete:       Confirm Delete
     selected_items:       items selected
     close:                Close
+    logout:               Logout
     Do you want to delete the record?:       ¿Do you want to delete the record?
     Do you want to remove the selected records?: ¿Do you want to remove the selected records?
   errors:

@@ -59,7 +59,7 @@
    <select class="form-control" id="<?php animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)?>" name="<?php echo animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE);?>">
        <option>Seleccione la raza</option>
        <?php foreach($objRaza as $raza):?>
-       <option <?php echo (($objAnimal[0]->$id_raza_a == $raza->$id_raza) ? 'selected' : '')?> value="<?php echo $raza->id?>"><?php echo $raza->$descripcionraza?></option>
+       <option <?php echo ((isset($objAnimal[0]->$id_raza_a) == $raza->$id_raza) ? 'selected' : '')?> value="<?php echo $raza->id?>"><?php echo $raza->$descripcionraza?></option>
        <?php endforeach;?>
    </select>
    <?php if (isset($animal[$id_raza])):?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
@@ -70,7 +70,7 @@
    <select class="form-control" id="<?php animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE)?>" name="<?php echo animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE);?>">
        <option>Seleccione el estado</option>
        <?php foreach($objEstado as $estado):?>
-       <option <?php echo (($objAnimal[0]->$id_estado_a == $estado->$id_estado)? 'selected' : '')?> value="<?php echo $estado->id?>"><?php echo $estado->$descripcionestado?></option>
+       <option <?php echo ((isset($objAnimal[0]->$id_estado_a) == $estado->$id_estado)? 'selected' : '')?> value="<?php echo $estado->id?>"><?php echo $estado->$descripcionestado?></option>
        <?php endforeach;?>
    </select>
         <?php if (isset($animal[$id_estado])):?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
