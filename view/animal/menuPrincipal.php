@@ -16,11 +16,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Animal <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-              <li><a href="<?php // echo routing::getInstance()->getUrlWeb('animal', 'index')?>">Animal</a></li>
+              <li><a href="<?php  echo routing::getInstance()->getUrlWeb('animal', 'index')?>">Animal</a></li>
             <li class="divider"></li>
-            <li><a href="<?php // echo routing::getInstance()->getUrlWeb('raza', 'index')?>">Raza</a></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('raza', 'index')?>">Raza</a></li>
             <li class="divider"></li>
-            <li><a href="<?php // echo routing::getInstance()->getUrlWeb('estado', 'index')?>">Estado</a></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('estado', 'index')?>">Estado</a></li>
             <li class="divider"></li>
           </ul>
         </li>

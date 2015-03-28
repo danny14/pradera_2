@@ -199,7 +199,7 @@ animal_view:
     - model/base/estadoBaseTableClass.php
     - model/estadoTableClass.php
 
-animal_view:
+animal_report:
   url:    /animal/reporte
   param:  { module: animal, action: report, format: pdf }
   load:
@@ -358,6 +358,34 @@ estado_edit:
 estado_update:
   url:    /estado/actualizar
   param:  { module: estado, action: update, format: html }
+  load:
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    
+estado_delete:
+  url:    /estado/eliminar
+  param:  { module: estado, action: delete, format: json }
+  load:
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+
+estado_deleteSelect:
+  url:    /estado/eliminarSeleccion
+  param:  { module: estado, action: deleteSelect, format: json }
+  load:
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    
+estado_deleteFilters:
+  url:    /estado/eliminarFiltros
+  param:  { module: estado, action: deleteFilters, format: html }
+  load:
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    
+estado_view:
+  url:    /estado/vista
+  param:  { module: estado, action: view, format: html }
   load:
     - model/base/estadoBaseTableClass.php
     - model/estadoTableClass.php

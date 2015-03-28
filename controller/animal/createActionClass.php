@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as bitacora;
 
 class createActionClass extends controllerClass implements controllerActionInterface {
 
@@ -33,7 +34,7 @@ class createActionClass extends controllerClass implements controllerActionInter
                     animalTableClass::ID_ESTADO => $id_estado
                 );
                 /**
-                 * Guarda los datos del formulario en la sesion iniciada 
+                 * Guarda los datos del formulario en una variable de session y meti el post 
                  */
                 session::getInstance()->setAttribute('form_' . animalTableClass::getNameTable(), $post);
                 /**
