@@ -63,6 +63,7 @@ class createActionClass extends controllerClass implements controllerActionInter
 
                 animalTableClass::insert($data);
                 session::getInstance()->setSuccess('Los datos fueron registrados de forma exitosa');
+                bitacora::register('Insertar', animalTableClass::getNameTable());
                 routing::getInstance()->redirect('animal', 'index');
             } else {
                 routing::getInstance()->redirect('animal', 'index');

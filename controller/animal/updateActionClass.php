@@ -6,6 +6,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as bitacora;
 
 class updateActionClass extends controllerClass implements controllerActionInterface {
 
@@ -37,7 +38,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 );
 
                 animalTableClass::update($ids, $data);
+                bitacora::register('Insertar', animalTableClass::getNameTable());
             }
+            
             routing::getInstance()->redirect('animal', 'index');
         } catch (PDOException $exc) {
             echo $exc->getMessage();

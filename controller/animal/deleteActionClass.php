@@ -6,6 +6,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as bitacora;
 
 class deleteActionClass extends controllerClass implements controllerActionInterface {
 
@@ -24,6 +25,7 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 'msg' => 'La Eliminacion de registro fue exitosa'
             );
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
+            bitacora::register('Eliminar Individual', animalTableClass::getNameTable());
             $this->defineView('delete', 'animal', session::getInstance()->getFormatOutput());
             } else {
                 routing::getInstance()->redirect('animal', 'index');

@@ -147,7 +147,9 @@ animal_create:
   load:
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
-    - 
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 animal_edit:
   url:    /animal/editar
@@ -166,6 +168,9 @@ animal_update:
   load:
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 animal_delete:
   url:    /animal/eliminar
@@ -173,6 +178,9 @@ animal_delete:
   load:
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 animal_deleteSelect:
   url:    /animal/eliminarSeleccion
@@ -180,6 +188,9 @@ animal_deleteSelect:
   load:
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 animal_deleteFilters:
   url:    /animal/borrar_filtros
