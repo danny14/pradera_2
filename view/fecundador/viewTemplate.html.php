@@ -43,7 +43,7 @@
                 </tbody>
                 <tfoot></tfoot>
             </table>
-            <a href="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'index')?>" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-arrow-left"></i><?php echo i18n::__('return')?></a>
+            <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'index')?>"><i class="fa fa-hand-o-left"> <?php echo i18n::__('return')?></i></a>
         </section>
         <footer>
             

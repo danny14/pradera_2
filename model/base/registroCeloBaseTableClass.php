@@ -10,7 +10,7 @@ use mvc\model\table\tableBaseClass;
 class registroCeloBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
-  const EDAD_ANIMAL = 'edad';
+  const EDAD_ANIMAL = 'edad_animal';
   const FECHA = 'fecha';
   const ID_FECUNDADOR = 'id_fecundador';
   const ID_ANIMAL = 'id_animal';

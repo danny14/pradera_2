@@ -425,6 +425,9 @@ fecundador_create:
   load:
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 fecundador_edit:
   url:    /fecundador/editar
@@ -441,6 +444,9 @@ fecundador_update:
   load:
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 fecundador_delete:
   url:    /fecundador/eliminar
@@ -448,6 +454,9 @@ fecundador_delete:
   load:
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 fecundador_deleteSelect:
   url:    /fecundador/eliminarSeleccion
@@ -455,6 +464,9 @@ fecundador_deleteSelect:
   load:
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 fecundador_deleteFilters:
   url:    /fecundador/borrar_filtros
@@ -464,6 +476,14 @@ fecundador_view:
   url:    /fecundador/mirar
   param:  { module: fecundador, action: view, format: html }
   load:
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    
+fecundador_report:
+  url:    /fecundador/reporte
+  param:  { module: fecundador, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
 
@@ -568,6 +588,140 @@ raza_view:
     - model/razaTableClass.php
 
 ##------------------------Registro Celo---------------------##
+registro_celo_index:
+  url:    /registro_celo/index
+  param:  { module: registro_celo, action: index, format: html }
+  load:
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+
+
+
+registro_celo_insert:
+  url:    /registro_celo/insertar
+  param:  { module: registro_celo, action: insert, format: html }
+  load:
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    
+
+    
+registro_celo_create:
+  url:    /registro_celo/crear
+  param:  { module: registro_celo, action: create, format: html }
+  load:
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+    
+    
+
+registro_celo_edit:
+  url:    /registro_celo/editar
+  param:  { module: registro_celo, action: edit, format: html }
+  load:
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+
+    
+registro_celo_update:
+  url:    /registro_celo/actualizar
+  param:  { module: registro_celo, action: update, format: html }
+  load:
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+    
+registro_celo_view:
+  url:    /registro_celo/vista
+  param:  { module: registro_celo, action: view, format: html }
+  load:
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+
+
+    
+registro_celo_delete:
+  url:    /registro_celo/borrado
+  param:  { module: registro_celo, action: delete, format: html }
+  load:
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+    
+registro_celo_deleteSelect:
+  url:    /registro_celo/eliminarSeleccion
+  param:  { module: registro_celo, action: deleteSelect, format: json }
+  load:
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+
+
+registroCelo_deleteFilters:
+  url:    /registro_celo/borrarFiltros
+  param:  { module: registro_celo, action: deleteFilters, format: json }
+  load:
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+
+
+    
+registro_celo_report:
+  url:    /registro_celo/reporte
+  param:  { module: registro_celo, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php
 
 ##------------------------Registro Vacunacion---------------##
 

@@ -69,6 +69,12 @@ dictionary:
     selected_items:       Elementos seleccionados
     close:                Cerrar
     logout:               Cerrar Sesion
+    register_celo:        Registro Celo
+    age_animal:           Edad Animal
+    id_fecundador:        Id fecundador 
+    id_animal:            Id Animal
+    return:               Volver
+    generate report:      Generar Reporte
     Do you want to delete the record?:       ¿Desea eliminar el registro?
     Do you want to remove the selected records?: ¿Deseas eliminar los registros seleccionados?
   errors:

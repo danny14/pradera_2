@@ -37,3 +37,8 @@ raza:
   index:
     javascript:
       - index.js
+      
+registro_celo:
+  index:
+    javascript:
+      - index.js

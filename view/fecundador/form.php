@@ -25,7 +25,9 @@
      </select>
       <br>
      <input class="btn btn-primary btn-xs" type="submit" value="<?php echo i18n::__((isset($objFecundador)? 'update': 'register'))?>">
+     <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'index')?>"><i class="fa fa-hand-o-left"><?php echo i18n::__('return')?></i></a>
     </div>
+           
     
 </form>
 

@@ -6,6 +6,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as bitacora;
 
 class updateActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
@@ -18,6 +19,10 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $observacion = request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION,TRUE));
                 $id_raza = request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::ID_RAZA,TRUE));
                 
+                $ids = array(
+                fecundadorTableClass::ID => $id
+                );
+                
                 $data= array(
                     fecundadorTableClass::NOMBRE =>$nombre,
                     fecundadorTableClass::EDAD =>$edad,
@@ -25,7 +30,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
                     fecundadorTableClass::OBSERVACION => $observacion,
                     fecundadorTableClass::ID_RAZA => $id_raza,
                 );
-                fecundadorTableClass::update($ids,$data); 
+                fecundadorTableClass::update($ids,$data);
+                 bitacora::register('ACTUALIZAR', fecundadorTableClass::getNameTable());
                  routing::getInstance()->redirect('fecundador','index'); 
                    
             }

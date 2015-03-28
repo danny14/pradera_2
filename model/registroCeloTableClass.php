@@ -10,4 +10,68 @@ use mvc\config\configClass as config;
  */
 class registroCeloTableClass extends registroCeloBaseTableClass {
   
+    public static function getTotalPages($lines, $where) {
+        try {
+            $sql = 'SELECT count(' . registroCeloTableClass::ID . ') AS cantidad ' .
+                    ' FROM ' . registroCeloTableClass::getNameTable(). ' ';
+//                   ' WHERE'. registroCeloTableClass::DELETED_AT.'IS NULL';
+//            if (is_array($where) === TRUE) {
+//                foreach ($where as $field => $value) {
+//                   if (is_array($value)) {
+//                       $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
+//                    } else {
+//                        $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+//                    }
+//                }
+//           }
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return ceil($answer[0]->cantidad / $lines);
+        } catch (PDOException $exc) {
+            throw $exc;
+        }
+    }
+    
+    /**
+     * Recordar hacer otra funcion general
+     * @param type $id
+     * @return type
+     * @throws PDOException
+     */
+    
+    public static function getNameFieldForaneaAnimal($id){
+        try{
+            $sql = 'SELECT '. animalTableClass::NOMBRE . ' AS nom_animal '
+                   .' FROM '.animalTableClass::getNameTable() . ' '
+                   . ' WHERE ' .animalTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->nom_animal;
+        }
+        catch (PDOException $exc){
+            throw $exc;
+        }
+    }
+    public static function getNameFieldForaneaFecundador($id){
+        try{
+            $sql = 'SELECT '. fecundadorTableClass::NOMBRE . ' AS nom_fecundador '
+                   .' FROM '.fecundadorTableClass::getNameTable() . ' '
+                   . ' WHERE ' .fecundadorTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->nom_fecundador;
+        }
+        catch (PDOException $exc){
+            throw $exc;
+        }
+    }
 }

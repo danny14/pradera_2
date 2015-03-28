@@ -66,6 +66,12 @@ dictionary:
     confirm_delete:       Confirm Delete
     selected_items:       items selected
     close:                Close
+    register_celo:        Register_celo 
+    age_animal:           Age_animal 
+    id_fecundador:        Id_fecundador
+    id_animal:            Id_animal 
+    return:               Return
+    generate report:      Generate Report
     logout:               Logout
     Do you want to delete the record?:       ¿Do you want to delete the record?
     Do you want to remove the selected records?: ¿Do you want to remove the selected records?

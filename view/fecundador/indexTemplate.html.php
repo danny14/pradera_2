@@ -1,5 +1,6 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\config\configClass as config ?>
 <?php use mvc\view\viewClass as view ?>
 <?php $id = fecundadorTableClass::ID ?>
 <?php $nombre =fecundadorTableClass::NOMBRE ?>
@@ -29,7 +30,7 @@
                             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filters') ?></h4>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>">
+                            <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'index') ?>">
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
                                     <div class="col-sm-10">
@@ -58,18 +59,56 @@
                 </div>
             </div>
             <!--Fin Ventana Modal Filtros-->
-            <!--Formulario de Traductor-->
+            
+             <!-- Ventana Modal para los reportes -->
+            <div class="modal fade" id="myModalREPORTES" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('generate report') ?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" class="form-horizontal" id="reportForm" action="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'report') ?>">
+                                <div class="form-group">
+                                    <label for="reportName" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="<?php echo i18n::__('name') ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reportAge" class="col-sm-2 control-label"><?php echo i18n::__('age') ?></label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="report[edad]" class="form-control" id="reportEdad" placeholder="<?php echo i18n::__('age') ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reportWeight" class="col-sm-2 control-label"><?php echo i18n::__('weight') ?></label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="report[peso]" class="form-control" id="reportPeso" placeholder="<?php echo i18n::__('weight')?>">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
+                            <button type="button" onclick="$('#reportForm').submit()" class="btn btn-primary"><?php echo i18n::__('generate report') ?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fin Ventana Modal reportes-->
             <?php view::includePartial('animal/formTraductor')?>
-            <!--Fin de formulario Traductor -->
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'deleteSelect') ?>" method="POST">
-            <div>
+                <div id="botones">
                 <a href="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
                     <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                    <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalREPORTES" ><i class="fa fa-file-pdf-o"> <?php echo i18n::__('report')?></i></a>
             </div>
             <?php view::includeHandlerMessage() ?>
-            <table class="table table-bordered table-responsive table-striped table-condensed">
+            <table class="table table-bordered table-responsive table-striped">
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"</th>

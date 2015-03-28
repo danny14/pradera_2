@@ -6,6 +6,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as bitacora;
 
 class deleteActionClass extends controllerClass implements controllerActionInterface {
 
@@ -26,10 +27,11 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             
             $this->defineView('delete', 'fecundador', session::getInstance()->getFormatOutput());
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
-            } else {
+            } else 
+                 bitacora::register('ELIMINAR', fecundadorTableClass::getNameTable());
                 routing::getInstance()->redirect('fecundador', 'index');
             }
-        } catch (PDOException $exc) {
+         catch (PDOException $exc) {
             echo $exc->getMessage();
             echo "<br>";
             echo $exc->getTraceAsString();
@@ -37,3 +39,4 @@ class deleteActionClass extends controllerClass implements controllerActionInter
     }
 
 }
+

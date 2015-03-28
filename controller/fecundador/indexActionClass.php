@@ -18,13 +18,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $filter = request::getInstance()->getPost('filter');
                 // aqui validar datos de filtros
                 if(isset($filter['nombre']) and $filter['nombre'] !== NULL and $filter['nombre'] !== ''){
-                    $where[animalTableClass::NOMBRE] = $filter['nombre'];
+                    $where[fecundadorTableClass::NOMBRE] = $filter['nombre'];
                 }
                 if(isset($filter['edad']) and $filter['edad'] !== NULL and $filter['edad'] !== ''){
-                    $where[fecundadorTableClass::NOMBRE] = $filter['edad'];
+                    $where[fecundadorTableClass::EDAD] = $filter['edad'];
                 }
                 if(isset($filter['peso']) and $filter['peso'] !== NULL and $filter['peso'] !== ''){
-                    $where[animalTableClass::PESO] = $filter['peso'];
+                    $where[fecundadorTableClass::PESO] = $filter['peso'];
                 }
                 session::getInstance()->setAttribute('fecundadorIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('fecundadorIndexFilters')){
@@ -48,8 +48,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $page = request::getInstance()->getGet('page') - 1;
                 $page = $page * 3;
             }
-            $this->cntPages = fecundadorTableClass::getTotalPages(3,$where);
-            $this->objFecundador =  fecundadorTableClass::getAll($fields, FALSE,$orderBy,'ASC',3,$page,$where);
+            $this->cntPages = fecundadorTableClass::getTotalPages(config::getRowGrid(),$where);
+            $this->objFecundador =  fecundadorTableClass::getAll($fields, FALSE,$orderBy,'ASC',config::getRowGrid(),$page,$where);
             $this->defineView('index', 'fecundador', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();

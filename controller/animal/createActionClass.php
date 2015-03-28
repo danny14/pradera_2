@@ -37,6 +37,7 @@ class createActionClass extends controllerClass implements controllerActionInter
                  * Guarda los datos del formulario en una variable de session y meti el post 
                  */
                 session::getInstance()->setAttribute('form_' . animalTableClass::getNameTable(), $post);
+                
                 /**
                  * Validaciones para el Animal o Hoja de vida
                  */
@@ -49,6 +50,10 @@ class createActionClass extends controllerClass implements controllerActionInter
                 if(!is_numeric($edad)){
                     throw new PDOException('Solo se puede ingresar caracteres numericos');
                 }
+                if(!is_numeric($peso)){
+                    throw new PDOException('Solo se puede ingresar caracteres numericos');
+                }
+                
                 /* _______________________________ */
                 $data = array(
                     animalTableClass::NOMBRE => $nombre,
