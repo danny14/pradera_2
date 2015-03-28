@@ -19,6 +19,22 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $observacion = request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION,TRUE));
                 $id_raza = request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::ID_RAZA,TRUE));
                 
+                if(!ereg("^[a-zA-Z0-9]{3,20}$", $nombre)){
+                    throw new PDOException('el nombre no puede contener caracteres especiales');
+                }
+                if(strlen($nombre)>fecundadorTableClass::NOMBRE_LENGTH){
+                    throw new PDOException('el nombre no puede ser mayor a '.fecundadorTableClass::NOMBRE_LENGTH.' Caracteres');
+                }
+                if(is_numeric($edad) === FALSE){
+                    throw  new PDOException('caracteres no validos tienen que ser numericos');
+                }
+                if(is_numeric($peso) === FALSE){
+                    throw new PDOException('caracteres no validos tienen que ser numericos');
+                }
+                if(strlen($observacion)>fecundadorTableClass::OBSERVACION_LENGTH){
+                    throw new PDOException('la observacion no puede ser mayor a'.fecundadorTableClass::OBSERVACION_LENGTH.' caracteres ');
+                }
+                
                 $ids = array(
                 fecundadorTableClass::ID => $id
                 );

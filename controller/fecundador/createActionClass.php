@@ -18,6 +18,9 @@ class createActionClass extends controllerClass implements controllerActionInter
                 $observacion = request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE));
                 $id_raza = request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::ID_RAZA, TRUE));
                 
+                if(!ereg("^[a-zA-Z0-9]{3,20}$", $nombre)){
+                    throw new PDOException('el nombre no puede contener caracteres especiales');
+                }
                 if(strlen($nombre)>fecundadorTableClass::NOMBRE_LENGTH){
                     throw new PDOException('el nombre no puede ser mayor a '.fecundadorTableClass::NOMBRE_LENGTH.' Caracteres');
                 }
