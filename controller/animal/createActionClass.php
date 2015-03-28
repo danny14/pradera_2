@@ -41,6 +41,9 @@ class createActionClass extends controllerClass implements controllerActionInter
                 /**
                  * Validaciones para el Animal o Hoja de vida
                  */
+                if(!ereg("^[a-zA-Z0-9]{3,20}$", $nombre)){
+                    throw new PDOException('el nombre no puede contener caracteres especiales');
+                }
                 if (strlen($nombre) > animalTableClass::NOMBRE_LENGTH) {
                     throw new PDOException('el nombre no puede ser mayor a ' . animalTableClass::NOMBRE_LENGTH . ' caracteres');
                 }

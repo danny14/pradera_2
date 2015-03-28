@@ -23,6 +23,27 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $id_raza = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_RAZA, true));
                 $id_estado = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_ESTADO, true));
                 
+                /**
+                 * Validaciones para el Animal o Hoja de vida
+                 */
+                if(!ereg("^[a-zA-Z0-9]{3,20}$", $nombre)){
+                    throw new PDOException('el nombre no puede contener caracteres especiales');
+                }
+                if (strlen($nombre) > animalTableClass::NOMBRE_LENGTH) {
+                    throw new PDOException('el nombre no puede ser mayor a ' . animalTableClass::NOMBRE_LENGTH . ' caracteres');
+                }
+                if($genero !== "F" and $genero !== "f" and $genero !== "M" and $genero !== "m"  ){//or $genero !== "M" or $genero !== "f" or $genero !== "m"){
+                    throw new PDOException('Solo puede escoger entre el genero F y M');
+                }
+                if(!is_numeric($edad)){
+                    throw new PDOException('Solo se puede ingresar caracteres numericos');
+                }
+                if(!is_numeric($peso)){
+                    throw new PDOException('Solo se puede ingresar caracteres numericos');
+                }
+                
+                /* _______________________________ */
+                
                 $ids= array(
                 animalTableClass::ID => $id
                 );
