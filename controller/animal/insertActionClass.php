@@ -10,15 +10,7 @@ use mvc\i18n\i18nClass as i18n;
 class insertActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            /**
-             * Si nos llego los datos desde el create 
-             * entonces pasamos los datos al insertTemplate
-             * con el objeto llamado ANIMAL 
-             */
-            if(session::getInstance()->hasAttribute('form_' . animalTableClass::getNameTable())){
-                $this->animal = session::getInstance()->getAttribute('form_' . animalTableClass::getNameTable());
-                
-            }
+
             $fields = array(
             razaTableClass::ID,
             razaTableClass::DESCRIPCION

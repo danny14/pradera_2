@@ -59,7 +59,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 );
 
                 animalTableClass::update($ids, $data);
-                bitacora::register('Insertar', animalTableClass::getNameTable());
+                bitacora::register('Actualizar', animalTableClass::getNameTable());
             }
             
             routing::getInstance()->redirect('animal', 'index');

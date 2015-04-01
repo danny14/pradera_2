@@ -22,22 +22,7 @@ class createActionClass extends controllerClass implements controllerActionInter
                 $numero_partos = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NUMERO_PARTOS, true));
                 $id_raza = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_RAZA, true));
                 $id_estado = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_ESTADO, true));
-
-                $post = array(
-                    animalTableClass::NOMBRE => $nombre,
-                    animalTableClass::GENERO => $genero,
-                    animalTableClass::EDAD => $edad,
-                    animalTableClass::PESO => $peso,
-                    animalTableClass::FECHA_INGRESO => $fecha_ingreso,
-                    animalTableClass::NUMERO_PARTOS => $numero_partos,
-                    animalTableClass::ID_RAZA => $id_raza,
-                    animalTableClass::ID_ESTADO => $id_estado
-                );
-                /**
-                 * Guarda los datos del formulario en una variable de session y meti el post 
-                 */
-                session::getInstance()->setAttribute('form_' . animalTableClass::getNameTable(), $post);
-                
+    
                 /**
                  * Validaciones para el Animal o Hoja de vida
                  */
@@ -76,10 +61,6 @@ class createActionClass extends controllerClass implements controllerActionInter
             } else {
                 routing::getInstance()->redirect('animal', 'index');
             }
-            /*
-             * Limpia Variables en session correspondientes al formulario
-             */
-            session::getInstance()->setAttribute('form_' . animalTableClass::getNameTable(), NULL);
         } catch (PDOException $exc) {
             switch ($exc->getCode()) {
                 case 23505:

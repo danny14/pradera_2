@@ -42,12 +42,13 @@
                 </div>
             </div>
             <!--Fin Ventana Modal Filtros-->
+            <?php view::includePartial('animal/formTraductor')?>
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('estado', 'deleteSelect') ?>" method="POST">
             <div>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('estado', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                <a class="btn btn-default btn-xs" href="<?php // routing::getInstance()->getUrlWeb('estado', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                <a class="btn btn-default btn-xs" href="<?php  routing::getInstance()->getUrlWeb('estado', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
             </div>
                 <?php view::includeHandlerMessage()?>
             <table class="table table-bordered table-responsive table-striped table-condensed">
@@ -67,7 +68,7 @@
                         <td><?php echo $estado->$descripcion ?></td>
                         <td>
                             <div class="btn btn-group btn-xs">
-                                <a href="<?php echo routing::getInstance()->getUrlWeb('estado', 'view',array(estadoTableClass::ID => $estado->$id))?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"><?php?></i></a>
+                                <a href="<?php echo routing::getInstance()->getUrlWeb('estado', 'view',array(estadoTableClass::ID => $estado->$id))?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('estado', 'edit', array(estadoTableClass::ID => $estado->$id));?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                 <a data-toggle="modal" data-target="#myModalDelete<?php echo $estado->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
                             </div>
