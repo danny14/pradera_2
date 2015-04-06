@@ -64,7 +64,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">ajustes</a></li>
             <li class="divider"></li>
-            <li><a href="<?php //echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout')?>"><?php echo i18n::__('logout')?></a></li>
+            <li><a href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout')?>"><?php echo i18n::__('logout')?></a></li>
           </ul>
         </li>
       </ul>

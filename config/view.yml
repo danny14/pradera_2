@@ -27,6 +27,8 @@ animal:
   index:
     javascript:
       - index.js
+  stylesheet:
+      - main.css
       
 fecundador:
   index:

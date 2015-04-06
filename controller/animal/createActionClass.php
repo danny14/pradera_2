@@ -14,35 +14,17 @@ class createActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if (request::getInstance()->isMethod('POST')) {
-                $nombre = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NOMBRE, true));
-                $genero = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::GENERO, true));
-                $edad = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::EDAD, true));
-                $peso = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::PESO, true));
-                $fecha_ingreso = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, true));
-                $numero_partos = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NUMERO_PARTOS, true));
-                $id_raza = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_RAZA, true));
-                $id_estado = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_ESTADO, true));
-    
-                /**
-                 * Validaciones para el Animal o Hoja de vida
-                 */
-                if(!ereg("^[a-zA-Z0-9]{3,20}$", $nombre)){
-                    throw new PDOException('el nombre no puede contener caracteres especiales');
-                }
-                if (strlen($nombre) > animalTableClass::NOMBRE_LENGTH) {
-                    throw new PDOException('el nombre no puede ser mayor a ' . animalTableClass::NOMBRE_LENGTH . ' caracteres');
-                }
-                if($genero !== "F" and $genero !== "f" and $genero !== "M" and $genero !== "m"  ){//or $genero !== "M" or $genero !== "f" or $genero !== "m"){
-                    throw new PDOException('Solo puede escoger entre el genero F y M');
-                }
-                if(!is_numeric($edad)){
-                    throw new PDOException('Solo se puede ingresar caracteres numericos');
-                }
-                if(!is_numeric($peso)){
-                    throw new PDOException('Solo se puede ingresar caracteres numericos');
-                }
+                $nombre = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NOMBRE, true)));
+                $genero = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::GENERO, true)));
+                $edad = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::EDAD, true)));
+                $peso = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::PESO, true)));
+                $fecha_ingreso = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, true)));
+                $numero_partos = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NUMERO_PARTOS, true)));
+                $id_raza = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_RAZA, true)));
+                $id_estado = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_ESTADO, true)));
                 
-                /* _______________________________ */
+                $this->Validate($nombre,$genero,$edad,$peso,$fecha_ingreso,$numero_partos,$id_raza,$id_estado);
+
                 $data = array(
                     animalTableClass::NOMBRE => $nombre,
                     animalTableClass::GENERO => $genero,
@@ -71,6 +53,42 @@ class createActionClass extends controllerClass implements controllerActionInter
                 break;
             }
             routing::getInstance()->redirect('animal', 'insert');
+        }
+    }
+    /**
+     * Validaciones para el Animal o Hoja de vida
+     */
+    private function Validate($nombre, $genero, $edad, $peso, $fecha_ingreso, $numero_partos, $id_raza, $id_estado) {
+        $flag = FALSE;
+        
+        if (strlen($nombre) > animalTableClass::NOMBRE_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> animalTableClass::NOMBRE_LENGTH)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
+                    
+        }
+
+        if (!ereg("^[a-zA-Z0-9]{3,20}$", $nombre)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => animalTableClass::NOMBRE)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
+        }
+
+        if($genero !== "F" and $genero !== "f" and $genero !== "M" and $genero !== "m"  ){//or $genero !== "M" or $genero !== "f" or $genero !== "m"){
+                    throw new PDOException('Solo puede escoger entre el genero F y M');
+        }
+
+        if (!is_numeric($edad)) {
+            throw new PDOException('Solo se puede ingresar caracteres numericos');
+        }
+        if (!is_numeric($peso)) {
+            throw new PDOException('Solo se puede ingresar caracteres numericos');
+        }
+
+        /* _______________________________ */
+        if($flag === TRUE){
+            request::getInstance()->setMethod('GET'); //POST
+            routing::getInstance()->forward('animal', 'insert');
         }
     }
 

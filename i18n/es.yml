@@ -77,6 +77,8 @@ dictionary:
     generate report:      Generar Reporte
     Do you want to delete the record?:       ¿Desea eliminar el registro?
     Do you want to remove the selected records?: ¿Deseas eliminar los registros seleccionados?
+    errorCharacterName:   el nombre %name% excede los %character% caracteres maximos permitidos
+    errorCharacterSpecial: el campo %field% no puede contener caracteres especiales
   errors:
     00001:                El módulo y la acción solicitada, no existe.
     00002:                La dirección que solicita no está registrada.
