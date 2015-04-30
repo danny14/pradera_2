@@ -15,7 +15,7 @@ $pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),90,8,70);
 
 $pdf ->Ln(50);
 
-$pdf->Cell(215,10,'REGISTRO CELO',1,1,'C');
+$pdf->Cell(255,10,'FECUNDADOR',1,1,'C');
 
 
 
@@ -27,6 +27,7 @@ $pdf->Cell(215,10,'REGISTRO CELO',1,1,'C');
   $pdf->Cell(40,10,  utf8_decode("OBSERVACION"),1);
   $pdf->Cell(40,10,  utf8_decode("ID_RAZA"),1);
   $pdf->Ln();
+  
 foreach ($objFecundador as $fecundador){
   $pdf->Cell(40,10,  utf8_decode($fecundador->$id),1);
   $pdf->Cell(45,10,  utf8_decode($fecundador->$nombre),1);

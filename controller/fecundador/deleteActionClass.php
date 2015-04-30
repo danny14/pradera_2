@@ -24,9 +24,9 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 'code' => 200,
                 'msg' => 'La Eliminacion de registro fue exitosa'
             );
-            
-            $this->defineView('delete', 'fecundador', session::getInstance()->getFormatOutput());
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
+            $this->defineView('delete', 'fecundador', session::getInstance()->getFormatOutput());
+
             } else 
                  bitacora::register('ELIMINAR', fecundadorTableClass::getNameTable());
                 routing::getInstance()->redirect('fecundador', 'index');

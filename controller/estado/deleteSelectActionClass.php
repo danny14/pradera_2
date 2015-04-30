@@ -26,9 +26,8 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
                 routing::getInstance()->redirect('estado', 'index');
             }
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

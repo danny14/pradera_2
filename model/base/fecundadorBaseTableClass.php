@@ -15,6 +15,7 @@ class fecundadorBaseTableClass extends tableBaseClass {
   const EDAD = 'edad';
   const PESO = 'peso';
   const OBSERVACION = 'observacion';
+  const OBSERVACION_LENGTH = 120;
   const ID_RAZA = 'id_raza';
 
 

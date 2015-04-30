@@ -11,7 +11,7 @@ class animalBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const NOMBRE = 'nombre';
-  const NOMBRE_LENGTH = 2;
+  const NOMBRE_LENGTH = 80;
   const GENERO = 'genero';
   const GENERO_LENGTH = 1;
   const EDAD = 'edad';

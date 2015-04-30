@@ -12,7 +12,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         try {
             if(request::getInstance()->isMethod('POST')){
                 $descripcion = request::getInstance()->getPost(estadoTableClass::getNameField(estadoTableClass::DESCRIPCION,TRUE));
-                
+                $this->Validate($descripcion);
                 $data = array(
                 estadoTableClass::DESCRIPCION => $descripcion
                 );
@@ -30,5 +30,24 @@ class createActionClass extends controllerClass implements controllerActionInter
             
         }
     }
+    private function Validate($descripcion) {
+        
+        if (strlen($descripcion) > estadoTableClass::DESCRIPCION_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => estadoTableClass::DESCRIPCION_LENGTH)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(estadoTableClass::getNameField(estadoTableClass::DESCRIPCION, TRUE), TRUE);
+        }
+
+        if ($descripcion === '' or $descripcion === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => estadoTableClass::DESCRIPCION)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(estadoTableClass::getNameField(estadoTableClass::DESCRIPCION, TRUE), TRUE);
+        }
+        if($flag === TRUE){
+            request::getInstance()->setMethod('GET'); //POST
+            routing::getInstance()->forward('estado', 'insert');
+        }
+    }
+
 }
 

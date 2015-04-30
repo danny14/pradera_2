@@ -3,6 +3,7 @@
 <?php use mvc\view\viewClass as view; ?>
 <?php use mvc\config\configClass as config?>
 <?php use mvc\request\requestClass as request?>
+<?php use mvc\session\sessionClass as session?>
 <?php $id = animalTableClass::ID ;?>
 <?php $nombre = animalTableClass::NOMBRE ;?>
 <?php $genero = animalTableClass::GENERO ?>
@@ -15,7 +16,7 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
-    <h1><?php echo i18n::__('animal') ?></h1>
+        <h1><i class="fa fa-paw"><?php echo i18n::__('animal') ?></i></h1>
     </div>
     <div class="row">
         <header>
@@ -34,6 +35,7 @@
                             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filters')?></h4>
                         </div>
                         <div class="modal-body">
+                            <?php view::includeHandlerMessage()?>
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>">
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
@@ -73,10 +75,11 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="reportFilterForm" action="<?php  echo routing::getInstance()->getUrlWeb('animal', 'report')?>">
-                                <div class="form-group">
+                                <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?> ">
                                     <label for="reportName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="filterNombre" name="report[nombre]" placeholder="<?php echo i18n::__('name')?>">
+                                        <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -107,7 +110,7 @@
             <!-- Fin del Formulario de Cambio de Idiomas-->
 
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
-                <div>
+                <div class="botones">
                     <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'insert') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
                     <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                     <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>

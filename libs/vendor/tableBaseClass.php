@@ -46,7 +46,7 @@ namespace mvc\model\table {
               $sqlID = $sqlID . 'AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
             }
           }
-          echo $sqlID;
+          
           $row = model::getInstance()->query($sqlID);
           $answer = $row->fetch(\PDO::FETCH_OBJ);
           $answer = (integer) $answer->id;
@@ -218,6 +218,7 @@ namespace mvc\model\table {
         if ($limit !== null and $offset !== null) {
           $sql = $sql . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
         }
+
         return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
       } catch (\PDOException $exc) {
         throw $exc;

@@ -52,10 +52,25 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $this->objFecundador =  fecundadorTableClass::getAll($fields, FALSE,$orderBy,'ASC',config::getRowGrid(),$page,$where);
             $this->defineView('index', 'fecundador', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
-            
+            switch ($exc->getCode()) {
+                //22P02  Invalid text representation: 7 ERROR: la sintaxis de entrada no es válida para integer: «Seleccione la raza» LINE 1: ... "id_raza") VALUES ('dasdas', 23, 32, 'PErfecto', 'Seleccion... ^
+                case 23505:
+                    session::getInstance()->setError(i18n::__('23505'));
+//                    session::getInstance()->setError($exc->getMessage());
+                break;
+                case 42601:
+                    session::getInstance()->setError(i18n::__('42601'));
+                    break;
+                case "22P02":
+                    session::getInstance()->setError('hola este es un error xD ');
+                    break;
+                default :
+                    session::getInstance()->setError($exc->getMessage());
+                break;
+            }
+
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception'); 
         }
     }
 }

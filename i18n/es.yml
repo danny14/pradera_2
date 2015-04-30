@@ -39,6 +39,7 @@ dictionary:
     id_type_doc:          ID Tipo Documento
     id_employee:          ID Trabajador
     id_provider:          ID Proveedor
+    id_city:              ID Ciudad
     status:               Estado
     new:                  Nuevo
     edit:                 Editar
@@ -57,6 +58,7 @@ dictionary:
     end_turn:             Fin Turno
     input_type:           Tipo Insumo
     fecundador:           Fecundador
+    provider:             Proveedor
     animal:               Animal
     return:               Volver
     filters:              Filtros
@@ -74,11 +76,56 @@ dictionary:
     id_fecundador:        Id fecundador 
     id_animal:            Id Animal
     return:               Volver
+    enterName:            Ingrese el Nombre
+    enterLastName:        Ingrese el Apellido
+    enterGender:          Ingrese el Genero
+    enterAge:             Ingrese la edad
+    enterWeight:          Ingrese el peso
+    enterPhone:           Ingrese el Telefono
+    enterAddress:         Ingrese la Direccion
+    enterMail:            Ingrese el Correo
+    enterObservation:     Ingrese la Observacion
+    enterNumberBirths:    Ingrese el numero de partos
+    selectFecundador:     Seleccione el fecundador
+    selectAnimal:         Seleccione el Animal
+    selectCity:           Seleccione la Ciudad
+    selectRaza:           Seleccione la raza
+    selectEstado:         Seleccione el estado
     generate report:      Generar Reporte
     Do you want to delete the record?:       ¿Desea eliminar el registro?
     Do you want to remove the selected records?: ¿Deseas eliminar los registros seleccionados?
     errorCharacterName:   el nombre %name% excede los %character% caracteres maximos permitidos
+    errorCharacter:       el nombre %name% excede los %Character% caracteres maximos permitidos  
     errorCharacterSpecial: el campo %field% no puede contener caracteres especiales
+    errorCharacterEmpty:   el campo %field% no puede estar vacio
+    errorGender:           El genero debe ser M o F 
+    errorNumber:           El campo %field% solo puede contener numeros
+    errorDate:             La fecha %date% es incorrecta
+    23505:                 Error el id no puede estar duplicado intente de nuevo
+    42601:                 Error sintaxis incorrecta
+    
+#   diccionario de argenis
+    ErrorCharacterAge_animal: la edad %Age_animal% excede los caracteres %character% maximos permitidos
+    ErrorCharacterDate:   la fecha %date% excede los caracteres %character% maximos permitidos
+    ErrorCharacterId_fecundador: El id_fecundador %id_fecundador% excede los caracteres %character% maximos permitidos
+    ErrorCharacterId_animal: El id_animal %id_animal% excede los  caracteres %character% maximos permitidos
+    ErrorCharacterEmpty:  El campo % field % no debe estar vacio
+    ErrorCharacterName:   el nombre %name% excede los  caracteres %character% maximos permitidos
+    ErrorCharacterDate_manufacture: La fecha_fabricacion %date_manufacture% excede los caracteres %character% maximos permitidos
+    ErrorCharacterDate_defeat: La fecha_vencimiento %fecha_defeat% excede los caracteres %character% maximos permitidos
+    ErrorCharacterValue: el valor %value% excede los caracteres %character% maximos permitidos
+    ErrorCharacterId_input_type: el id_tipo_insumo %id_input_type% excede los caracteres %character% maximos permitidos
+    date_manufacture:     Fecha_fabricacion
+    date_defeat:          Fecha_vencimiento
+    value:                valor
+    id_tipo_insumo:       id_tipo_insumo 
+    tipo_insumo:          tipo_insumo
+    selectTipoInsumo:     selectTipoInsumo
+    insumo:               Insumo
+    generate report:      Generar Reporte
+
+# fin del diccionario argenis
+    
   errors:
     00001:                El módulo y la acción solicitada, no existe.
     00002:                La dirección que solicita no está registrada.

@@ -22,7 +22,8 @@ class traductorActionClass extends controllerClass implements controllerActionIn
                 routing::getInstance()->redirect('animal', 'index');
             }
         } catch (PDOException $exc) {
-            routing::getInstance()->redirect('animal', 'index');
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

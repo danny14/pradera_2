@@ -7,4 +7,4 @@
     <?php echo \mvc\view\viewClass::genStylesheet() ?>
     <?php echo \mvc\view\viewClass::genJavascript() ?>
   </head>
-  <body>
+  <body><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -46,8 +46,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 $this->defineView('report', 'animal', session::getInstance()->getFormatOutput());
             }
         } catch (PDOException $exc) {
-            echo $exc->getMessage()."<BR>".print_r($exc->getTraceAsString());
-            
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 }

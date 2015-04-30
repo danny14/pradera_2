@@ -1,12 +1,13 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
 <?php use mvc\view\viewClass as view?>
+<?php use mvc\session\sessionClass as session?>
 <?php $id = estadoTableClass::ID ;?>
 <?php $descripcion = estadoTableClass::DESCRIPCION ;?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="pager page-header text-center">
-    <h1><?php echo i18n::__('status')?></h1>
+        <h1><i class="fa fa-eye"><?php echo i18n::__('status')?></i></h1>
     </div>
     <div class="row">
         <header>
@@ -44,11 +45,11 @@
             <!--Fin Ventana Modal Filtros-->
             <?php view::includePartial('animal/formTraductor')?>
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('estado', 'deleteSelect') ?>" method="POST">
-            <div>
+                <div class="botones">
                 <a href="<?php echo routing::getInstance()->getUrlWeb('estado', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
-                <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
+                <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                <a class="btn btn-default btn-xs" href="<?php  routing::getInstance()->getUrlWeb('estado', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('estado', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
             </div>
                 <?php view::includeHandlerMessage()?>
             <table class="table table-bordered table-responsive table-striped table-condensed">

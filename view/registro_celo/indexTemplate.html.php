@@ -31,17 +31,19 @@
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('registro_celo', 'index')?>">
                                 
                                 <div class="form-group">
-                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
+                                    <label for="filterDate" class="col-sm-2 control-label"><?php echo i18n::__('date')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="filter[fechaCreacion1]" class="form-control" id="filterCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
+                                        <input type="date" name="filter[fecha]" class="form-control" id="filterFecha" placeholder="<?php echo i18n::__('date')?>">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
+<!--                                -->
+                                    <div class="form-group">
+                                    <label for="filterAge_animal" class="col-sm-2 control-label"><?php echo i18n::__('age_animal')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="filter[fechaCreacion2]" class="form-control" id="filterCreacion2" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                      <input type="number" name="filter[edad_animal]" class="form-control" id="filterEdad_animal" placeholder="<?php echo i18n::__('age_animal')?>">
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -65,15 +67,16 @@
                             <form method="POST" class="form-horizontal" id="reportForm" action="<?php echo routing::getInstance()->getUrlWeb('registro_celo', 'report')?>">
                              
                                 <div class="form-group">
-                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
+                                    <label for="reportDate" class="col-sm-2 control-label"><?php echo i18n::__('date')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="report[fechaCreacion1]" class="form-control" id="reportCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
+                                      <input type="date" name="report[fecha]" class="form-control" id="reportFecha" placeholder="<?php echo i18n::__('date')?>">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
+                                
+                              <div class="form-group">
+                                    <label for="reportAge_animal" class="col-sm-2 control-label"><?php echo i18n::__('age_animal')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="report[fechaCreacion2]" class="form-control" id="reportCreacion2" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                      <input type="number" name="report[edad_animal]" class="form-control" id="reportEdad_animal" placeholder="<?php echo i18n::__('age_animal')?>">
                                     </div>
                                 </div>
                             </form>
@@ -106,7 +109,6 @@
                             <th><?php echo i18n::__('id_fecundador') ?></th>
                             <th><?php echo i18n::__('id_animal') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
-                           
                         </tr>
                     </thead>
                     <tbody>

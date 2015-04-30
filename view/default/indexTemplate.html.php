@@ -1,6 +1,11 @@
-<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\routing\routingClass as routing; ?>
+<?php use mvc\i18n\i18nClass as i18n; ?>
+<?php use mvc\view\viewClass as view; ?>
+<?php use mvc\config\configClass as config?>
+<?php use mvc\request\requestClass as request?>
 <?php $usu = usuarioTableClass::USER ?>
 <?php $id = usuarioTableClass::ID ?>
+<?php view::includePartial('animal/menuPrincipal')?>
 <div class="container container-fluid">
   <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">
     <div style="margin-bottom: 10px; margin-top: 30px">

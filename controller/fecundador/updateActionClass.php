@@ -18,22 +18,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $peso =  request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::PESO,TRUE));
                 $observacion = request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION,TRUE));
                 $id_raza = request::getInstance()->getPost(fecundadorTableClass::getNameField(fecundadorTableClass::ID_RAZA,TRUE));
-                
-                if(!ereg("^[a-zA-Z0-9]{3,20}$", $nombre)){
-                    throw new PDOException('el nombre no puede contener caracteres especiales');
-                }
-                if(strlen($nombre)>fecundadorTableClass::NOMBRE_LENGTH){
-                    throw new PDOException('el nombre no puede ser mayor a '.fecundadorTableClass::NOMBRE_LENGTH.' Caracteres');
-                }
-                if(is_numeric($edad) === FALSE){
-                    throw  new PDOException('caracteres no validos tienen que ser numericos');
-                }
-                if(is_numeric($peso) === FALSE){
-                    throw new PDOException('caracteres no validos tienen que ser numericos');
-                }
-                if(strlen($observacion)>fecundadorTableClass::OBSERVACION_LENGTH){
-                    throw new PDOException('la observacion no puede ser mayor a'.fecundadorTableClass::OBSERVACION_LENGTH.' caracteres ');
-                }
+                $this->Validate($nombre,$edad,$peso,$observacion,$id_raza);
                 
                 $ids = array(
                 fecundadorTableClass::ID => $id
@@ -57,6 +42,36 @@ class updateActionClass extends controllerClass implements controllerActionInter
             echo $exc->getMessage();
             echo "<br>";
             echo $exc->getTraceAsString();
+            
+        }
+    }
+       private function Validate($nombre,$edad,$peso,$observacion,$id_raza) {
+        $flag = FALSE ;
+         if (strlen($nombre) > fecundadorTableClass::NOMBRE_LENGTH) {
+             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$nombre,'%Character%' =>  fecundadorTableClass::NOMBRE_LENGTH) ));
+     
+             $flag = TRUE;
+             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE,TRUE), TRUE);
+             
+        }
+        if (is_numeric($edad) === FALSE) {
+        session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=>$edad)));
+        $flag = TRUE;
+        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE), TRUE);
+        }
+        if (is_numeric($peso) === FALSE) {
+          session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=>$peso)));
+          $flag = TRUE;
+        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
+        }
+        if (strlen($observacion) > fecundadorTableClass::OBSERVACION_LENGTH){ 
+            session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%'=>$observacion,'%Character%' => fecundadorTableClass::OBSERVACION_LENGTH)));
+            $flag = TRUE;
+        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);
+        }
+        if($flag === TRUE){
+            request::getInstance()->setMethod('GET');
+            routing::getInstance()->forward('fecundador', 'insert');
             
         }
     }

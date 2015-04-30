@@ -6,5 +6,5 @@
         <option <?php echo (config::getDefaultCulture() == 'es') ? 'selected' : '' ?> value="es">Español</option>
         <option <?php echo (config::getDefaultCulture() == 'en') ? 'selected' : '' ?> value="en">English</option>
     </select> 
-    <input type="hidden" name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO') ?>">
+    <input type="hidden" name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO')?>">
 </form>

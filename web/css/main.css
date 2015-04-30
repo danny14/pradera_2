@@ -1,8 +1,24 @@
-/*body {
-    background-image: url("../img/background.jpg");
+/*nav, .nav , .navbar-default{
+    background-image: url("../img/barra_navegacion_02.png");
+
+}*/
+.page-header{
+    border-color: #000000;
+}
+
+/*.container{
+    margin-top: 15%;
+}*/
+
+body {
+    background-image: url("../img/fondo.jpg");
+/*    background-image: url("../img/background_1.jpg");*/
     background-repeat: no-repeat;
     background-size: 100%;
-}*/
+}
+td{
+    background-color: white;
+}
 .shfDevelopmentBar {
   background-color: rgb(61,35,0);
   position: fixed;
@@ -19,4 +35,8 @@
 
 .mvcPointer {
   cursor: pointer;
+}
+.botones{
+    margin-bottom: 10px;
+    margin-top: 10px;
 }

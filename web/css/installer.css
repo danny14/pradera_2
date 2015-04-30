@@ -1,0 +1,13 @@
+.glyphicon-ok{
+    color: green;
+}
+.glyphicon-remove{
+    color: red;
+}
+body{
+    background-color: gray;
+    text-decoration-color: blue;
+}
+h1{
+    color: blue;
+}

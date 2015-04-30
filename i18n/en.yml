@@ -32,7 +32,7 @@ dictionary:
     weight:               Weight
     date_entry:           Date of entry
     number_births:        Number of births
-    id_raza:              ID Raza
+    id_raza:              ID Breed
     id_status:            ID Status
     id_type_doc:          ID Type Document
     id_employee:          ID employee
@@ -71,8 +71,22 @@ dictionary:
     id_fecundador:        Id_fecundador
     id_animal:            Id_animal 
     return:               Return
+    enterName:            Enter Name
+    enterLastName:        Enter the Last Name
+    enterGender:          Enter the gender
+    enterAge:             Enter the age
+    enterWeight:          Enter the weight
+    enterAddress:         Enter the Address
+    enterPhone:           Enter the Phone
+    enterMail:            Enter the Email
+    enterObservation:     Enter the Observation
+    enterNumberBirths:    Enter the number of births
+    selectRaza:           Select the breed
+    selectEstado:         Select the status
+    selectCity:           Select the city
     generate report:      Generate Report
     logout:               Logout
+    karen:               Yellow
     Do you want to delete the record?:       ¿Do you want to delete the record?
     Do you want to remove the selected records?: ¿Do you want to remove the selected records?
   errors:

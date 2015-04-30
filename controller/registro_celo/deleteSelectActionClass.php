@@ -21,7 +21,7 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
                     registroCeloTableClass::delete($ids, FALSE);
                 }
                 session::getInstance()->setSuccess('Los elementos seleccionados fueron borrados de forma exitosa');
-               // bitacora::register('Eliminar Seleccionados', registroCeloTableClass::getNameTable());
+                bitacora::register('Eliminar Seleccionados', registroCeloTableClass::getNameTable());
                 routing::getInstance()->redirect('registro_celo','index');
             } else {
                 session::getInstance()->setError('No selecciono ningun registro');

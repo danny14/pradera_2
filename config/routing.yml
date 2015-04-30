@@ -5,14 +5,6 @@ homepage:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
 
-install_index:
-  url:    /install
-  param:  { module: config, action: index, format: html }
-
-install_create:
-  url:    /crear
-  param:  { module: config, action: create, format: html }
-
 traduccion:
   url:    /traduccion
   param:  { module: animal, action: traductor, format: html }
@@ -388,11 +380,8 @@ estado_deleteSelect:
     - model/estadoTableClass.php
     
 estado_deleteFilters:
-  url:    /estado/eliminarFiltros
+  url:    /estado/borrar_filtros
   param:  { module: estado, action: deleteFilters, format: html }
-  load:
-    - model/base/estadoBaseTableClass.php
-    - model/estadoTableClass.php
     
 estado_view:
   url:    /estado/vista

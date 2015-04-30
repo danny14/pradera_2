@@ -42,9 +42,11 @@
                 </div>
             </div>
             <!--Fin Ventana Modal Filtros-->
-            
+            <!-- Formulario del IDIOMA -->
+            <?php view::includePartial('animal/formTraductor')?>
+            <!-- FIN FORMULARIO IDIOMA -->
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
-            <div>
+                <div class="botones">
                 <a href="<?php echo routing::getInstance()->getUrlWeb('raza', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>

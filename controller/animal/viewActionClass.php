@@ -33,9 +33,8 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
                 routing::getInstance()->redirect('animal', 'index');
             }
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

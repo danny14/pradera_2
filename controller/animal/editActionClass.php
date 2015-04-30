@@ -11,7 +11,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(animalTableClass::ID)){
+            if(request::getInstance()->hasGet(animalTableClass::ID)){
                 $fields= array(
                 animalTableClass::ID,
                 animalTableClass::NOMBRE,
@@ -24,7 +24,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 animalTableClass::ID_ESTADO
                 );
                 $where = array(
-                    animalTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID)
+                    animalTableClass::ID => request::getInstance()->getGet(animalTableClass::ID)
                 );
                 $this->objAnimal = animalTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 
@@ -51,9 +51,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 routing::getInstance()->redirect('animal', 'index');
             }
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

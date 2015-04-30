@@ -10,7 +10,7 @@ function eliminar(id, variable, url){
         type: 'POST', //GET POST DELETE PUT
         success: function(data){
             location.reload();
-        }        
+        },
     });
 }
 function eliminarMasivo(){

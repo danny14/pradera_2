@@ -11,6 +11,7 @@ class registroCeloBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const EDAD_ANIMAL = 'edad_animal';
+  const EDAD_ANIMAL_LENGTH= 2;
   const FECHA = 'fecha';
   const ID_FECUNDADOR = 'id_fecundador';
   const ID_ANIMAL = 'id_animal';

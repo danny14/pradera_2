@@ -98,14 +98,16 @@
                 </div>
             </div>
             <!--Fin Ventana Modal reportes-->
+            <!-- formulario del traductor -->
             <?php view::includePartial('animal/formTraductor')?>
+            <!-- Fin del fomurlario del traductor -->
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'deleteSelect') ?>" method="POST">
-                <div id="botones">
+                <div class="botones">
                 <a href="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
                     <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('fecundador', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
-                    <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalREPORTES" ><i class="fa fa-file-pdf-o"> <?php echo i18n::__('report')?></i></a>
+                    <a target="_NEW" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalREPORTES" ><i class="fa fa-file-pdf-o"> <?php echo i18n::__('report')?></i></a>
             </div>
             <?php view::includeHandlerMessage() ?>
             <table class="table table-bordered table-responsive table-striped">

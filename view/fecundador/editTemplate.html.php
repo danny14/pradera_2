@@ -4,6 +4,7 @@
 <div class="container container-fluid">
     <div class="row">
         <h1><?php echo i18n::__('edit'). " "; echo i18n::__('fecundador')?></h1>
+        <?php view::includeHandlerMessage()?>
         <?php view::includePartial('fecundador/form', array('objFecundador' => $objFecundador,'objRaza' => $objRaza))?>
     </div>
 </div>

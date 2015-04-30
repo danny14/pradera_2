@@ -9,21 +9,27 @@ use mvc\config\configClass as config;
  * @author Danny Steven Ruiz Hernandez
  */
 class registroCeloTableClass extends registroCeloBaseTableClass {
-  
-    public static function getTotalPages($lines, $where) {
+   public static function getTotalPages($lines, $where) {
         try {
             $sql = 'SELECT count(' . registroCeloTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . registroCeloTableClass::getNameTable(). ' ';
-//                   ' WHERE'. registroCeloTableClass::DELETED_AT.'IS NULL';
-//            if (is_array($where) === TRUE) {
-//                foreach ($where as $field => $value) {
-//                   if (is_array($value)) {
-//                       $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
-//                    } else {
-//                        $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
-//                    }
-//                }
-//           }
+       //            ' WHERE'. registroCeloTableClass::DELETED_AT.'IS NULL';
+            if (is_array($where) === TRUE) {
+                foreach ($where as $field => $value) {
+                  $flag = FALSE;
+                   if (is_array($value)) {
+                     if($flag === FALSE){
+                       $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
+                       $flag = true;
+                    } else {
+                        $sql = $sql . ' AND' . $field . ' = ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]]'") . ' AND '. ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
+                    }
+                }else {
+                  $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                }
+            }
+            
+                }
             $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
@@ -74,4 +80,5 @@ class registroCeloTableClass extends registroCeloBaseTableClass {
             throw $exc;
         }
     }
+  
 }

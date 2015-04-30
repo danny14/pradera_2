@@ -19,11 +19,13 @@ class reportActionClass extends controllerClass implements controllerActionInter
        if(isset($report['edad_animal']) and $report['edad_animal'] !== NULL and $report['edad_animal'] !== ''){
        $where[registroCeloTableClass::EDAD_ANIMAL] = $report['edad_animal'];  
        }
-       if(isset($report['fechaCreacion1']) and $report['fechaCreacion1'] !== NULL and $report['fechaCreacion1'] !== '' and isset($report['fechaCreacion2']) and $report['fechaCreacion2'] !== NULL and $report['fechaCreacion2'] !== ''){
-       $where[registroCeloTableClass::FECHA] = array(
-         $report['fechaCreacion1'],$report['fechaCreacion2']  
-       );  
-       }
+//       if(isset($report['fechaCreacion1']) and $report['fechaCreacion1'] !== NULL and $report['fechaCreacion1'] !== '' and isset($report['fechaCreacion2']) and $report['fechaCreacion2'] !== NULL and $report['fechaCreacion2'] !== ''){
+//       $where[registroCeloTableClass::FECHA] = array(
+//         $report['fechaCreacion1'],
+//         $report['fechaCreacion2']  
+//       );  
+//       }
+      }
        $fields = array(
       registroCeloTableClass::ID,
       registroCeloTableClass::EDAD_ANIMAL,
@@ -37,7 +39,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
        $this->objRegistroCelo = registroCeloTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL, NULL, $where);
        $this->defineView('report', 'registro_celo', session::getInstance()->getFormatOutput());
       }  
-    } catch (PDOException $exc) {
+     catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo '<pre>';
