@@ -4,19 +4,18 @@
 <?php use mvc\config\configClass as config?>
 <?php use mvc\request\requestClass as request?>
 <?php use mvc\session\sessionClass as session?>
-<?php $id = animalTableClass::ID ;?>
-<?php $nombre = animalTableClass::NOMBRE ;?>
-<?php $genero = animalTableClass::GENERO ?>
-<?php $edad = animalTableClass::EDAD ?>
-<?php $peso = animalTableClass::PESO; ?>
-<?php $fecha_ingreso = animalTableClass::FECHA_INGRESO; ?>
-<?php $numero_partos = animalTableClass::NUMERO_PARTOS ?>
-<?php $id_raza = animalTableClass::ID_RAZA ?>
-<?php $id_estado = animalTableClass::ID_ESTADO ?>
+<?php $id = trabajadorTableClass::ID ;?>
+<?php $nombre = trabajadorTableClass::NOMBRE ;?>
+<?php $apellido = trabajadorTableClass::APELLIDO ?>
+<?php $direccion = trabajadorTableClass::DIRECCION ?>
+<?php $telefono = trabajadorTableClass::TELEFONO; ?>
+<?php $id_turno = trabajadorTableClass::ID_TURNO ?>
+<?php $id_credencial = trabajadorTableClass::ID_CREDENCIAL ?>
+<?php $id_ciudad = trabajadorTableClass::ID_CIUDAD ?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
-        <h1><i class="fa fa-paw"><?php echo i18n::__('animal') ?></i></h1>
+        <h1><i class="fa fa-paw"><?php echo i18n::__('employee') ?></i></h1>
     </div>
     <div class="row">
         <header>
@@ -36,12 +35,12 @@
                         </div>
                         <div class="modal-body">
                             <?php view::includeHandlerMessage()?>
-                            <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>">
-                                <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?> " >
+                            <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index')?>">
+                                <div class="form-group <?php echo (session::getInstance()->hasFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?> " >
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name')?>">
-                                        <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
+                                        <?php  if (session::getInstance()->hasFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -82,7 +81,7 @@
                             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('generate report')?></h4>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" class="form-horizontal" id="reportFilterForm" action="<?php  echo routing::getInstance()->getUrlWeb('animal', 'report')?>">
+                            <form method="POST" class="form-horizontal" id="reportFilterForm" action="<?php  echo routing::getInstance()->getUrlWeb('trabajador', 'report')?>">
                                 <div class="form-group ">
                                     <label for="reportName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
@@ -117,12 +116,12 @@
             <?php view::includePartial('animal/formTraductor')?>
             <!-- Fin del Formulario de Cambio de Idiomas-->
 
-            <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
+            <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'deleteSelect') ?>" method="POST">
                 <div class="botones">
-                    <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'insert') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
+                    <a href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'insert') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
                     <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                     <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                    <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                    <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
                     <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalFILTROSREPORTE" ><i class="fa fa-file-pdf-o"><?php echo i18n::__('report')?></i></a>
                 </div>
                     <?php view::includeHandlerMessage() ?>
@@ -132,39 +131,37 @@
                             <th><input type="checkbox" id="chkAll"></th>
                             <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('name') ?></th>
-                            <th><?php echo i18n::__('gender') ?></th>
-                            <th><?php echo i18n::__('age') ?></th>
-                            <th><?php echo i18n::__('weight') ?></th>
-                            <th><?php echo i18n::__('date_entry') ?></th>
-                            <th><?php echo i18n::__('number_births') ?></th>
-                            <th><?php echo i18n::__('id_raza') ?></th>
-                            <th><?php echo i18n::__('id_status') ?></th>
+                            <th><?php echo i18n::__('last_name') ?></th>
+                            <th><?php echo i18n::__('address') ?></th>
+                            <th><?php echo i18n::__('phone') ?></th>
+                            <th><?php echo i18n::__('id_turno') ?></th>
+                            <th><?php echo i18n::__('id_credencial') ?></th>
+                            <th><?php echo i18n::__('id_ciudad') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($objAnimal as $animal): ?>
+                        <?php foreach ($objTrabajador as $trabajador): ?>
                             <tr>
-                                <td><input type="checkbox" name="chk[]" value="<?php echo $animal->$id ?>"></td>
-                                <td><?php echo $animal->$id ?></td>
-                                <td><?php echo $animal->$nombre ?></td>
-                                <td><?php echo $animal->$genero ?></td>
-                                <td><?php echo $animal->$edad ?></td>
-                                <td><?php echo $animal->$peso ?></td>
-                                <td><?php echo $animal->$fecha_ingreso ?></td>
-                                <td><?php echo $animal->$numero_partos ?></td>
-                                <td><?php echo animalTableClass::getNameFieldForaneaRaza($animal->$id_raza) ?></td>
-                                <td><?php echo animalTableClass::getNameFieldForaneaEstado($animal->$id_estado) ?></td>
+                                <td><input type="checkbox" name="chk[]" value="<?php echo $trabajador->$id ?>"></td>
+                                <td><?php echo $trabajador->$id ?></td>
+                                <td><?php echo $trabajador->$nombre ?></td>
+                                <td><?php echo $trabajador->$apellido ?></td>
+                                <td><?php echo $trabajador->$direccion ?></td>
+                                <td><?php echo $trabajador->$telefono ?></td>
+                                <td><?php echo trabajadorTableClass::getNameFieldForaneaRaza($trabajador->$id_turno) ?></td>
+                                <td><?php echo trabajadorTableClass::getNameFieldForaneaRaza($trabajador->$id_credencial) ?></td>
+                                <td><?php echo trabajadorTableClass::getNameFieldForaneaEstado($trabajador->$id_ciudad) ?></td>
                                 <td>
                                     <div class="btn btn-group btn-xs">
-                                        <a href="<?php echo routing::getInstance()->getUrlWeb('animal','view', array(animalTableClass::ID => $animal->$id)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
-                                        <a href="<?php echo routing::getInstance()->getUrlWeb('animal','edit', array(animalTableClass::ID => $animal->$id, animalTableClass::ID_RAZA => $animal->$id_raza, animalTableClass::ID_ESTADO => $animal->$id_estado)) ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                                        <a data-toggle="modal" data-target="#myModalDelete<?php echo $animal->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a href="<?php echo routing::getInstance()->getUrlWeb('trabajador','view', array(trabajadorTableClass::ID => $trabajador->$id)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                        <a href="<?php echo routing::getInstance()->getUrlWeb('trabajador','edit', array(trabajadorTableClass::ID => $trabajador->$id, trabajadorTableClass::ID_TURNO => $trabajador->$id_turno, trabajadorTableClass::ID_CREDENCIAL => $trabajador->$id_credencial, trabajadorTableClass::ID_CIUDAD => $trabajador->$id_ciudad)) ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a data-toggle="modal" data-target="#myModalDelete<?php echo $trabajador->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>
                             <!--Ventana MODAL ELIMINAR SIMPLE-->
-                        <div class="modal fade" id="myModalDelete<?php echo $animal->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="myModalDelete<?php echo $trabajador->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -172,11 +169,11 @@
                                         <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('confirm_delete') ?></h4>
                                     </div>
                                     <div class="modal-body">
-                                        <?php echo i18n::__('Do you want to delete the record?') ?> <?php echo $animal->$nombre ?> 
+                                        <?php echo i18n::__('Do you want to delete the record?') ?> <?php echo $trabajador->$nombre ?> 
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $animal->$id ?>, '<?php echo animalTableClass::getNameField(animalTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('animal', 'delete') ?>', '<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $trabajador->$id ?>, '<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('trabajador', 'delete') ?>', '<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +184,7 @@
                 </table>
             </form>
             <div>
-                Pagina<select id="sqlPaginador" onchange="paginador(this,'<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>')">
+                Pagina<select id="sqlPaginador" onchange="paginador(this,'<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index')?>')">
                     <?php for($x = 1;$x <= $cntPages;$x++):?>
                     <option <?php echo (isset($page) and $page == $x)? 'selected': '' ?> value="<?php echo $x?>"><?php echo $x?></option>
                     <?php endfor; ?>

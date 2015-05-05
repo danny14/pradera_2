@@ -729,6 +729,118 @@ tipo_insumo_index:
     - model/tipoInsumoTableClass.php
     
 ##-------------------------Trabajador----------------------##
+trabajador_index:
+  url:    /trabajador/index
+  param:  { module: trabajador, action: index, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+trabajador_insert:
+  url:    /trabajador/insertar
+  param:  { module: trabajador, action: insert, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
+trabajador_create:
+  url:    /trabajador/crear
+  param:  { module: trabajador, action: create, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+trabajador_edit:
+  url:    /trabajador/editar
+  param:  { module: trabajador, action: edit, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
+trabajador_update:
+  url:    /trabajador/actualizar
+  param:  { module: trabajador, action: update, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+trabajador_delete:
+  url:    /trabajador/eliminar
+  param:  { module: trabajador, action: delete, format: json }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+trabajador_deleteSelect:
+  url:    /trabajador/eliminarSeleccion
+  param:  { module: trabajador, action: deleteSelect, format: json }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+trabajador_deleteFilters:
+  url:    /trabajador/borrar_filtros
+  param:  { module: trabajador, action: deleteFilters, format: html }
+#  load:
+#    - model/base/trabajadorBaseTableClass.php
+#    - model/trabajadorTableClass.php
+
+trabajador_view:
+  url:    /trabajador/vista
+  param:  { module: trabajador, action: view, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
+trabajador_report:
+  url:    /trabajador/reporte
+  param:  { module: trabajador, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
 
 ##-------------------------Turno---------------------------##
 

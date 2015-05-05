@@ -35,23 +35,22 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
                     );
                 }
-                session::getInstance()->setAttribute('animalIndexFilters', $where);
-            } else if(session::getInstance()->hasAttribute('animalIndexFilters')){
-            $where = session::getInstance()->getAttribute('animalIndexFilters');
+                session::getInstance()->setAttribute('trabajadorIndexFilters', $where);
+            } else if(session::getInstance()->hasAttribute('trabajadorIndexFilters')){
+            $where = session::getInstance()->getAttribute('trabajadorIndexFilters');
             }
             $fields = array(
-            animalTableClass::ID,
-            animalTableClass::NOMBRE,
-            animalTableClass::GENERO,
-            animalTableClass::EDAD,
-            animalTableClass::PESO,
-            animalTableClass::FECHA_INGRESO,
-            animalTableClass::NUMERO_PARTOS,
-            animalTableClass::ID_RAZA,
-            animalTableClass::ID_ESTADO
+            trabajadorTableClass::ID,
+            trabajadorTableClass::NOMBRE,
+            trabajadorTableClass::APELLIDO,
+            trabajadorTableClass::DIRECCION,
+            trabajadorTableClass::TELEFONO,
+            trabajadorTableClass::ID_TURNO,
+            trabajadorTableClass::ID_CREDENCIAL,
+            trabajadorTableClass::ID_CIUDAD,
             );
             $orderBy = array(
-            animalTableClass::ID
+            trabajadorTableClass::ID
             );
             $page = 0;
             if(request::getInstance()->hasGet('page')){
@@ -59,9 +58,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $page = request::getInstance()->getGet('page') - 1;
                 $page = $page * config::getRowGrid();
             }
-            $this->cntPages = animalTableClass::getTotalPages(config::getRowGrid(),$where);
-            $this->objAnimal = animalTableClass::getAll($fields, FALSE ,$orderBy,'ASC', config::getRowGrid(),$page,$where);
-            $this->defineView('index', 'animal',  session::getInstance()->getFormatOutput());
+            $this->cntPages = trabajadorTableClass::getTotalPages(config::getRowGrid(),$where);
+            $this->objTrabajador = trabajadorTableClass::getAll($fields, FALSE ,$orderBy,'ASC', config::getRowGrid(),$page,$where);
+            $this->defineView('index', 'trabajador',  session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

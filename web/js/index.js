@@ -2,14 +2,14 @@ function paginador(objeto,url){
     window.location.href = url + '?page=' + $(objeto).val();
 }
 
-function eliminar(id, variable, url){
+function eliminar(id, variable, url, reload){
     $.ajax({
         url: url,
         data: variable + '=' + id,
-        datatype: 'json',
+        dataType: 'json',
         type: 'POST', //GET POST DELETE PUT
         success: function(data){
-            location.reload();
+            window.location.replace(reload);
         },
     });
 }

@@ -54,6 +54,7 @@ dictionary:
     start_turn:           Start Turn
     end_turn:             End Turn
     input_type:           Type Input
+    employee:             Employee
     fecundador:           Fecundador
     animal:               Animal
     return:               Return

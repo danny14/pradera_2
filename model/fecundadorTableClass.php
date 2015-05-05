@@ -4,9 +4,9 @@ use mvc\model\modelClass as model;
 use mvc\config\configClass as config;
 
 /**
- * Description of credencialTableClass
+ * Description of FecundadorTableClass
  *
- * @author Danny Steven Ruiz Hernandez
+ * @autho Karen Marcela Zambrano Melo
  */
 class fecundadorTableClass extends fecundadorBaseTableClass {
     
