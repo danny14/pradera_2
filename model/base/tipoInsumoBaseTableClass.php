@@ -11,6 +11,7 @@ class tipoInsumoBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
+  const DESCRIPCION_LENGTH = 140;
 
 
 

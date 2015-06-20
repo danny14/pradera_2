@@ -13,26 +13,26 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         try {
             if(request::getInstance()->hasGet(trabajadorTableClass::ID)){
                 $fields= array(
-                animalTableClass::ID,
-                animalTableClass::NOMBRE,
-                animalTableClass::APELLIDO,
-                animalTableClass::DIRECCION,
-                animalTableClass::TELEFONO,
-                animalTableClass::ID_TURNO,
-                animalTableClass::ID_CREDENCIAL,
-                animalTableClass::ID_CIUDAD
+                trabajadorTableClass::ID,
+                trabajadorTableClass::NOMBRE,
+                trabajadorTableClass::APELLIDO,
+                trabajadorTableClass::DIRECCION,
+                trabajadorTableClass::TELEFONO,
+                trabajadorTableClass::ID_TURNO,
+                trabajadorTableClass::ID_CREDENCIAL,
+                trabajadorTableClass::ID_CIUDAD
                 );
                 $where = array(
                     trabajadorTableClass::ID => request::getInstance()->getGet(trabajadorTableClass::ID)
                 );
-                $this->objAnimal = trabajadorTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
+                $this->objTrabajador = trabajadorTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 
                 $fields = array(
                 turnoTableClass::ID,
                 turnoTableClass::DESCRIPCION
                 );
 //                $where = array(
-//                razaTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_RAZA)
+//                razaTableClass::ID => request::getInstance()->getRequest(trabajadorTableClass::ID_RAZA)
 //                );
                 $this->objTurno = turnoTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
                 
@@ -41,7 +41,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 credencialTableClass::NOMBRE
                 );
 //                $where = array(
-//                estadoTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_ESTADO)
+//                estadoTableClass::ID => request::getInstance()->getRequest(trabajadorTableClass::ID_ESTADO)
 //                );
                 
                 $this->objCredencial = credencialTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
@@ -51,7 +51,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 ciudadTableClass::DESCRIPCION
                 );
 //                $where = array(
-//                estadoTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_ESTADO)
+//                estadoTableClass::ID => request::getInstance()->getRequest(trabajadorTableClass::ID_ESTADO)
 //                );
                 
                 $this->objCiudad = ciudadTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);

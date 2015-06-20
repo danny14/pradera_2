@@ -16,6 +16,7 @@ class reportePartoBaseTableClass extends tableBaseClass {
   const N_MACHOS = 'n_machos';
   const N_HEMBRAS = 'n_hembras';
   const OBSERVACIONES = 'observaciones';
+  const OBSERVACIONES_LENGTH = 150;
   const ID_ANIMAL = 'id_animal';
 
 

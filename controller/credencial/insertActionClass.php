@@ -7,10 +7,10 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-class indexActionClass extends controllerClass implements controllerActionInterface{
+class insertActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            $this->defineView('insert', 'credencial',  session::getInstance()->getFormatOutput());
+            $this->defineView('insert', 'credencial', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();
             echo "<br>";

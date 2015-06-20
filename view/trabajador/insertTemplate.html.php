@@ -7,6 +7,6 @@
     <div class="row">
 <h1><?php echo i18n::__('new')." "; echo i18n::__('animal')?></h1>
 <?php view::includeHandlerMessage()?>
-<?php view::includePartial('animal/form',((isset($animal))) ? array( 'objRaza' => $objRaza,'objEstado' => $objEstado, 'animal' => $animal) : array('objRaza' => $objRaza,'objEstado' => $objEstado))?>
+<?php view::includePartial('trabajador/form',array( 'objTurno' => $objTurno,'objCredencial' => $objCredencial, 'objCiudad' => $objCiudad))?>
     </div>
 </div>

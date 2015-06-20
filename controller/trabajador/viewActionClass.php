@@ -15,18 +15,17 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
                 $fields= array(
                 trabajadorTableClass::ID,
                 trabajadorTableClass::NOMBRE,
-                trabajadorTableClass::GENERO,
-                trabajadorTableClass::EDAD,
-                trabajadorTableClass::PESO,
-                trabajadorTableClass::FECHA_INGRESO,
-                trabajadorTableClass::NUMERO_PARTOS,
-                trabajadorTableClass::ID_RAZA,
-                trabajadorTableClass::ID_ESTADO
+                trabajadorTableClass::APELLIDO,
+                trabajadorTableClass::DIRECCION,
+                trabajadorTableClass::TELEFONO,
+                trabajadorTableClass::ID_TURNO,
+                trabajadorTableClass::ID_CREDENCIAL,
+                trabajadorTableClass::ID_CIUDAD
                 );
                 $where = array(
                     trabajadorTableClass::ID => request::getInstance()->getRequest(trabajadorTableClass::ID)
                 );
-                $this->objAnimal = trabajadorTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
+                $this->objTrabajador = trabajadorTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 $this->defineView('view', 'trabajador', session::getInstance()->getFormatOutput());
             }else{
                 session::getInstance()->setError('Error no se pudo visualizar correctamente');

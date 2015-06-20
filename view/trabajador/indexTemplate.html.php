@@ -34,13 +34,11 @@
                             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filters')?></h4>
                         </div>
                         <div class="modal-body">
-                            <?php view::includeHandlerMessage()?>
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index')?>">
-                                <div class="form-group <?php echo (session::getInstance()->hasFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?> " >
+                                <div class="form-group" >
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name')?>">
-                                        <?php  if (session::getInstance()->hasFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -64,13 +62,6 @@
                     </div>
                 </div>
             </div>
-            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
-            <script>
-                $(document).ready(function(){
-                    $('#myModalFILTROS').modal('toggle');
-                });
-            </script>
-            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             <!-- VENTANA MODAL PARA REPORTES CON FILTROS -->
             <div class="modal fade" id="myModalFILTROSREPORTE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -134,9 +125,9 @@
                             <th><?php echo i18n::__('last_name') ?></th>
                             <th><?php echo i18n::__('address') ?></th>
                             <th><?php echo i18n::__('phone') ?></th>
-                            <th><?php echo i18n::__('id_turno') ?></th>
-                            <th><?php echo i18n::__('id_credencial') ?></th>
-                            <th><?php echo i18n::__('id_ciudad') ?></th>
+                            <th><?php echo i18n::__('id_turn') ?></th>
+                            <th><?php echo i18n::__('id_credential') ?></th>
+                            <th><?php echo i18n::__('id_city') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
                         </tr>
                     </thead>
@@ -189,27 +180,6 @@
                     <option <?php echo (isset($page) and $page == $x)? 'selected': '' ?> value="<?php echo $x?>"><?php echo $x?></option>
                     <?php endfor; ?>
                 </select> de <?php echo $cntPages?>
-                <!--
-                <nav>
-                <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a id="sqlPaginador" href="#" onclick="paginador(this)" value="1">1</a></li>
-                        <li><a id="sqlPaginador" href="#" onclick="paginador(this)" value="2">2</a></li>
-                        <li><a id="sqlPaginador" href="#" onclick="paginador(this)">3</a></li>
-                        <li><a id="sqlPaginador" href="#" onclick="paginador(this)">4</a></li>
-                        <li><a id="sqlPaginador" href="#" onclick="paginador(this)">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                    </nav>
-                -->
             </div>
         </section>
         <footer>

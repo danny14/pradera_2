@@ -23,6 +23,7 @@ class animalBaseTableClass extends tableBaseClass {
   const NUMERO_PARTOS_LENGTH = 2;
   const ID_RAZA = 'id_raza';
   const ID_ESTADO = 'id_estado';
+  const ID_MADRE = 'id_madre';
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

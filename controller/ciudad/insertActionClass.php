@@ -10,7 +10,7 @@ use mvc\i18n\i18nClass as i18n;
 class insertActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            $this->defineView('insert', 'ciudad',  session::getInstance()->getFormatOutput());
+            $this->defineView('insert', 'raza', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();
             echo "<br>";

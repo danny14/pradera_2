@@ -21,7 +21,6 @@ dictionary:
     description:          Description
     start:                Start
     end:                  End
-    id_city:              ID City
     city:                 City
     animal:               Animal
     address:              Address

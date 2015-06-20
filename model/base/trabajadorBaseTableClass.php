@@ -15,7 +15,10 @@ class trabajadorBaseTableClass extends tableBaseClass {
   const APELLIDO = 'nombre';
   const APELLIDO_LENGTH = 80;
   const DIRECCION = 'direccion';
+  const DIRECCION_LENGTH = 120;
   const TELEFONO = 'telefono';
+  const TELEFONO_LENGTH =  10;
+  const SALARIO = 'salario';
   const ID_TURNO = 'id_turno';
   const ID_CREDENCIAL = 'id_credencial';
   const ID_CIUDAD = 'id_ciudad';

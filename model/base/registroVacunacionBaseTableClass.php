@@ -12,7 +12,10 @@ class registroVacunacionBaseTableClass extends tableBaseClass {
   const ID = 'id';
   const FECHA_REGISTRO = 'fecha_registro';
   const ID_TRABAJADOR = 'id_trabajador';
-
+  const DOSIS_VACUNA = 'dosis_vacuna';
+  const HORA_VACUNA = 'hora_vacuna';
+  const ID_ANIMAL = 'id_animal';
+  const ID_INSUMO = 'id_insumo';
 
 
   /**

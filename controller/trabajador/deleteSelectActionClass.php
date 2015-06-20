@@ -16,16 +16,16 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
                 $idsToDelete = request::getInstance()->getPost('chk');
                 foreach ($idsToDelete as $id){
                     $ids = array(
-                    animalTableClass::ID => $id
+                    trabajadorTableClass::ID => $id
                     );
-                    animalTableClass::delete($ids, FALSE);
+                    trabajadorTableClass::delete($ids, FALSE);
                 }
                 session::getInstance()->setSuccess('Los elementos seleccionados fueron borrados de forma exitosa');
-                bitacora::register('Insertar', animalTableClass::getNameTable());
-                routing::getInstance()->redirect('animal','index');
+                bitacora::register('Insertar', trabajadorTableClass::getNameTable());
+                routing::getInstance()->redirect('trabajador','index');
             } else {
                 session::getInstance()->setError('No selecciono ningun registro');
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('trabajador', 'index');
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

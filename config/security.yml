@@ -47,6 +47,36 @@ animal:
     security: true
     credentials:
       - [admin]
+##---------- CREDENCIAL -----------------##
+credencial:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
 ##---------- FECUNDADOR -----------------##
 fecundador:
   index:
@@ -96,6 +126,67 @@ registro_celo:
     credentials:
       - [admin]
   update:
+    security: true
+    credentials:
+      - [admin]
+
+#-----------Trabajador -------------------
+trabajador:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
+#----------- Turno -----------------
+turno:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
     security: true
     credentials:
       - [admin]

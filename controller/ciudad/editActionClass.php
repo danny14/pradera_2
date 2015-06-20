@@ -7,30 +7,30 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-class editActionClass extends controllerClass implements controllerActionInterface {
-
+class editActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(ciudadTableClass::ID)){
-                $fields= array(
-                ciudadTableClass::ID,
-                ciudadTableClass::DESCRIPCION
+            if(request::getInstance()->hasRequest(razaTableClass::ID)){
+                
+                $fields = array(
+                razaTableClass::ID,
+                razaTableClass::DESCRIPCION
                 );
                 $where = array(
-                    ciudadTableClass::ID => request::getInstance()->getRequest(ciudadTableClass::ID)
+                razaTableClass::ID => request::getInstance()->getRequest(razaTableClass::ID)
                 );
-                $this->objCiudad = ciudadTableClass::getAll($fields, false , NULL, NULL, NULL , NULL, $where);
-                $this->defineView('edit', 'ciudad', session::getInstance()->getFormatOutput());
+                $this->objRaza = razaTableClass::getAll($fields, FALSE , NULL, NULL, NULL, NULL, $where);
+                $this->defineView('edit', 'raza', session::getInstance()->getFormatOutput());
             }else{
-                routing::getInstance()->redirect('ciudad', 'index');
+                routing::getInstance()->redirect('raza', 'index');
             }
-           
             
         } catch (PDOException $exc) {
             echo $exc->getMessage();
             echo "<br>";
             echo $exc->getTraceAsString();
+            
         }
     }
-
 }
+

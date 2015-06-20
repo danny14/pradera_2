@@ -12,7 +12,11 @@ class pagoTrabajadoresBaseTableClass extends tableBaseClass {
   const ID = 'id';
   const FECHA_INICIO = 'fecha_inicio';
   const FECHA_FIN = 'fecha_fin';
-  const ID_EMPRESA = 'id_empresa';
+  const SUBTOTAL = 'subtotal';
+  const VALOR_HORA = 'valor_hora';
+  const HORAS_EXTRAS = 'horas_extras';
+  const CANTIDAD_DIAS = 'cantidad_dias';
+  const ID_TRABAJADOR = 'id_trabajador';
 
 
   /**

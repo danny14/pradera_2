@@ -13,32 +13,32 @@ class indexActionClass extends controllerClass implements controllerActionInterf
     public function execute() {
         try {
             $where = NULL;
-            if(request::getInstance()->hasPost('filter') and request::getInstance()->isMethod('POST')){
-                $filter = request::getInstance()->getPost('filter');
-                /**
-                 * Validacion de los filtros
-                 */
-                $nombre = $filter['nombre'];
-                $fecha_ini = $filter['fechaCreacion1'];
-                $fecha_fin = $filter['fechaCreacion2'];
-                
-                $this->Validate($nombre,$fecha_ini,$fecha_fin);
-                
-                if(isset($filter['nombre']) and $filter['nombre'] !== NULL and $filter['nombre'] !== ''){
-                    $where[animalTableClass::NOMBRE] = $filter['nombre'];
-                }
-                if(isset($filter['fechaCreacion1']) and $filter['fechaCreacion1'] !== NULL and $filter['fechaCreacion1'] !== '' and isset($filter['fechaCreacion2']) and $filter['fechaCreacion2'] !== NULL and $filter['fechaCreacion2'] !== ''){
-                    $where[animalTableClass::FECHA_INGRESO] = array(
-                        $filter['fechaCreacion1'],
-                        $filter['fechaCreacion2']
-//                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
-//                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
-                    );
-                }
-                session::getInstance()->setAttribute('trabajadorIndexFilters', $where);
-            } else if(session::getInstance()->hasAttribute('trabajadorIndexFilters')){
-            $where = session::getInstance()->getAttribute('trabajadorIndexFilters');
-            }
+//            if(request::getInstance()->hasPost('filter') and request::getInstance()->isMethod('POST')){
+//                $filter = request::getInstance()->getPost('filter');
+//                /**
+//                 * Validacion de los filtros
+//                 */
+//                $nombre = $filter['nombre'];
+//                $fecha_ini = $filter['fechaCreacion1'];
+//                $fecha_fin = $filter['fechaCreacion2'];
+//                
+//                $this->Validate($nombre,$fecha_ini,$fecha_fin);
+//                
+//                if(isset($filter['nombre']) and $filter['nombre'] !== NULL and $filter['nombre'] !== ''){
+//                    $where[animalTableClass::NOMBRE] = $filter['nombre'];
+//                }
+//                if(isset($filter['fechaCreacion1']) and $filter['fechaCreacion1'] !== NULL and $filter['fechaCreacion1'] !== '' and isset($filter['fechaCreacion2']) and $filter['fechaCreacion2'] !== NULL and $filter['fechaCreacion2'] !== ''){
+//                    $where[animalTableClass::FECHA_INGRESO] = array(
+//                        $filter['fechaCreacion1'],
+//                        $filter['fechaCreacion2']
+////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
+////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
+//                    );
+//                }
+//                session::getInstance()->setAttribute('trabajadorIndexFilters', $where);
+//            } else if(session::getInstance()->hasAttribute('trabajadorIndexFilters')){
+//            $where = session::getInstance()->getAttribute('trabajadorIndexFilters');
+//            }
             $fields = array(
             trabajadorTableClass::ID,
             trabajadorTableClass::NOMBRE,
@@ -71,11 +71,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $flag = FALSE;
         $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
         
-        if (strlen($nombre) > animalTableClass::NOMBRE_LENGTH) {
-            session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> animalTableClass::NOMBRE_LENGTH)));
+        if (strlen($nombre) > trabajadorTableClass::NOMBRE_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> trabajadorTableClass::NOMBRE_LENGTH)));
             $flag = TRUE;
-            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
-            session::getInstance()->setFlash('modalFilter', true);
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE), TRUE);
+//            session::getInstance()->setFlash('modalFilter', true);
                     
         }
 //

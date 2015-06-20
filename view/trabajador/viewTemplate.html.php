@@ -1,18 +1,18 @@
 <?php use mvc\routing\routingClass as routing; ?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
 <?php use mvc\view\viewClass as view ?>
-<?php $id = animalTableClass::ID ?>
-<?php $nombre = animalTableClass::NOMBRE ?>
-<?php $genero = animalTableClass::GENERO ?>
-<?php $edad = animalTableClass::EDAD ?>
-<?php $peso = animalTableClass::PESO; ?>
-<?php $fecha_ingreso = animalTableClass::FECHA_INGRESO; ?>
-<?php $numero_partos = animalTableClass::NUMERO_PARTOS ?>
-<?php $id_raza = animalTableClass::ID_RAZA ?>
-<?php $id_estado = animalTableClass::ID_ESTADO ?>
-<?php view::includePartial('animal/menuPrincipal'); ?>
+<?php $id = trabajadorTableClass::ID ?>
+<?php $nombre = trabajadorTableClass::NOMBRE ?>
+<?php $genero = trabajadorTableClass::GENERO ?>
+<?php $edad = trabajadorTableClass::EDAD ?>
+<?php $peso = trabajadorTableClass::PESO; ?>
+<?php $fecha_ingreso = trabajadorTableClass::FECHA_INGRESO; ?>
+<?php $numero_partos = trabajadorTableClass::NUMERO_PARTOS ?>
+<?php $id_raza = trabajadorTableClass::ID_RAZA ?>
+<?php $id_estado = trabajadorTableClass::ID_ESTADO ?>
+<?php view::includePartial('trabajador/menuPrincipal'); ?>
 <div class="container container-fluid">
-    <h1><?php echo i18n::__('animal') ?></h1>
+    <h1><?php echo i18n::__('employee') ?></h1>
     <div class="row">
         <header>
 
@@ -27,33 +27,31 @@
                     <tr class="active">
                         <th><?php echo i18n::__('id') ?></th>
                         <th><?php echo i18n::__('name') ?></th>
-                        <th><?php echo i18n::__('gender') ?></th>
-                        <th><?php echo i18n::__('age') ?></th>
-                        <th><?php echo i18n::__('weight') ?></th>
-                        <th><?php echo i18n::__('date_entry') ?></th>
-                        <th><?php echo i18n::__('number_births') ?></th>
-                        <th><?php echo i18n::__('breed') ?></th>
-                        <th><?php echo i18n::__('status') ?></th>
+                        <th><?php echo i18n::__('last_name') ?></th>
+                        <th><?php echo i18n::__('address') ?></th>
+                        <th><?php echo i18n::__('phone') ?></th>
+                        <th><?php echo i18n::__('id_turn') ?></th>
+                        <th><?php echo i18n::__('id_credential') ?></th>
+                        <th><?php echo i18n::__('id_city') ?></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($objAnimal as $animal): ?>
+                    <?php foreach ($objTrabajador as $trabajador): ?>
                         <tr>
-                            <td><?php echo $animal->$id ?></td>
-                            <td><?php echo $animal->$nombre ?></td>
-                            <td><?php echo $animal->$genero ?></td>
-                            <td><?php echo $animal->$edad ?></td>
-                            <td><?php echo $animal->$peso ?></td>
-                            <td><?php echo $animal->$fecha_ingreso ?></td>
-                            <td><?php echo $animal->$numero_partos ?></td>
-                            <td><?php echo animalTableClass::getNameFieldForaneaRaza($animal->$id_raza) ?></td>
-                            <td><?php echo animalTableClass::getNameFieldForaneaEstado($animal->$id_estado) ?></td>
+                            <td><?php echo $trabajador->$id ?></td>
+                            <td><?php echo $trabajador->$nombre ?></td>
+                            <td><?php echo $trabajador->$apellido ?></td>
+                            <td><?php echo $trabajador->$direccion ?></td>
+                            <td><?php echo $trabajador->$telefono ?></td>
+                            <td><?php echo trabajadorTableClass::getNameFieldForaneaRaza($trabajador->$id_turno) ?></td>
+                            <td><?php echo trabajadorTableClass::getNameFieldForaneaRaza($trabajador->$id_credencial) ?></td>
+                            <td><?php echo trabajadorTableClass::getNameFieldForaneaEstado($trabajador->$id_ciudad) ?></td>
                         </tr>
                     <?php endforeach; ?> 
                 </tbody>
                 
             </table>
-            <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>"><i class="glyphicon glyphicon-arrow-left"> </i> <?php echo i18n::__('return')?></a>
+            <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index')?>"><i class="glyphicon glyphicon-arrow-left"> </i> <?php echo i18n::__('return')?></a>
         </section>
         <footer>
 

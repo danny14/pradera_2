@@ -7,29 +7,30 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-class updateActionClass extends controllerClass implements controllerActionInterface {
-
+class updateActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $id = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::ID,true));
-                $descripcion = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION ,true));
+                $id = request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::ID,true));
+                $descripcion = request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::DESCRIPCION ,true));
                 
                 $ids= array(
-                ciudadTableClass::ID => $id
+                razaTableClass::ID => $id
                 );
                 $data = array(
-                ciudadTableClass::DESCRIPCION => $descripcion
+                razaTableClass::DESCRIPCION => $descripcion
                 );
 
-                ciudadTableClass::update($ids, $data);
+                razaTableClass::update($ids, $data);
             }
-            routing::getInstance()->redirect('ciudad', 'index');
+                routing::getInstance()->redirect('raza', 'index');
+            
         } catch (PDOException $exc) {
             echo $exc->getMessage();
             echo "<br>";
             echo $exc->getTraceAsString();
+            
         }
     }
-
 }
+

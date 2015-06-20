@@ -12,7 +12,6 @@ class entradaBodegaBaseTableClass extends tableBaseClass {
   const ID = 'id';
   const FECHA = 'fecha';
   const HORA = 'hora';
-  const ID_TIPO_DOC = 'id_tipo_doc';
   const ID_TRABAJADOR = 'id_trabajador';
   const ID_PROVEEDOR = 'id_proveedor';
 

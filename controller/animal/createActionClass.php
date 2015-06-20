@@ -9,6 +9,13 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as bitacora;
 
+/*
+ * @author: Danny Steven Ruiz Hernandez
+ * @date: 10/03/2015
+ * @static:
+ * @abstract
+ * @category:
+ */
 class createActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
@@ -87,12 +94,13 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
         }
         if($genero === '' or $genero === NULL){
-            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::GENERO)));
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::GENERO)), 'errorGenero');
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::GENERO, TRUE), TRUE);            
         }
         if($genero !== "F" and $genero !== "M"){// and $genero !== "f"  and $genero !== "m"  ){
-            session::getInstance()->setError(i18n::__('errorGender', NULL, 'default'));
+                                                                                       /* se le agrega una llave para el error*/
+            session::getInstance()->setError(i18n::__('errorGender', NULL, 'default'), 'errorGenero');
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::GENERO, TRUE), TRUE);
         }

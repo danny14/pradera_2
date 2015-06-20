@@ -21,8 +21,8 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             razaTableClass::delete($ids, FALSE);
             
             $this->arrayAjax = array(
-                ' code ' => 200,
-                ' msg ' => 'La Eliminacion de registro fue exitosa'
+                'code' => 200,
+                'msg' => 'La Eliminacion de registro fue exitosa'
             );
             $this->defineView('delete', 'raza', session::getInstance()->getFormatOutput());
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
@@ -30,9 +30,8 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 routing::getInstance()->redirect('raza', 'index');
             }
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
+          session::getInstance()->setFlash('exc', $exc);
+          routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

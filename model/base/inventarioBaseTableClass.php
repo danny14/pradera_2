@@ -15,15 +15,12 @@ class inventarioBaseTableClass extends tableBaseClass {
    * EN INVENTARIO
    */
   const ID = 'id';
-  const NOMBRE = 'nombre';
-  const NOMBRE_LENGTH = 80;
-  const GENERO = 'genero';
+  const FECHA = 'fecha';
+  const SALDO = 'saldo';
   const EDAD = 'edad';
-  const PESO = 'peso';
-  const FECHA_INGRESO = 'fecha_ingreso';
-  const NUMERO_PARTOS = 'numero_partos';
-  const ID_RAZA = 'id_estado';
-  const ID_ESTADO = 'id_estado';
+  const CANTIDAD = 'cantidad';
+  const VALOR = 'valor';
+  const ID_TIPO_INSUMO = 'id_tipo_insumo';
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

@@ -18,6 +18,7 @@ class createActionClass extends controllerClass implements controllerActionInter
                 );
                 
                 razaTableClass::insert($data);
+                session::getInstance()->setSuccess('Los datos fuero registrados de forma exitosa');
                 routing::getInstance()->redirect('raza', 'index');
             }else{
                 routing::getInstance()->redirect('raza', 'index');

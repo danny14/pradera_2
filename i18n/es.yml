@@ -18,7 +18,7 @@ dictionary:
     data:                 DATOS
     action:               Accion
     update:               Actualizar
-    description:          Descripcion
+    description:          Descripcion       
     start:                Inicio
     end:                  Fin
     city:                 Ciudad
@@ -33,6 +33,8 @@ dictionary:
     weight:               Peso
     date_entry:           Fecha Ingreso
     number_births:        Numero Partos
+    id_credential:        ID Credencial
+    id_turn:              ID Turno
     id_raza:              ID Raza
     id_status:            ID Estado
     id_type_doc:          ID Tipo Documento
@@ -86,6 +88,8 @@ dictionary:
     enterMail:            Ingrese el Correo
     enterObservation:     Ingrese la Observacion
     enterNumberBirths:    Ingrese el numero de partos
+    selectTurn:           Seleccione el Turno
+    selectCredential:     Seleccione la Credencial
     selectFecundador:     Seleccione el fecundador
     selectAnimal:         Seleccione el Animal
     selectCity:           Seleccione la Ciudad

@@ -2,6 +2,7 @@
 <?php use mvc\i18n\i18nClass as i18n;?>
 <?php use mvc\session\sessionClass as session; ?>
 <?php use mvc\request\requestClass as request;?>
+<?php use mvc\view\viewClass as view; ?>
 <?php $id = animalTableClass::ID ;?>
 <?php $nombre= animalTableClass::NOMBRE;?>
 <?php $genero = animalTableClass::GENERO;?>
@@ -28,8 +29,10 @@
     <!--
    <? php// echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) ?  request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) : '' ; ?>
    -->
-    
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::GENERO, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?>"">
+    <!-- se inclule el mensaje de error puntual -->
+    <?php view::getMessageError('errorGenero') ?>
+    <!-- FIN-->
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::GENERO, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?>">
     <label class="control-label" for="gender"><?php echo i18n::__('gender')?>:</label>
     <input class="form-control" type="text" value="<?php echo ((isset($objAnimal)) ? $objAnimal[0]->$genero :  ((session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::GENERO, TRUE)) === TRUE) ?  request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::GENERO, TRUE)) : '' )) ?>" name="<?php echo animalTableClass::getNameField(animalTableClass::GENERO, true )?>" required placeholder="<?php echo i18n::__('enterGender')?>"/>
     <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::GENERO, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>

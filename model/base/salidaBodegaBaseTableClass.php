@@ -11,7 +11,6 @@ class salidaBodegaBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const FECHA = 'fecha';
-  const ID_TIPO_DOC = 'id_tipo_doc';
   const ID_TRABAJADOR = 'id_trabajador';
 
 

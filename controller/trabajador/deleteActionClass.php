@@ -13,7 +13,7 @@ class deleteActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
-                $id = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID, TRUE));
+                $id = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID, TRUE));
                 
                 if (validacion()) {
                     $this->arrayAjax = array(
@@ -24,20 +24,20 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 } else {
                 
                 $ids = array(
-                animalTableClass::ID => $id
+                trabajadorTableClass::ID => $id
                 );
                 
-            animalTableClass::delete($ids, FALSE);
+            trabajadorTableClass::delete($ids, FALSE);
             $this->arrayAjax = array(
                 'code' => 200,
                 'msg' => 'La Eliminacion de registro fue exitosa'
             );
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
-            bitacora::register('Eliminar Individual', animalTableClass::getNameTable());
+            bitacora::register('Eliminar Individual', trabajadorTableClass::getNameTable());
                 }
-            $this->defineView('delete', 'animal', session::getInstance()->getFormatOutput());
+            $this->defineView('delete', 'trabajador', session::getInstance()->getFormatOutput());
             } else {
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('trabajador', 'index');
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

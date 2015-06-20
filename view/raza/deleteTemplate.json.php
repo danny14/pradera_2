@@ -1,1 +1,3 @@
-<?php echo  json_encode($arrayAjax) ; ?>
+<?php
+
+echo json_encode($arrayAjax);

@@ -45,7 +45,7 @@
             <!-- Formulario del IDIOMA -->
             <?php view::includePartial('animal/formTraductor')?>
             <!-- FIN FORMULARIO IDIOMA -->
-            <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
+            <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('raza', 'deleteSelect') ?>" method="POST">
                 <div class="botones">
                 <a href="<?php echo routing::getInstance()->getUrlWeb('raza', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $raza->$id ?>, '<?php echo razaTableClass::getNameField(razaTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('raza', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $raza->$id ?>, '<?php echo razaTableClass::getNameField(razaTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('raza', 'delete') ?>', '<?php echo routing::getInstance()->getUrlWeb('raza', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

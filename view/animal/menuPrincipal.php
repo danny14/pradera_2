@@ -17,22 +17,36 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Animal <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-              <li><a href="<?php  echo routing::getInstance()->getUrlWeb('animal', 'index')?>">Animal</a></li>
-            <li class="divider"></li>
-            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('raza', 'index')?>">Raza</a></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('animal', 'index')?>">Animal</a></li>
             <li class="divider"></li>
             <li><a href="<?php  echo routing::getInstance()->getUrlWeb('estado', 'index')?>">Estado</a></li>
             <li class="divider"></li>
           </ul>
         </li>
       </ul>
+        <!-- Modulo Trabajador -->
+       <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Trabajador <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('trabajador', 'index')?>">Trabajador</a></li>
+            <li class="divider"></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('ciudad', 'index')?>">Ciudad</a></li>
+            <li class="divider"></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('credencial', 'index')?>">Credencial</a></li>
+            <li class="divider"></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('turno', 'index')?>">Turno</a></li>
+          </ul>
+        </li>
+      </ul>
+        <!-- Fin Modulo -->
         <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Fecundador <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-              <li><a href="<?php // echo routing::getInstance()->getUrlWeb('fecundador', 'index')?>">Fecundador</a></li>
+              <li><a href="<?php  echo routing::getInstance()->getUrlWeb('fecundador', 'index')?>">Fecundador</a></li>
             <li class="divider"></li>
-            <li><a href="<?php // echo routing::getInstance()->getUrlWeb('raza', 'index')?>">Raza</a></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('raza', 'index')?>">Raza</a></li>
             <li class="divider"></li>
           </ul>
         </li>
@@ -41,9 +55,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Registro Celo <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php  //echo routing::getInstance()->getUrlWeb('registro_celo', 'index')?>">Registro Celo</a></li>
-            <li><a href="<?php // echo routing::getInstance()->getUrlWeb('animal', 'index')?>">Animal</a></li>
-            <li><a href="<?php //echo routing::getInstance()->getUrlWeb('fecundador', 'index')?>">Fecundador</a></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('registro_celo', 'index')?>">Registro Celo</a></li>
             <!--<li class="divider"></li>
             <li><a href="#">Separated link</a></li>
             <li class="divider"></li>

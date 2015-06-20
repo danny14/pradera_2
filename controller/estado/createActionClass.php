@@ -18,6 +18,7 @@ class createActionClass extends controllerClass implements controllerActionInter
                 );
                 
                 estadoTableClass::insert($data);
+                session::getInstance()->setSuccess('Los datos Fueron registrados exitosamente');
                 routing::getInstance()->redirect('estado', 'index');
             }else{
                 routing::getInstance()->redirect('estado', 'index');

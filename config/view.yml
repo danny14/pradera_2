@@ -29,6 +29,11 @@ animal:
       - index.js
   stylesheet:
       - main.css
+
+credencial:
+  index:
+    javascript:
+      - index.js
       
 fecundador:
   index:
@@ -46,6 +51,16 @@ estado:
       - index.js
       
 registro_celo:
+  index:
+    javascript:
+      - index.js
+      
+trabajador:
+  index:
+    javascript:
+      - index.js
+
+turno:
   index:
     javascript:
       - index.js

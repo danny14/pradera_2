@@ -4,7 +4,7 @@
 <?php $password = usuarioTableClass::PASSWORD ?>
 <form method="post" action="<?php echo routing::getInstance()->getUrlWeb('default', ((isset($objUsuario)) ? 'update' : 'create' )) ?>">
   <?php if(isset($objUsuario) == true): ?>
-  <input name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::ID,true) ?>" value="<?php echo $objUsuario[0]->$idUsuario ?>" type="hidden">
+    <input name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::ID,true) ?>" value="<?php echo $objUsuario[0]->$idUsuario ?>" type="hidden">
   <?php endif ?>
   <?php echo i18n::__('user') ?>: <input value="<?php echo ((isset($objUsuario) == true) ? $objUsuario[0]->$usuario : '') ?>" type="text" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>">
   <br>

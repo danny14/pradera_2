@@ -242,7 +242,7 @@ ciudad_create:
   load:
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
-    
+
 ciudad_edit:
   url:    /ciudad/editar
   param:  { module: ciudad, action: edit, format: html }
@@ -257,6 +257,26 @@ ciudad_update:
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
     
+ciudad_delete:
+  url:    /ciudad/eliminar
+  param:  { module: ciudad, action: delete, format: json }
+  load:
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+ciudad_deleteSelect:
+  url:    /ciudad/eliminarSeleccion
+  param:  { module: ciudad, action: deleteSelect, format: json }
+  load:
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+ciudad_view:
+  url:    /ciudad/vista
+  param:  { module: ciudad, action: view, format: html }
+  load:
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
 ##------------------------Credencial-------------------------##
 credencial_index:
   url:    /credencial/index
@@ -289,6 +309,20 @@ credencial_edit:
 credencial_update:
   url:    /credencial/actualizar
   param:  { module: credencial, action: update, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+
+credencial_deleteSelect:
+  url:    /credencial/eliminarSeleccion
+  param:  { module: credencial, action: deleteSelect, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+
+credencial_view:
+  url:    /credencial/vista
+  param:  { module: credencial, action: view, format: html }
   load:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
@@ -843,6 +877,61 @@ trabajador_report:
     - model/ciudadTableClass.php
 
 ##-------------------------Turno---------------------------##
+turno_index:
+  url:    /turno/index
+  param:  { module: turno, action: index, format: html }
+  load:
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+
+turno_insert:
+  url:    /turno/insertar
+  param:  { module: turno, action: insert, format: html }
+  load:
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+    
+turno_create:
+  url:    /turno/crear
+  param:  { module: turno, action: create, format: html }
+  load:
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+
+turno_edit:
+  url:    /turno/editar
+  param:  { module: turno, action: edit, format: html }
+  load:
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+    
+turno_update:
+  url:    /turno/actualizar
+  param:  { module: turno, action: update, format: html }
+  load:
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+    
+turno_delete:
+  url:    /turno/eliminar
+  param:  { module: turno, action: delete, format: json }
+  load:
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
+    
+turno_deleteSelect:
+  url:    /turno/eliminarSeleccion
+  param:  { module: turno, action: deleteSelect, format: json }
+  load:
+    - model/base/turnoBaseTableClass.php
+    - model/animalTableClass.php
+    
+turno_view:
+  url:    /turno/vista
+  param:  { module: turno, action: view, format: html }
+  load:
+    - model/base/turnoBaseTableClass.php
+    - model/turnoTableClass.php
 
 ##-------------------------Usuario Credencial--------------##
 
