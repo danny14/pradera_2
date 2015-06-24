@@ -47,6 +47,7 @@ animal:
     security: true
     credentials:
       - [admin]
+##---------- CIUDAD ---------------------##
 ##---------- CREDENCIAL -----------------##
 credencial:
   index:
@@ -77,6 +78,8 @@ credencial:
     security: true
     credentials:
       - [admin]
+##---------- ENTRADA BODEGA -------------##
+##---------- ESTADO ---------------------##
 ##---------- FECUNDADOR -----------------##
 fecundador:
   index:
@@ -107,6 +110,63 @@ fecundador:
     security: true
     credentials:
       - [admin]
+
+##--------- Insumo -----------------------##
+insumo:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
+##--------- INVENTARIO -------------------##
+##--------- ORDEÑO -----------------------##
+ordenno:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
+##--------- PAGO TRABAJADORES ------------##
+##--------- PROVEEDOR --------------------##
+##--------- RAZA -------------------------##
 ##--------- REGISTRO CELO ----------------##      
 registro_celo:
   index:
@@ -129,6 +189,10 @@ registro_celo:
     security: true
     credentials:
       - [admin]
+##----------REGISTRO VACUNACION --------##
+##----------REPORTE PARTO --------------##
+##---------- SALIDA BODEGA -------------##
+##---------- TIPO INSUMO ---------------##
 
 #-----------Trabajador -------------------
 trabajador:
@@ -190,3 +254,5 @@ turno:
     security: true
     credentials:
       - [admin]
+##------------ USUARIO --------------##
+##------------ USUARIO CREDENCIAL ---##

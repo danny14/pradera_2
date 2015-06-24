@@ -10,19 +10,19 @@ use mvc\i18n\i18nClass as i18n;
 class editActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(razaTableClass::ID)){
+            if(request::getInstance()->hasRequest(ciudadTableClass::ID)){
                 
                 $fields = array(
-                razaTableClass::ID,
-                razaTableClass::DESCRIPCION
+                ciudadTableClass::ID,
+                ciudadTableClass::DESCRIPCION
                 );
                 $where = array(
-                razaTableClass::ID => request::getInstance()->getRequest(razaTableClass::ID)
+                ciudadTableClass::ID => request::getInstance()->getRequest(ciudadTableClass::ID)
                 );
-                $this->objRaza = razaTableClass::getAll($fields, FALSE , NULL, NULL, NULL, NULL, $where);
-                $this->defineView('edit', 'raza', session::getInstance()->getFormatOutput());
+                $this->objCiudad = ciudadTableClass::getAll($fields, FALSE , NULL, NULL, NULL, NULL, $where);
+                $this->defineView('edit', 'ciudad', session::getInstance()->getFormatOutput());
             }else{
-                routing::getInstance()->redirect('raza', 'index');
+                routing::getInstance()->redirect('ciudad', 'index');
             }
             
         } catch (PDOException $exc) {

@@ -11,19 +11,19 @@ class updateActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $id = request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::ID,true));
-                $descripcion = request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::DESCRIPCION ,true));
+                $id = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::ID,true));
+                $descripcion = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION ,true));
                 
                 $ids= array(
-                razaTableClass::ID => $id
+                ciudadTableClass::ID => $id
                 );
                 $data = array(
-                razaTableClass::DESCRIPCION => $descripcion
+                ciudadTableClass::DESCRIPCION => $descripcion
                 );
 
-                razaTableClass::update($ids, $data);
+                ciudadTableClass::update($ids, $data);
             }
-                routing::getInstance()->redirect('raza', 'index');
+                routing::getInstance()->redirect('ciudad', 'index');
             
         } catch (PDOException $exc) {
             echo $exc->getMessage();

@@ -22,44 +22,59 @@ default:
   index:
     javascript:
       - index.js
-
+#--------------- Animal -------------------------
 animal:
   index:
     javascript:
       - index.js
   stylesheet:
       - main.css
-
+#--------------- Bitacora -------------------------
+#--------------- Ciudad -------------------------
+#--------------- Credencial -------------------------
 credencial:
   index:
     javascript:
       - index.js
-      
-fecundador:
-  index:
-    javascript:
-      - index.js
-
-raza:
-  index:
-    javascript:
-      - index.js
-
+#--------------- Entrada Bodega -------------------------      
+#--------------- Estado -------------------------
 estado:
   index:
     javascript:
       - index.js
-      
+#--------------- Fecundador -------------------------
+fecundador:
+  index:
+    javascript:
+      - index.js
+#--------------- Insumo -------------------------
+#--------------- Inventario -------------------------
+#--------------- Ordeño -------------------------
+#--------------- Pago Trabajadores -------------------------
+#--------------- Proveedor -------------------------
+#--------------- Raza -------------------------
+raza:
+  index:
+    javascript:
+      - index.js
+#--------------- Registro Celo -------------------------
 registro_celo:
   index:
     javascript:
       - index.js
-      
+#--------------- Registro Vacunacion -------------------------
+registro_vacunacion:
+  index:
+    javascript:
+      - index.js
+#--------------- Salida Bodega -------------------------
+#--------------- Tipo Insumo -------------------------
+#--------------- Trabajador -------------------------
 trabajador:
   index:
     javascript:
       - index.js
-
+#--------------- Turno ------------------------
 turno:
   index:
     javascript:

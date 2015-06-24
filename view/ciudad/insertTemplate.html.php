@@ -4,7 +4,7 @@
 <?php view::includePartial('animal/menuPrincipal')?>
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('new')." "; echo i18n::__('breed')?></h1>
-<?php view::includePartial('raza/form')?>
+<h1><?php echo i18n::__('new')." "; echo i18n::__('city')?></h1>
+<?php view::includePartial('ciudad/form')?>
     </div>
 </div>
