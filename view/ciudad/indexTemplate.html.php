@@ -48,7 +48,7 @@
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('ciudad', 'deleteSelect') ?>" method="POST">
                 <div class="botones">
                 <a href="<?php echo routing::getInstance()->getUrlWeb('ciudad', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
-                <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
+                <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
                 <a class="btn btn-default btn-xs" href="<?php // routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
             </div>
@@ -65,7 +65,7 @@
                 <tbody>
                     <?php foreach ($objCiudad as $ciudad): ?>
                     <tr>
-                        <td><input type="checkbox" name="chk[]" value="<?php?>"></td>
+                        <td><input type="checkbox" name="chk[]" value="<?php echo $ciudad->$id ?>"></td>
                         <td><?php echo $ciudad->$id ?></td>
                         <td><?php echo $ciudad->$descripcion ?></td>
                         <td>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $ciudad->$id ?>, '<?php echo ciudadTableClass::getNameField(ciudadTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('ciudad', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $ciudad->$id ?>, '<?php echo ciudadTableClass::getNameField(ciudadTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('ciudad', 'delete') ?>','<?php echo routing::getInstance()->getUrlWeb('ciudad', 'index')?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

@@ -9,7 +9,19 @@ function eliminar(id, variable, url, reload) {
         dataType: 'json',
         type: 'POST', //GET POST DELETE PUT
         success: function (data) {
-            window.location.replace(reload);
+//          funcion para eliminar individual 
+            if(data.code === 200){
+                window.location.replace(reload);
+            }else if(data.code === 500){
+                $('#' + data.modal).modal('toggle');
+                $('#myModalErrorDelete').modal('toggle');
+                $('#myModalErrorDelete .modal-body').html(data.msg);
+                function closeModal(){
+                $('#myModalErrorDelete').modal('hide');
+                }
+                setTimeout(closeModal,5000);
+            }
+            //fin de la funcion
         },
     });
 }

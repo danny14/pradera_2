@@ -49,38 +49,37 @@ class updateActionClass extends controllerClass implements controllerActionInter
     }
        private function Validate($nombre,$apellido,$direccion,$telefono,$correo,$id_ciudad) {
         $flag = FALSE ;
-         if (strlen($nombre) > proveedorTableClass::NOMBRE_LENGTH) {
-             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$nombre,'%Character%' =>  proveedorTableClass::NOMBRE_LENGTH) ));
-     
-             $flag = TRUE;
-             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE), TRUE);
-             
-        }
-        if (strlen($apellido)> proveedorTableClass::APELLIDO_LENGTH) {
-        session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=>$apellido)));
-        $flag = TRUE;
-        session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE), TRUE);
-        }
-        if (is_numeric($direccion) === FALSE) {
-          session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=>$direccion)));
-          $flag = TRUE;
-        session::getInstance()->setFlash(proveedorrTableClass::getNameField(proveedorTableClass::DIRECCION, TRUE), TRUE);
-        }
-        if (is_numeric($telefono)=== FALSE){ 
-            session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%'=>$telefono,'%Character%' => proveedorTableClass::TELEFONO_LENGTH)));
+        if (strlen($nombre) > proveedorTableClass::NOMBRE_LENGTH) {
+            session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $nombre, '%Character%' => proveedorTableClass::NOMBRE_LENGTH)));
+
             $flag = TRUE;
-        session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, TRUE), TRUE);
+            session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE), TRUE);
         }
-       $flag = FALSE ;
-         if (strlen($correo) > proveedorTableClass::CORREO_LENGTH) {
-             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$nombre,'%Character%' =>  proveedorTableClass::CORREO_LENGTH) ));
-     
-             $flag = TRUE;
-             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO,TRUE), TRUE);
-        if($flag === TRUE){
-            request::getInstance()->setMethod('GET');
-            routing::getInstance()->forward('proveedor', 'insert');
+        if (strlen($apellido) > proveedorTableClass::APELLIDO_LENGTH) {
+            session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $apellido, '%Character%' => proveedorTableClass::APELLIDO_LENGTH)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE), TRUE);
         }
+        if (strlen($direccion) > proveedorTableClass::DIRECCION_LENGTH) {
+            session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $direccion, '%Character%' => proveedorTableClass::DIRECCION_LENGTH)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, TRUE), TRUE);
+        }
+        if (is_numeric($telefono) === FALSE) {
+            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $telefono)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, TRUE), TRUE);
+        }
+        $flag = FALSE;
+        if (strlen($correo) > proveedorTableClass::CORREO_LENGTH) {
+            session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $nombre, '%Character%' => proveedorTableClass::CORREO_LENGTH)));
+
+            $flag = TRUE;
+            session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE), TRUE);
+            if ($flag === TRUE) {
+                request::getInstance()->setMethod('GET');
+                routing::getInstance()->forward('proveedor', 'insert');
+            }
         }
     }
 }

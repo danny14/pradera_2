@@ -12,9 +12,9 @@ class tipoInsumoTableClass extends tipoInsumoBaseTableClass {
   
         public static function getTotalPages($lines, $where) {
         try {
-            $sql = 'SELECT count(' . tipo_insumoTableClass::ID . ') AS cantidad ' .
-                    ' FROM ' . tipo_insumoTableClass::getNameTable(). ' ';
-//                    ' WHERE'. tipo_insumoTableClass::DELETED_AT.'IS NULL';
+            $sql = 'SELECT count(' . tipoInsumoTableClass::ID . ') AS cantidad ' .
+                    ' FROM ' . tipoInsumoTableClass::getNameTable(). ' ';
+//                    ' WHERE'. tipoInsumoTableClass::DELETED_AT.'IS NULL';
             if (is_array($where) === TRUE) {
                 foreach ($where as $campo => $dato) {
                     if(is_array($dato)){

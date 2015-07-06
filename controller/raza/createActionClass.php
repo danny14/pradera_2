@@ -32,6 +32,9 @@ class createActionClass extends controllerClass implements controllerActionInter
         }
     }
     private function Validate($descripcion) {
+        /*
+         * Falta Validar Caracteres Especiales xD
+         */
         if (strlen($descripcion) > razaTableClass::DESCRIPCION_LENGTH) {
             session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => razaTableClass::NOMBRE_LENGTH)));
             $flag = TRUE;

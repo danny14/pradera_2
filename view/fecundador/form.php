@@ -53,7 +53,7 @@
             <select class="form-control" id="<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::ID_RAZA, TRUE)?>" name="<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::ID_RAZA, TRUE)?>" required>
                 <option><?php echo i18n::__('selectRaza')?></option>
                   <?php foreach($objRaza as $raza):?>
-         <option value="<?php echo $raza->$idRaza?>"><?php echo $raza->$descripcionraza?></option>
+                <option <?php echo (isset($objFecundador[0]->$id_raza) === TRUE and $objFecundador[0]->$id_raza == $raza->$idRaza) ? 'selected' : '' ?> value="<?php echo $raza->$idRaza?>"><?php echo $raza->$descripcionraza?></option>
          <?php endforeach;?>
      </select>
     </div>

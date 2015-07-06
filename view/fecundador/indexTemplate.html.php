@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                    <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $fecundador->$id ?>, '<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('fecundador', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                    <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $fecundador->$id ?>, '<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('fecundador', 'delete') ?>','<?php echo routing::getInstance()->getUrlWeb('fecundador', 'index')?>')"><?php echo i18n::__('confirm') ?></button>
                                 </div>
                             </div>
                         </div>

@@ -18,7 +18,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $fecha_vencimiento =  request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO,TRUE));
                 $valor = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::VALOR,TRUE));
                 $id_tipo_insumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO,TRUE));
-                $this->Validate($nombre,$fecha_febricacion,$fecha_vencimiento,$valor,$id_tipo_insumo);
+                $this->Validate($nombre,$fecha_fabricacion,$fecha_vencimiento,$valor,$id_tipo_insumo);
                 
                 $ids = array(
                 insumoTableClass::ID => $id
@@ -31,8 +31,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
                     insumoTableClass::VALOR => $valor,
                     insumoTableClass::ID_TIPO_INSUMO => $id_tipo_insumo,
                 );
-                insumoTableClass::update($ids,$data);
+                 insumoTableClass::update($ids,$data);
                  bitacora::register('ACTUALIZAR', insumoTableClass::getNameTable());
+                 session::getInstance()->setSuccess('Los datos fueron editados de forma exitosa');
                  routing::getInstance()->redirect('insumo','index'); 
                    
             }
@@ -55,16 +56,16 @@ class updateActionClass extends controllerClass implements controllerActionInter
              
         }
        
-        if (strlen($fecha_fabricacion) > insumoTableClass::FECHA_FABRICACION_LENGTH){ 
-            session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%'=>$fecha_fabricacion,'%Character%' => insumoTableClass::FECHA_FABRICACION_LENGTH)));
-            $flag = TRUE;
-        session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, TRUE), TRUE);
-        }
-         if (strlen($fecha_vencimiento) > insumoTableClass::FECHA_VENCIMIENTO_LENGTH){ 
-            session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%'=>$fecha_vencimiento,'%Character%' => insumoTableClass::FECHA_VENCIMIENTO_LENGTH)));
-            $flag = TRUE;
-        session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, TRUE), TRUE);
-        }
+//        if (strlen($fecha_fabricacion) > insumoTableClass::FECHA_FABRICACION_LENGTH){ 
+//            session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%'=>$fecha_fabricacion,'%Character%' => insumoTableClass::FECHA_FABRICACION_LENGTH)));
+//            $flag = TRUE;
+//        session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, TRUE), TRUE);
+//        }
+//         if (strlen($fecha_vencimiento) > insumoTableClass::FECHA_VENCIMIENTO_LENGTH){ 
+//            session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%'=>$fecha_vencimiento,'%Character%' => insumoTableClass::FECHA_VENCIMIENTO_LENGTH)));
+//            $flag = TRUE;
+//        session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, TRUE), TRUE);
+//        }
         if(!is_numeric($valor)){
             session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=>  insumoTableClass::VALOR)));
             $flag = TRUE;

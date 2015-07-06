@@ -12,15 +12,15 @@ class createActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $descripcion = request::getInstance()->getPost(tipo_insumoTableClass::getNameField(tipo_insumoTableClass::DESCRIPCION, TRUE));
+                $descripcion = request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION, TRUE));
                 $this->Validate($descripcion);
                
                 $data = array(
-                tipo_insumoTableClass::DESCRIPCION => $descripcion
+                tipoInsumoTableClass::DESCRIPCION => $descripcion
                
                 );
-                tipo_insumoTableClass::insert($data);
-                bitacora::register('INSERTAR', tipo_insumoTableClass::getNameTable());
+                tipoInsumoTableClass::insert($data);
+                bitacora::register('INSERTAR', tipoInsumoTableClass::getNameTable());
                 session::getInstance()->setSuccess('los datos fueron registrados de forma exitosa');
                 routing::getInstance()->redirect('tipo_insumo','index');
             }else{
@@ -33,22 +33,22 @@ class createActionClass extends controllerClass implements controllerActionInter
     }
     private function Validate($descripcion) {
         $flag = FALSE ;
-         if (strlen($descripcion) > tipo_insumoTableClass::DESCRIPCION_LENGTH) {
-             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$descripcion,'%Character%' =>  tipo_insumoTableClass::DESCRIPCION_LENGTH) ));
+         if (strlen($descripcion) > tipoInsumoTableClass::DESCRIPCION_LENGTH) {
+             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$descripcion,'%Character%' =>  tipoInsumoTableClass::DESCRIPCION_LENGTH) ));
      
              $flag = TRUE;
-             session::getInstance()->setFlash(tipo_insumoTableClass::getNameField(tipo_insumoTableClass::DESCRIPCION,TRUE), TRUE);
+             session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION,TRUE), TRUE);
              
         }
-        if (!ereg("^[a-zA-Z]{3,20}$", $descripcion)) {
-            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => tipo_insumoTableClass::DESCRIPCION)));
+        if (!ereg("^[a-zA-Z0-9]{3,140}$", $descripcion)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => tipoInsumoTableClass::DESCRIPCION)));
             $flag = TRUE;
-            session::getInstance()->setFlash(tipo_insumoTableClass::getNameField(tipo_insumoTableClass::DESCRIPCION, TRUE), TRUE);
+            session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION, TRUE), TRUE);
         }
         if ($descripcion === '' or $descripcion === NULL){
-           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => tipo_insumoTableClass::DESCRIPCION)));
+           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => tipoInsumoTableClass::DESCRIPCION)));
             $flag = TRUE;
-            session::getInstance()->setFlash(tipo_insumoTableClass::getNameField(tipo_insumoTableClass::DESCRIPCION, TRUE), TRUE);  
+            session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION, TRUE), TRUE);  
      
     
         }

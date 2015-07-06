@@ -14,7 +14,7 @@ class animalTableClass extends animalBaseTableClass {
         try {
             $sql = 'SELECT count(' . animalTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . animalTableClass::getNameTable(). ' ';
-//                    ' WHERE'. fecundadorTableClass::DELETED_AT.'IS NULL';
+//                    ' WHERE'. fecundadorTableClass::DELETED_AT.'IS NULL' paginado sin tener en cuenta el borrado logico;
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {

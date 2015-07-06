@@ -32,5 +32,59 @@ class trabajadorTableClass extends trabajadorBaseTableClass {
             throw $exc;
         }
     }
+
+        public static function getNameFieldForaneaTurno($id){
+        try{
+            $sql = 'SELECT '. turnoTableClass::DESCRIPCION . ' AS des_turno '
+                   .' FROM '.turnoTableClass::getNameTable() . ' '
+                   . ' WHERE ' .turnoTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->des_turno;
+        }
+        catch (PDOException $exc){
+            throw $exc;
+        }
+    }
+
+        public static function getNameFieldForaneaCredencial($id){
+        try{
+            $sql = 'SELECT '. credencialTableClass::NOMBRE . ' AS nom_credencial '
+                   .' FROM '.credencialTableClass::getNameTable() . ' '
+                   . ' WHERE ' .credencialTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->nom_credencial;
+        }
+        catch (PDOException $exc){
+            throw $exc;
+        }
+    }
+
+        public static function getNameFieldForaneaCiudad($id){
+        try{
+            $sql = 'SELECT '. ciudadTableClass::DESCRIPCION . ' AS des_ciudad '
+                   .' FROM '.ciudadTableClass::getNameTable() . ' '
+                   . ' WHERE ' .ciudadTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->des_ciudad;
+        }
+        catch (PDOException $exc){
+            throw $exc;
+        }
+    }
   
 }

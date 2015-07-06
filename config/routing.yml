@@ -543,8 +543,8 @@ insumo_edit:
   load:
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
-    - model/base/tipo_insumoBaseTableClass.php
-    - model/tipo_insumoTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
 
 insumo_update:
   url:    /insumo/actualizar
@@ -1168,6 +1168,9 @@ tipo_insumo_create:
   load:
     - model/base/tipoInsumoBaseTableClass.php
     - model/tipoInsumoTableClass.php
+    - hooks/loghookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 tipo_insumo_edit:
   url:    /tipo_insumo/editar
@@ -1182,6 +1185,9 @@ tipo_insumo_update:
   load:
     - model/base/tipoInsumoBaseTableClass.php
     - model/tipoInsumoTableClass.php
+    - hooks/loghookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 tipo_insumo_delete:
   url:    /tipo_insumo/eliminar
@@ -1194,15 +1200,15 @@ tipo_insumo_deleteSelect:
   url:    /tipo_insumo/eliminarSeleccion
   param:  { module: tipo_insumo, action: deleteSelect, format: json }
   load:
-    - model/base/animalBaseTableClass.php
-    - model/animalTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
     
 tipo_insumo_view:
   url:    /tipo_insumo/vista
   param:  { module: tipo_insumo, action: view, format: html }
   load:
-    - model/base/razaBaseTableClass.php
-    - model/razaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
     
 ##-------------------------Trabajador----------------------##
 trabajador_index:

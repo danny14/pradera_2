@@ -12,7 +12,7 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk')) {
-                $idsToDelete = request::getInstance()->getPost('chk[]');
+                $idsToDelete = request::getInstance()->getPost('chk');
                 foreach ($idsToDelete as $id){
                     $ids = array(
                     estadoTableClass::ID => $id
@@ -26,8 +26,28 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
                 routing::getInstance()->redirect('estado', 'index');
             }
         } catch (PDOException $exc) {
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
+            switch ($exc->getCode()) {
+                // 42601
+                case 23503:
+                    session::getInstance()->setError(i18n::__('23503'));
+                    routing::getInstance()->redirect('estado', 'index');
+                    break;
+                case 23505:
+                    session::getInstance()->setError(i18n::__('23505'));
+                    routing::getInstance()->redirect('estado', 'index');
+//                    session::getInstance()->setError($exc->getMessage());
+                break;
+                case 42601:
+                    session::getInstance()->setError(i18n::__('42601'));
+                    routing::getInstance()->redirect('estado', 'index');
+                    break;
+                default :
+                    session::getInstance()->setError($exc->getMessage());
+                    routing::getInstance()->redirect('estado', 'index');
+                break;
+            }
+//            session::getInstance()->setFlash('exc', $exc);
+//            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

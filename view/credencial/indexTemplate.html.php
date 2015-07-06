@@ -86,7 +86,7 @@
                 <tbody>
                     <?php foreach ($objCredencial as $credencial): ?>
                     <tr>
-                        <td><input type="checkbox" name="chk[]" value="<?php?>"></td>
+                        <td><input type="checkbox" name="chk[]" value="<?php echo $credencial->$id ?>"></td>
                         <td><?php echo $credencial->$id ?></td>
                         <td><?php echo $credencial->$nombre ?></td>
                         <td><?php echo $credencial->$created_at ?></td>

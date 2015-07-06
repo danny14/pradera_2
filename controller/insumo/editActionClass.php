@@ -24,14 +24,14 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 $this->objInsumo = insumoTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
                 
                 $fields = array(
-                tipo_insumoTableClass::ID,
-                tipo_insumoTableClass::DESCRIPCION
+                tipoInsumoTableClass::ID,
+                tipoInsumoTableClass::DESCRIPCION
                 );
                 $orderBy = array(
-                tipo_insumoTableClass::DESCRIPCION
+                tipoInsumoTableClass::DESCRIPCION
                 );
                 
-                $this->objTipoInsumo = tipo_insumoTableClass::getAll($fields, FALSE,$orderBy,'ASC',NULL,NULL, NULL);
+                $this->objTipoInsumo = tipoInsumoTableClass::getAll($fields, FALSE,$orderBy,'ASC',NULL,NULL, NULL);
                 $this->defineView('edit', 'insumo', session::getInstance()->getFormatOutput());
             }
             

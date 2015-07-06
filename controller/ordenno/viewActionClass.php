@@ -20,7 +20,7 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
                
                );
                $where = array( 
-               ordennodorTableClass::ID => request::getInstance()->getRequest(ordennoTableClass::ID)
+               ordennoTableClass::ID => request::getInstance()->getRequest(ordennoTableClass::ID)
                        
              );
                $this->objOrdenno =  ordennoTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);

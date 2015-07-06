@@ -18,21 +18,21 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $filter = request::getInstance()->getPost('filter');
                 // aqui validar datos de filtros
                 if(isset($filter['descripcion']) and $filter['descripcion'] !== NULL and $filter['descripcion'] !== ''){
-                    $where[tipo_insumoTableClass::DESCRIPCION] = $filter['descripcion'];
+                    $where[tipoInsumoTableClass::DESCRIPCION] = $filter['descripcion'];
                
                 }
-                session::getInstance()->setAttribute('tipo_insumoIndexFilters', $where);
-            } else if(session::getInstance()->hasAttribute('tipo_insumoIndexFilters')){
-            $where = session::getInstance()->getAttribute('tipo_insumoIndexFilters');
+                session::getInstance()->setAttribute('tipoInsumoIndexFilters', $where);
+            } else if(session::getInstance()->hasAttribute('tipoInsumoIndexFilters')){
+            $where = session::getInstance()->getAttribute('tipoInsumoIndexFilters');
             }
             
             $fields= array(
-            tipo_insumoTableClass::ID,
-            tipo_insumoTableClass::DESCRIPCION,
+            tipoInsumoTableClass::ID,
+            tipoInsumoTableClass::DESCRIPCION,
            
             );
             $orderBy = array(
-            tipo_insumoTableClass::ID
+            tipoInsumoTableClass::ID
             );
             $page = 0;
             if(request::getInstance()->hasGet('page')){
@@ -40,8 +40,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $page = request::getInstance()->getGet('page') - 1;
                 $page = $page * 3;
             }
-            $this->cntPages = tipo_insumoTableClass::getTotalPages(config::getRowGrid(),$where);
-            $this->objTipo_insumo =  tipo_insumoTableClass::getAll($fields, FALSE,$orderBy,'ASC',config::getRowGrid(),$page,$where);
+            $this->cntPages = tipoInsumoTableClass::getTotalPages(config::getRowGrid(),$where);
+            $this->objTipoInsumo =  tipoInsumoTableClass::getAll($fields, FALSE,$orderBy,'ASC',config::getRowGrid(),$page,$where);
             $this->defineView('index', 'tipo_insumo', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();

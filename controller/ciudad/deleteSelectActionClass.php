@@ -12,7 +12,7 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk')) {
-                $idsToDelete = request::getInstance()->getPost('chk[]');
+                $idsToDelete = request::getInstance()->getPost('chk');
                 foreach ($idsToDelete as $id){
                     $ids = array(
                     ciudadTableClass::ID => $id

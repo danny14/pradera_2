@@ -140,9 +140,9 @@
                                 <td><?php echo $trabajador->$apellido ?></td>
                                 <td><?php echo $trabajador->$direccion ?></td>
                                 <td><?php echo $trabajador->$telefono ?></td>
-                                <td><?php echo trabajadorTableClass::getNameFieldForaneaRaza($trabajador->$id_turno) ?></td>
-                                <td><?php echo trabajadorTableClass::getNameFieldForaneaRaza($trabajador->$id_credencial) ?></td>
-                                <td><?php echo trabajadorTableClass::getNameFieldForaneaEstado($trabajador->$id_ciudad) ?></td>
+                                <td><?php echo trabajadorTableClass::getNameFieldForaneaTurno($trabajador->$id_turno) ?></td>
+                                <td><?php echo trabajadorTableClass::getNameFieldForaneaCredencial($trabajador->$id_credencial) ?></td>
+                                <td><?php echo trabajadorTableClass::getNameFieldForaneaCiudad($trabajador->$id_ciudad) ?></td>
                                 <td>
                                     <div class="btn btn-group btn-xs">
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('trabajador','view', array(trabajadorTableClass::ID => $trabajador->$id)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>

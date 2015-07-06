@@ -69,7 +69,7 @@
                 <tbody>
                     <?php foreach ($objTurno as $turno): ?>
                     <tr>
-                        <td><input type="checkbox" name="chk[]" value="<?php?>"></td>
+                        <td><input type="checkbox" name="chk[]" value="<?php $turno->$id ?>"></td>
                         <td><?php echo $turno->$id ?></td>
                         <td><?php echo $turno->$descripcion ?></td>
                         <td><?php echo $turno->$inicio_turno ?></td>

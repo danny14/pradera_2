@@ -1,4 +1,4 @@
-<?php
+tipo<?php
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
@@ -16,19 +16,19 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 $report =  request::getInstance()->getPost('report');
                 
                 if( isset($report['descripcion']) and $report['descripcion'] !== NULL and $report['descripcion'] !== ''){
-                    $where[tipo_insumoTableClass::DESCRIPCION] = $report['descripcion'];
+                    $where[tipoInsumoTableClass::DESCRIPCION] = $report['descripcion'];
              
                 }
                 $fields = array(
-                tipo_insumoTableClass::ID,
-                tipo_insumoTableClass::DESCRIPCION,
+                tipoInsumoTableClass::ID,
+                tipoInsumoTableClass::DESCRIPCION,
        
                 );
                 $orderBy = array(
-                tipo_insumoTableClass::ID
+                tipoInsumoTableClass::ID
                     
                 );
-                $this->objTipo_insumo = tipo_insumoTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL , NULL , $where);
+                $this->objTipo_insumo = tipoInsumoTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL , NULL , $where);
                 $this->defineView('report', 'tipo_insumo', session::getInstance()->getFormatOutput());
             }
         } catch (PDOException $exc) {

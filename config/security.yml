@@ -166,6 +166,27 @@ ordenno:
       - [admin]
 ##--------- PAGO TRABAJADORES ------------##
 ##--------- PROVEEDOR --------------------##
+proveedor:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
 ##--------- RAZA -------------------------##
 ##--------- REGISTRO CELO ----------------##      
 registro_celo:

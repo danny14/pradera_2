@@ -31,7 +31,14 @@ dictionary:
     gender:               Genero
     age:                  Edad
     weight:               Peso
+    ordenno:              Ordeño
+    type_input:           Tipo Insumo
     date_entry:           Fecha Ingreso
+    date_create:          Fecha Fabricacion
+    date_expiration:      Fecha de Vencimiento
+    date_ordenno:         Fecha Ordeño
+    quantity_milk:        Cantidad de Leche
+    input:                Insumo
     number_births:        Numero Partos
     id_credential:        ID Credencial
     id_turn:              ID Turno
@@ -41,6 +48,7 @@ dictionary:
     id_employee:          ID Trabajador
     id_provider:          ID Proveedor
     id_city:              ID Ciudad
+    id_type_input:        ID Tipo Insumo
     status:               Estado
     new:                  Nuevo
     edit:                 Editar
@@ -88,6 +96,10 @@ dictionary:
     enterMail:            Ingrese el Correo
     enterObservation:     Ingrese la Observacion
     enterNumberBirths:    Ingrese el numero de partos
+    enterQuantityMilk:    Ingrese la Cantidad de Leche
+    enterDateCreate:      Ingrese la fecha de Fabricacion
+    enterDateExpiration:  Ingrese la fecha de Vencimiento
+    enterValue:           Ingrese el Valor
     selectTurn:           Seleccione el Turno
     selectCredential:     Seleccione la Credencial
     selectFecundador:     Seleccione el fecundador
@@ -95,6 +107,8 @@ dictionary:
     selectCity:           Seleccione la Ciudad
     selectRaza:           Seleccione la raza
     selectEstado:         Seleccione el estado
+    selectEmployee:       Seleccione el Empleado
+    selectTypeInput:      Seleccione el Tipo de Insumo
     generate report:      Generar Reporte
     Do you want to delete the record?:       ¿Desea eliminar el registro?
     Do you want to remove the selected records?: ¿Deseas eliminar los registros seleccionados?
@@ -105,6 +119,7 @@ dictionary:
     errorGender:           El genero debe ser M o F 
     errorNumber:           El campo %field% solo puede contener numeros
     errorDate:             La fecha %date% es incorrecta
+    23503:                 Error el registro no puede ser borrado por que esta siendo utilizado por otra tabla
     23505:                 Error el id no puede estar duplicado intente de nuevo
     42601:                 Error sintaxis incorrecta
     

@@ -16,12 +16,12 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
                 $idsToDelete = request::getInstance()->getPost('chk');
                 foreach ($idsToDelete as $id){
                     $ids = array(
-                    tipo_insumoTableClass::ID => $id
+                    tipoInsumoTableClass::ID => $id
                     );
-                    tipo_insumoTableClass::delete($ids, FALSE);
+                    tipoInsumoTableClass::delete($ids, FALSE);
                 }
                 session::getInstance()->setSuccess('Los elementos seleccionados fueron borrados de forma exitosa');
-                 bitacora::register('ELIMINAR SELECIONADO', tipo_insumoTableClass::getNameTable());
+                 bitacora::register('ELIMINAR SELECIONADO', tipoInsumoTableClass::getNameTable());
                 routing::getInstance()->redirect('tipo_insumo','index');
             } else {
                 session::getInstance()->setError('No selecciono ningun registro');

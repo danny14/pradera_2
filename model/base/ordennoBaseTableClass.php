@@ -7,10 +7,10 @@ use mvc\model\table\tableBaseClass;
  *
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
-class ordenoBaseTableClass extends tableBaseClass {
+class ordennoBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
-  const FECHA_ORDENO = 'fecha_ordeno';
+  const FECHA_ORDENNO = 'fecha_ordeno';
   const CANTIDAD_LECHE = 'cantidad_leche';
   const ID_TRABAJADOR = 'id_trabajador';
   const ID_ANIMAL = 'id_animal';

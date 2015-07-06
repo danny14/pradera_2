@@ -84,7 +84,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE), TRUE);
          }
         if (is_numeric($peso) === FALSE) {
-          session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=>$peso)));
+          session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=> $peso )));
           $flag = TRUE;
         session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
         }

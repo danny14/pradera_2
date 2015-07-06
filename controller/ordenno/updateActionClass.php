@@ -15,9 +15,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $id = request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::ID, TRUE));
                 $fecha_ordenno = request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO,TRUE));
                 $cantidad_leche = request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE,TRUE));
-                $id_trabajador =  request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::ID_TRABAJDOR,TRUE));
+                $id_trabajador =  request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::ID_TRABAJADOR,TRUE));
                 $id_animal = request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL,TRUE));
-                $this->Validate($fecha_ordenno,$cantidad_leche,$id_trabajador,$id_animal);
+                //$this->Validate($fecha_ordenno,$cantidad_leche,$id_trabajador,$id_animal);
                 
                 $ids = array(
                 ordennoTableClass::ID => $id
@@ -30,8 +30,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
                     ordennoTableClass::ID_ANIMAL => $id_animal
                    
                 );
-                ordennoTableClass::update($ids,$data);
+                 ordennoTableClass::update($ids,$data);
                  bitacora::register('ACTUALIZAR', ordennoTableClass::getNameTable());
+                 session::getInstance()->setSuccess('Los datos fueron editados de forma exitosa');
                  routing::getInstance()->redirect('ordenno','index'); 
                    
             }

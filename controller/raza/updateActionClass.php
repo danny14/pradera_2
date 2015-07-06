@@ -23,6 +23,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
                 razaTableClass::update($ids, $data);
             }
+                session::getInstance()->setSuccess('Los datos fueron editados de forma exitosa');
                 routing::getInstance()->redirect('raza', 'index');
             
         } catch (PDOException $exc) {
@@ -32,5 +33,26 @@ class updateActionClass extends controllerClass implements controllerActionInter
             
         }
     }
+
+    private function Validate($descripcion) {
+        /*
+         * Falta Validar Caracteres Especiales xD
+         */
+        if (strlen($descripcion) > razaTableClass::DESCRIPCION_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => razaTableClass::NOMBRE_LENGTH)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE), TRUE);
+        }
+        if ($descripcion === '' or $descripcion === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => razaTableClass::DESCRIPCION)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE), TRUE);
+        }
+        if ($flag === TRUE) {
+            request::getInstance()->setMethod('GET'); //POST
+            routing::getInstance()->forward('raza', 'insert');
+        }
+    }
+
 }
 

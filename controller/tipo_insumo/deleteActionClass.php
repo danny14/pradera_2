@@ -13,22 +13,22 @@ class deleteActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
-                $id = request::getInstance()->getPost(tipo_insumoTableClass::getNameField(tipo_insumoTableClass::ID, TRUE));
+                $id = request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::ID, TRUE));
                 
                 $ids = array(
-                tipo_insumoTableClass::ID => $id
+                tipoInsumoTableClass::ID => $id
                 );
                 
-            tipo_insumoTableClass::delete($ids, FALSE);
+            tipoInsumoTableClass::delete($ids, FALSE);
             $this->arrayAjax = array(
                 'code' => 200,
                 'msg' => 'La Eliminacion de registro fue exitosa'
             );
-            
-            $this->defineView('delete', 'tipo_insumo', session::getInstance()->getFormatOutput());
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
+            bitacora::register('ELIMINAR', tipoInsumoTableClass::getNameTable());
+            $this->defineView('delete', 'tipo_insumo', session::getInstance()->getFormatOutput());
             } else 
-                 bitacora::register('ELIMINAR', tipo_insumoTableClass::getNameTable());
+                 
                 routing::getInstance()->redirect('tipo_insumo', 'index');
             }
          catch (PDOException $exc) {

@@ -23,6 +23,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
                 ciudadTableClass::update($ids, $data);
             }
+                session::getInstance()->setSuccess('Los datos fueron editados de forma exitosa');
                 routing::getInstance()->redirect('ciudad', 'index');
             
         } catch (PDOException $exc) {
