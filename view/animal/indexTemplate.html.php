@@ -35,8 +35,8 @@
                             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filters')?></h4>
                         </div>
                         <div class="modal-body">
-                            <?php view::includeHandlerMessage()?>
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>">
+                                <?php view::includeHandlerMessage('errorName')?>
                                 <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?> " >
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
@@ -44,12 +44,14 @@
                                         <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
                                     </div>
                                 </div>
+                                <?php view::includeHandlerMessage('errorDateCreate')?>
                                 <div class="form-group">
                                     <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
                                         <input type="date" name="filter[fechaCreacion1]" class="form-control" id="filterCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
                                     </div>
                                 </div>
+                                <?php view::includeHandlerMessage('errorDateEnd')?>
                                 <div class="form-group">
                                     <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
                                     <div class="col-sm-10">
@@ -240,3 +242,21 @@
     </div>
 </div>
 <!------------------------------------->
+<!-----------------Ventana Modal de Error Eliminar Individual----------------------->
+<div class="modal fade" id="myModalErrorDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><?php echo "Este es un mensaje de error "?>;
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------------------FIN-------------------------------------->

@@ -15,13 +15,6 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             if(request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
                 $id = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID, TRUE));
                 
-                if (validacion()) {
-                    $this->arrayAjax = array(
-                'code' => 500,
-                'msg' => 'FALLO'
-            );
-             session::getInstance()->setError('FALLO');       
-                } else {
                 
                 $ids = array(
                 animalTableClass::ID => $id
@@ -34,7 +27,7 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             );
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
             bitacora::register('Eliminar Individual', animalTableClass::getNameTable());
-                }
+                
             $this->defineView('delete', 'animal', session::getInstance()->getFormatOutput());
             } else {
                 routing::getInstance()->redirect('animal', 'index');
@@ -45,6 +38,7 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 'msg' => 'El dato esta siendo utilizado por otra tabla',
                 'modal' => 'myModalDelete'.$id
             );
+            $this->defineView('delete', 'animal', session::getInstance()->getFormatOutput());
 //            session::getInstance()->setFlash('exc', $exc);
 //            routing::getInstance()->forward('shfSecurity', 'exception');
         }

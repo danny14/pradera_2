@@ -73,18 +73,18 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
         
         if (strlen($nombre) > animalTableClass::NOMBRE_LENGTH) {
-            session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> animalTableClass::NOMBRE_LENGTH)));
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> animalTableClass::NOMBRE_LENGTH),'errorName'));
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
             session::getInstance()->setFlash('modalFilter', true);
                     
         }
-//
-//        if (!ereg("^[a-zA-Z0-9]{3,80}$", $nombre)) {
-//            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => animalTableClass::NOMBRE)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
-//        }
+
+        if (!ereg("^[a-zA-Z0-9]{3,80}$", $nombre)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => animalTableClass::NOMBRE)),'errorName');
+            $flag = TRUE;
+            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
+        }
 //        if($nombre === '' or $nombre === NULL){
 //            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::NOMBRE)));
 //            $flag = TRUE;
@@ -155,6 +155,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         /* _______________________________ */
         if($flag === TRUE){
             request::getInstance()->setMethod('GET'); //POST
+            session::getInstance()->setFlash('modalFilter', true);
             routing::getInstance()->forward('animal', 'index');
         }
     }

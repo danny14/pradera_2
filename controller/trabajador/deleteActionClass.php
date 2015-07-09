@@ -15,14 +15,6 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             if(request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
                 $id = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID, TRUE));
                 
-                if (validacion()) {
-                    $this->arrayAjax = array(
-                'code' => 500,
-                'msg' => 'FALLO'
-            );
-             session::getInstance()->setError('FALLO');       
-                } else {
-                
                 $ids = array(
                 trabajadorTableClass::ID => $id
                 );
@@ -34,14 +26,20 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             );
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
             bitacora::register('Eliminar Individual', trabajadorTableClass::getNameTable());
-                }
+
             $this->defineView('delete', 'trabajador', session::getInstance()->getFormatOutput());
             } else {
                 routing::getInstance()->redirect('trabajador', 'index');
             }
         } catch (PDOException $exc) {
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
+           $this->arrayAjax = array(
+                'code' => 500,
+                'msg' => 'El dato esta siendo utilizado por otra tabla',
+                'modal' => 'myModalDelete' . $id
+            );
+            $this->defineView('delete', 'trabajador', session::getInstance()->getFormatOutput());
+//            session::getInstance()->setFlash('exc', $exc);
+//            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

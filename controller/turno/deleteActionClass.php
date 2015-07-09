@@ -24,15 +24,18 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 ' code ' => 200,
                 ' msg ' => 'La Eliminacion de registro fue exitosa'
             );
-            $this->defineView('delete', 'raza', session::getInstance()->getFormatOutput());
+            $this->defineView('delete', 'turno', session::getInstance()->getFormatOutput());
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
             } else {
-                routing::getInstance()->redirect('raza', 'index');
+                routing::getInstance()->redirect('turno', 'index');
             }
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
+           $this->arrayAjax = array(
+                'code' => 500,
+                'msg' => 'El dato esta siendo utilizado por otra tabla',
+                'modal' => 'myModalDelete' . $id
+            );
+            $this->defineView('delete', 'turno', session::getInstance()->getFormatOutput());
         }
     }
 

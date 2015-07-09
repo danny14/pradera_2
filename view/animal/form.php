@@ -30,7 +30,7 @@
    <? php// echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) ?  request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) : '' ; ?>
    -->
     <!-- se inclule el mensaje de error puntual -->
-    <?php view::getMessageError('errorGenero') ?>
+    <?php //view::getMessageError('errorGenero') ?>
     <!-- FIN-->
     <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::GENERO, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?>">
     <label class="control-label" for="gender"><?php echo i18n::__('gender')?>:</label>

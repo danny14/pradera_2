@@ -142,3 +142,21 @@
     </div>
 </div>
 <!------------------------------------->
+<!-----------------Ventana Modal de Error Eliminar Individual----------------------->
+<div class="modal fade" id="myModalErrorDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><?php echo "Este es un mensaje de error "?>;
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------------------FIN-------------------------------------->
