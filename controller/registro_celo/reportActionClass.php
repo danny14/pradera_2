@@ -16,9 +16,12 @@ class reportActionClass extends controllerClass implements controllerActionInter
       if(request::getInstance()->hasPost('report')){
        $report = request::getInstance()->getPost('report');
        
-       if(isset($report['edad_animal']) and $report['edad_animal'] !== NULL and $report['edad_animal'] !== ''){
-       $where[registroCeloTableClass::EDAD_ANIMAL] = $report['edad_animal'];  
+       if(isset($filter['Animal']) and $report['Animal'] !== NULL and $report['Animal'] !== ''){
+       $where[registroCeloTableClass::ID_ANIMAL] = $report['Animal'];  
        }
+        if(isset($filter['Fecha']) and $filter['Fecha'] !== NULL and $filter['Fecha'] !== ''){
+                    $where[registroCeloTableClass::FECHA] = $filter['Fecha'];
+                }
 //       if(isset($report['fechaCreacion1']) and $report['fechaCreacion1'] !== NULL and $report['fechaCreacion1'] !== '' and isset($report['fechaCreacion2']) and $report['fechaCreacion2'] !== NULL and $report['fechaCreacion2'] !== ''){
 //       $where[registroCeloTableClass::FECHA] = array(
 //         $report['fechaCreacion1'],

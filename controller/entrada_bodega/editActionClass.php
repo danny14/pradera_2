@@ -11,27 +11,44 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(entradaBodegaTableClass::ID)){
+            if(request::getInstance()->hasGet(entradaBodegaTableClass::ID)){
                 $fields= array(
                 entradaBodegaTableClass::ID,
                 entradaBodegaTableClass::FECHA,
                 entradaBodegaTableClass::HORA,
-                entradaBodegaTableClass::ID_TIPO_DOC,
                 entradaBodegaTableClass::ID_TRABAJADOR,
-                entradaBodegaTableClass::ID_PROVEEDOR
+                entradaBodegaTableClass::ID_PROVEEDOR,
                 );
                 $where = array(
-                    entradaBodegaTableClass::ID => request::getInstance()->getRequest(entradaBodegaTableClass::ID)
+                    entradaBodegaTableClass::ID => request::getInstance()->getGet(entradaBodegaTableClass::ID)
                 );
-                $this->objentradaBodega = entradaBodegaTableClass::getAll($fields, false , NULL, NULL, NULL , NULL, $where);
+                $this->objEntradaBodega = entradaBodegaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
+                
+                $fields = array(
+                trabajadorTableClass::ID,
+                trabajadorTableClass::NOMBRE
+                );
+//                $where = array(
+//                razaTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_RAZA)
+//                );
+                $this->objTrabajador = trabajadorTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
+                
+                $fields = array(
+                proveedorTableClass::ID,
+                proveedorTableClass::NOMBRE
+                );
+//                $where = array(
+//                estadoTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_ESTADO)
+//                );
+                
+                $this->objProveedor = proveedorTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
                 $this->defineView('edit', 'entrada_bodega', session::getInstance()->getFormatOutput());
             }else{
                 routing::getInstance()->redirect('entrada_bodega', 'index');
             }
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

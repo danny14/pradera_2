@@ -79,6 +79,35 @@ credencial:
     credentials:
       - [admin]
 ##---------- ENTRADA BODEGA -------------##
+entrada_bodega:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
 ##---------- ESTADO ---------------------##
 ##---------- FECUNDADOR -----------------##
 fecundador:

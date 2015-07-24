@@ -51,6 +51,26 @@
           </ul>
         </li>
       </ul>
+<!-- Modulo Proveedor -->
+       <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Proveedor <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('proveedor', 'index')?>">Proveedor</a></li>
+          </ul>
+        </li>
+      </ul>
+        <!-- Fin Modulo -->
+<!-- Modulo Ordeño -->
+       <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ordeño <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('ordenno', 'index')?>">Ordeño</a></li>
+          </ul>
+        </li>
+      </ul>
+        <!-- Fin Modulo -->
         <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Registro Celo <span class="caret"></span></a>

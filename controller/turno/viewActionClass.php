@@ -11,18 +11,18 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
 
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(razaTableClass::ID)){
+            if(request::getInstance()->hasRequest(turnoTableClass::ID)){
                 $fields= array(
-                razaTableClass::ID,
-                razaTableClass::DESCRIPCION,
+                turnoTableClass::ID,
+                turnoTableClass::DESCRIPCION,
                 );
                 $where = array(
-                    razaTableClass::ID => request::getInstance()->getRequest(razaTableClass::ID)
+                    turnoTableClass::ID => request::getInstance()->getRequest(turnoTableClass::ID)
                 );
-                $this->objRaza = razaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
-                $this->defineView('view', 'raza', session::getInstance()->getFormatOutput());
+                $this->objTurno = turnoTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
+                $this->defineView('view', 'turno', session::getInstance()->getFormatOutput());
             }else{
-                routing::getInstance()->redirect('raza', 'index');
+                routing::getInstance()->redirect('turno', 'index');
             }
         } catch (PDOException $exc) {
             echo $exc->getMessage();

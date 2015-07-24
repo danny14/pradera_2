@@ -6,6 +6,8 @@
 <?php $fecha = registroCeloTableClass::FECHA?>
 <?php $id_fecundador = registroCeloTableClass::ID_FECUNDADOR;?>
 <?php $id_animal = registroCeloTableClass::ID_ANIMAL?>
+<?php $animal_id = animalTableClass::ID ;?>
+<?php $nombre = animalTableClass::NOMBRE ;?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
@@ -31,18 +33,23 @@
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('registro_celo', 'index')?>">
                                 
                                 <div class="form-group">
-                                    <label for="filterDate" class="col-sm-2 control-label"><?php echo i18n::__('date')?></label>
+                                    <label for="filterFecha" class="col-sm-2 control-label"><?php echo i18n::__('date')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="filter[fecha]" class="form-control" id="filterFecha" placeholder="<?php echo i18n::__('date')?>">
+                                        <input type="date" name="filter[Fecha]" class="form-control" id="filter[Fecha]" placeholder="<?php echo i18n::__('date')?>">
                                     </div>
                                 </div>
-<!--                                -->
-                                    <div class="form-group">
-                                    <label for="filterAge_animal" class="col-sm-2 control-label"><?php echo i18n::__('age_animal')?></label>
-                                    <div class="col-sm-10">
-                                      <input type="number" name="filter[edad_animal]" class="form-control" id="filterEdad_animal" placeholder="<?php echo i18n::__('age_animal')?>">
-                                    </div>
-                                </div>
+                               
+                                    <div class="form-group"> <!--filtro para llamar foranea-->
+                            <label for="filterAnimal" class="col-sm-2 control-label"><?php echo i18n::__('animal') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterAnimal" name="filter[Animal]">
+                                    <option value=""><?php echo i18n::__('animal') ?></option>
+                                     <?php foreach ($objAnimal as $nombre_animal): ?>
+                                        <option value="<?php echo $nombre_animal->$animal_id ?>"><?php echo $nombre_animal->$nombre ?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div> <!--fin de filtro-->
 
                             </form>
                         </div>
@@ -73,12 +80,17 @@
                                     </div>
                                 </div>
                                 
-                              <div class="form-group">
-                                    <label for="reportAge_animal" class="col-sm-2 control-label"><?php echo i18n::__('age_animal')?></label>
-                                    <div class="col-sm-10">
-                                      <input type="number" name="report[edad_animal]" class="form-control" id="reportEdad_animal" placeholder="<?php echo i18n::__('age_animal')?>">
-                                    </div>
-                                </div>
+                              <div class="form-group"> <!--filtro para llamar foranea-->
+                            <label for="filterAnimal" class="col-sm-2 control-label"><?php echo i18n::__('animal') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterAnimal" name="filter[Animal]">
+                                    <option value=""><?php echo i18n::__('animal') ?></option>
+                                     <?php foreach ($objAnimal as $nombre_animal): ?>
+                                        <option value="<?php echo $nombre_animal->$animal_id ?>"><?php echo $nombre_animal->$nombre ?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div> <!--fin de filtro-->
                             </form>
                         </div>
                         <div class="modal-footer">

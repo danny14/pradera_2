@@ -36,7 +36,7 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>">
-                                <?php view::includeHandlerMessage('errorName')?>
+                                <?php view::getMessageError('errorName')?>
                                 <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?> " >
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
@@ -44,14 +44,14 @@
                                         <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
                                     </div>
                                 </div>
-                                <?php view::includeHandlerMessage('errorDateCreate')?>
+                                <?php view::getMessageError('errorDateCreate')?>
                                 <div class="form-group">
                                     <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
                                         <input type="date" name="filter[fechaCreacion1]" class="form-control" id="filterCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
                                     </div>
                                 </div>
-                                <?php view::includeHandlerMessage('errorDateEnd')?>
+                                <?php view::getMessageError('errorDateEnd')?>
                                 <div class="form-group">
                                     <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
                                     <div class="col-sm-10">
@@ -121,8 +121,12 @@
 
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
                 <div class="botones">
+                    <!-- Permisos para los diferentes Usuarios -->
+                    <?php if(session::getInstance()->hasCredential('admin')):?>
                     <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'insert') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
                     <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
+                    <?php endif;?>
+                    <!-- Fin -->
                     <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
                     <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
                     <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalFILTROSREPORTE" ><i class="fa fa-file-pdf-o"><?php echo i18n::__('report')?></i></a>
@@ -160,8 +164,12 @@
                                 <td>
                                     <div class="btn btn-group btn-xs">
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('animal','view', array(animalTableClass::ID => $animal->$id)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                       <!-- PErmisos para los Usuarios-->
+                                       <?php if(session::getInstance()->hasCredential('admin')) : ?>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('animal','edit', array(animalTableClass::ID => $animal->$id, animalTableClass::ID_RAZA => $animal->$id_raza, animalTableClass::ID_ESTADO => $animal->$id_estado)) ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                         <a data-toggle="modal" data-target="#myModalDelete<?php echo $animal->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <?php endif;?>
+                                        <!-- -->
                                     </div>
                                 </td>
                             </tr>

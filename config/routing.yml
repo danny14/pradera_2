@@ -326,6 +326,93 @@ credencial_view:
   load:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+##------------------------Detalle Entrada ------------------##
+detalleEntrada_index:
+  url:    /detalle_entrada/index
+  param:  { module: detalle_entrada, action: index, format: html }
+  load:
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+detalleEntrada_insert:
+  url:    /detalle_entrada/insertar
+  param:  { module: detalle_entrada, action: insert, format: html }
+  load:
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    
+detalleEntrada_create:
+  url:    /detalle_entrada/crear
+  param:  { module: detalle_entrada, action: create, format: html }
+  load:
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+detalleEntrada_edit:
+  url:    /detalle_entrada/editar
+  param:  { module: detalle_entrada, action: edit, format: html }
+  load:
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+detalleEntrada_update:
+  url:    /detalle_entrada/actualizar
+  param:  { module: detalle_entrada, action: update, format: html }
+  load:
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+detalleEntrada_delete:
+  url:    /detalle_entrada/eliminar
+  param:  { module: detalle_entrada, action: delete, format: json }
+  load:
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+detalleEntrada_deleteSelect:
+  url:    /detalle_entrada/eliminarSeleccion
+  param:  { module: detalla_entrada, action: deleteSelect, format: json }
+  load:
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+detalleEntrada_deleteFilters:
+  url:    /detalle_entrada/borrar_filtros
+  param:  { module: detalle_entrada, action: deleteFilters, format: html }
+#  load:
+#    - model/base/animalBaseTableClass.php
+#    - model/animalTableClass.php
+
+detalleEntrada_view:
+  url:    /detalle_entrada/vista
+  param:  { module: detalle_entrada, action: view, format: html }
+  load:
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+#    - model/base/razaBaseTableClass.php
+#    - model/razaTableClass.php
+#    - model/base/estadoBaseTableClass.php
+#    - model/estadoTableClass.php
+
+detalleEntrada_report:
+  url:    /detalle_entrada/reporte
+  param:  { module: detalle_entrada, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+#    - model/base/razaBaseTableClass.php
+#    - model/razaTableClass.php
+#    - model/base/estadoBaseTableClass.php
+#    - model/estadoTableClass.php
+##------------------------Detalle Ordeño ------------------##
+##------------------------Detalle Salida ------------------##
 ##------------------------Entrada Bodega--------------------##
 entradaBodega_index:
   url:    /entrada_bodega/index
@@ -333,6 +420,12 @@ entradaBodega_index:
   load:
     - model/base/entradaBodegaBaseTableClass.php
     - model/entradaBodegaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
 
 entradaBodega_insert:
   url:    /entrada_bodega/insertar
@@ -340,6 +433,10 @@ entradaBodega_insert:
   load:
     - model/base/entradaBodegaBaseTableClass.php
     - model/entradaBodegaTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 entradaBodega_create:
   url:    /entrada_bodega/crear
@@ -354,6 +451,10 @@ entradaBodega_edit:
   load:
     - model/base/entradaBodegaBaseTableClass.php
     - model/entradaBodegaTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
 
 entradaBodega_update:
   url:    /entrada_bodega/actualizar
@@ -362,6 +463,56 @@ entradaBodega_update:
     - model/base/entradaBodegaBaseTableClass.php
     - model/entradaBodegaTableClass.php
 
+entradaBodega_delete:
+  url:    /entrada_bodega/eliminar
+  param:  { module: entrada_bodega, action: delete, format: json }
+  load:
+    - model/base/entradaBodegaBaseTableClass.php
+    - model/entradaBodegaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+entradaBodega_deleteSelect:
+  url:    /entrada_bodega/eliminarSeleccion
+  param:  { module: entrada_bodega, action: deleteSelect, format: json }
+  load:
+    - model/base/entradaBodegaBaseTableClass.php
+    - model/entradaBodegaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+entradaBodega_deleteFilters:
+  url:    /entrada_bodega/borrar_filtros
+  param:  { module: entrada_bodega, action: deleteFilters, format: html }
+#  load:
+#    - model/base/animalBaseTableClass.php
+#    - model/animalTableClass.php
+
+entradaBodega_view:
+  url:    /entrada_bodega/vista
+  param:  { module: entrada_bodega, action: view, format: html }
+  load:
+    - model/base/entradaBodegaBaseTableClass.php
+    - model/entradaBodegaTableClass.php
+#    - model/base/razaBaseTableClass.php
+#    - model/razaTableClass.php
+#    - model/base/estadoBaseTableClass.php
+#    - model/estadoTableClass.php
+
+entradaBodega_report:
+  url:    /entrada_bodega/reporte
+  param:  { module: entrada_bodega, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/entradaBodegaBaseTableClass.php
+    - model/entradaBodegaTableClass.php
+#    - model/base/razaBaseTableClass.php
+#    - model/razaTableClass.php
+#    - model/base/estadoBaseTableClass.php
+#    - model/estadoTableClass.php
+    
 
 ##------------------------Estado-----------------------------##
 estado_index:

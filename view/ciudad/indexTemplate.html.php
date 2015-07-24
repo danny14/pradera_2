@@ -1,6 +1,7 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
 <?php use mvc\view\viewClass as view;?>
+<?php use mvc\session\sessionClass as session?>
 <?php $id = ciudadTableClass::ID?>
 <?php $descripcion = ciudadTableClass::DESCRIPCION?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
@@ -47,8 +48,12 @@
             <!-- FIN FORMULARIO IDIOMA -->
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('ciudad', 'deleteSelect') ?>" method="POST">
                 <div class="botones">
+                <!-- Permisos para los diferentes Usuarios -->
+                <?php if(session::getInstance()->hasCredential('admin')):?>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('ciudad', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
+                <?php endif;?>
+                <!-- FIN -->
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
                 <a class="btn btn-default btn-xs" href="<?php // routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
             </div>

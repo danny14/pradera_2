@@ -21,8 +21,65 @@ dictionary:
     description:          Descripcion       
     start:                Inicio
     end:                  Fin
-    city:                 Ciudad
+#-------  Animal ------------------#
     animal:               Animal
+    age_animal:           Edad Animal
+    number_births:        Numero Partos
+    id_raza:              ID Raza
+    id_status:            ID Estado
+    selectRaza:           Seleccione la raza
+    selectEstado:         Seleccione el estado
+    enterNumberBirths:    Ingrese el numero de partos
+#-------  Bitacora ----------------#
+    logbook:              Bitacora
+#-------- Ciudad -----------------#
+    city:                 Ciudad
+#-------- Credencial -------------#
+    credential:           Credencial
+#-------- Entrada Bodega ---------#
+    entrance_cellar:      Entrada Bodega
+    # toca mirar cual se utiliza si el entrance cellar o el entry_cellar
+    entry_cellar:         Entrada Bodega
+    time:                 Hora
+    detail:               Ver Detalle
+#-------- Estado -----------------#
+    status:               Estado
+#-------- Fecudandor -------------#
+    fecundador:           Fecundador
+#-------- Insumo -----------------#
+    input:                Insumo
+    id_type_input:        ID Tipo Insumo
+#-------- Inventario -------------#
+#-------- Ordeño -----------------#
+    ordenno:              Ordeño
+    date_ordenno:         Fecha Ordeño
+    quantity_milk:        Cantidad de Leche
+    enterQuantityMilk:    Ingrese la Cantidad de Leche|
+#-------- Pago Trabajador --------#
+#-------- Proveeedor -------------#
+    provider:             Proveedor
+#-------- Raza -------------------#
+    breed:                Raza
+#-------- Registro Celo ----------#
+#-------- Registro Vacunacion ----#
+#-------- Reporte Parto ----------#
+#-------- Salida Bodega ----------#
+#-------- Tipo Insumo ------------#
+    type_input:           Tipo Insumo
+    input_type:           Tipo Insumo
+#-------- Trabajador -------------#
+    employee:             Trabajador
+    id_credential:        ID Credencial
+    id_turn:              ID Turno
+    selectTurn:           Seleccione el Turno
+    selectCredential:     Seleccione la Credencial
+#-------- Turno ------------------#
+    turn:                 Turno
+    start_turn:           Inicio Turno
+    end_turn:             Fin Turno
+#-------- Usuario ----------------#
+#-------- Usuario Credencial -----#
+
     name:                 Nombre
     last_name:            Apellido
     address:              Direccion
@@ -31,45 +88,37 @@ dictionary:
     gender:               Genero
     age:                  Edad
     weight:               Peso
-    ordenno:              Ordeño
-    type_input:           Tipo Insumo
+
+
     date_entry:           Fecha Ingreso
     date_create:          Fecha Fabricacion
     date_expiration:      Fecha de Vencimiento
-    date_ordenno:         Fecha Ordeño
-    quantity_milk:        Cantidad de Leche
-    input:                Insumo
-    number_births:        Numero Partos
-    id_credential:        ID Credencial
-    id_turn:              ID Turno
-    id_raza:              ID Raza
-    id_status:            ID Estado
-    id_type_doc:          ID Tipo Documento
+
+
+
+
     id_employee:          ID Trabajador
     id_provider:          ID Proveedor
     id_city:              ID Ciudad
-    id_type_input:        ID Tipo Insumo
-    status:               Estado
+
+
     new:                  Nuevo
     edit:                 Editar
     delete:               Borrar
-    provider:             Proveedor
-    breed:                Raza
-    logbook:              Bitacora
+
+
+
     record:               Registro
     date:                 Fecha
     observation:          Observacion
     table:                Tabla
-    credential:           Credencial
-    entrance_cellar:      Entrada Bodega
-    turn:                 Turno
-    start_turn:           Inicio Turno
-    end_turn:             Fin Turno
-    input_type:           Tipo Insumo
-    employee:             Trabajador
-    fecundador:           Fecundador
-    provider:             Proveedor
-    animal:               Animal
+
+
+
+
+
+
+    
     return:               Volver
     filters:              Filtros
     filter:               Filtrar
@@ -82,7 +131,7 @@ dictionary:
     close:                Cerrar
     logout:               Cerrar Sesion
     register_celo:        Registro Celo
-    age_animal:           Edad Animal
+
     id_fecundador:        Id fecundador 
     id_animal:            Id Animal
     return:               Volver
@@ -95,18 +144,13 @@ dictionary:
     enterAddress:         Ingrese la Direccion
     enterMail:            Ingrese el Correo
     enterObservation:     Ingrese la Observacion
-    enterNumberBirths:    Ingrese el numero de partos
-    enterQuantityMilk:    Ingrese la Cantidad de Leche
+    enterTime:            Ingrese la Hora
     enterDateCreate:      Ingrese la fecha de Fabricacion
     enterDateExpiration:  Ingrese la fecha de Vencimiento
     enterValue:           Ingrese el Valor
-    selectTurn:           Seleccione el Turno
-    selectCredential:     Seleccione la Credencial
     selectFecundador:     Seleccione el fecundador
     selectAnimal:         Seleccione el Animal
     selectCity:           Seleccione la Ciudad
-    selectRaza:           Seleccione la raza
-    selectEstado:         Seleccione el estado
     selectEmployee:       Seleccione el Empleado
     selectTypeInput:      Seleccione el Tipo de Insumo
     generate report:      Generar Reporte

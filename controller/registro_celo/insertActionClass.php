@@ -19,7 +19,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
                 $this->registro_celo = session::getInstance()->getAttribute('Form_' . registroCeloTableClass::getNameTable());
                 
             }
-             $fields = array(
+             $fieldsAnimal = array(
             animalTableClass::ID,
             animalTableClass::NOMBRE,
             animalTableClass::GENERO,
@@ -30,12 +30,12 @@ class insertActionClass extends controllerClass implements controllerActionInter
             animalTableClass::ID_RAZA,
             animalTableClass::ID_ESTADO,
             );
-            $orderBy = array(
+            $orderByAnimal = array(
             animalTableClass::NOMBRE
             );
-            $this->objAnimal = animalTableClass::getAll($fields, FALSE , $orderBy,'ASC');
+            $this->objAnimal = animalTableClass::getAll($fieldsAnimal, FALSE , $orderByAnimal,'ASC');
             
-            $fields = array(
+            $fieldsFecundador = array(
             fecundadorTableClass::ID,
             fecundadorTableClass::NOMBRE,
             fecundadorTableClass::EDAD,
@@ -44,10 +44,10 @@ class insertActionClass extends controllerClass implements controllerActionInter
             fecundadorTableClass::ID_RAZA,
             
             );
-            $orderBy = array(
+            $orderByFecundador = array(
             fecundadorTableClass::NOMBRE
             );
-            $this->objFecundador = fecundadorTableClass::getAll($fields, FALSE, $orderBy,'ASC');
+            $this->objFecundador = fecundadorTableClass::getAll($fieldsFecundador, FALSE, $orderByFecundador,'ASC');
             $this->defineView('insert', 'registro_celo',  session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();

@@ -23,7 +23,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             }
             $fields = array(
             turnoTableClass::ID,
-            turnoTableClass::DESCRIPCION
+            turnoTableClass::DESCRIPCION,
+            turnoTableClass::INICIO_TURNO,
+            turnoTableClass::FIN_TURNO
             );
             $orderBy = array(
             turnoTableClass::ID

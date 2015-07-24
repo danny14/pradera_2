@@ -26,9 +26,26 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
                 routing::getInstance()->redirect('raza', 'index');
             }
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
+            switch ($exc->getCode()) {
+                // 42601
+                case 23503:
+                    session::getInstance()->setError(i18n::__('23503'));
+                    routing::getInstance()->redirect('turno', 'index');
+                    break;
+                case 23505:
+                    session::getInstance()->setError(i18n::__('23505'));
+                    routing::getInstance()->redirect('turno', 'index');
+//                    session::getInstance()->setError($exc->getMessage());
+                break;
+                case 42601:
+                    session::getInstance()->setError(i18n::__('42601'));
+                    routing::getInstance()->redirect('turno', 'index');
+                    break;
+                default :
+                    session::getInstance()->setError($exc->getMessage());
+                    routing::getInstance()->redirect('turno', 'index');
+                break;
+            }
         }
     }
 

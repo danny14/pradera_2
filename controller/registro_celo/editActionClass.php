@@ -24,7 +24,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                     registroCeloTableClass::ID => request::getInstance()->getRequest(registroCeloTableClass::ID)
                 );
                 $this->objRegistroCelo = registroCeloTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
-                $fields = array(
+                $fieldsAnimal = array(
                 animalTableClass::ID,
                 animalTableClass::NOMBRE,
                 animalTableClass::GENERO,
@@ -38,9 +38,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 //                $where = array(
 //                animalTableClass::ID => request::getInstance()->getRequest(registroCeloTableClass::ID_ANIMAL)
 //                );
-                $this->objAnimal = animalTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
+                $this->objAnimal = animalTableClass::getAll($fieldsAnimal, FALSE , NULL, NULL, NULL , NULL, NULL);
                 
-                $fields = array(
+                $fieldsFecundador = array(
                  
                 fecundadorTableClass::ID,
                 fecundadorTableClass::NOMBRE,
@@ -55,7 +55,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 //                fecundadorTableClass::ID => request::getInstance()->getRequest(registroCeloTableClass::ID_FECUNDADOR)
 //                );
                 
-                $this->objFecundador = fecundadorTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
+                $this->objFecundador = fecundadorTableClass::getAll($fieldsFecundador, FALSE , NULL, NULL, NULL , NULL, NULL);
                 $this->defineView('edit', 'registro_celo', session::getInstance()->getFormatOutput());
             }else{
                 routing::getInstance()->redirect('registro_celo', 'index');

@@ -6,9 +6,10 @@
 <?php $id_fecundador = registroCeloTableClass::ID_FECUNDADOR ;?>
 <?php $id_animal = registroCeloTableClass::ID_ANIMAL ;?>
 <?php $animal_id = animalTableClass::ID;?>
+<?php $nombreAnimal = animalTableClass::NOMBRE;?>
 <?php $fecundador_id = fecundadorTableClass::ID;?>
 <?php $nombrefecundador = fecundadorTableClass::NOMBRE;?>
-<?php $nombreAnimal = animalTableClass::NOMBRE;?>
+
 
 <form method="POST" action="<?php echo routing::getInstance()->getUrlWeb('registro_celo', ((isset($objRegistroCelo)) ? 'update' : 'create' ))?>">
     <?php if (isset($objRegistroCelo)== true):?>

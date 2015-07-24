@@ -44,7 +44,7 @@ namespace mvc\config {
     private static $default_action_permission;
     
     public static function getSohoFrameworkVersion() {
-      return '1.0.11';
+      return '1.0.12';
     }
 
     /**
@@ -447,7 +447,7 @@ namespace mvc\config {
     public static function setDefaultActionPermission($default_action_permission) {
       self::$default_action_permission = $default_action_permission;
     }
-
+  
   }
 
 }
