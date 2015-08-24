@@ -13,7 +13,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
           /**
              * Si nos llego los datos desde el create 
              * entonces pasamos los datos al insertTemplate
-             * con el objeto llamado REPORTE_PARTO 
+             * con el objeto llamado PAGO TRABAJADORES 
              */
             if(session::getInstance()->hasAttribute('Form_' . pagoTrabajadoresTableClass::getNameTable())){
                 $this->pago_trabajadores = session::getInstance()->getAttribute('Form_' . pagoTrabajadoresTableClass::getNameTable());

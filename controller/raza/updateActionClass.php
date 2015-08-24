@@ -11,8 +11,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $id = request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::ID,true));
-                $descripcion = request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::DESCRIPCION ,true));
+                $id = trim(request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::ID,true)));
+                $descripcion = trim(request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::DESCRIPCION ,true)));
                 
                 $ids= array(
                 razaTableClass::ID => $id
@@ -38,18 +38,22 @@ class updateActionClass extends controllerClass implements controllerActionInter
         /*
          * Falta Validar Caracteres Especiales xD
          */
-        if (strlen($descripcion) > razaTableClass::DESCRIPCION_LENGTH) {
-            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => razaTableClass::NOMBRE_LENGTH)));
+        if ($descripcion === '' or $descripcion === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => razaTableClass::DESCRIPCION)).'errorDescripcion');
             $flag = TRUE;
             session::getInstance()->setFlash(razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE), TRUE);
-        }
-        if ($descripcion === '' or $descripcion === NULL) {
-            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => razaTableClass::DESCRIPCION)));
+        }else if (strlen($descripcion) > razaTableClass::DESCRIPCION_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => razaTableClass::NOMBRE_LENGTH)),'errorDescripcion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE), TRUE);
+        }else if (!ereg("^[a-zA-Z ]{3,140}$", $descripcion)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => razaTableClass::DESCRIPCION)),'errorDescripcion');
             $flag = TRUE;
             session::getInstance()->setFlash(razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE), TRUE);
         }
         if ($flag === TRUE) {
             request::getInstance()->setMethod('GET'); //POST
+            request::getInstance()->addParamGet(array(razaTableClass::ID => request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::ID,true))));
             routing::getInstance()->forward('raza', 'insert');
         }
     }

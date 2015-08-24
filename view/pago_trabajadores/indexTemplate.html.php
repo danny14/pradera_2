@@ -9,12 +9,12 @@
 <?php $id_trabajador = pagoTrabajadoresTableClass::ID_TRABAJADOR ;?>
 <?php $horas_extras = pagoTrabajadoresTableClass::HORAS_EXTRAS ;?>
 <?php $cantidad_dias = pagoTrabajadoresTableClass::CANTIDAD_DIAS ;?>
-<?php $Trabajador_id = trabajadorTableClass::ID ;?>
+<?php $trabajador_id = trabajadorTableClass::ID ;?>
 <?php $nombre = trabajadorTableClass::NOMBRE ;?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
-    <h1><?php echo i18n::__('pago_trabajadores') ?></h1>
+    <h1><?php echo i18n::__('payment of employee') ?></h1>
     </div>
     <div class="row">
         <header>
@@ -36,23 +36,23 @@
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'index')?>">
                                 
                                 <div class="form-group">
-                                    <label for="filterDate_XXXXX" class="col-sm-2 control-label"><?php echo i18n::__('date_XXXXX')?></label>
+                                    <label for="filterStart_date" class="col-sm-2 control-label"><?php echo i18n::__('start_date')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="filter[fecha_inicio]" class="form-control" id="filterFecha" placeholder="<?php echo i18n::__('date_XXXXX')?>">
+                                        <input type="date" name="filter[fecha_inicio]" class="form-control" id="filterFecha" placeholder="<?php echo i18n::__('start_date')?>">
                                     </div>
                                 </div>
                               
                               <div class="form-group">
-                                    <label for="filterCantidad_dias" class="col-sm-2 control-label"><?php echo i18n::__('XXXXXX')?></label>
+                                    <label for="filterNumber of days" class="col-sm-2 control-label"><?php echo i18n::__('number of days')?></label>
                                     <div class="col-sm-10">
-                                      <input type="number" name="filter[Cantidad_dias]" class="form-control" id="filter[Cantidad_dias]" placeholder="<?php echo i18n::__('XXXXX')?>">
+                                      <input type="number" name="filter[Cantidad_dias]" class="form-control" id="filter[Cantidad_dias]" placeholder="<?php echo i18n::__('number of days')?>">
                                     </div>
                                 </div>
                           <div class="form-group"> <!--filtro para llamar foranea-->
-                            <label for="filterTrabajador" class="col-sm-2 control-label"><?php echo i18n::__('trabajador') ?></label>
+                            <label for="filterEmployee" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTrabajador" name="filter[Trabajador]">
-                                    <option value=""><?php echo i18n::__('trabajador') ?></option>
+                                    <option value=""><?php echo i18n::__('selectTrabajador') ?></option>
                                      <?php foreach ($objTrabajador as $nombre_trabajador): ?>
                                         <option value="<?php echo $nombre_trabajador->$trabajador_id ?>"><?php echo $nombre_trabajador->$nombre ?></option>
                                      <?php endforeach; ?>
@@ -83,23 +83,23 @@
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="reportForm" action="<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'report')?>">
                              <div class="form-group">
-                                    <label for="filterDate_XXXXX" class="col-sm-2 control-label"><?php echo i18n::__('date_XXXXX')?></label>
+                                    <label for="filterStart_date" class="col-sm-2 control-label"><?php echo i18n::__('start_date')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="filter[fecha_inicio]" class="form-control" id="filterFecha" placeholder="<?php echo i18n::__('date_XXXXX')?>">
+                                        <input type="date" name="filter[fecha_inicio]" class="form-control" id="filterFecha" placeholder="<?php echo i18n::__('start_date')?>">
                                     </div>
                                 </div>
                               
                               <div class="form-group">
-                                    <label for="filterCantidad_dias" class="col-sm-2 control-label"><?php echo i18n::__('XXXXXX')?></label>
+                                    <label for="filterNumber of days" class="col-sm-2 control-label"><?php echo i18n::__('number of days')?></label>
                                     <div class="col-sm-10">
-                                      <input type="number" name="filter[Cantidad_dias]" class="form-control" id="filter[Cantidad_dias]" placeholder="<?php echo i18n::__('XXXXX')?>">
+                                      <input type="number" name="filter[Cantidad_dias]" class="form-control" id="filter[Cantidad_dias]" placeholder="<?php echo i18n::__('number of days')?>">
                                     </div>
                                 </div>
                           <div class="form-group"> <!--filtro para llamar foranea-->
-                            <label for="filterTrabajador" class="col-sm-2 control-label"><?php echo i18n::__('trabajador') ?></label>
+                            <label for="filterEmployee" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTrabajador" name="filter[Trabajador]">
-                                    <option value=""><?php echo i18n::__('trabajador') ?></option>
+                                    <option value=""><?php echo i18n::__('selectTrabajador') ?></option>
                                      <?php foreach ($objTrabajador as $nombre_trabajador): ?>
                                         <option value="<?php echo $nombre_trabajador->$trabajador_id ?>"><?php echo $nombre_trabajador->$nombre ?></option>
                                      <?php endforeach; ?>
@@ -117,6 +117,9 @@
                 </div>
             </div>
             <!--Fin Ventana Modal Reportes-->
+            <!--Formulario para el Cambio de Idiomas-->
+            <?php view::includePartial('animal/formTraductor')?>
+            <!-- Fin del Formulario de Cambio de Idiomas-->
             
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'deleteSelect') ?>" method="POST">
                 <div>
@@ -132,13 +135,13 @@
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
                             <th><?php echo i18n::__('id') ?></th>
-                            <th><?php echo i18n::__('date_XXXXX') ?></th>
-                            <th><?php echo i18n::__('XXXXX') ?></th>
-                            <th><?php echo i18n::__('XXXXXX') ?></th>
-                            <th><?php echo i18n::__('XXXXX') ?></th>
-                            <th><?php echo i18n::__('XXXXX') ?></th>
-                            <th><?php echo i18n::__('XXXXX') ?></th>
-                            <th><?php echo i18n::__('XXXXX') ?></th>
+                            <th><?php echo i18n::__('start_date') ?></th>
+                            <th><?php echo i18n::__('end_date') ?></th>
+                            <th><?php echo i18n::__('subtotal') ?></th>
+                            <th><?php echo i18n::__('time_value') ?></th>
+                            <th><?php echo i18n::__('id_employee') ?></th>
+                            <th><?php echo i18n::__('extra_time') ?></th>
+                            <th><?php echo i18n::__('number of days') ?></th>
                          
                             <th><?php echo i18n::__('action') ?></th>
                         </tr>
@@ -152,8 +155,8 @@
                                 <td><?php echo $pago_trabajadores->$fecha_fin ?></td>
                                 <td><?php echo $pago_trabajadores->$subtotal ?></td>
                                 <td><?php echo $pago_trabajadores->$valor_hora ?></td>
-                                <td><?php echo $pago_trabajadores->$cantidad_dias?></td>
                                 <td><?php echo pagoTrabajadoresTableClass::getNameFieldForaneaTrabajador($pago_trabajadores->$id_trabajador) ?></td>
+                                <td><?php echo $pago_trabajadores->$cantidad_dias?></td>
                                 <td><?php echo $pago_trabajadores->$horas_extras ?></td>
                                 
                                 <td>
@@ -177,7 +180,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $pago_trabajadores->$id ?>, '<?php echo pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $pago_trabajadores->$id ?>, '<?php echo pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'delete') ?>','<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

@@ -2,6 +2,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $id = ordennoTableClass::ID ?>
 <?php $fecha_ordenno =ordennoTableClass::FECHA_ORDENNO ?>
 <?php $cantidad_leche =ordennoTableClass::CANTIDAD_LECHE ?>
@@ -52,6 +53,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             
              <!-- Ventana Modal para los reportes -->
@@ -96,13 +104,13 @@
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
                     <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenno', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
                     <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalREPORTES" ><i class="fa fa-file-pdf-o"> <?php echo i18n::__('report')?></i></a>
+                    <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalGrafica" ><i class="fa fa-file-pdf-o"> Graficas </i></a>
             </div>
             <?php view::includeHandlerMessage() ?>
             <table class="table table-bordered table-responsive table-striped">
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"</th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('date_ordenno')?></th>
                         <th><?php echo i18n::__('quantity_milk')?></th>
                         <th><?php echo i18n::__('id_employee')?></th>
@@ -115,7 +123,6 @@
                     <?php foreach ($objOrdenno as $ordenno): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $ordenno->$id?>"></td>
-                        <td><?php echo $ordenno->$id?></td>
                         <td><?php echo $ordenno->$fecha_ordenno?></td>
                         <td><?php echo $ordenno->$cantidad_leche?></td>
                         <td><?php echo $ordenno->$id_trabajador?></td>
@@ -203,5 +210,35 @@
             </div>
         </div>
     </div>
+</div>
+<!-----------------------------FIN-------------------------------------->
+<!----------------- Ventana Modal  para el Grafico --------------------->
+<div class="modal fade" id="myModalGrafica" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Grafica</h4>
+      </div>
+      <div class="modal-body">
+          <form  id="graficaForm" class="form-group" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('ordenno', 'grafica')?>">
+              <div class="form-group" >
+                  <label class="control-label" for="start_date"><?php echo i18n::__('start_date') ?>:</label> 
+                  <input name="start_date" class="form-control" type="date" value="" min="2014-01-01" step="1" required placeholder="<?php echo i18n::__('enterDateStart') ?>">
+                  <?php if (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
+              </div>
+              <div class="form-group" >
+                  <label class="control-label" for="end_date"><?php echo i18n::__('end_date') ?>:</label> 
+                  <input name="end_date" class="form-control" type="date" value="" min="2014-01-01" step="1" required placeholder="<?php echo i18n::__('enterDateEnd') ?>">
+                  <?php if (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
+              </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" onclick="$('#graficaForm').submit()" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </div>
 </div>
 <!-----------------------------FIN-------------------------------------->

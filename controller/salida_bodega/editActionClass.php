@@ -14,32 +14,21 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             if(request::getInstance()->hasRequest(salidaBodegaTableClass::ID)){
                 $fields= array(
                 salidaBodegaTableClass::ID,
-                salidaBodegaTableClass::FECHA,
                 salidaBodegaTableClass::ID_TRABAJADOR,
-                
-                
+                salidaBodegaTableClass::FECHA
                 );
                 $where = array(
                     salidaBodegaTableClass::ID => request::getInstance()->getRequest(salidaBodegaTableClass::ID)
                 );
                 $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
-                
                 $fieldsTrabajador = array(
-                 
                 trabajadorTableClass::ID,
                 trabajadorTableClass::NOMBRE,
-                trabajadorTableClass::APELLIDO,
-                trabajadorTableClass::DIRECCION,
-                trabajadorTableClass::TELEFONO,
-                trabajadorTableClass::ID_TURNO,
-                trabajadorTableClass::ID_CREDENCIAL,
-                trabajadorTableClass::ID_CIUDAD,
-  
+                
                 );
 //                $where = array(
 //                trabajadorTableClass::ID => request::getInstance()->getRequest(salidaBodegaTableClass::ID_TRABAJADOR)
 //                );
-                
                 $this->objTrabajador = trabajadorTableClass::getAll($fieldsTrabajador, FALSE , NULL, NULL, NULL , NULL, NULL);
                 $this->defineView('edit', 'salida_bodega', session::getInstance()->getFormatOutput());
             }else{

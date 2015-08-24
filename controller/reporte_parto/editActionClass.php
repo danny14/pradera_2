@@ -11,7 +11,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(reportePartoTableClass::ID)){
+            if(request::getInstance()->hasGet(reportePartoTableClass::ID)){
                 $fields= array(
                 reportePartoTableClass::ID,
                 reportePartoTableClass::FECHA_PARTO,
@@ -24,14 +24,13 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 
                 );
                 $where = array(
-                    reportePartoTableClass::ID => request::getInstance()->getRequest(reportePartoTableClass::ID)
+                    reportePartoTableClass::ID => request::getInstance()->getGet(reportePartoTableClass::ID)
                 );
                 $this->objReporteParto = reportePartoTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 $fields = array(
                 animalTableClass::ID,
                 animalTableClass::NOMBRE,
                 animalTableClass::GENERO,
-                animalTableClass::EDAD,
                 animalTableClass::PESO,
                 animalTableClass::FECHA_INGRESO,
                 animalTableClass::NUMERO_PARTOS,

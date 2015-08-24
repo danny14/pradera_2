@@ -1,6 +1,7 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
 <?php use mvc\view\viewClass as view;?>
+<?php use mvc\session\sessionClass as session;?>
 <?php $id = credencialTableClass::ID?>
 <?php $nombre = credencialTableClass::NOMBRE?>
 <?php $created_at= credencialTableClass::CREATED_AT?>
@@ -59,6 +60,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             <!-- Formulario del IDIOMA -->
             <?php view::includePartial('animal/formTraductor')?>
@@ -75,7 +83,6 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"></th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('name')?></th>
                         <th><?php echo i18n::__('created_at')?></th>
                         <th><?php echo i18n::__('updated_at')?></th>
@@ -87,7 +94,6 @@
                     <?php foreach ($objCredencial as $credencial): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $credencial->$id ?>"></td>
-                        <td><?php echo $credencial->$id ?></td>
                         <td><?php echo $credencial->$nombre ?></td>
                         <td><?php echo $credencial->$created_at ?></td>
                         <td><?php echo $credencial->$updated_at ?></td>
@@ -113,7 +119,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $credencial->$id ?>, '<?php echo credencialTableClass::getNameField(credencialTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('credencial', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $credencial->$id ?>, '<?php echo credencialTableClass::getNameField(credencialTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('credencial', 'delete') ?>','<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

@@ -13,38 +13,36 @@ class reportActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
       $where = NULL;
-      if(request::getInstance()->hasPost('report')){
-       $report = request::getInstance()->getPost('report');
-       
-      // aqui validar datos de filtros
-        if (isset($filter['Fecha']) and $filter['Fecha'] !== NULL and $filter['Fecha'] !== '') {
-          $where[salidaBodegaTableClass::FECHA] = $filter['Fecha'];
+      if (request::getInstance()->hasPost('filter')) {
+        $filter = request::getInstance()->getPost('filter');
+        // aqui validar datos de filtros
+        if (isset($filter['fecha']) and $filter['fecha'] !== NULL and $filter['fecha'] !== '') {
+          $where[salidaBodegaTableClass::FECHA] = $filter['fecha'];
         }
-
 
         if (isset($filter['Trabajador']) and $filter['Trabajador'] !== null and $filter['Trabajador'] !== '') {//para la foranea no hay cambio
           $where[salidaBodegaTableClass::ID_TRABAJADOR] = $filter['Trabajador'];
         }
 
-//       if(isset($report['fechaCreacion1']) and $report['fechaCreacion1'] !== NULL and $report['fechaCreacion1'] !== '' and isset($report['fechaCreacion2']) and $report['fechaCreacion2'] !== NULL and $report['fechaCreacion2'] !== ''){
-//       $where[registroCeloTableClass::FECHA] = array(
-//         $report['fechaCreacion1'],
-//         $report['fechaCreacion2']  
-//       );  
-//       }
+
+        session::getInstance()->setAttribute('salidaBodegaIndexFilters', $where);
+      } else if (session::getInstance()->hasAttribute('salidaBodegaIndexFilters')) {
+        $where = session::getInstance()->getAttribute('salidaBodegaIndexFilters');
       }
-       $fields = array(
-      salidaBodegaTableClass::ID,
-      salidaBodegaTableClass::FECHA,
-      salidaBodegaTableClass::ID_TRABAJADOR,
+
+      $fields = array(
+          salidaBodegaTableClass::ID,
+          salidaBodegaTableClass::FECHA,
+          salidaBodegaTableClass::ID_TRABAJADOR,
+          
       );
-       $orderBy = array(
-       salidaBodegaTableClass::ID
-       );
-       $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL, NULL, $where);
-       
-       //llamado de la foranea
-      $fieldsTrabajador = array(/* foranea trabajador */
+      $orderBy = array(
+          salidaBodegaTableClass::ID
+      );
+      $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL, NULL, $where);
+
+      //llamado de la foranea
+      $fieldsTrabajador = array(/* foranea animal */
           trabajadorTableClass::ID,
           trabajadorTableClass::NOMBRE,
       );
@@ -55,11 +53,9 @@ class reportActionClass extends controllerClass implements controllerActionInter
 
       //fin llamado a foranea*/
 
-       
-       
-       $this->defineView('report', 'salida_bodega', session::getInstance()->getFormatOutput());
-      }  
-     catch (PDOException $exc) {
+
+      $this->defineView('report', 'salida_bodega', session::getInstance()->getFormatOutput());
+    } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo '<pre>';

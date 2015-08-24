@@ -11,24 +11,22 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(registroCeloTableClass::ID)){
+            if(request::getInstance()->hasGet(registroCeloTableClass::ID)){
                 $fields= array(
                 registroCeloTableClass::ID,
-                registroCeloTableClass::EDAD_ANIMAL,
                 registroCeloTableClass::FECHA,
                 registroCeloTableClass::ID_FECUNDADOR,
                 registroCeloTableClass::ID_ANIMAL,
                 
                 );
                 $where = array(
-                    registroCeloTableClass::ID => request::getInstance()->getRequest(registroCeloTableClass::ID)
+                    registroCeloTableClass::ID => request::getInstance()->getGet(registroCeloTableClass::ID)
                 );
                 $this->objRegistroCelo = registroCeloTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 $fieldsAnimal = array(
                 animalTableClass::ID,
                 animalTableClass::NOMBRE,
                 animalTableClass::GENERO,
-                animalTableClass::EDAD,
                 animalTableClass::PESO,
                 animalTableClass::FECHA_INGRESO,
                 animalTableClass::NUMERO_PARTOS,

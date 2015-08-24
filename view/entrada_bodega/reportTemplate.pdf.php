@@ -4,7 +4,6 @@ use mvc\routing\routingClass as routing;
 $id = animalTableClass::ID;
 $nombre = animalTableClass::NOMBRE;
 $genero = animalTableClass::GENERO;
-$edad = animalTableClass::EDAD;
 $peso = animalTableClass::PESO;
 $fecha_ingreso = animalTableClass::FECHA_INGRESO;
 $numero_partos = animalTableClass::NUMERO_PARTOS;

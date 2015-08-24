@@ -2,7 +2,6 @@
 <?php use mvc\i18n\i18nClass as i18n; ?>
 <?php use mvc\view\viewClass as view ?>
 <?php $id = registroCeloTableClass::ID ?>
-<?php $edad_animal = registroCeloTableClass::EDAD_ANIMAL ?>
 <?php $fecha = registroCeloTableClass::FECHA?>
 <?php $id_fecundador = registroCeloTableClass::ID_FECUNDADOR;?>
 <?php $id_animal = registroCeloTableClass::ID_ANIMAL?>
@@ -24,7 +23,6 @@
                     <tr class="active">
                        
                         <th><?php echo i18n::__('id')?></th>
-                        <th><?php echo i18n::__('age_animal')?></th>
                         <th><?php echo i18n::__('date')?></th>
                         <th><?php echo i18n::__('id_fecundador')?></th>
                         <th><?php echo i18n::__('id_animal')?></th>
@@ -36,7 +34,6 @@
                     <tr>
                         
                         <td><?php echo $registro_celo->$id ?></td>
-                        <td><?php echo $registro_celo->$edad_animal ?></td>
                         <td><?php echo $registro_celo->$fecha ?></td>
                         <td><?php echo registroCeloTableClass::getNameFieldForaneaFecundador($registro_celo->$id_fecundador) ?></td>
                         <td><?php echo registroCeloTableClass::getNameFieldForaneaAnimal($registro_celo->$id_animal) ?></td>

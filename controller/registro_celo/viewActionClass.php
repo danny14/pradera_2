@@ -15,7 +15,6 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
           if(request::getInstance()->hasRequest(registroCeloTableClass::ID)){
             $fields = array(
             registroCeloTableClass::ID,
-            registroCeloTableClass::EDAD_ANIMAL,
             registroCeloTableClass::FECHA,
             registroCeloTableClass::ID_FECUNDADOR,
             registroCeloTableClass::ID_ANIMAL,

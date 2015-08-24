@@ -21,7 +21,6 @@
             <table class="table table-bordered table-responsive table-striped table-condensed">
                 <thead>
                     <tr>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('name')?></th>
                         <th><?php echo i18n::__('age')?></th>
                         <th><?php echo i18n::__('weight')?></th>
@@ -32,12 +31,11 @@
                 <tbody>
                     <?php foreach ($objFecundador as $fecundador): ?>
                     <tr>
-                        <td><?php echo $fecundador->$id?></td>
                         <td><?php echo $fecundador->$nombre?></td>
                         <td><?php echo $fecundador->$edad?></td>
-                        <td><?php echo $fecundador->$peso?></td>
+                        <td><?php echo $fecundador->$peso?>.Kg</td>
                         <td><?php echo $fecundador->$observacion?></td>
-                        <td><?php echo $fecundador->$id_raza?></td>
+                        <td><?php echo fecundadorTableClass::getNameFieldForaneaRaza($fecundador->$id_raza) ?></td>
                     </tr>
                     <?php endforeach;?>
                 </tbody>

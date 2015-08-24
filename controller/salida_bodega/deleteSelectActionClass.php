@@ -6,7 +6,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use hook\log\logHookClass as bitacora;
+//use hook\log\logHookClass as bitacora;
 
 class deleteSelectActionClass extends controllerClass implements controllerActionInterface {
 
@@ -21,7 +21,7 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
                     salidaBodegaTableClass::delete($ids, FALSE);
                 }
                 session::getInstance()->setSuccess('Los elementos seleccionados fueron borrados de forma exitosa');
-                bitacora::register('Eliminar Seleccionados', salidaBodegaTableClass::getNameTable());
+//                bitacora::register('Eliminar Seleccionados', salidaBodegaTableClass::getNameTable());
                 routing::getInstance()->redirect('salida_bodega','index');
             } else {
                 session::getInstance()->setError('No selecciono ningun registro');

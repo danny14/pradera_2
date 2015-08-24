@@ -7,7 +7,6 @@
 <?php $id = animalTableClass::ID ;?>
 <?php $nombre = animalTableClass::NOMBRE ;?>
 <?php $genero = animalTableClass::GENERO ?>
-<?php $edad = animalTableClass::EDAD ?>
 <?php $peso = animalTableClass::PESO; ?>
 <?php $fecha_ingreso = animalTableClass::FECHA_INGRESO; ?>
 <?php $numero_partos = animalTableClass::NUMERO_PARTOS ?>
@@ -40,7 +39,7 @@
                                 <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?> " >
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name')?>">
+                                        <input type="text" class="form-control" id="filter<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)?>" name="filter[<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE)?>]" placeholder="<?php echo i18n::__('name')?>">
                                         <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
                                     </div>
                                 </div>
@@ -48,14 +47,14 @@
                                 <div class="form-group">
                                     <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="filter[fechaCreacion1]" class="form-control" id="filterCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
+                                        <input type="date" name="filter[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>]" class="form-control" id="filter<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
                                     </div>
                                 </div>
                                 <?php view::getMessageError('errorDateEnd')?>
                                 <div class="form-group">
                                     <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="filter[fechaCreacion2]" class="form-control" id="filterCreacion2" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                        <input type="date" name="filter[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>]" class="form-control" id="filter<?php animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
                                     </div>
                                 </div>
                             </form>
@@ -136,15 +135,13 @@
                     <thead>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
-                            <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('name') ?></th>
                             <th><?php echo i18n::__('gender') ?></th>
-                            <th><?php echo i18n::__('age') ?></th>
                             <th><?php echo i18n::__('weight') ?></th>
                             <th><?php echo i18n::__('date_entry') ?></th>
                             <th><?php echo i18n::__('number_births') ?></th>
-                            <th><?php echo i18n::__('id_raza') ?></th>
-                            <th><?php echo i18n::__('id_status') ?></th>
+                            <th><?php echo i18n::__('breed') ?></th>
+                            <th><?php echo i18n::__('status') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
                         </tr>
                     </thead>
@@ -152,11 +149,9 @@
                         <?php foreach ($objAnimal as $animal): ?>
                             <tr>
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $animal->$id ?>"></td>
-                                <td><?php echo $animal->$id ?></td>
                                 <td><?php echo $animal->$nombre ?></td>
                                 <td><?php echo $animal->$genero ?></td>
-                                <td><?php echo $animal->$edad ?></td>
-                                <td><?php echo $animal->$peso ?></td>
+                                <td><?php echo $animal->$peso ?> .Kg</td>
                                 <td><?php echo $animal->$fecha_ingreso ?></td>
                                 <td><?php echo $animal->$numero_partos ?></td>
                                 <td><?php echo animalTableClass::getNameFieldForaneaRaza($animal->$id_raza) ?></td>

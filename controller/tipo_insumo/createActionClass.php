@@ -12,7 +12,7 @@ class createActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $descripcion = request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION, TRUE));
+                $descripcion = trim(request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION, TRUE)));
                 $this->Validate($descripcion);
                
                 $data = array(
@@ -33,25 +33,22 @@ class createActionClass extends controllerClass implements controllerActionInter
     }
     private function Validate($descripcion) {
         $flag = FALSE ;
-         if (strlen($descripcion) > tipoInsumoTableClass::DESCRIPCION_LENGTH) {
-             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$descripcion,'%Character%' =>  tipoInsumoTableClass::DESCRIPCION_LENGTH) ));
-     
+        $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
+        
+        if ($descripcion === '' or $descripcion === NULL){
+           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => tipoInsumoTableClass::DESCRIPCION)),'errorDescripcion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION, TRUE), TRUE);  
+        }else if (strlen($descripcion) > tipoInsumoTableClass::DESCRIPCION_LENGTH) {
+             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$descripcion,'%Character%' =>  tipoInsumoTableClass::DESCRIPCION_LENGTH) ),'errorDescripcion');
              $flag = TRUE;
-             session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION,TRUE), TRUE);
-             
-        }
-        if (!ereg("^[a-zA-Z0-9]{3,140}$", $descripcion)) {
-            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => tipoInsumoTableClass::DESCRIPCION)));
+             session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION,TRUE), TRUE);     
+        }else if (!ereg("^[a-zA-Z ]{3,140}$", $descripcion)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => tipoInsumoTableClass::DESCRIPCION)),'errorDescripcion');
             $flag = TRUE;
             session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION, TRUE), TRUE);
         }
-        if ($descripcion === '' or $descripcion === NULL){
-           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => tipoInsumoTableClass::DESCRIPCION)));
-            $flag = TRUE;
-            session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESCRIPCION, TRUE), TRUE);  
-     
-    
-        }
+
         if($flag === TRUE){
             request::getInstance()->setMethod('GET');
             routing::getInstance()->forward('tipo_insumo', 'insert');

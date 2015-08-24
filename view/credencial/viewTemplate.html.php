@@ -20,7 +20,6 @@
             <table class="table table-bordered table-responsive table-condensed">
                 <thead>
                     <tr class="active">
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('nombre')?></th>
                         <th><?php echo i18n::__('created_at')?></th>
                         <th><?php echo i18n::__('update_at')?></th>
@@ -31,7 +30,6 @@
                 <tbody>
                     <?php foreach ($objCredencial as $credencial): ?>
                         <tr>
-                        <td><?php echo $credencial->$id ?></td>
                         <td><?php echo $credencial->$nombre ?></td>
                         <td><?php echo $credencial->$created_at ?></td>
                         <td><?php echo $credencial->$updated_at ?></td>

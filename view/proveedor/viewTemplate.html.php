@@ -22,7 +22,6 @@
             <table class="table table-bordered table-responsive table-striped table-condensed">
                 <thead>
                     <tr>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('name')?></th>
                         <th><?php echo i18n::__('last_name')?></th>
                         <th><?php echo i18n::__('address')?></th>
@@ -34,7 +33,6 @@
                 <tbody>
                     <?php foreach ($objProveedor as $proveedor): ?>
                     <tr>
-                        <td><?php echo $proveedor->$id?></td>
                         <td><?php echo $proveedor->$nombre?></td>
                         <td><?php echo $proveedor->$apellido?></td>
                         <td><?php echo $proveedor->$direccion?></td>

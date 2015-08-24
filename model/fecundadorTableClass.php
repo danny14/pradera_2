@@ -40,5 +40,22 @@ class fecundadorTableClass extends fecundadorBaseTableClass {
             throw $exc;
         }
     }
-  
+
+        public static function getNameFieldForaneaRaza($id) {
+        try {
+            $sql = 'SELECT ' . razaTableClass::DESCRIPCION . ' AS nom_raza '
+                    . ' FROM ' . razaTableClass::getNameTable() . ' '
+                    . ' WHERE ' . razaTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->nom_raza;
+        } catch (PDOException $exc) {
+            throw $exc;
+        }
+    }
+
 }

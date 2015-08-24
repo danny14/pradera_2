@@ -1,5 +1,8 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n;?>
+<?php use mvc\session\sessionClass as session ;?>
+<?php use mvc\view\viewClass as view?>
+<?php use mvc\request\requestClass as request?>
 <?php $id = reportePartoTableClass::ID ;?>
 <?php $fecha_parto = reportePartoTableClass::FECHA_PARTO ;?>
 <?php $n_animales_vi = reportePartoTableClass::N_ANIMALES_VI ;?>
@@ -15,18 +18,68 @@
     <?php if (isset($objReporteParto)== true):?>
     <input name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::ID,TRUE)?>" value="<?php echo ((isset($objReporteParto))? $objReporteParto[0]->$id : $reporte_parto[$id]) ?>" type="hidden">
     <?php endif ?>
-   <?php echo i18n::__('date_delivery')?>: <input class="form-control" type="date" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$fecha_parto : ((isset($reporte_parto[$fecha_parto]))? $reporte_parto[$fecha_parto] : '' ) ) ?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, true )?>"required placeholder="<?php i18n::__('date_delivery') ?>">
-   <?php echo i18n::__('n_animales_living')?>: <input class="form-control" type="number" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$n_animales_vi : ((isset($reporte_parto[$n_animales_vi]))? $reporte_parto[$n_animales_vi] : '' ) ) ?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, true )?>"required placeholder="<?php i18n::__('n_animales_living') ?>">
-   <?php echo i18n::__('n_animales_dead')?>: <input class="form-control" type="number" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$n_animales_m : ((isset($reporte_parto[$n_animales_m]))? $reporte_parto[$n_animales_m] : '' ) ) ?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, true )?>"required placeholder="<?php i18n::__('n_animales_dead') ?>">
-   <?php echo i18n::__('n_males')?>: <input class="form-control" type="number" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$n_machos : ((isset($reporte_parto[$n_machos]))? $reporte_parto[$n_machos] : '' ) ) ?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, true )?>"required placeholder="<?php i18n::__('n_males') ?>">
-   <?php echo i18n::__('n_females')?>: <input class="form-control" type="number" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$n_hembras : ((isset($reporte_parto[$n_hembras]))? $reporte_parto[$n_hembras] : '' ) ) ?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, true )?>"required placeholder="<?php i18n::__('n_females') ?>">
-   <?php echo i18n::__('observation')?>: <input class="form-control" type="text" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$observaciones : ((isset($reporte_parto[$observaciones]))? $reporte_parto[$observaciones] : '' ) ) ?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, true )?>"required placeholder="<?php i18n::__('observation') ?>">
+   <!--este  es para el mensaje de error puntual -->
+   <?php view::getMessageError('errorFechaParto') ?>
+   <!-- Fin de mensaje error puntual -->
+   <div class="form-group <?php echo (session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO,true)) === TRUE ) ? 'has-error has-feedback' : '' ?>"> 
+   <label class="control-label" for="date_delivery"><?php echo i18n::__('date_delivery')?></label>
+   <input class="form-control" type="date" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$fecha_parto : ((session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, TRUE))=== TRUE )?'':(request::getInstance()->hasPost(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, TRUE)))?request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, TRUE)):''))?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, true )?>"required placeholder="<?php i18n::__('date_delivery') ?>">
+   <?php if(session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif;?>
+   </div>
    
+   <!--este  es para el mensaje de error puntual -->
+   <?php view::getMessageError('errorNumeroAnimalesVivos') ?>
+   <!-- Fin de mensaje error puntual -->
+   <div class="form-group <?php echo (session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI,true)) === TRUE ) ? 'has-error has-feedback' : '' ?>">
+   <label class="control-label" for="n_animales_live"><?php echo i18n::__('n_animales_living')?></label>
+   <input class="form-control" type="number" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$n_animales_vi : ((session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE))=== TRUE )?'':(request::getInstance()->hasPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE)))?request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE)):''))?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, true )?>"required placeholder="<?php i18n::__('n_animales_living') ?>">
+   <?php if(session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif;?>
+   </div>
+   
+   <!--este  es para el mensaje de error puntual -->
+   <?php view::getMessageError('errorNumeroAnimalesMuertos') ?>
+   <!-- Fin de mensaje error puntual -->
+   <div class="form-group <?php echo (session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M,true)) === TRUE ) ? 'has-error has-feedback' : '' ?>">
+   <label class="control-label" for="n_animal_dead"><?php echo i18n::__('n_animales_dead')?> </label>
+   <input class="form-control" type="number" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$n_animales_m : ((session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, TRUE))=== TRUE )?'':(request::getInstance()->hasPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, TRUE)))?request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, TRUE)):''))?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, true )?>"required placeholder="<?php i18n::__('n_animales_dead') ?>">
+   <?php if(session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif;?>
+   </div>
+   
+   <!--este  es para el mensaje de error puntual -->
+   <?php view::getMessageError('errorNumeroMachos') ?>
+   <!-- Fin de mensaje error puntual -->
+   <div class="form-group <?php echo (session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS,true)) === TRUE ) ? 'has-error has-feedback' : '' ?>">
+   <label class="control-label" for="n_males"><?php echo i18n::__('n_males')?></label>
+   <input class="form-control" type="number" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$n_machos : ((session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, TRUE))=== TRUE )?'':(request::getInstance()->hasPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, TRUE)))?request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, TRUE)):''))?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, true )?>"required placeholder="<?php i18n::__('n_males') ?>">
+   <?php if(session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif;?>
+   </div>
+   
+   <!--este  es para el mensaje de error puntual -->
+   <?php view::getMessageError('errorNumeroHembras') ?>
+   <!-- Fin de mensaje error puntual -->
+   <div class="form-group <?php echo (session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS,true)) === TRUE ) ? 'has-error has-feedback' : '' ?>">
+   <label class="control-label" for="n_females"><?php echo i18n::__('n_females')?></label>
+   <input class="form-control" type="number" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$n_hembras : ((session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, TRUE))=== TRUE )?'':(request::getInstance()->hasPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, TRUE)))?request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, TRUE)):''))?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, true )?>"required placeholder="<?php i18n::__('n_females') ?>">
+   <?php if(session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif;?>
+   </div>
+   
+   <!--este  es para el mensaje de error puntual -->
+   <?php view::getMessageError('errorObservacion') ?>
+   <!-- Fin de mensaje error puntual -->
+   <div class="form-group <?php echo (session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES,true)) === TRUE ) ? 'has-error has-feedback' : '' ?>">
+   <label class="control-label" for="observation"><?php echo i18n::__('observation')?></label>
+   <input class="form-control" type="text" value="<?php echo ((isset($objReporteParto)) ? $objReporteParto[0]->$observaciones : ((session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE))=== TRUE )?'':(request::getInstance()->hasPost(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE)))?request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE)):''))?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, true )?>"required placeholder="<?php i18n::__('observation') ?>">
+   <?php if(session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif;?>
+   </div>
+   
+   <!--este  es para el mensaje de error puntual -->
+   <?php view::getMessageError('errorAnimal') ?>
+   <!-- Fin de mensaje error puntual -->
     <?php echo i18n::__('animal')?>
    <select class="form-control" id="<?php reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE)?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE);?>"required placeholder="<?php i18n::__('id_animal') ?>">
      <option><?php echo i18n::__('selectAnimal') ?></option>
        <?php foreach($objAnimal as $animal):?>
-       <option  <?php echo(( isset($objReporteParto[0]->$id_animal) and $objReporteParto[0]->$id_animal == $animal->$animal_id) ? 'selected' : '')?> value="<?php echo $animal->$animal_id?>"><?php echo $animal->$nombreAnimal?></option>
+       <option  <?php echo(( isset($objReporteParto[0]->$id_animal) and $objReporteParto[0]->$id_animal == $animal->$animal_id) ? 'selected' : ((session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE))and request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE))=== $animal-> $animal_id)))?> value="<?php echo $animal->$animal_id?>"><?php echo $animal->$nombreAnimal?></option>
        <?php endforeach;?>
    </select>
    <br>

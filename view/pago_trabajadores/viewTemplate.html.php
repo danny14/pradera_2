@@ -13,7 +13,7 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 
 <div class="container container-fluid">
-    <h1><?php echo i18n::__('pago_trabajadores')?></h1>
+    <h1><?php echo i18n::__('payment of employee')?></h1>
     <div class="row">
         <header>
             
@@ -28,17 +28,17 @@
                     <tr class="active">
                        
                         <th><?php echo i18n::__('id')?></th>
-                        <th><?php echo i18n::__('XXXXX')?></th>
-                        <th><?php echo i18n::__('XXXXXX')?></th>
-                        <th><?php echo i18n::__('XXXXX')?></th>
-                        <th><?php echo i18n::__('XXXX')?></th>
-                        <th><?php echo i18n::__('XXXX')?></th>
-                        <th><?php echo i18n::__('XXXX')?></th>
-                        <th><?php echo i18n::__('XXXX')?></th>
+                        <th><?php echo i18n::__('start_date')?></th>
+                        <th><?php echo i18n::__('end_date')?></th>
+                        <th><?php echo i18n::__('subtotal')?></th>
+                        <th><?php echo i18n::__('time_value')?></th>
+                        <th><?php echo i18n::__('extra_time')?></th>
+                        <th><?php echo i18n::__('id_employee')?></th>
+                        <th><?php echo i18n::__('number of days')?></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($objReporteParto as $pago_trabajadores): ?>
+                    <?php foreach ($objPagoTrabajadores as $pago_trabajadores): ?>
                     <tr>
                         
                         <td><?php echo $pago_trabajadores->$id ?></td>
@@ -47,7 +47,7 @@
                         <td><?php echo $pago_trabajadores->$subtotal ?></td>
                         <td><?php echo $pago_trabajadores->$valor_hora ?></td>
                         <td><?php echo $pago_trabajadores->$horas_extras ?></td>
-                        <td><?php echo reportePartoTableClass::getNameFieldForaneaTrabajador($pago_trabajadores->$id_trabajador) ?></td>
+                        <td><?php echo pagoTrabajadoresTableClass::getNameFieldForaneaTrabajador($pago_trabajadores->$id_trabajador) ?></td>
                          <td><?php echo $pago_trabajadores->$cantidad_dias ?></td>       
                     </tr>
                     <?php endforeach; ?> 

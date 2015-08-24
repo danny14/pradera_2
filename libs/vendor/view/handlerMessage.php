@@ -1,10 +1,12 @@
 <?php use mvc\session\sessionClass as session ?>
 <?php if (session::getInstance()->hasError()): ?>
   <?php foreach (session::getInstance()->getError() as $key => $error): ?>
+    <?php if(is_numeric($key)): ?>
     <div class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo $error ?>
     </div>
+    <?php endif ?>
   <?php endforeach ?>
   <?php session::getInstance()->deleteErrorStack() ?>
 <?php endif ?>

@@ -1,4 +1,18 @@
 <?php
+
+/*
+$fechaCreacion = '03/11/2015';
+$fechaVencimiento = '05/01/2015';
+
+if (strtotime($fechaCreacion) < strtotime($fechaVencimiento)) echo 'OK';
+
+echo '<br>';
+echo strtotime($fechaCreacion);
+echo '<br>';
+echo strtotime($fechaVencimiento);
+exit();
+*/
+
 $GLOBALS['timeIni'] = microtime(true);
 session_name('mvcSite');
 session_start();

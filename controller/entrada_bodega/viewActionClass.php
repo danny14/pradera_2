@@ -11,26 +11,22 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
 
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(animalTableClass::ID)){
+            if(request::getInstance()->hasRequest(entradaBodegaTableClass::ID)){
                 $fields= array(
-                animalTableClass::ID,
-                animalTableClass::NOMBRE,
-                animalTableClass::GENERO,
-                animalTableClass::EDAD,
-                animalTableClass::PESO,
-                animalTableClass::FECHA_INGRESO,
-                animalTableClass::NUMERO_PARTOS,
-                animalTableClass::ID_RAZA,
-                animalTableClass::ID_ESTADO
+                entradaBodegaTableClass::ID,
+                entradaBodegaTableClass::FECHA,
+                entradaBodegaTableClass::HORA,
+                entradaBodegaTableClass::ID_TRABAJADOR,
+                entradaBodegaTableClass::ID_PROVEEDOR,
                 );
                 $where = array(
-                    animalTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID)
+                    entradaBOdegaTableClass::ID => request::getInstance()->getRequest(entradaBodegaTableClass::ID)
                 );
-                $this->objAnimal = animalTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
-                $this->defineView('view', 'animal', session::getInstance()->getFormatOutput());
+                $this->objEntradaBodega = entradaBodegaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
+                $this->defineView('view', 'entrada_bodega', session::getInstance()->getFormatOutput());
             }else{
                 session::getInstance()->setError('Error no se pudo visualizar correctamente');
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('entrada_bodega', 'index');
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

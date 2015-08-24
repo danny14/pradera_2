@@ -10,7 +10,7 @@ use mvc\i18n\i18nClass as i18n;
 class editActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(credencialTableClass::ID)){
+            if(request::getInstance()->hasGet(credencialTableClass::ID)){
                 
                 $fields = array(
                     credencialTableClass::ID,
@@ -20,7 +20,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                     credencialTableClass::DELETED_AT
                 );
                 $where = array(
-                credencialTableClass::ID => request::getInstance()->getRequest(credencialTableClass::ID)
+                credencialTableClass::ID => request::getInstance()->getGet(credencialTableClass::ID)
                 );
                 $this->objCredencial = credencialTableClass::getAll($fields, FALSE , NULL, NULL, NULL, NULL, $where);
                 $this->defineView('edit', 'credencial', session::getInstance()->getFormatOutput());

@@ -12,7 +12,7 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
 
   public function execute() {
     try {
-      if (session::getInstance()->hasAttribute('salidasBodegaIndexFilters')) {
+      if (session::getInstance()->hasAttribute('salidaBodegaIndexFilters')) {
         session::getInstance()->deleteAttribute('salidaBodegaIndexFilters');
         routing::getInstance()->redirect('salida_bodega', 'index');
       } else {

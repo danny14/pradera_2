@@ -8,7 +8,7 @@ use mvc\config\configClass as config;
  *
  * @author Danny Steven Ruiz Hernandez
  */
-class detalleEntradaTableClass extends entradaBodegaBaseTableClass {
+class detalleEntradaTableClass extends detalleEntradaBaseTableClass {
 
     public static function getTotalPages($lines, $where) {
         try {
@@ -40,35 +40,35 @@ class detalleEntradaTableClass extends entradaBodegaBaseTableClass {
      * @throws PDOException
      */
     
-    public static function getNameFieldForaneaTrabajador($id){
+    public static function getNameFieldForaneaInsumo($id){
         try{
-            $sql = 'SELECT '. trabajadorTableClass::NOMBRE . ' AS nom_trabajador '
-                   .' FROM '.trabajadorTableClass::getNameTable() . ' '
-                   . ' WHERE ' .trabajadorTableClass::ID . ' = :id';
+            $sql = 'SELECT '. insumoTableClass::NOMBRE . ' AS nom_insumo '
+                   .' FROM '.insumoTableClass::getNameTable() . ' '
+                   . ' WHERE ' .insumoTableClass::ID . ' = :id';
             $params = array(
                 ':id' => $id
             );
             $answer = model::getInstance()->prepare($sql);
             $answer->execute($params);
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-            return $answer[0]->nom_trabajador;
+            return $answer[0]->nom_insumo;
         }
         catch (PDOException $exc){
             throw $exc;
         }
     }
-    public static function getNameFieldForaneaProveedor($id){
+    public static function getNameFieldForaneaTipoInsumo($id){
         try{
-            $sql = 'SELECT '. proveedorTableClass::NOMBRE . ' AS nom_proveedor '
-                   .' FROM '.proveedorTableClass::getNameTable() . ' '
-                   . ' WHERE ' .proveedorTableClass::ID . ' = :id';
+            $sql = 'SELECT '. tipoInsumoTableClass::DESCRIPCION . ' AS desc_tipo '
+                   .' FROM '.tipoInsumoTableClass::getNameTable() . ' '
+                   . ' WHERE ' .tipoInsumoTableClass::ID . ' = :id';
             $params = array(
                 ':id' => $id
             );
             $answer = model::getInstance()->prepare($sql);
             $answer->execute($params);
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-            return $answer[0]->nom_proveedor;
+            return $answer[0]->desc_tipo;
         }
         catch (PDOException $exc){
             throw $exc;

@@ -11,8 +11,10 @@ class createActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $descripcion = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION,TRUE));
+                $descripcion = trim(request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION,TRUE)));
+                
                 $this->Validate($descripcion);
+                
                 $data = array(
                 ciudadTableClass::DESCRIPCION => $descripcion
                 );
@@ -32,13 +34,19 @@ class createActionClass extends controllerClass implements controllerActionInter
         }
     }
     private function Validate($descripcion) {
-        if (strlen($descripcion) > ciudadTableClass::DESCRIPCION_LENGTH) {
-            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => ciudadTableClass::NOMBRE_LENGTH)));
+        /*
+         * VALIDACION PARA DESCRIPCION
+         */
+        if ($descripcion === '' or $descripcion === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ciudadTableClass::DESCRIPCION)),'errorDescripcion');
             $flag = TRUE;
             session::getInstance()->setFlash(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE), TRUE);
-        }
-        if ($descripcion === '' or $descripcion === NULL) {
-            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ciudadTableClass::DESCRIPCION)));
+        }  else if (strlen($descripcion) > ciudadTableClass::DESCRIPCION_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => ciudadTableClass::NOMBRE_LENGTH)),'errorDescripcion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE), TRUE);
+        }else if (!ereg("^[a-zA-Z ]{3,80}$", $descripcion)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => ciudadTableClass::DESCRIPCION)),'errorDescripcion');
             $flag = TRUE;
             session::getInstance()->setFlash(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE), TRUE);
         }

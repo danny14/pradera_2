@@ -1,6 +1,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\session\sessionClass as session?>
+<?php use mvc\request\requestClass as request?>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -71,11 +72,33 @@
         </li>
       </ul>
         <!-- Fin Modulo -->
+        <!-- Modulo Pago Trabajador -->
+       <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pago Trabajador <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'index')?>">Pago Trabajadores</a></li>
+          </ul>
+        </li>
+      </ul>
+        <!-- Fin Modulo -->
+        <!-- Modulo Bodega -->
+       <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bodega <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('entrada_bodega', 'index')?>">Entrada Bodega</a></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('entrada_bodega', 'index')?>">Salida Bodega</a></li>
+          </ul>
+        </li>
+      </ul>
+        <!-- Fin Modulo -->
         <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Registro Celo <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="<?php  echo routing::getInstance()->getUrlWeb('registro_celo', 'index')?>">Registro Celo</a></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('reporte_parto', 'index')?>">Reporte Parto</a></li>
             <!--<li class="divider"></li>
             <li><a href="#">Separated link</a></li>
             <li class="divider"></li>
@@ -90,6 +113,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> <?php echo session::getInstance()->getUserName() ?> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
               <li><a href="#"><i class="fa fa-wrench">Ajustes</i></a></li>
+              <li><a href="<?php// echo routing::getInstance()->getUrlWeb('default', 'traductor', array('language' => 'es', 'PATH_INFO' => request::getInstance()->getServer('PATH_INFO'), 'QUERY_STRING' => htmlentities(request::getInstance()->getServer('QUERY_STRING')))) ?>"><img src="<?php echo routing::getInstance()->getUrlImg('xp_spain.ico') ?>"></a>
+              <li><a href="<?php// echo routing::getInstance()->getUrlWeb('default', 'traductor', array('language' => 'en', 'PATH_INFO' => request::getInstance()->getServer('PATH_INFO'), 'QUERY_STRING' => htmlentities(request::getInstance()->getServer('QUERY_STRING')))) ?>"><img src="<?php echo routing::getInstance()->getUrlImg('xp_usa.ico') ?>"></a></li>
             <li class="divider"></li>
             <li><a href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout')?>"><i class="fa fa-sign-out"><?php echo i18n::__('logout')?></i></a></li>
           </ul>
@@ -98,4 +123,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-

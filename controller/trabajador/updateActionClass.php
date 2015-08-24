@@ -13,18 +13,19 @@ class updateActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $id = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID,true));
-                $nombre = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, true));
-                $apellido = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true));
-                $direccion = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true));
-                $telefono = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::TELEFONO, true));
-                $id_turno = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TURNO, true));
-                $id_credencial = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true));
-                $id_ciudad = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true));
+                $id = trim(request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID,true)));
+                $nombre = trim(request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, true)));
+                $apellido = trim(request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true)));
+                $direccion = trim(request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true)));
+                $telefono = trim(request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::TELEFONO, true)));
+                $id_turno = trim(request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TURNO, true)));
+                $id_credencial = trim(request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true)));
+                $id_ciudad = trim(request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true)));
                 
                 /**
                  * Validaciones para el Trabajador 
                  */
+                
                 $this->Validate($nombre, $apellido, $direccion, $telefono, $id_turno, $id_credencial, $id_ciudad);
                 
                 /* _______________________________ */
@@ -57,85 +58,99 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $flag = FALSE;
         $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
         
-        if (strlen($nombre) > trabajadorTableClass::NOMBRE_LENGTH) {
-            session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> trabajadorTableClass::NOMBRE_LENGTH)));
-            $flag = TRUE;
-            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE), TRUE);
-                    
-        }
-
-        if (!ereg("^[a-zA-Z0-9]{3,80}$", $nombre)) {
-            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => trabajadorTableClass::NOMBRE)));
-            $flag = TRUE;
-            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE), TRUE);
-        }
+         /*
+         * VALIDACION PARA NOMBRE
+         */
         if($nombre === '' or $nombre === NULL){
-            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::NOMBRE)));
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::NOMBRE)),'errorNombre');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE), TRUE);
+        }else if (strlen($nombre) > trabajadorTableClass::NOMBRE_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> trabajadorTableClass::NOMBRE_LENGTH)),'errorNombre');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE), TRUE);                  
+        }else if (!ereg("^[a-zA-Z0-9]{3,80}$", $nombre)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => trabajadorTableClass::NOMBRE)),'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE), TRUE);
         }
-//        if($genero === '' or $genero === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::GENERO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::GENERO, TRUE), TRUE);            
-//        }
-//        if($genero !== "F" and $genero !== "M"){// and $genero !== "f"  and $genero !== "m"  ){
-//            session::getInstance()->setError(i18n::__('errorGender', NULL, 'default'));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::GENERO, TRUE), TRUE);
-//        }
-//        if (!is_numeric($edad)) {
-//            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => trabajadorTableClass::EDAD)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::EDAD, TRUE), TRUE);
-//        }
-//        if($edad === '' or $edad === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::EDAD)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::EDAD, TRUE), TRUE);            
-//        }
-//        if (!is_numeric($peso)) {
-//            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => trabajadorTableClass::PESO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::PESO, TRUE), TRUE);
-//        }
-//        if($peso === '' or $peso === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::PESO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::PESO, TRUE), TRUE);                        
-//        }
-//        if(preg_match($pattern, $fecha_ingreso) === FALSE){
-//            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => trabajadorTableClass::FECHA_INGRESO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::FECHA_INGRESO, TRUE), TRUE);             
-//        }
-//        if($fecha_ingreso === '' or $fecha_ingreso === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::FECHA_INGRESO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::FECHA_INGRESO, TRUE), TRUE);              
-//        }
-//        if(!is_numeric($numero_partos)){
-//            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => trabajadorTableClass::NUMERO_PARTOS)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NUMERO_PARTOS, TRUE), TRUE);            
-//        }
-//        if($numero_partos === '' or $numero_partos === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::NUMERO_PARTOS)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NUMERO_PARTOS, TRUE), TRUE);            
-//        }
-//        if(!is_numeric($id_raza)){
-//            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => trabajadorTableClass::ID_RAZA)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::ID_RAZA, TRUE), TRUE);             
-//        }
-//        if($id_raza === '' or $id_raza === NULL ){
-//            
-//        }
-//        if(!is_numeric($id_estado)){
-//            
-//        }
-//        if($id_estado === '' or $id_raza === NULL){}
+        /*
+         * VALIDACION PARA APELLIDO
+         */
+        if($apellido === '' or $apellido === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::APELLIDO)),'errorApellido');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE), TRUE);
+        }else if (strlen($apellido) > trabajadorTableClass::APELLIDO_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> trabajadorTableClass::APELLIDO_LENGTH)),'errorApellido');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE), TRUE);                  
+        }else if (!ereg("^[a-zA-Z0-9]{3,80}$", $apellido)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => trabajadorTableClass::APELLIDO)),'errorApellido');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE), TRUE);
+        }
+        /*
+         * VALIDACION PARA DIRECCION
+         */
+        if($direccion === '' or $direccion === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::DIRECCION)),'errorDireccion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, TRUE), TRUE);
+        }
+        
+        /*
+         * VALIDACION PARA TELEFONO
+         */
+        if($telefono === '' or $telefono === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::TELEFONO)),'errorTelefono');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, TRUE), TRUE);
+        }
+        if (!is_numeric($telefono)) {
+            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => trabajadorTableClass::TELEFONO)),'errorTelefono');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::TELEFONO, TRUE), TRUE);
+        }
+        /*
+         * VALIDACION PARA ID TURNO
+         */
+        if($id_turno === '' or $id_turno === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::ID_TURNO)),'errorTurno');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TURNO, TRUE), TRUE);
+        }
+        if (!is_numeric($telefono)) {
+            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => trabajadorTableClass::ID_TURNO)),'errorTurno');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TURNO, TRUE), TRUE);
+        }
+        /*
+         * VALIDACION PARA ID CREDENCIAL
+         */
+        if($id_credencial === '' or $id_credencial === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::ID_CREDENCIAL)),'errorCredencial');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, TRUE), TRUE);
+        }
+        if (!is_numeric($id_credencial)) {
+            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => trabajadorTableClass::ID_CREDENCIAL)),'errorCredencial');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, TRUE), TRUE);
+        }
+        /*
+         * VALIDACION PARA ID CIUDAD
+         */
+        if($id_ciudad === '' or $id_ciudad === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => trabajadorTableClass::ID_CIUDAD)),'errorCiudad');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, TRUE), TRUE);
+        }
+        if (!is_numeric($id_ciudad)) {
+            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => trabajadorTableClass::ID_CIUDAD)),'errorCiudad');
+            $flag = TRUE;
+            session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, TRUE), TRUE);
+        }
         /* _______________________________ */
         if($flag === TRUE){
             request::getInstance()->setMethod('GET'); //POST

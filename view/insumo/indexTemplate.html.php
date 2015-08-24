@@ -2,6 +2,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session?>
 <?php $id = insumoTableClass::ID ?>
 <?php $nombre =insumoTableClass::NOMBRE ?>
 <?php $fecha_fabricacion =insumoTableClass::FECHA_FABRICACION ?>
@@ -64,6 +65,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             
              <!-- Ventana Modal para los reportes -->
@@ -124,7 +132,6 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"</th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('name')?></th>
                         <th><?php echo i18n::__('date_create')?></th>
                         <th><?php echo i18n::__('date_expiration')?></th>
@@ -137,11 +144,10 @@
                     <?php foreach ($objInsumo as $insumo): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $insumo->$id?>"></td>
-                        <td><?php echo $insumo->$id?></td>
                         <td><?php echo $insumo->$nombre?></td>
                         <td><?php echo $insumo->$fecha_fabricacion?></td>
                         <td><?php echo $insumo->$fecha_vencimiento?></td>
-                        <td><?php echo $insumo->$valor?></td>
+                        <td>$<?php echo $insumo->$valor?>.00</td>
                         <td><?php echo $insumo->$id_tipo_insumo?></td>
                         <td>
                             <div>
@@ -164,7 +170,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                    <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $insumo->$id ?>, '<?php echo insumoTableClass::getNameField(insumoTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('insumo', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                    <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $insumo->$id ?>, '<?php echo insumoTableClass::getNameField(insumoTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('insumo', 'delete') ?>','<?php echo routing::getInstance()->getUrlWeb('insumo', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                 </div>
                             </div>
                         </div>

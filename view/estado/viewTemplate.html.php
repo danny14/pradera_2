@@ -19,14 +19,12 @@
             <table class="table table-bordered table-responsive table-striped table-condensed">
                 <thead>
                     <tr>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('description')?></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($objEstado as $estado): ?>
                     <tr>
-                        <td><?php echo $estado->$id ?></td>
                         <td><?php echo $estado->$descripcion ?></td>
                     </tr>
                     <?php endforeach; ?> 

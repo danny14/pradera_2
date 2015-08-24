@@ -26,14 +26,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                   if(isset($filter['Fecha']) and $filter['Fecha'] !== NULL and $filter['Fecha'] !== ''){
                     $where[registroCeloTableClass::FECHA] = $filter['Fecha'];
                 }
-//                if(isset($filter['fechaCreacion1']) and $filter['fechaCreacion1'] !== NULL and $filter['fechaCreacion1'] !== '' and isset($filter['fechaCreacion2']) and $filter['fechaCreacion2'] !== NULL and $filter['fechaCreacion2'] !== ''){
-//                    $where[registroCeloTableClass::FECHA_INGRESO] = array(
-//                        $filter['fechaCreacion1'],
-//                        $filter['fechaCreacion2']
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
-//                    );
-//                }
+
                 session::getInstance()->setAttribute('registroCeloIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('registroCeloIndexFilters')){
             $where = session::getInstance()->getAttribute('registroCeloIndexFilters');
@@ -42,7 +35,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
       $fields = array(
           registroCeloTableClass::ID,
-          registroCeloTableClass::EDAD_ANIMAL,
           registroCeloTableClass::FECHA,
           registroCeloTableClass::ID_FECUNDADOR,
           registroCeloTableClass::ID_ANIMAL,

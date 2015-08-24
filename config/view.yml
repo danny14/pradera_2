@@ -43,7 +43,16 @@ credencial:
   index:
     javascript:
       - index.js
-#--------------- Entrada Bodega -------------------------      
+#--------------- Detalle Entrada -----------------------
+detalle_entrada:
+  index:
+    javascript:
+      - index.js
+#--------------- Entrada Bodega -------------------------
+entrada_bodega:
+  index:
+    javascript:
+      - index.js
 #--------------- Estado -------------------------
 estado:
   index:
@@ -55,12 +64,24 @@ fecundador:
     javascript:
       - index.js
 #--------------- Insumo -------------------------
+insumo:
+  index:
+    javascript:
+      - index.js
 #--------------- Inventario -------------------------
 #--------------- Ordeño -------------------------
 ordenno:
   index:
     javascript:
       - index.js
+  grafica:
+    javascript:
+      - jqPlot/jquery.jqplot.min.js
+      - jqPlot/plugins/jqplot.canvasTextRenderer.min.js
+      - jqPlot/plugins/jqplot.canvasAxisTickRenderer.min.js
+      - grafica.js
+  stylesheet:
+    - jquery.jqplot.min.css
 #--------------- Pago Trabajadores -------------------------
 #--------------- Proveedor -------------------------
 proveedor:
@@ -84,6 +105,10 @@ registro_vacunacion:
       - index.js
 #--------------- Salida Bodega -------------------------
 #--------------- Tipo Insumo -------------------------
+tipo_insumo:
+  index:
+    javascript:
+      - index.js
 #--------------- Trabajador -------------------------
 trabajador:
   index:

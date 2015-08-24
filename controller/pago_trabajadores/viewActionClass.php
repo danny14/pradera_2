@@ -28,7 +28,7 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
             pagoTrabajadoresTableClass::ID => request::getInstance()->getRequest(pagoTrabajadoresTableClass::ID)
             );
             
-                $this->objReporteParto = pagoTrabajadoresTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
+                $this->objPagoTrabajadores = pagoTrabajadoresTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 $this->defineView('view', 'pago_trabajadores', session::getInstance()->getFormatOutput());
             }else{
                 session::getInstance()->setError('Error no se pudo visualizar correctamente');

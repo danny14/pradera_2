@@ -17,14 +17,12 @@
             <table class="table table-bordered table-responsive table-condensed">
                 <thead>
                     <tr class="active">
-                        <th><?php echo i18n::__('id') ?></th>
                         <th><?php echo i18n::__('description') ?></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($objTipoInsumo as $tipo_insumo): ?>
                         <tr>
-                            <td><?php echo $tipo_insumo->$id ?></td>
                             <td><?php echo $tipo_insumo->$descripcion ?></td>
                         </tr>
                     <?php endforeach; ?> 

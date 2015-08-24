@@ -101,6 +101,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!-- FIN DE LOS FILTROS PARA REPORTE -->
             
             <!--Formulario para el Cambio de Idiomas-->
@@ -120,7 +127,6 @@
                     <thead>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
-                            <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('name') ?></th>
                             <th><?php echo i18n::__('last_name') ?></th>
                             <th><?php echo i18n::__('address') ?></th>
@@ -135,7 +141,6 @@
                         <?php foreach ($objTrabajador as $trabajador): ?>
                             <tr>
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $trabajador->$id ?>"></td>
-                                <td><?php echo $trabajador->$id ?></td>
                                 <td><?php echo $trabajador->$nombre ?></td>
                                 <td><?php echo $trabajador->$apellido ?></td>
                                 <td><?php echo $trabajador->$direccion ?></td>

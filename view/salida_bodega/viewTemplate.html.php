@@ -24,8 +24,7 @@
                        
                         <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('date')?></th>
-                        <th><?php echo i18n::__('id_employee')?></th>
-                        
+                        <th><?php echo i18n::__('id_employee')?></th>              
                     </tr>
                 </thead>
                 <tbody>
@@ -35,7 +34,7 @@
                         <td><?php echo $salida_bodega->$id ?></td>
                         <td><?php echo $salida_bodega->$fecha ?></td>
                         <td><?php echo salidaBodegaTableClass::getNameFieldForaneaTrabajador($salida_bodega->$id_trabajador) ?></td>
-                                
+                               
                     </tr>
                     <?php endforeach; ?> 
                 </tbody>

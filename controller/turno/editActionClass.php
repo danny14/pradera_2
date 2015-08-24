@@ -10,14 +10,14 @@ use mvc\i18n\i18nClass as i18n;
 class editActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(turnoTableClass::ID)){
+            if(request::getInstance()->hasGet(turnoTableClass::ID)){
                 
                 $fields = array(
                 turnoTableClass::ID,
                 turnoTableClass::DESCRIPCION
                 );
                 $where = array(
-                turnoTableClass::ID => request::getInstance()->getRequest(turnoTableClass::ID)
+                turnoTableClass::ID => request::getInstance()->getGet(turnoTableClass::ID)
                 );
                 $this->objTurno = turnoTableClass::getAll($fields, FALSE , NULL, NULL, NULL, NULL, $where);
                 $this->defineView('edit', 'turno', session::getInstance()->getFormatOutput());

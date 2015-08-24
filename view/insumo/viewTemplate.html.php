@@ -21,7 +21,6 @@
             <table class="table table-bordered table-responsive table-striped table-condensed">
                 <thead>
                     <tr>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('name')?></th>
                         <th><?php echo i18n::__('date_create')?></th>
                         <th><?php echo i18n::__('date_expiration')?></th>
@@ -32,7 +31,6 @@
                 <tbody>
                     <?php foreach ($objInsumo as $insumo): ?>
                     <tr>
-                        <td><?php echo $insumo->$id?></td>
                         <td><?php echo $insumo->$nombre?></td>
                         <td><?php echo $insumo->$fecha_fabricacion?></td>
                         <td><?php echo $insumo->$fecha_vencimiento?></td>

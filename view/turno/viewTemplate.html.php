@@ -19,7 +19,6 @@
             <table class="table table-bordered table-responsive table-condensed">
                 <thead>
                     <tr class="active">
-                        <th><?php echo i18n::__('id') ?></th>
                         <th><?php echo i18n::__('description') ?></th>
                         <th><?php echo i18n::__('start_turn') ?></th>
                         <th><?php echo i18n::__('end_turn') ?></th>
@@ -28,7 +27,6 @@
                 <tbody>
                     <?php foreach ($objRaza as $turno): ?>
                         <tr>
-                            <td><?php echo $turno->$id ?></td>
                             <td><?php echo $turno->$descripcion ?></td>
                             <td><?php echo $turno->$inicio_turno ?></td>
                             <td><?php echo $turno->$fin_turno ?></td>

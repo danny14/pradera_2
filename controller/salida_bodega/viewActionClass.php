@@ -16,12 +16,14 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
             $fields = array(
             salidaBodegaTableClass::ID,
             salidaBodegaTableClass::FECHA,
-            salidaBodegaTableClass::ID_TRABAJADOR,    
+            salidaBodegaTableClass::ID_TRABAJADOR,
+            
             );
             $where = array(
             salidaBodegaTableClass::ID => request::getInstance()->getRequest(salidaBodegaTableClass::ID)
             );
             
+                $this->cntPages = salidaBodegaTableClass::getTotalPages(3, $where);
                 $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 $this->defineView('view', 'salida_bodega', session::getInstance()->getFormatOutput());
             }else{

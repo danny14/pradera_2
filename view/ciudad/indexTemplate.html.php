@@ -42,6 +42,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             <!-- Formulario del IDIOMA -->
             <?php view::includePartial('animal/formTraductor')?>
@@ -62,7 +69,6 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"></th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('description')?></th>
                         <th><?php echo i18n::__('action')?></th>
                     </tr>
@@ -71,7 +77,6 @@
                     <?php foreach ($objCiudad as $ciudad): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $ciudad->$id ?>"></td>
-                        <td><?php echo $ciudad->$id ?></td>
                         <td><?php echo $ciudad->$descripcion ?></td>
                         <td>
                             <div class="btn btn-group btn-xs">
@@ -141,6 +146,24 @@
     </div>
 </div>
 <!------------------------------------->
+<!-----------------Ventana Modal de Error Eliminar Individual----------------------->
+<div class="modal fade" id="myModalErrorDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><?php echo "Este es un mensaje de error "?>;
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------------------FIN-------------------------------------->
 <!-----------------Ventana Modal de Error Eliminar Individual----------------------->
 <div class="modal fade" id="myModalErrorDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

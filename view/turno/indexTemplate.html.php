@@ -1,6 +1,7 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
 <?php use mvc\view\viewClass as view;?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $id = turnoTableClass::ID?>
 <?php $descripcion = turnoTableClass::DESCRIPCION?>
 <?php $inicio_turno = turnoTableClass::INICIO_TURNO ?>
@@ -43,6 +44,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             <!-- Formulario del IDIOMA -->
             <?php view::includePartial('animal/formTraductor')?>
@@ -59,7 +67,6 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"></th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('description')?></th>
                         <th><?php echo i18n::__('start_turn')?></th>
                         <th><?php echo i18n::__('end_turn')?></th>
@@ -70,7 +77,6 @@
                     <?php foreach ($objTurno as $turno): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php $turno->$id ?>"></td>
-                        <td><?php echo $turno->$id ?></td>
                         <td><?php echo $turno->$descripcion ?></td>
                         <td><?php echo $turno->$inicio_turno ?></td>
                         <td><?php echo $turno->$fin_turno ?></td>
@@ -95,7 +101,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $turno->$id ?>, '<?php echo turnoTableClass::getNameField(turnoTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('turno', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $turno->$id ?>, '<?php echo turnoTableClass::getNameField(turnoTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('turno', 'delete') ?>','<?php echo routing::getInstance()->getUrlWeb('turno', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

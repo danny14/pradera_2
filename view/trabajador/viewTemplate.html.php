@@ -25,7 +25,6 @@
             <table class="table table-bordered table-responsive table-condensed">
                 <thead>
                     <tr class="active">
-                        <th><?php echo i18n::__('id') ?></th>
                         <th><?php echo i18n::__('name') ?></th>
                         <th><?php echo i18n::__('last_name') ?></th>
                         <th><?php echo i18n::__('address') ?></th>
@@ -38,7 +37,6 @@
                 <tbody>
                     <?php foreach ($objTrabajador as $trabajador): ?>
                         <tr>
-                            <td><?php echo $trabajador->$id ?></td>
                             <td><?php echo $trabajador->$nombre ?></td>
                             <td><?php echo $trabajador->$apellido ?></td>
                             <td><?php echo $trabajador->$direccion ?></td>

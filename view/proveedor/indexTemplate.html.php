@@ -2,6 +2,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $id = proveedorTableClass::ID ?>
 <?php $nombre =proveedorTableClass::NOMBRE ?>
 <?php $apellido =proveedorTableClass::APELLIDO ?>
@@ -72,6 +73,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             
              <!-- Ventana Modal para los reportes -->
@@ -141,7 +149,6 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"</th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('name')?></th>
                         <th><?php echo i18n::__('last_name')?></th>
                         <th><?php echo i18n::__('address')?></th>
@@ -155,7 +162,6 @@
                     <?php foreach ($objProveedor as $proveedor): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $proveedor->$id?>"></td>
-                        <td><?php echo $proveedor->$id?></td>
                         <td><?php echo $proveedor->$nombre?></td>
                         <td><?php echo $proveedor->$apellido?></td>
                         <td><?php echo $proveedor->$direccion?></td>

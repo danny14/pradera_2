@@ -14,15 +14,13 @@ class createActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-        $edad_animal = trim(request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::EDAD_ANIMAL, true)));
         $fecha = trim(request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::FECHA, true)));
         $id_fecundador = trim(request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, true)));
         $id_animal = trim(request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, true)));
         
-        $this->Validate($edad_animal,$fecha,$id_fecundador,$id_animal);
+        $this->Validate($fecha,$id_fecundador,$id_animal);
         
         $data = array(
-            registroCeloTableClass::EDAD_ANIMAL => $edad_animal,
             registroCeloTableClass::FECHA => $fecha,
             registroCeloTableClass::ID_FECUNDADOR => $id_fecundador,
             registroCeloTableClass::ID_ANIMAL => $id_animal,
@@ -35,20 +33,9 @@ class createActionClass extends controllerClass implements controllerActionInter
         /**
          * Validaciones para el registro_celo
          */
-//        if (strlen($fecha) > registroCelolTableClass::FECHA_LENGTH) {
-//                    throw new PDOException('la fecha no puede ser mayor a ' . registroCeloTableClass::FECHA_LENGTH . ' caracteres');
-//                }
-      
         
         /* _______________________________ */
-        $data = array(
-            registroCeloTableClass::EDAD_ANIMAL => $edad_animal,
-            registroCeloTableClass::FECHA => $fecha,
-            registroCeloTableClass::ID_FECUNDADOR => $id_fecundador,
-            registroCeloTableClass::ID_ANIMAL => $id_animal,
-        );
-
-
+        
         registroCeloTableClass::insert($data);
         session::getInstance()->setSuccess('Los datos fueron registrados de forma exitosa');
 //        bitacora::register('INSERTAR', registroCeloTableClass::getNameTable());
@@ -75,56 +62,61 @@ class createActionClass extends controllerClass implements controllerActionInter
       routing::getInstance()->redirect('registro_celo', 'insert');
     }
   }
-  private function Validate($edad_animal,$fecha,$id_fecundador,$id_animal){
+  private function Validate($fecha,$id_fecundador,$id_animal){
     $flag = FALSE;
     $pattern = "/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
-    
-      if (is_numeric($edad_animal) === FALSE) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterAge_animal', NULL,'default', array('%Age_animal%' => $edad_animal,'%character%'=>  registroCeloTableClass::EDAD_ANIMAL_LENGTH)));
-        $flag = TRUE;
-        session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::EDAD_ANIMAL, TRUE), TRUE);
-        }
-        if($edad_animal === '' or $edad_animal === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%Age_animal%' => $edad_animal,'%character%'=>  registroCeloTableClass::EDAD_ANIMAL_LENGTH)));
-          $flag = TRUE;
-        session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::EDAD_ANIMAL, TRUE), TRUE);
-        }
+    $fechaActual = date('Y-m-d');
   
-      if(preg_match($pattern,$date) === FALSE){
-        session::getInstance()->getError(in18::__('ErrorCharacterDate',NULL,array('%date%'=>$fecha,'%character%'=> registroCeloTableClass::FECHA )));
+      if(preg_match($pattern,$fecha) === FALSE){
+        session::getInstance()->getError(in18::__('ErrorCharacterDate',NULL,array('%date%'=>$fecha,'%character%'=> registroCeloTableClass::FECHA )),'errorFecha');
         $flag = TRUE;
         session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::FECHA, TRUE), TRUE);
       }
       if($fecha === '' or $fecha === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%date%' => $fecha,'%character%'=>  registroCeloTableClass::FECHA)));
+          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%date%' => $fecha,'%character%'=>  registroCeloTableClass::FECHA)),'errorFecha');
           $flag = TRUE;
         session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::FECHA, TRUE), TRUE);
         }
-      if($flag === TRUE){
-        request::getInstance()->setMethod('GET');
-        routing::getInstance()->forward('registro_celo','insert');
+        if(strtotime($fecha) >  strtotime($fechaActual)){
+          session::getInstance()->setError(i18n::__('ErrorCharacterDate', NULL,'default', array('%date%' => $fecha,'%character%'=>  registroCeloTableClass::FECHA)),'errorFecha');
+          $flag = TRUE;
+        session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::FECHA, TRUE), TRUE);
+        }
         
-      }
       if (!is_numeric($id_fecundador)) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterId_fecundador', NULL, array('%id_fecundador%'=>$id_fecundador,'%character%'=>  registroCeloTableClass::ID_FECUNDADOR)));
+        session::getInstance()->setError(i18n::__('ErrorCharacterId_fecundador', NULL, array('%id_fecundador%'=>$id_fecundador,'%character%'=>  registroCeloTableClass::ID_FECUNDADOR)),'errorFecundador');
         $flag = TRUE;
         session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE), TRUE);
         }
         if($id_fecundador === '' or $id_fecundador === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%id_fecundador%' => $fecundador,'%character%'=>  registroCeloTableClass::FECUNDADOR)));
+          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%id_fecundador%' => $id_fecundador,'%character%'=>  registroCeloTableClass::FECUNDADOR)),'errorFecundador');
           $flag = TRUE;
         session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::D_FECUNDADOR, TRUE), TRUE);
         }
+        if($id_fecundador < 0){
+          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $id_fecundador)),'errorFecundador');
+          $flag = TRUE;
+        session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE), TRUE);
+        }
         if (!is_numeric($id_animal)) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterId_animal', NULL, array('%id_animal%'=>$id_animal,'%character%'=>  registroCeloTableClass::ID_ANIMAL)));
+        session::getInstance()->setError(i18n::__('ErrorCharacterId_animal', NULL, array('%id_animal%'=>$id_animal,'%character%'=>  registroCeloTableClass::ID_ANIMAL)),'errorAnimal');
         $flag = TRUE;
         session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE), TRUE);
         }
         if($id_animal === '' or $id_animal === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%id_animal%' => $id_animal,'%character%'=>  registroCeloTableClass::ID_ANIMAL)));
+          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%id_animal%' => $id_animal,'%character%'=>  registroCeloTableClass::ID_ANIMAL)),'errorAnimal');
           $flag = TRUE;
         session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE), TRUE);
         }
+        if($id_animal < 0){
+          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $id_animal)),'errorAnimal');
+          $flag = TRUE;
+        session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE), TRUE);
+        }
+        if($flag === TRUE){
+         request::getInstance()->setMethod('GET');
+         routing::getInstance()->forward('registro_celo', 'insert');
+       }
 
         
 

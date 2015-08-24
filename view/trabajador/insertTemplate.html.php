@@ -5,7 +5,7 @@
 <?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('new')." "; echo i18n::__('animal')?></h1>
+<h1><?php echo i18n::__('new')." "; echo i18n::__('employee')?></h1>
 <?php view::includeHandlerMessage()?>
 <?php view::includePartial('trabajador/form',array( 'objTurno' => $objTurno,'objCredencial' => $objCredencial, 'objCiudad' => $objCiudad))?>
     </div>

@@ -1,5 +1,6 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php use mvc\view\viewClass as view;?>
 <?php $id = razaTableClass::ID?>
 <?php $descripcion = razaTableClass::DESCRIPCION?>
@@ -41,6 +42,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             <!-- Formulario del IDIOMA -->
             <?php view::includePartial('animal/formTraductor')?>
@@ -57,7 +65,6 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"></th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('description')?></th>
                         <th><?php echo i18n::__('action')?></th>
                     </tr>
@@ -66,7 +73,6 @@
                     <?php foreach ($objRaza as $raza): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $raza->$id?>"></td>
-                        <td><?php echo $raza->$id ?></td>
                         <td><?php echo $raza->$descripcion ?></td>
                         <td>
                             <div class="btn btn-group btn-xs">

@@ -12,11 +12,12 @@ class createActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $nombre = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE));
-                $fecha_fabricacion = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, TRUE));
-                $fecha_vencimiento = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, TRUE));
-                $valor = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::VALOR, TRUE));
-                $id_tipo_insumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE));
+                $nombre = trim(request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE)));
+                $fecha_fabricacion = trim(request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, TRUE)));
+                $fecha_vencimiento = trim(request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, TRUE)));
+                $valor = trim(request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::VALOR, TRUE)));
+                $id_tipo_insumo = trim(request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE)));
+                
                 $this->Validate($nombre,$fecha_fabricacion,$fecha_vencimiento,$valor,$id_tipo_insumo);
                
                 $data = array(
@@ -39,66 +40,79 @@ class createActionClass extends controllerClass implements controllerActionInter
         }
     }
     private function Validate($nombre,$fecha_fabricacion,$fecha_vencimiento,$valor,$id_tipo_insumo) {
-        //ACOMODAR LAS VALIDACIONES POR ESTAN MALAS MENCIONA A EDAD Y EDAD AQUI NO EXISTE
-//        $flag = FALSE ;
-//         if (strlen($nombre) > insumoTableClass::NOMBRE_LENGTH) {
-//             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$nombre,'%Character%' =>  insumoTableClass::NOMBRE_LENGTH) ));
-//     
-//             $flag = TRUE;
-//             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::NOMBRE,TRUE), TRUE);
-//             
-//        }
-//        if (!ereg("^[a-zA-Z]{3,20}$", $nombre)) {
-//            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => insumoTableClass::NOMBRE)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(insumoTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE), TRUE);
-//        }
-//        if ($nombre === '' or $nombre === NULL){
-//           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => insumoTableClass::NOMBRE)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE), TRUE); 
-//            //njgnugkqepofkoirhijdigofpk.................................
-//        }
-//        if (is_numeric($edad) === FALSE) {
-//        session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=>$edad)));
-//        $flag = TRUE;
-//        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE), TRUE);
-//        }
-//         if ($edad === '' or $edad === NULL){
-//           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => fecundadorTableClass::EDAD)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE), TRUE);
-//         }
-//        if (is_numeric($peso) === FALSE) {
-//          session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=>$peso)));
-//          $flag = TRUE;
-//        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
-//        }
-//         if ($peso === '' or $peso === NULL){
-//           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => fecundadorTableClass::PESO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
-//         }
-//        if (strlen($observacion) > fecundadorTableClass::OBSERVACION_LENGTH){ 
-//            session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%'=>$observacion,'%Character%' => fecundadorTableClass::OBSERVACION_LENGTH)));
-//            $flag = TRUE;
-//        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);
-//        }
-//         if (!ereg("^[a-zA-Z]{3,20}$", $observacion)) {
-//            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => fecundadorTableClass::OBSERVACION)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);
-//        }
-//        if ($observacion === '' or $observacion === NULL){
-//           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => fecundadorTableClass::OBSERVACION)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);
-//        }
-//        if($flag === TRUE){
-//            request::getInstance()->setMethod('GET');
-//            routing::getInstance()->forward('fecundador', 'insert');
-//            
-//        }
+         $flag = FALSE ;
+         $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
+        
+         /*
+          * Validacion para Nombre
+          */
+        if ($nombre === '' or $nombre === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => insumoTableClass::NOMBRE)),'errorNombre');
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE), TRUE);  
+        }else if (strlen($nombre) > insumoTableClass::NOMBRE_LENGTH) {
+             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$nombre,'%Character%' =>  insumoTableClass::NOMBRE_LENGTH) ),'errorNombre');
+             $flag = TRUE;
+             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::NOMBRE,TRUE), TRUE);      
+        }else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => insumoTableClass::NOMBRE)),'errorNombre');
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE), TRUE);
+        }
+        /*
+         * Validacion para Fecha Fabricacion
+         */
+        if($fecha_fabricacion === '' or $fecha_fabricacion === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => insumoTableClass::FECHA_FABRICACION)),'errorFechaFabricacion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, TRUE), TRUE);              
+        }else if(!preg_match($pattern, $fecha_fabricacion)){
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => insumoTableClass::FECHA_FABRICACION)),'errorFechaFabricacion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_INGRESO, TRUE), TRUE);             
+        }
+        /*
+         * Validacion para Fecha Vencimiento
+         */
+        if($fecha_vencimiento === '' or $fecha_vencimiento === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => insumoTableClass::FECHA_VENCIMIENTO)),'errorFechaVencimiento');
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, TRUE), TRUE);              
+        }else if(!preg_match($pattern, $fecha_vencimiento)){
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => insumoTableClass::FECHA_VENCIMIENTO)),'errorFechaVencimiento');
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, TRUE), TRUE);             
+        } 
+        /*
+         * Validacion para Valor
+         */
+        if($valor === '' or $valor === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => insumoTableClass::VALOR)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::VALOR, TRUE), TRUE);            
+        }else if(!is_numeric($valor)){
+            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => insumoTableClass::VALOR)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::VALOR, TRUE), TRUE);            
+        }
+        /*
+         * Validacion para ID Insumo
+         */
+        if($id_tipo_insumo === '' or $id_tipo_insumo === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => insumoTableClass::ID_TIPO_INSUMO)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE), TRUE);            
+        }else if(!is_numeric($id_tipo_insumo)){
+            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => insumoTableClass::ID_TIPO_INSUMO)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE), TRUE);            
+        }
+        
+        if($flag === TRUE){
+            request::getInstance()->setMethod('GET');
+            routing::getInstance()->forward('insumo', 'insert');
+            
+        }
     }
     }
 

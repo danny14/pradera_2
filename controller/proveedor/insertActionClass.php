@@ -18,15 +18,15 @@ class insertActionClass extends controllerClass implements controllerActionInter
             ciudadTableClass::DESCRIPCION
             );
             $this->objCiudad = ciudadTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
-            $fields = array(
-            trabajadorTableClass::ID,
-            trabajadorTableClass::NOMBRE,
-            trabajadorTableClass::APELLIDO
-            );
-            $orderBy = array(
-            trabajadorTableClass::NOMBRE
-            );
-            $this->objTrabajador = trabajadorTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
+//            $fields = array(
+//            trabajadorTableClass::ID,
+//            trabajadorTableClass::NOMBRE,
+//            trabajadorTableClass::APELLIDO
+//            );
+//            $orderBy = array(
+//            trabajadorTableClass::NOMBRE
+//            );
+//            $this->objTrabajador = trabajadorTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
             $this->defineView('insert', 'proveedor', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();

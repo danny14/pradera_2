@@ -42,6 +42,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             <?php view::includePartial('animal/formTraductor')?>
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('estado', 'deleteSelect') ?>" method="POST">
@@ -56,7 +63,6 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"></th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('description')?></th>
                         <th><?php echo i18n::__('action')?></th>
                     </tr>
@@ -65,7 +71,6 @@
                     <?php foreach ($objEstado as $estado): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $estado->$id ?>"></td>
-                        <td><?php echo $estado->$id ?></td>
                         <td><?php echo $estado->$descripcion ?></td>
                         <td>
                             <div class="btn btn-group btn-xs">

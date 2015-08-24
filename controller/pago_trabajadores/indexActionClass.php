@@ -32,14 +32,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                     $where[pagoTrabajadoresTableClass::ID_TRABAJADOR] = $filter['Trabajador'];
                 }
 
-//                if(isset($filter['fechaCreacion1']) and $filter['fechaCreacion1'] !== NULL and $filter['fechaCreacion1'] !== '' and isset($filter['fechaCreacion2']) and $filter['fechaCreacion2'] !== NULL and $filter['fechaCreacion2'] !== ''){
-//                    $where[registroCeloTableClass::FECHA_INGRESO] = array(
-//                        $filter['fechaCreacion1'],
-//                        $filter['fechaCreacion2']
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
-//                    );
-//                }
+
                 session::getInstance()->setAttribute('pagoTrabajadoresIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('pagoTrabajadoresIndexFilters')){
             $where = session::getInstance()->getAttribute('pagoTrabajadoresIndexFilters');
@@ -69,17 +62,17 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = $page * 3;
       }
       $this->cntPages = pagoTrabajadoresTableClass::getTotalPages(3, $where);
-      $this->objReporteParto = pagoTrabajadoresTableClass::getAll($fields, FALSE, $orderBy, 'ASC', 3, $page, $where);
+      $this->objPagoTrabajadores = pagoTrabajadoresTableClass::getAll($fields, FALSE, $orderBy, 'ASC', 3, $page, $where);
       
       //llamado de la foranea
-//      $fieldsTrabajador = array(/* foranea trabajador */
-//                trabajadorTableClass::ID,
-//                trabajadorTableClass::NOMBRE,
-//            );
-//            $orderByTrabajador = array(
-//                trabajadorTableClass::NOMBRE
-//            );
-//            $this->objTrabajador = trabajadorTableClass::getAll($fieldsTrabajador, false, $orderByTrabajador, 'ASC');
+      $fieldsTrabajador = array(/* foranea trabajador */
+                trabajadorTableClass::ID,
+                trabajadorTableClass::NOMBRE,
+            );
+            $orderByTrabajador = array(
+                trabajadorTableClass::NOMBRE
+            );
+            $this->objTrabajador = trabajadorTableClass::getAll($fieldsTrabajador, false, $orderByTrabajador, 'ASC');
 
       
       $this->defineView('index', 'pago_trabajadores', session::getInstance()->getFormatOutput());//direccionamiento

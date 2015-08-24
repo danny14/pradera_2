@@ -11,20 +11,14 @@ class updateActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $id = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::ID,true));
-                $nombre = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE ,true));
-                $created_at = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::CREATED_AT ,true));
-                $updated_at = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::UPDATED_AT ,true));
-                $deleted_at = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::DELETED_AT ,true));
+                $id = trim(request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::ID,true)));
+                $nombre = trim(request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE ,true)));
                 
                 $ids= array(
                 credencialTableClass::ID => $id
                 );
                 $data = array(
                 credencialTableClass::NOMBRE => $nombre,
-                credencialTableClass::CREATED_AT => $created_at,
-                credencialTableClass::UPDATED_AT => $updated_at,
-                credencialTableClass::DELETED_AT => $deleted_at
                 );
 
                 credencialTableClass::update($ids, $data);
@@ -36,6 +30,29 @@ class updateActionClass extends controllerClass implements controllerActionInter
             echo "<br>";
             echo $exc->getTraceAsString();
             
+        }
+    }
+    private function Validate($nombre) {
+        $flag = FALSE;
+        $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
+
+        if ($nombre === '' or $nombre === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => credencialTableClass::NOMBRE)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE), TRUE);
+        }else if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $nombre, '%character%' => credencialTableClass::NOMBRE_LENGTH)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE), TRUE);
+        }else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => credencialTableClass::NOMBRE)),'errorNombre');
+            $flag = TRUE;
+            session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE), TRUE);
+        }
+        if($flag === TRUE){
+            request::getInstance()->setMethod('GET'); //POST
+            request::getInstance()->addParamGet(array(credencialTableClass::ID => request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::ID,true))));
+            routing::getInstance()->forward('credencial', 'insert');
         }
     }
 }

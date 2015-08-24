@@ -9,7 +9,7 @@ use mvc\i18n\i18nClass as i18n;
 class editActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(fecundadorTableClass::ID)){
+            if(request::getInstance()->hasGet(fecundadorTableClass::ID)){
                 $fields = array(
                 fecundadorTableClass::ID,
                 fecundadorTableClass::NOMBRE,
@@ -19,7 +19,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 fecundadorTableClass::ID_RAZA
                 );
                 $where = array(
-                fecundadorTableClass::ID => request::getInstance()->getRequest(fecundadorTableClass::ID)
+                fecundadorTableClass::ID => request::getInstance()->getGet(fecundadorTableClass::ID)
                 );
                 $this->objFecundador = fecundadorTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
                 

@@ -41,6 +41,13 @@
                     </div>
                 </div>
             </div>
+            <?php if(session::getInstance()->hasFlash('modalFilter')): ?>
+            <script>
+                $(document).ready(function(){
+                    $('#myModalFILTROS').modal('toggle');
+                });
+            </script>
+            <?php endif ?>
             <!--Fin Ventana Modal Filtros-->
             <!-- Formulario del IDIOMA -->
             <?php view::includePartial('animal/formTraductor')?>
@@ -57,7 +64,6 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"></th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('description')?></th>
                         <th><?php echo i18n::__('action')?></th>
                     </tr>
@@ -66,7 +72,6 @@
                     <?php foreach ($objTipoInsumo as $tipo_insumo): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $tipo_insumo->$id?>"></td>
-                        <td><?php echo $tipo_insumo->$id ?></td>
                         <td><?php echo $tipo_insumo->$descripcion ?></td>
                         <td>
                             <div class="btn btn-group btn-xs">
@@ -89,7 +94,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $tipo_insumo->$id ?>, '<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('tipo_insumo', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $tipo_insumo->$id ?>, '<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('tipo_insumo', 'delete') ?>','<?php echo routing::getInstance()->getUrlWeb('tipo_insumo', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

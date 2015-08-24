@@ -12,13 +12,13 @@ class deleteActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
-                $id = request::getInstance()->getPost(razaTableClass::getNameField(razaTableClass::ID, TRUE));
+                $id = request::getInstance()->getPost(turnoTableClass::getNameField(turnoTableClass::ID, TRUE));
                 
                 $ids = array(
-                razaTableClass::ID => $id
+                turnoTableClass::ID => $id
                 );
                 
-            razaTableClass::delete($ids, FALSE);
+            turnoTableClass::delete($ids, FALSE);
             
             $this->arrayAjax = array(
                 ' code ' => 200,

@@ -4,7 +4,6 @@
 <?php $id = animalTableClass::ID ?>
 <?php $nombre = animalTableClass::NOMBRE ?>
 <?php $genero = animalTableClass::GENERO ?>
-<?php $edad = animalTableClass::EDAD ?>
 <?php $peso = animalTableClass::PESO; ?>
 <?php $fecha_ingreso = animalTableClass::FECHA_INGRESO; ?>
 <?php $numero_partos = animalTableClass::NUMERO_PARTOS ?>
@@ -25,10 +24,8 @@
             <table class="table table-bordered table-responsive table-condensed">
                 <thead>
                     <tr class="active">
-                        <th><?php echo i18n::__('id') ?></th>
                         <th><?php echo i18n::__('name') ?></th>
                         <th><?php echo i18n::__('gender') ?></th>
-                        <th><?php echo i18n::__('age') ?></th>
                         <th><?php echo i18n::__('weight') ?></th>
                         <th><?php echo i18n::__('date_entry') ?></th>
                         <th><?php echo i18n::__('number_births') ?></th>
@@ -39,11 +36,9 @@
                 <tbody>
                     <?php foreach ($objAnimal as $animal): ?>
                         <tr>
-                            <td><?php echo $animal->$id ?></td>
                             <td><?php echo $animal->$nombre ?></td>
                             <td><?php echo $animal->$genero ?></td>
-                            <td><?php echo $animal->$edad ?></td>
-                            <td><?php echo $animal->$peso ?></td>
+                            <td><?php echo $animal->$peso ?> .Kg</td>
                             <td><?php echo $animal->$fecha_ingreso ?></td>
                             <td><?php echo $animal->$numero_partos ?></td>
                             <td><?php echo animalTableClass::getNameFieldForaneaRaza($animal->$id_raza) ?></td>

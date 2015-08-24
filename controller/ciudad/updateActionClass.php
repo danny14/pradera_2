@@ -11,8 +11,10 @@ class updateActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){
-                $id = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::ID,true));
-                $descripcion = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION ,true));
+                $id = trim(request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::ID,true)));
+                $descripcion = trim(request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION ,true)));
+                
+                $this->Validate($descripcion);
                 
                 $ids= array(
                 ciudadTableClass::ID => $id
@@ -31,6 +33,30 @@ class updateActionClass extends controllerClass implements controllerActionInter
             echo "<br>";
             echo $exc->getTraceAsString();
             
+        }
+    }
+    
+    private function Validate($descripcion) {
+        /*
+         * VALIDACION PARA DESCRIPCION
+         */
+         if ($descripcion === '' or $descripcion === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ciudadTableClass::DESCRIPCION)),'errorDescripcion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE), TRUE);
+        }  else if (strlen($descripcion) > ciudadTableClass::DESCRIPCION_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => ciudadTableClass::NOMBRE_LENGTH)),'errorDescripcion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE), TRUE);
+        }else if (!ereg("^[a-zA-Z ]{3,80}$", $descripcion)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => ciudadTableClass::DESCRIPCION)),'errorDescripcion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE), TRUE);
+        }
+        if($flag === TRUE){
+            request::getInstance()->setMethod('GET'); //POST
+            request::getInstance()->addParamGet(array(ciudadTableClass::ID => request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::ID,true))));
+            routing::getInstance()->forward('ciudad', 'insert');
         }
     }
 }

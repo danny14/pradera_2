@@ -13,24 +13,24 @@ class deleteActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
-                $id = request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID, TRUE));
+                $id = request::getInstance()->getPost(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::ID, TRUE));
                 
                 
                 $ids = array(
-                animalTableClass::ID => $id
+                entradaBodegaTableClass::ID => $id
                 );
                 
-            animalTableClass::delete($ids, FALSE);
+            entradaBodegaTableClass::delete($ids, FALSE);
             $this->arrayAjax = array(
                 'code' => 200,
                 'msg' => 'La Eliminacion de registro fue exitosa'
             );
             session::getInstance()->setSuccess('El registro fue eliminado de forma exitosa');
-            bitacora::register('Eliminar Individual', animalTableClass::getNameTable());
+            bitacora::register('Eliminar Individual', entradaBodegaTableClass::getNameTable());
                 
-            $this->defineView('delete', 'animal', session::getInstance()->getFormatOutput());
+            $this->defineView('delete', 'entrada_bodega', session::getInstance()->getFormatOutput());
             } else {
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('entrada_bodega', 'index');
             }
         } catch (PDOException $exc) {
                 $this->arrayAjax = array(
@@ -38,7 +38,7 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 'msg' => 'El dato esta siendo utilizado por otra tabla',
                 'modal' => 'myModalDelete'.$id
             );
-            $this->defineView('delete', 'animal', session::getInstance()->getFormatOutput());
+            $this->defineView('delete', 'entrada_bodega', session::getInstance()->getFormatOutput());
 //            session::getInstance()->setFlash('exc', $exc);
 //            routing::getInstance()->forward('shfSecurity', 'exception');
         }

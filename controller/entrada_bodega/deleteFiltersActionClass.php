@@ -11,11 +11,11 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
 
     public function execute() {
         try {
-            if(session::getInstance()->hasAttribute('animalIndexFilters')) {
-                session::getInstance()->deleteAttribute('animalIndexFilters');
-                routing::getInstance()->redirect('animal', 'index');
+            if(session::getInstance()->hasAttribute('entradaBodegaIndexFilters')) {
+                session::getInstance()->deleteAttribute('entradaBodegaIndexFilters');
+                routing::getInstance()->redirect('entrada_bodega', 'index');
             } else {
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('entrada_bodega', 'index');
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

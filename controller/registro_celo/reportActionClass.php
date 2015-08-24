@@ -22,16 +22,9 @@ class reportActionClass extends controllerClass implements controllerActionInter
         if(isset($filter['Fecha']) and $filter['Fecha'] !== NULL and $filter['Fecha'] !== ''){
                     $where[registroCeloTableClass::FECHA] = $filter['Fecha'];
                 }
-//       if(isset($report['fechaCreacion1']) and $report['fechaCreacion1'] !== NULL and $report['fechaCreacion1'] !== '' and isset($report['fechaCreacion2']) and $report['fechaCreacion2'] !== NULL and $report['fechaCreacion2'] !== ''){
-//       $where[registroCeloTableClass::FECHA] = array(
-//         $report['fechaCreacion1'],
-//         $report['fechaCreacion2']  
-//       );  
-//       }
       }
        $fields = array(
       registroCeloTableClass::ID,
-      registroCeloTableClass::EDAD_ANIMAL,
       registroCeloTableClass::FECHA,
       registroCeloTableClass::ID_FECUNDADOR,
       registroCeloTableClass::ID_ANIMAL

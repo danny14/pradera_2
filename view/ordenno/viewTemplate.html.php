@@ -20,7 +20,6 @@
             <table class="table table-bordered table-responsive table-striped table-condensed">
                 <thead>
                     <tr>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('date_ordenno')?></th>
                         <th><?php echo i18n::__('quantity_milk')?></th>
                         <th><?php echo i18n::__('id_employee')?></th>
@@ -31,7 +30,6 @@
                 <tbody>
                     <?php foreach ($objOrdenno as $ordenno): ?>
                     <tr>
-                        <td><?php echo $ordenno->$id?></td>
                         <td><?php echo $ordenno->$fecha_ordenno?></td>
                         <td><?php echo $ordenno->$cantidad_leche?></td>
                         <td><?php echo $ordenno->$id_trabajador?></td>

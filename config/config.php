@@ -1,9 +1,9 @@
 <?php
 
-use mvc\config\configClass as config;
+use mvc\config\myConfigClass as config;
 use mvc\session\sessionClass as session;
 
-config::setRowGrid(10);
+config::setRowGrid(5);
 
 config::setDbHost('localhost');
 config::setDbDriver('pgsql'); // pgsql mysql
@@ -32,7 +32,7 @@ if (config::getDbUnixSocket() !== null) {
 config::setPathAbsolute('C:/xampp/htdocs/xampp/pradera_2/');
 config::setUrlBase('http://localhost/xampp/pradera_2/web/');
 
-config::setScope('dev'); // prod
+config::setScope('prod'); // prod dev
 
 if (session::getInstance()->hasDefaultCulture() === false) {
   config::setDefaultCulture('es');
@@ -66,3 +66,4 @@ config::setDefaultActionSecurity('index');
 config::setDefaultModulePermission('shfSecurity');
 config::setDefaultActionPermission('noPermission');
 
+config::setCantidad(8);

@@ -4,7 +4,7 @@
 
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('edit')." "; echo i18n::__('pago_trabajadores')?></h1>
+<h1><?php echo i18n::__('edit')." "; echo i18n::__('payment of employee')?></h1>
 <?php view::includePartial('pago_trabajadores/form',array('objPagoTrabajadores'=> $objPagoTrabajadores,'objTrabajador'=>$objTrabajador))?>
     </div>
 </div>

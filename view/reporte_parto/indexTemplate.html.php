@@ -120,7 +120,9 @@
                 </div>
             </div>
             <!--Fin Ventana Modal Reportes-->
-            
+            <!--Formulario para el Cambio de Idiomas-->
+            <?php view::includePartial('animal/formTraductor')?>
+            <!-- Fin del Formulario de Cambio de Idiomas-->
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('reporte_parto', 'deleteSelect') ?>" method="POST">
                 <div>
                     <a href="<?php echo routing::getInstance()->getUrlWeb('reporte_parto', 'insert') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>

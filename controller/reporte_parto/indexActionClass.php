@@ -32,14 +32,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                     $where[reportePartoTableClass::ID_ANIMAL] = $filter['Animal'];
                 }
 
-//                if(isset($filter['fechaCreacion1']) and $filter['fechaCreacion1'] !== NULL and $filter['fechaCreacion1'] !== '' and isset($filter['fechaCreacion2']) and $filter['fechaCreacion2'] !== NULL and $filter['fechaCreacion2'] !== ''){
-//                    $where[registroCeloTableClass::FECHA_INGRESO] = array(
-//                        $filter['fechaCreacion1'],
-//                        $filter['fechaCreacion2']
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
-//                    );
-//                }
+
                 session::getInstance()->setAttribute('reportePartoIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('reportePartoIndexFilters')){
             $where = session::getInstance()->getAttribute('reportePartoIndexFilters');

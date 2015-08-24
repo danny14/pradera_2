@@ -48,6 +48,35 @@ animal:
     credentials:
       - [admin]
 ##---------- CIUDAD ---------------------##
+ciudad:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
 ##---------- CREDENCIAL -----------------##
 credencial:
   index:
@@ -75,6 +104,40 @@ credencial:
     credentials:
       - [admin]
   deleteSelect:
+    security: true
+    credentials:
+      - [admin]
+##---------- DETALLE ENTRADA ------------##
+detalle_entrada:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
+  view:
     security: true
     credentials:
       - [admin]
@@ -109,6 +172,35 @@ entrada_bodega:
     credentials:
       - [admin]
 ##---------- ESTADO ---------------------##
+estado:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
 ##---------- FECUNDADOR -----------------##
 fecundador:
   index:
@@ -217,6 +309,35 @@ proveedor:
     credentials:
       - [admin]
 ##--------- RAZA -------------------------##
+raza:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
 ##--------- REGISTRO CELO ----------------##      
 registro_celo:
   index:
@@ -240,10 +361,67 @@ registro_celo:
     credentials:
       - [admin]
 ##----------REGISTRO VACUNACION --------##
+registro_vacunacion:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
 ##----------REPORTE PARTO --------------##
 ##---------- SALIDA BODEGA -------------##
 ##---------- TIPO INSUMO ---------------##
-
+tipo_insumo:
+  index:
+    security: true
+    credentials:
+      - [admin]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+  create:
+    security: true
+    credentials:
+      - [admin]
+  edit:
+    security: true
+    credentials:
+      - [admin]
+  update:
+    security: true
+    credentials:
+      - [admin]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin]
 #-----------Trabajador -------------------
 trabajador:
   index:
