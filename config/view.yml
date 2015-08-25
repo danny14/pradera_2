@@ -18,11 +18,24 @@ shfSecurity:
     title: Identificacion de usuario
     stylesheet:
       - signin.css
+     # - modern-business.css
 
-default:
-  index:
-    javascript:
-      - index.js
+#default:
+#  index:
+#  title: Corral de Piedras
+#  meta:
+#    - charset="UTF-8"
+#    - http-equiv="X-UA-Compatible" content="IE=edge"
+#    - name="viewport" content="width=device-width, initial-scale=1"
+#  javascript:
+#    - jquery-1.11.1.min.js
+#    - bootstrap.js
+#    - main.js
+#  stylesheet:
+#    - bootstrap.css
+#    - main.css
+#    - font-awesome.min.css
+#    - modern-business.css
 #--------------- Animal -------------------------
 animal:
   index:

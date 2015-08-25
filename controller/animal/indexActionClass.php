@@ -15,22 +15,24 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where = NULL;
             if(request::getInstance()->hasPost('filter') and request::getInstance()->isMethod('POST')){
                 $filter = request::getInstance()->getPost('filter');
+                
                 /**
                  * Validacion de los filtros
                  */
-                
-                $fecha_ini = $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'];
-                $fecha_fin = $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_2'];
-                
-                
+                 //echo $filter[animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)];          
                 if(isset($filter[animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)]) and $filter[animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)] !== NULL and $filter[animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)] !== ''){
                     if(request::getInstance()->isMethod('POST')){
-                        $nombre = $filter[animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)];
+                        $nombre = $filter[animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)];
                         $this->ValidateName($nombre);
-                        $where[animalTableClass::NOMBRE] = $nombre;
+                        $where[] = '(' . animalTableClass::getNameField(animalTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                                . 'OR ' . animalTableClass::getNameField(animalTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                                . 'OR ' . animalTableClass::getNameField(animalTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
+                        //$where[animalTableClass::NOMBRE] = $nombre;
                     }
                 }
                 if(isset($filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_1']) and $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_1'] !== NULL and $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_1'] !== '' and isset($filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_2']) and $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_2'] !== NULL and $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_2'] !== ''){
+                    $fecha_ini = $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'];
+                    $fecha_fin = $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_2'];
                     $this->ValidateFecha( $fecha_ini, $fecha_fin);
                     $where[animalTableClass::FECHA_INGRESO] = array(
                         $fecha_ini,
@@ -79,7 +81,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $nombre, '%character%' => animalTableClass::NOMBRE_LENGTH)), 'errorName');
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
-        } else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
+        } else if (!preg_match("/^[a-zA-Z ]+$/i", $nombre)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default', array('%field%' => animalTableClass::NOMBRE)), 'errorName');
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);

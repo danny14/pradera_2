@@ -39,7 +39,7 @@
                                 <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?> " >
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filter<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)?>" name="filter[<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE)?>]" placeholder="<?php echo i18n::__('name')?>">
+                                        <input type="text" class="form-control" id="filter<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)?>" name="filter[<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)?>]" placeholder="<?php echo i18n::__('name')?>">
                                         <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
                                     </div>
                                 </div>

@@ -2,7 +2,6 @@
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session ?>
 <div class="container container-fluid">
-
   <form class="form-signin" role="form" action="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'login') ?>" method="POST">
     <h2 class="form-signin-heading">Identificación</h2>
     <label for="inputUser" class="sr-only">Email address</label>
@@ -21,3 +20,4 @@
   </form>
 
 </div> <!-- /container -->
+

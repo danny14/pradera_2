@@ -26,7 +26,6 @@ $pdf->Cell(255,10,'ANIMAL',1,1,'C');
 
 
 
-  $pdf->Cell(10,10,  utf8_decode("ID"),1);
   $pdf->Cell(40,10,  utf8_decode("NOMBRE"),1);
   $pdf->Cell(20,10,  utf8_decode("GENERO"),1);
   $pdf->Cell(20,10,  utf8_decode("EDAD"),1);
@@ -37,7 +36,6 @@ $pdf->Cell(255,10,'ANIMAL',1,1,'C');
   $pdf->Cell(30,10,  utf8_decode("ID_ESTADO"),1);
   $pdf->Ln();
 foreach ($objAnimal as $animal){
-  $pdf->Cell(10,10,  utf8_decode($animal->$id),1);
   $pdf->Cell(40,10,  utf8_decode($animal->$nombre),1);
   $pdf->Cell(20,10,  utf8_decode($animal->$genero),1);
   $pdf->Cell(20,10,  utf8_decode($animal->$edad),1);

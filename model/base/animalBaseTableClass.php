@@ -9,7 +9,20 @@ use mvc\model\table\tableBaseClass;
  */
 class animalBaseTableClass extends tableBaseClass {
 
-  const ID = 'id';
+private $id;
+private $nombre;
+private $genero;
+private $peso;
+private $fecha_ingreso;
+private $numero_partos;
+private $id_raza;
+private $id_estado;
+private $id_madre;
+private $created_at;
+private $update_at;
+private $deleted_at;
+
+const ID = 'id';
   const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 80;
   const GENERO = 'genero';
@@ -22,6 +35,8 @@ class animalBaseTableClass extends tableBaseClass {
   const ID_RAZA = 'id_raza';
   const ID_ESTADO = 'id_estado';
   const ID_MADRE = 'id_madre';
+  const DELETED_AT = 'deleted_at';
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

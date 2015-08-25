@@ -14,16 +14,27 @@ class animalTableClass extends animalBaseTableClass {
         try {
             $sql = 'SELECT count(' . animalTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . animalTableClass::getNameTable(). ' ';
-//                    ' WHERE'. fecundadorTableClass::DELETED_AT.'IS NULL' paginado sin tener en cuenta el borrado logico;
+                    ' WHERE'. animalTableClass::DELETED_AT.'IS NULL';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {
-                        $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
+                        $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
                     } else {
-                        $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                        $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
                     }
                 }
             }
+//           if (is_array($where) === true) {
+//                foreach ($where as $field => $value) {
+//                    if (is_array($value)) {
+//                        $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1]) ? $value[1] : "'$value[1]'"));
+//                    } if (is_numeric($field)) {
+//                        $sql = $sql . 'AND ' . $value;
+//                    } else {
+//                        $sql = $sql . ' AND ' . ' = ' . ((is_numeric($value)) ? $value : "'$value'");
+//                    }
+//                }
+//            }
             $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
