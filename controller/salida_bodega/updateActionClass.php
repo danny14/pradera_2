@@ -17,6 +17,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $id = request::getInstance()->getPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID, true));
         $fecha = request::getInstance()->getPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::FECHA, true));
         $id_trabajador = request::getInstance()->getPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, true));
+       
+        $this->Validate($fecha,$id_trabajador);
+        
         $ids = array(
             salidaBodegaTableClass::ID => $id
         );

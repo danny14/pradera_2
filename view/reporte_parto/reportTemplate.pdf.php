@@ -18,33 +18,39 @@ $pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),90,8,70);
 
 $pdf ->Ln(50);
 
-$pdf->Cell(263,10,'REPORTE PARTO',1,1,'C');
+$pdf->Cell(228,10,'REPORTE PARTO',1,1,'C');
 
 
-
-
-  $pdf->Cell(20,10,  utf8_decode("ID"),1);
-  $pdf->Cell(35,10,  utf8_decode("FECHA_PARTO "),1);
-  $pdf->Cell(30,10,  utf8_decode("N_ANIMALES_VI"),1);
-  $pdf->Cell(30,10,  utf8_decode("N_ANIMALES_M"),1);
-  $pdf->Cell(30,10,  utf8_decode("N_MACHOS"),1);
-  $pdf->Cell(30,10,  utf8_decode("N_HEMBRAS"),1);
-  $pdf->Cell(30,10,  utf8_decode("ID_ANIMAL"),1);
-  $pdf->Cell(58,10,  utf8_decode("OBSERVACIONES"),1);
-  
-  $pdf->Ln();
+   
+ $pdf->Ln(); 
 foreach ($objReporteParto as $reporteParto){
-  
-  $pdf->Cell(20,10,  utf8_decode($reporteParto->id),1);
-  $pdf->Cell(35,10,  utf8_decode($reporteParto->fecha_parto),1);
-  $pdf->Cell(30,10,  utf8_decode($reporteParto->n_animales_vi),1);
-  $pdf->Cell(30,10,  utf8_decode($reporteParto->n_animales_m),1);
+  $pdf->SetFont('Arial','B',12);
+  $pdf->Cell(40,10,  utf8_decode("FECHA_PARTO "),1);
+  $pdf->Cell(40,10,  utf8_decode(" ANIMALES VIVOS"),1); 
+  $pdf->Cell(48,10,  utf8_decode(" ANIMALES MUERTOS"),1);
+  $pdf->Cell(30,10,  utf8_decode(" MACHOS"),1);
+  $pdf->Cell(30,10,  utf8_decode(" HEMBRAS"),1);
+  $pdf->Cell(40,10,  utf8_decode("MADRE"),1);
+  $pdf ->Ln();
+  $pdf->SetFont('Arial','',10);
+  $pdf->Cell(40,10,  utf8_decode($reporteParto->fecha_parto),1);
+  $pdf->Cell(40,10,  utf8_decode($reporteParto->n_animales_vi),1);
+  $pdf->Cell(48,10,  utf8_decode($reporteParto->n_animales_m),1);
   $pdf->Cell(30,10,  utf8_decode($reporteParto->n_machos),1);
   $pdf->Cell(30,10,  utf8_decode($reporteParto->n_hembras),1);
-  $pdf->Cell(30,10,  utf8_decode($reporteParto->id_animal),1);
-  $pdf->Cell(58,10,  utf8_decode($reporteParto->observaciones),1);
-  
+  $pdf->Cell(40,10,  utf8_decode(reportePartoTableClass::getNameFieldForaneaAnimal($reporteParto->id_animal)),1);
   $pdf ->Ln();
+  $pdf->SetFont('Arial','B',12);
+  $pdf->Cell(228,10,  utf8_decode("OBSERVACIONES"),1,1,'C');
+  $pdf->SetFont('Arial','',10);
+  $pdf->Cell(228,10,  utf8_decode($reporteParto->observaciones),1); 
+  $pdf->Ln();
+  $pdf ->Ln();
+  
+
+ 
+  
+  
   
 }
 $pdf->Output();

@@ -44,6 +44,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
             $orderByTipoInsumo = array(
             tipoInsumoTableClass::DESCRIPCION,
             );
+            $this->idSalidaBodega = $idSalidaBodega;
             $this->objTipoInsumo = tipoInsumoTableClass::getAll($fieldsTipoInsumo, FALSE , $orderByTipoInsumo,'ASC');
             $this->defineView('insert', 'detalle_salida',  session::getInstance()->getFormatOutput());
             

@@ -52,7 +52,7 @@
                             <label for="filterEmployee" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTrabajador" name="filter[Trabajador]">
-                                    <option value=""><?php echo i18n::__('selectTrabajador') ?></option>
+                                    <option value=""><?php echo i18n::__('selectEmployee') ?></option>
                                      <?php foreach ($objTrabajador as $nombre_trabajador): ?>
                                         <option value="<?php echo $nombre_trabajador->$trabajador_id ?>"><?php echo $nombre_trabajador->$nombre ?></option>
                                      <?php endforeach; ?>
@@ -99,7 +99,7 @@
                             <label for="filterEmployee" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTrabajador" name="filter[Trabajador]">
-                                    <option value=""><?php echo i18n::__('selectTrabajador') ?></option>
+                                    <option value=""><?php echo i18n::__('selectEmployee') ?></option>
                                      <?php foreach ($objTrabajador as $nombre_trabajador): ?>
                                         <option value="<?php echo $nombre_trabajador->$trabajador_id ?>"><?php echo $nombre_trabajador->$nombre ?></option>
                                      <?php endforeach; ?>
@@ -139,7 +139,7 @@
                             <th><?php echo i18n::__('end_date') ?></th>
                             <th><?php echo i18n::__('subtotal') ?></th>
                             <th><?php echo i18n::__('time_value') ?></th>
-                            <th><?php echo i18n::__('id_employee') ?></th>
+                            <th><?php echo i18n::__('employee') ?></th>
                             <th><?php echo i18n::__('extra_time') ?></th>
                             <th><?php echo i18n::__('number of days') ?></th>
                          
@@ -153,8 +153,8 @@
                                 <td><?php echo $pago_trabajadores->$id ?></td>
                                 <td><?php echo $pago_trabajadores->$fecha_inicio ?></td>
                                 <td><?php echo $pago_trabajadores->$fecha_fin ?></td>
-                                <td><?php echo $pago_trabajadores->$subtotal ?></td>
-                                <td><?php echo $pago_trabajadores->$valor_hora ?></td>
+                                <td><?php echo '$' . number_format($pago_trabajadores->$subtotal, 0, ',', '.') ?></td>
+                                <td><?php echo '$' . number_format($pago_trabajadores->$valor_hora,0, ',', '.') ?></td>
                                 <td><?php echo pagoTrabajadoresTableClass::getNameFieldForaneaTrabajador($pago_trabajadores->$id_trabajador) ?></td>
                                 <td><?php echo $pago_trabajadores->$cantidad_dias?></td>
                                 <td><?php echo $pago_trabajadores->$horas_extras ?></td>
@@ -180,7 +180,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $pago_trabajadores->$id ?>, '<?php echo pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'delete') ?>','<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $pago_trabajadores->$id ?>, '<?php echo pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

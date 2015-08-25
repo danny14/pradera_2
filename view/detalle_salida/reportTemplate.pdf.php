@@ -16,25 +16,22 @@ $pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),90,8,70);
 
 $pdf ->Ln(50);
 
-$pdf->Cell(175,10,'DETALLE SALIDA',1,1,'C');
-
-
-
-
-  $pdf->Cell(20,10,  utf8_decode("ID"),1);
-  $pdf->Cell(30,10,  utf8_decode("CANTIDAD "),1);
-  $pdf->Cell(45,10,  utf8_decode("ID_SALIDA_BODEGA"),1);
-  $pdf->Cell(40,10,  utf8_decode("ID_INSUMO"),1);
-  $pdf->Cell(40,10,  utf8_decode("ID_TIPO_INSUMO"),1);
+$pdf->Cell(0,10,'DETALLE SALIDA',1,1,'C');
+  
+  $pdf->Ln();
+  $pdf->Cell(40,10,  utf8_decode("CANTIDAD "),1);
+  $pdf->Cell(40,10,  utf8_decode("SALIDA BODEGA"),1);
+  $pdf->Cell(80,10,  utf8_decode("INSUMO"),1);
+  $pdf->Cell(100,10,  utf8_decode("TIPO INSUMO"),1);
   
   $pdf->Ln();
 foreach ($objDetalleSalida as $detalleSalida){
   
-  $pdf->Cell(20,10,  utf8_decode($detalleSalida->id),1);
-  $pdf->Cell(30,10,  utf8_decode($detalleSalida->cantidad),1);
-  $pdf->Cell(45,10,  utf8_decode($detalleSalida->id_salida_bodega),1);
-  $pdf->Cell(40,10,  utf8_decode($detalleSalida->id_insumo),1);
-  $pdf->Cell(40,10,  utf8_decode($detalleSalida->id_tipo_insumo),1);
+  $pdf->SetFont('Arial','',10);
+  $pdf->Cell(40,10,  utf8_decode($detalleSalida->cantidad),1);
+  $pdf->Cell(40,10,  utf8_decode(detalleSalidaTableClass::getNameFieldForaneaSalidaBodega($detalleSalida->$id_salida_bodega)),1);
+  $pdf->Cell(80,10,  utf8_decode(detalleSalidaTableClass::getNameFieldForaneaInsumo($detalleSalida->$id_insumo)),1);
+  $pdf->Cell(100,10,  utf8_decode(detalleSalidaTableClass::getNameFieldForaneaTipoInsumo($detalleSalida->$id_tipo_insumo)),1);
   
   $pdf ->Ln();
   

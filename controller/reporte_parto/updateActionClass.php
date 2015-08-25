@@ -14,15 +14,18 @@ class updateActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-        $id = trim(request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID, true)));
-        $fecha_parto = trim(request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, true)));
-        $n_animales_vi = trim(request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, true)));
-        $n_animales_m = trim(request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, true)));
-        $n_machos = trim(request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, true)));
-        $n_hembras = trim(request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, true)));
-        $observacion = trim(request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, true)));
-        $id_animal = trim(request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, true)));
-
+        $id = request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID, true));
+        $fecha_parto = request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, true));
+        $n_animales_vi = request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, true));
+        $n_animales_m = request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, true));
+        $n_machos = request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, true));
+        $n_hembras = request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, true));
+        $observaciones = request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, true));
+        $id_animal = request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, true));
+        
+        $this->Validate($fecha_parto,$n_animales_vi,$n_animales_m,$n_machos,$n_hembras,$observaciones,$id_animal);
+        
+        
         $ids = array(
             reportePartoTableClass::ID => $id
         );
@@ -32,7 +35,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             reportePartoTableClass::N_ANIMALES_M => $n_animales_m,
             reportePartoTableClass::N_MACHOS => $n_machos,
             reportePartoTableClass::N_HEMBRAS => $n_hembras,
-            reportePartoTableClass::OBSERVACIONES => $observacion,
+            reportePartoTableClass::OBSERVACIONES => $observaciones,
             reportePartoTableClass::ID_ANIMAL => $id_animal,
         );
 
@@ -73,18 +76,15 @@ class updateActionClass extends controllerClass implements controllerActionInter
         session::getInstance()->setError(i18n::__('ErrorCharacterN_animales_living', NULL,'default', array('%N_animales_living%' => $n_animales_vi,'%character%'=>  reportePartoTableClass::N_ANIMALES_VI)),'errorNumeroAnimalesVivos');
         $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE), TRUE);
-        }
-        if($n_animales_vi === '' or $n_animales_vi === NULL){
+        }else if($n_animales_vi === '' or $n_animales_vi === NULL){
           session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%N_animales_living%' => $n_animales_vi,'%character%'=>  reportePartoTableClass::N_ANIMALES_VI)),'errorNumeroAnimalesVivos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE), TRUE);
-        }
-       if($n_animales_vi < 0){
+        }else if($n_animales_vi < 0){
           session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $n_animales_vi)),'errorNumeroAnimalesVivos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE), TRUE);
-        }
-        if(strlen($n_animales_vi) >2){
+        }else if(strlen($n_animales_vi) > 2){
           session::getInstance()->setError(i18n::__('ErrorCharacter', NULL,'default', array('%N_animales_living%' => $n_animales_vi,'%character%'=>  reportePartoTableClass::N_ANIMALES_VI)),'errorNumeroAnimalesVivos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE), TRUE);
@@ -152,7 +152,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, TRUE), TRUE);
         }
 
-        if (!ereg("^[a-zA-Z0-9]{3,80}$", $observaciones)) {
+        if (!preg_match("/^[a-zA-Z0-9 ]{3,80}$/", $observaciones)) {
             session::getInstance()->setError(i18n::__('ErrorCharacterSpecial', NULL, 'default',array('%field%' => reportePartoTableClass::OBSERVACIONES)),'errorObservaciones');
             $flag = TRUE;
             session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE), TRUE);

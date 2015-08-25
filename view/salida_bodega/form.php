@@ -26,10 +26,10 @@
    <?php view::getMessageError('errorTrabajador') ?>
    <!-- Fin de mensaje error puntual -->
     <?php echo i18n::__('employee')?>
-   <select class="form-control" id="<?php salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE)?>" name="<?php echo salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE);?>"required placeholder="<?php i18n::__('id_employee') ?>">
-     <option><?php echo i18n::__('selectEmpoyee') ?></option>
+   <select class="form-control" id="<?php salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE)?>" name="<?php echo salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE);?>"required placeholder="<?php i18n::__('id_employee') ?>" required>
+     <option value=""><?php echo i18n::__('selectEmpoyee') ?></option>
        <?php foreach($objTrabajador as $trabajador):?>
-     <option  <?php echo(( isset($objSalidaBodega[0]->$id_trabajador) and $objSalidaBodega[0]->$id_trabajador == $trabajador->$trabajador_id) ? 'selected' : ((session::getInstance()->hasFlash(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE))and request::getInstance()->getPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE))=== $trabajador-> $trabajador_id)))?> value="<?php echo $trabajador->$trabajador_id?>"><?php echo $trabajador->$nombreTrabajador?></option>
+     <option  <?php echo(( isset($objSalidaBodega[0]->$id_trabajador) and $objSalidaBodega[0]->$id_trabajador == $trabajador->$trabajador_id) ? 'selected' : ((session::getInstance()->hasFlash(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE))and request::getInstance()->getPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE))== $trabajador-> $trabajador_id) ? 'selected' : ''))?> value="<?php echo $trabajador->$trabajador_id?>"><?php echo $trabajador->$nombreTrabajador?></option>
        <?php endforeach;?>
    </select>
    <br>

@@ -18,7 +18,9 @@ function closeError() {
 });
 }
 function closeSucess(){
+    $('div[class="alert alert-success alert-dismissible"]').fadeTo(2000, 500).slideUp(500, function(){
     $('div[class="alert alert-success alert-dismissible"]').alert('close');
+});
 }
 $(document).ready(function () {
     setTimeout(closeError, 10000);

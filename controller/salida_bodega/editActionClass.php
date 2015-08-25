@@ -11,14 +11,14 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(salidaBodegaTableClass::ID)){
+            if(request::getInstance()->hasGet(salidaBodegaTableClass::ID)){
                 $fields= array(
                 salidaBodegaTableClass::ID,
                 salidaBodegaTableClass::ID_TRABAJADOR,
                 salidaBodegaTableClass::FECHA
                 );
                 $where = array(
-                    salidaBodegaTableClass::ID => request::getInstance()->getRequest(salidaBodegaTableClass::ID)
+                    salidaBodegaTableClass::ID => request::getInstance()->getGet(salidaBodegaTableClass::ID)
                 );
                 $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 $fieldsTrabajador = array(

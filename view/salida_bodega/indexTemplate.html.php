@@ -120,7 +120,7 @@
                             <th><input type="checkbox" id="chkAll"></th>
                             <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('date') ?></th>
-                            <th><?php echo i18n::__('id_employee') ?></th>
+                            <th><?php echo i18n::__('employee') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
                         </tr>
                     </thead>

@@ -79,7 +79,7 @@
    <select class="form-control" id="<?php reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE)?>" name="<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE);?>"required placeholder="<?php i18n::__('id_animal') ?>">
      <option><?php echo i18n::__('selectAnimal') ?></option>
        <?php foreach($objAnimal as $animal):?>
-       <option  <?php echo(( isset($objReporteParto[0]->$id_animal) and $objReporteParto[0]->$id_animal == $animal->$animal_id) ? 'selected' : ((session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE))and request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE))=== $animal-> $animal_id)))?> value="<?php echo $animal->$animal_id?>"><?php echo $animal->$nombreAnimal?></option>
+       <option  <?php echo(( isset($objReporteParto[0]->$id_animal) and $objReporteParto[0]->$id_animal == $animal->$animal_id) ? 'selected' : ((session::getInstance()->hasFlash(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE))and request::getInstance()->getPost(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE))== $animal-> $animal_id) ? 'selected' : ''))?> value="<?php echo $animal->$animal_id?>"><?php echo $animal->$nombreAnimal?></option>
        <?php endforeach;?>
    </select>
    <br>

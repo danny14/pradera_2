@@ -14,29 +14,20 @@ class animalTableClass extends animalBaseTableClass {
         try {
             $sql = 'SELECT count(' . animalTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . animalTableClass::getNameTable(). ' ';
-                    ' WHERE'. animalTableClass::DELETED_AT.'IS NULL';
-//            if (is_array($where) === TRUE) {
-//                foreach ($where as $field => $value) {
-//                    if (is_array($value)) {
-//                        $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
-//                    } else {
-//                        $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
-//                    }
-//                }
-//            }
-           if (is_array($where) === true) {
+//                    ' WHERE'. animalTableClass::DELETED_AT.' IS NULL';
+            if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {
-                        $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1]) ? $value[1] : "'$value[1]'"));
-                    } if (is_numeric($field)) {
-                        $sql = $sql . 'AND ' . $value;
-                    } else {
-                        $sql = $sql . ' AND ' . ' = ' . ((is_numeric($value)) ? $value : "'$value'");
+                        $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
+                    } else if(is_numeric($field)) {
+                        $sql = $sql . ' WHERE ' . $value . ' ';
+                    }else{
+                        $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
                     }
                 }
             }
-//            echo $sql;
-//            exit();
+
+
             $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
@@ -70,6 +61,7 @@ class animalTableClass extends animalBaseTableClass {
             throw $exc;
         }
     }
+    
     public static function getNameFieldForaneaEstado($id){
         try{
             $sql = 'SELECT '. estadoTableClass::DESCRIPCION . ' AS nom_estado '

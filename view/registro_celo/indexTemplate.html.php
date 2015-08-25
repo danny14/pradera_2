@@ -119,8 +119,8 @@
                             <th><input type="checkbox" id="chkAll"></th>
                             <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('date') ?></th>
-                            <th><?php echo i18n::__('id_fecundador') ?></th>
-                            <th><?php echo i18n::__('id_animal') ?></th>
+                            <th><?php echo i18n::__('fecundador') ?></th>
+                            <th><?php echo i18n::__('animal') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
                         </tr>
                     </thead>

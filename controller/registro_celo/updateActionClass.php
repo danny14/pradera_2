@@ -18,6 +18,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $fecha = request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::FECHA, true));
         $id_fecundador = request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, true));
         $id_animal = request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, true));
+       
+        $this->Validate($fecha,$id_fecundador,$id_animal);
+        
         $ids = array(
             registroCeloTableClass::ID => $id
         );

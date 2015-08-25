@@ -32,9 +32,9 @@
    <!-- Fin de mensaje error puntual -->
    <?php echo i18n::__('fecundador') ?>: 
    <select class="form-control" id="<?php registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE)?>" name="<?php echo registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE);?>"required placeholder="<?php i18n::__('id_fecundador') ?>">
-     <option> <?php echo i18n::__('selectFecundador') ?></option>
+     <option value=""> <?php echo i18n::__('selectFecundador') ?></option>
        <?php foreach($objFecundador as $fecundador):?>
-       <option <?php echo ((isset($objRegistroCelo[0]->$id_fecundador) and $objRegistroCelo[0]->$id_fecundador == $fecundador->$fecundador_id ) ? 'selected' : ((session::getInstance()->hasFlash(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE))and request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE))=== $fecundador-> $fecundador_id)))?> value="<?php echo $fecundador->$fecundador_id?>"><?php echo $fecundador->$nombrefecundador?></option>
+       <option <?php echo ((isset($objRegistroCelo[0]->$id_fecundador) and $objRegistroCelo[0]->$id_fecundador == $fecundador->$fecundador_id ) ? 'selected' : ((session::getInstance()->hasFlash(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE))and request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_FECUNDADOR, TRUE))== $fecundador->$fecundador_id) ? 'selected' : ''))?> value="<?php echo $fecundador->$fecundador_id?>"><?php echo $fecundador->$nombrefecundador?></option>
        <?php endforeach;?>
    </select>
    
@@ -43,9 +43,9 @@
    <!-- Fin de mensaje error puntual -->
    <?php echo i18n::__('animal')?>
    <select class="form-control" id="<?php registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE)?>" name="<?php echo registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE);?>"required placeholder="<?php i18n::__('id_animal') ?>">
-     <option><?php echo i18n::__('selectAnimal') ?></option>
+     <option value=""><?php echo i18n::__('selectAnimal') ?></option>
        <?php foreach($objAnimal as $animal):?>
-       <option  <?php echo(( isset($objRegistroCelo[0]->$id_animal) and $objRegistroCelo[0]->$id_animal == $animal->$animal_id) ? 'selected' : ((session::getInstance()->hasFlash(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE))and request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE))=== $animal-> $animal_id)))?> value="<?php echo $animal->$animal_id?>"><?php echo $animal->$nombreAnimal?></option>
+       <option  <?php echo(( isset($objRegistroCelo[0]->$id_animal) and $objRegistroCelo[0]->$id_animal == $animal->$animal_id) ? 'selected' : ((session::getInstance()->hasFlash(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE))and request::getInstance()->getPost(registroCeloTableClass::getNameField(registroCeloTableClass::ID_ANIMAL, TRUE))== $animal-> $animal_id) ? 'selected': ''))?> value="<?php echo $animal->$animal_id?>"><?php echo $animal->$nombreAnimal?></option>
        <?php endforeach;?>
    </select>
    <br>

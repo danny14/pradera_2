@@ -142,7 +142,7 @@
                             <th><?php echo i18n::__('n_animales_dead') ?></th>
                             <th><?php echo i18n::__('n_males') ?></th>
                             <th><?php echo i18n::__('n_females') ?></th>
-                            <th><?php echo i18n::__('id_animal') ?></th>
+                            <th><?php echo i18n::__('animal') ?></th>
                             <th><?php echo i18n::__('observation') ?></th>
                          
                             <th><?php echo i18n::__('action') ?></th>

@@ -12,7 +12,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
   public function execute() {
     try {
-      if (request::getInstance()->hasRequest(detalleSalidaTableClass::ID)) {
+      if (request::getInstance()->hasGet(detalleSalidaTableClass::ID)) {
         $idSalidaBodega= request::getInstance()->hasGet(detalleSalidaTableClass::ID_SALIDA_BODEGA);
         $fields = array(
             detalleSalidaTableClass::ID,
@@ -22,7 +22,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             detalleSalidaTableClass::ID_TIPO_INSUMO,
         );
         $where = array(
-            detalleSalidaTableClass::ID => request::getInstance()->getRequest(detalleSalidaTableClass::ID)
+            detalleSalidaTableClass::ID => request::getInstance()->getGet(detalleSalidaTableClass::ID)
         );
         $this->objDetalleSalida = detalleSalidaTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
 

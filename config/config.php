@@ -3,7 +3,7 @@
 use mvc\config\myConfigClass as config;
 use mvc\session\sessionClass as session;
 
-config::setRowGrid(5);
+config::setRowGrid(2);
 
 config::setDbHost('localhost');
 config::setDbDriver('pgsql'); // pgsql mysql
