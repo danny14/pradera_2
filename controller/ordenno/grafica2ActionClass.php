@@ -36,8 +36,10 @@ class grafica2ActionClass extends controllerClass implements controllerActionInt
                 $this->arrayDatos2 = array();
                 $objGrafica2 = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
                 foreach ($objGrafica2 as $valor) {
+                    
                     $this->arrayDatos[] = $valor->fecha_ordeno;
-                    $this->arrayDatos[] = $valor->cantidad_leche;
+                    $this->arrayDatos2[] = $valor->cantidad_leche;
+                    
                 }
             //}
 

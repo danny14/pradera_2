@@ -6,9 +6,10 @@
 <?php $nombre = animalTableClass::NOMBRE?>
 <pre><?php print_r($arrayDatos);?></pre>
 <pre><?php echo json_encode($arrayDatos);?></pre>
+<pre><?php echo json_encode($arrayDatos3);?></pre>
 <script class="code" type="text/javascript">
 $(document).ready(function(){
-  var line1=[['2008-08-12 4:00PM',4], ['2008-09-12 4:00PM',6.5], ['2008-10-12 4:00PM',5.7], ['2008-11-12 4:00PM',9], ['2008-12-12 4:00PM',8.2],['2008-12-12 4:00PM',8.2],['2008-12-12 4:00PM',8.2],['2008-12-12 4:00PM',8.2]];
+  var line1=[['2015-08-02',4], ['2015-08-04',6.5]];
   var plot1 = $.jqplot('chart1', [line1], {
     title:'Default Date Axis',
     axes:{
