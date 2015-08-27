@@ -38,6 +38,12 @@ class detalleSalidaTableClass extends detalleSalidaBaseTableClass {
             throw $exc;
         }
     }
+     /**
+     * funcion para traer el nombre de una foranea
+     * @param type $id integer
+     * @return type
+     * @throws PDOException
+     */
     public static function getNameFieldForaneaInsumo($id) {
     try {
       $sql = 'SELECT ' . insumoTableClass::NOMBRE . ' AS nombre '
@@ -54,6 +60,12 @@ class detalleSalidaTableClass extends detalleSalidaBaseTableClass {
       throw $exc;
     }
   }
+   /**
+     * funcion para traer el nombre de una foranea
+     * @param type $id integer
+     * @return type
+     * @throws PDOException
+     */
     public static function getNameFieldForaneaTipoInsumo($id) {
     try {
       $sql = 'SELECT ' . tipoInsumoTableClass::DESCRIPCION . ' AS descripcion '
@@ -72,8 +84,8 @@ class detalleSalidaTableClass extends detalleSalidaBaseTableClass {
   }
 //    
 //    /**
-//     * Recordar hacer otra funcion general
-//     * @param type $id
+//     *funcion para traer el nombre de una foranea
+//     * @param type $id integer
 //     * @return type
 //     * @throws PDOException
 //     */

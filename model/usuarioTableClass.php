@@ -35,6 +35,13 @@ class usuarioTableClass extends usuarioBaseTableClass {
       throw $exc;
     }
   }
+  
+    /**
+   * funcion para traer el nombre de una foranea
+   * @param type $id integer
+   * @return type
+   * @throws PDOException
+   */
 
   public static function setRegisterLastLoginAt($id) {
     try {

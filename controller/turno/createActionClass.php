@@ -8,6 +8,12 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 class createActionClass extends controllerClass implements controllerActionInterface{
+      /* public function execute inicializa las variables 
+     * @return $descripcion=> descripcion (string)
+     * @return $inicio_turno=> inicio_turno (time)
+     * @return $fin_turno=> fin_turno (time)
+     * todas estos datos se pasa en la varible @var $data
+     * ** */
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){

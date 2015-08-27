@@ -31,7 +31,13 @@ class trabajadorTableClass extends trabajadorBaseTableClass {
         } catch (PDOException $exc) {
             throw $exc;
         }
-    }
+    } 
+   /**
+   * funcion para traer el nombre de una foranea
+   * @param type $id integer
+   * @return type
+   * @throws PDOException
+   */
 
         public static function getNameFieldForaneaTurno($id){
         try{
@@ -50,6 +56,12 @@ class trabajadorTableClass extends trabajadorBaseTableClass {
             throw $exc;
         }
     }
+  /**
+   * funcion para traer el nombre de una foranea
+   * @param type $id integer
+   * @return type
+   * @throws PDOException
+   */
 
         public static function getNameFieldForaneaCredencial($id){
         try{
@@ -68,6 +80,13 @@ class trabajadorTableClass extends trabajadorBaseTableClass {
             throw $exc;
         }
     }
+     
+   /**
+   * funcion para traer el nombre de una foranea
+   * @param type $id integer
+   * @return type
+   * @throws PDOException
+   */
 
         public static function getNameFieldForaneaCiudad($id){
         try{

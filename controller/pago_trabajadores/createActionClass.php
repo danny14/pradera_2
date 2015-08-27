@@ -14,6 +14,16 @@ use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as bitacora;
 
 class createActionClass extends controllerClass implements controllerActionInterface {
+      /* public function execute inicializa las variables 
+     * @return $fecha_inicio=> fecha_inicio (date)
+     * @return $fecha_fin=> fecha_fin (date)
+     * @return $subtotal=> subtotal (integer)
+     * @return $valor_hora=> valor_hora(integer)
+     * @return $id_trabajador=> id_trabajador(integer)
+     * @return $horas_extras=> horas_extras(integer)
+     * @return $cantidad_dias=> cantidad_dias(integer)
+     * todas estos datos se pasa en la varible @var $data
+     * ** */
 
   public function execute() {
     try {

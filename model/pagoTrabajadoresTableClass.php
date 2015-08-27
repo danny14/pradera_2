@@ -40,8 +40,8 @@ class pagoTrabajadoresTableClass extends pagoTrabajadoresBaseTableClass {
     }
     
     /**
-     * Recordar hacer otra funcion general
-     * @param type $id
+     * funcion para traer el nombre de una foranea
+     * @param type $id integer
      * @return type
      * @throws PDOException
      */

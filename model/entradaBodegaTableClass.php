@@ -34,8 +34,8 @@ class entradaBodegaTableClass extends entradaBodegaBaseTableClass {
     }
 
     /**
-     * Recordar hacer otra funcion general
-     * @param type $id
+     * funcion para traer el nombre de una foranea
+     * @param type $id integer
      * @return type
      * @throws PDOException
      */
@@ -57,6 +57,14 @@ class entradaBodegaTableClass extends entradaBodegaBaseTableClass {
             throw $exc;
         }
     }
+    
+    /**
+     * funcion para traer el nombre de una foranea
+     * @param type $id integer
+     * @return type
+     * @throws PDOException
+     */
+    
     public static function getNameFieldForaneaProveedor($id){
         try{
             $sql = 'SELECT '. proveedorTableClass::NOMBRE . ' AS nom_proveedor '
