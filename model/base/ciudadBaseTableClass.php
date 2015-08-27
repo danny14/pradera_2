@@ -11,12 +11,15 @@ class ciudadBaseTableClass extends tableBaseClass {
     
   private $id;
   private $descripcion;
+  private $deleted_at;
 
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 140;
+  const DELETED_AT = 'deleted_at';
   
-  public function getId() {
+
+    public function getId() {
       return $this->id;
   }
 
@@ -33,7 +36,14 @@ class ciudadBaseTableClass extends tableBaseClass {
       $this->descripcion = $descripcion;
       return $this;
   }
+  function getDeleted_at() {
+      return $this->deleted_at;
+  }
 
+  function setDeleted_at($deleted_at) {
+      $this->deleted_at = $deleted_at;
+      return $this;
+  }
   
 
   /**

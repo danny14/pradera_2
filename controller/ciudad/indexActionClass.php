@@ -14,9 +14,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
                 
-                // aqui validar datos de filtros
-                if (isset($filter['descripcion']) and $filter['descripcion'] !== NULL and $filter['descripcion'] !== '') {
-                    $where[ciudadTableClass::DESCRIPCION] = $filter['descripcion'];
+                if (isset($filter[ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE)]) and $filter[ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE)] !== NULL and $filter[ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE)] !== '') {
+                    $descripcion = $filter[ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION,TRUE)];
+                    //$this->validateDescription($descripcion);
+                    $where[] = '(' . ciudadTableClass::getNameField(ciudadBaseTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
+                                . 'OR ' . ciudadBaseTableClass::getNameField(ciudadBaseTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
+                                . 'OR ' . ciudadBaseTableClass::getNameField(ciudadBaseTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '\') ';
+                    
                 }
                 session::getInstance()->setAttribute('ciudadIndexFilters', $where);
             } else if (session::getInstance()->hasAttribute('ciudadIndexFilters')) {
@@ -43,6 +47,25 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             echo "<br>";
             echo $exc->getTraceAsString();
             
+        }
+    }
+    private function validateDescription($descripcion){
+        
+        $flag = FALSE;
+        
+        if (strlen($descripcion) > ciudadTableClass::DESCRIPCION_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => ciudadTableClass::NOMBRE_LENGTH)),'errorDescripcion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE), TRUE);
+        }else if (!ereg("^[a-zA-Z ]{3,80}$", $descripcion)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => ciudadTableClass::DESCRIPCION)),'errorDescripcion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE), TRUE);
+        }
+        if($flag === TRUE){
+            request::getInstance()->setMethod('GET'); //POST
+            session::getInstance()->setFlash('modalFilter', true);
+            routing::getInstance()->forward('ciudad', 'index');
         }
     }
 }

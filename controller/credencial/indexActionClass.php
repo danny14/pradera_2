@@ -24,9 +24,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                         //$where[credencialTableClass::NOMBRE] = $nombre;
                     }
                 }
-                if(isset($filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_1']) and $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_1'] !== NULL and $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_1'] !== '' and isset($filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_2']) and $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_2'] !== NULL and $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_2'] !== ''){
-                    $fecha_ini = $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO,TRUE).'_1'];
-                    $fecha_fin = $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_2'];
+                if(isset($filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, TRUE).'_1']) and $filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, TRUE).'_1'] !== NULL and $filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, TRUE).'_1'] !== '' and isset($filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, TRUE).'_2']) and $filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, TRUE).'_2'] !== NULL and $filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, TRUE).'_2'] !== ''){
+                    $fecha_ini = $filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT,TRUE).'_1'];
+                    $fecha_fin = $filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, TRUE).'_2'];
                     $this->ValidateFecha( $fecha_ini, $fecha_fin);
                     $where[credencialTableClass::FECHA_INGRESO] = array(
                         $fecha_ini,
@@ -63,6 +63,43 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             echo "<br>";
             echo $exc->getTraceAsString();
             
+        }
+    }
+    private function validateName($nombre) {
+        $flag = FALSE;
+        if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $nombre, '%character%' => credencialTableClass::NOMBRE_LENGTH)));
+            $flag = TRUE;
+            session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE), TRUE);
+        }else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => credencialTableClass::NOMBRE)),'errorNombre');
+            $flag = TRUE;
+            session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE), TRUE);
+        }
+        if($flag === TRUE){
+            request::getInstance()->setMethod('GET'); //POST
+            session::getInstance()->setFlash('modalFilter', true);
+            routing::getInstance()->forward('credencial', 'insert');
+        }
+    }
+    
+    private function validateDate($fecha_ini,$fecha_fin) {
+        $flag = FALSE;
+        $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
+        
+        if(!preg_match($pattern, $fecha_ingreso)){
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => animalTableClass::FECHA_INGRESO)),'errorFechaIngreso');
+            $flag = TRUE;
+            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);             
+        }if(strtotime($fecha_ingreso) >  strtotime($fechaActual)){
+          session::getInstance()->setError(i18n::__('ErrorDate', NULL,'default', array('%date%' => $fecha_ingreso)),'errorFechaIngreso');
+          $flag = TRUE;
+          session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::FECHA, TRUE), TRUE);
+        }
+        if($flag === TRUE){
+            request::getInstance()->setMethod('GET'); //POST
+            session::getInstance()->setFlash('modalFilter', true);
+            routing::getInstance()->forward('credencial', 'insert');
         }
     }
 }

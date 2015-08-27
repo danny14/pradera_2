@@ -6,6 +6,7 @@
 <?php $nombre = animalTableClass::NOMBRE?>
 <pre><?php print_r($arrayDatos);?></pre>
 <pre><?php echo json_encode($arrayDatos);?></pre>
+<pre><?php echo json_encode($arrayDatos2);?></pre>
 <pre><?php echo json_encode($arrayDatos3);?></pre>
 <script class="code" type="text/javascript">
 $(document).ready(function(){
