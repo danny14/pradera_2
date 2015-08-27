@@ -69,28 +69,28 @@ class createActionClass extends controllerClass implements controllerActionInter
         /*
          * Validacion para ID TRABAJADOR
          */
-        if ($id_trabajador === '' or $id_trabajador === NULL) {
-            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ordennoTableClass::id_trabajador)), 'errorTrabajador');
-            $flag = TRUE;
-            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::id_trabajador, TRUE), TRUE);
-        } else if (!is_numeric($id_trabajador)) {
-            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $id_trabajador)), 'errorTrabajador');
-            $flag = TRUE;
-            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_TRABAJADOR, TRUE), TRUE);
-        }
-        /*
-         * Validacion para ID ANIMAL
-         */
-        if (!is_numeric($id_animal) === FALSE) {
-            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $id_animal)),'errorAnimal');
-            $flag = TRUE;
-            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE), TRUE);
-        }
-        if ($id_animal === '' or $id_animal === NULL) {
-            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ordennoTableClass::id_animal)),'errorAnimal');
-            $flag = TRUE;
-            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::id_animal, TRUE), TRUE);
-        }
+//        if ($id_trabajador === '' or $id_trabajador === NULL) {
+//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ordennoTableClass::id_trabajador)), 'errorTrabajador');
+//            $flag = TRUE;
+//            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::id_trabajador, TRUE), TRUE);
+//        } else if (!is_numeric($id_trabajador)) {
+//            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $id_trabajador)), 'errorTrabajador');
+//            $flag = TRUE;
+//            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_TRABAJADOR, TRUE), TRUE);
+//        }
+//        /*
+//         * Validacion para ID ANIMAL
+//         */
+//        if ($id_animal === '' or $id_animal === NULL) {
+//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ordennoTableClass::id_animal)),'errorAnimal');
+//            $flag = TRUE;
+//            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::id_animal, TRUE), TRUE);
+//        }else if (!is_numeric($id_animal) === FALSE) {
+//            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $id_animal)),'errorAnimal');
+//            $flag = TRUE;
+//            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE), TRUE);
+//        }
+
         
         if($flag === TRUE){
             request::getInstance()->setMethod('GET'); //POST

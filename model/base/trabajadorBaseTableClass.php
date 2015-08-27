@@ -8,6 +8,16 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class trabajadorBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $nombre;
+    private $apellido;
+    private $direccion;
+    private $telefono;
+    private $salario;
+    private $id_turno;
+    private $id_credencial;
+    private $id_ciudad;
 
   const ID = 'id';
   const NOMBRE = 'nombre';
@@ -22,7 +32,88 @@ class trabajadorBaseTableClass extends tableBaseClass {
   const ID_TURNO = 'id_turno';
   const ID_CREDENCIAL = 'id_credencial';
   const ID_CIUDAD = 'id_ciudad';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getNombre() {
+      return $this->nombre;
+  }
+
+  public function getApellido() {
+      return $this->apellido;
+  }
+
+  public function getDireccion() {
+      return $this->direccion;
+  }
+
+  public function getTelefono() {
+      return $this->telefono;
+  }
+
+  public function getSalario() {
+      return $this->salario;
+  }
+
+  public function getId_turno() {
+      return $this->id_turno;
+  }
+
+  public function getId_credencial() {
+      return $this->id_credencial;
+  }
+
+  public function getId_ciudad() {
+      return $this->id_ciudad;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setNombre($nombre) {
+      $this->nombre = $nombre;
+      return $this;
+  }
+
+  public function setApellido($apellido) {
+      $this->apellido = $apellido;
+      return $this;
+  }
+
+  public function setDireccion($direccion) {
+      $this->direccion = $direccion;
+      return $this;
+  }
+
+  public function setTelefono($telefono) {
+      $this->telefono = $telefono;
+      return $this;
+  }
+
+  public function setSalario($salario) {
+      $this->salario = $salario;
+      return $this;
+  }
+
+  public function setId_turno($id_turno) {
+      $this->id_turno = $id_turno;
+      return $this;
+  }
+
+  public function setId_credencial($id_credencial) {
+      $this->id_credencial = $id_credencial;
+      return $this;
+  }
+
+  public function setId_ciudad($id_ciudad) {
+      $this->id_ciudad = $id_ciudad;
+      return $this;
+  }
+
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

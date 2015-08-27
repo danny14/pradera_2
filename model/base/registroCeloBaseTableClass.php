@@ -8,6 +8,12 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class registroCeloBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $edad_animal;
+    private $fecha;
+    private $id_fecundador;
+    private $id_animal;
 
   const ID = 'id';
   const EDAD_ANIMAL = 'edad_animal';
@@ -15,7 +21,52 @@ class registroCeloBaseTableClass extends tableBaseClass {
   const FECHA = 'fecha';
   const ID_FECUNDADOR = 'id_fecundador';
   const ID_ANIMAL = 'id_animal';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getEdad_animal() {
+      return $this->edad_animal;
+  }
+
+  public function getFecha() {
+      return $this->fecha;
+  }
+
+  public function getId_fecundador() {
+      return $this->id_fecundador;
+  }
+
+  public function getId_animal() {
+      return $this->id_animal;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setEdad_animal($edad_animal) {
+      $this->edad_animal = $edad_animal;
+      return $this;
+  }
+
+  public function setFecha($fecha) {
+      $this->fecha = $fecha;
+      return $this;
+  }
+
+  public function setId_fecundador($id_fecundador) {
+      $this->id_fecundador = $id_fecundador;
+      return $this;
+  }
+
+  public function setId_animal($id_animal) {
+      $this->id_animal = $id_animal;
+      return $this;
+  }
+
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

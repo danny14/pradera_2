@@ -8,12 +8,53 @@ use mvc\model\table\tableBaseClass;
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class usuarioCredencialBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $usuario_id;
+    private $credencial_id;
+    private $credencial_at;
 
   const ID = 'id';
   const USUARIO_ID = 'usuario_id';
   const CREDENCIAL_ID = 'credencial_id';
   const CREATED_AT = 'created_at';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getUsuario_id() {
+      return $this->usuario_id;
+  }
+
+  public function getCredencial_id() {
+      return $this->credencial_id;
+  }
+
+  public function getCredencial_at() {
+      return $this->credencial_at;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setUsuario_id($usuario_id) {
+      $this->usuario_id = $usuario_id;
+      return $this;
+  }
+
+  public function setCredencial_id($credencial_id) {
+      $this->credencial_id = $credencial_id;
+      return $this;
+  }
+
+  public function setCredencial_at($credencial_at) {
+      $this->credencial_at = $credencial_at;
+      return $this;
+  }
+
+  
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)

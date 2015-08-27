@@ -8,7 +8,14 @@ use mvc\model\table\tableBaseClass;
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class bitacoraBaseTableClass extends tableBaseClass {
-
+  private $id;
+  private $accion;
+  private $usuario_id;
+  private $observacion;
+  private $fecha;
+  private $tabla;
+  private $registro;
+          
   const ID = 'id';
   const ACCION = 'accion';
   const ACCION_LENGTH = 80;
@@ -20,7 +27,70 @@ class bitacoraBaseTableClass extends tableBaseClass {
   const TABLA_LENGTH = 80;
   const REGISTRO = 'registro';
 
-  /**
+  public function getId() {
+      return $this->id;
+  }
+
+  public function getAccion() {
+      return $this->accion;
+  }
+
+  public function getUsuario_id() {
+      return $this->usuario_id;
+  }
+
+  public function getObservacion() {
+      return $this->observacion;
+  }
+
+  public function getFecha() {
+      return $this->fecha;
+  }
+
+  public function getTabla() {
+      return $this->tabla;
+  }
+
+  public function getRegistro() {
+      return $this->registro;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setAccion($accion) {
+      $this->accion = $accion;
+      return $this;
+  }
+
+  public function setUsuario_id($usuario_id) {
+      $this->usuario_id = $usuario_id;
+      return $this;
+  }
+
+  public function setObservacion($observacion) {
+      $this->observacion = $observacion;
+      return $this;
+  }
+
+  public function setFecha($fecha) {
+      $this->fecha = $fecha;
+      return $this;
+  }
+
+  public function setTabla($tabla) {
+      $this->tabla = $tabla;
+      return $this;
+  }
+
+  public function setRegistro($registro) {
+      $this->registro = $registro;
+      return $this;
+  }
+
+    /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
    *

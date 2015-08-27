@@ -8,6 +8,12 @@ use mvc\model\table\tableBaseClass;
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class credencialBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $nombre;
+    private $create_at;
+    private $update_at;
+    private $deleted_at;
 
   const ID = 'id';
   const NOMBRE = 'nombre';
@@ -15,7 +21,53 @@ class credencialBaseTableClass extends tableBaseClass {
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
+  
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getNombre() {
+      return $this->nombre;
+  }
+
+  public function getCreate_at() {
+      return $this->create_at;
+  }
+
+  public function getUpdate_at() {
+      return $this->update_at;
+  }
+
+  public function getDeleted_at() {
+      return $this->deleted_at;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setNombre($nombre) {
+      $this->nombre = $nombre;
+      return $this;
+  }
+
+  public function setCreate_at($create_at) {
+      $this->create_at = $create_at;
+      return $this;
+  }
+
+  public function setUpdate_at($update_at) {
+      $this->update_at = $update_at;
+      return $this;
+  }
+
+  public function setDeleted_at($deleted_at) {
+      $this->deleted_at = $deleted_at;
+      return $this;
+  }
+
+  
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)

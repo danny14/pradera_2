@@ -8,6 +8,14 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class proveedorBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $nombre;
+    private $apellido;
+    private $direccion;
+    private $telefono;
+    private $correo;
+    private $id_ciudad;
 
   const ID = 'id';
   const NOMBRE = 'nombre';
@@ -21,6 +29,70 @@ class proveedorBaseTableClass extends tableBaseClass {
   const CORREO = 'correo';
   const CORREO_LENGTH = 120;
   const ID_CIUDAD = 'id_ciudad';
+  public function getId() {
+      return $this->id;
+  }
+
+  public function getNombre() {
+      return $this->nombre;
+  }
+
+  public function getApellido() {
+      return $this->apellido;
+  }
+
+  public function getDireccion() {
+      return $this->direccion;
+  }
+
+  public function getTelefono() {
+      return $this->telefono;
+  }
+
+  public function getCorreo() {
+      return $this->correo;
+  }
+
+  public function getId_ciudad() {
+      return $this->id_ciudad;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setNombre($nombre) {
+      $this->nombre = $nombre;
+      return $this;
+  }
+
+  public function setApellido($apellido) {
+      $this->apellido = $apellido;
+      return $this;
+  }
+
+  public function setDireccion($direccion) {
+      $this->direccion = $direccion;
+      return $this;
+  }
+
+  public function setTelefono($telefono) {
+      $this->telefono = $telefono;
+      return $this;
+  }
+
+  public function setCorreo($correo) {
+      $this->correo = $correo;
+      return $this;
+  }
+
+  public function setId_ciudad($id_ciudad) {
+      $this->id_ciudad = $id_ciudad;
+      return $this;
+  }
+
+    
 
 
   /**

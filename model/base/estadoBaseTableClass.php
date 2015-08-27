@@ -8,11 +8,32 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class estadoBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $descripcion;
 
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 140;
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getDescripcion() {
+      return $this->descripcion;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setDescripcion($descripcion) {
+      $this->descripcion = $descripcion;
+      return $this;
+  }
+
+  
 
 
   /**

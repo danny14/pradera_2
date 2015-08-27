@@ -14,7 +14,7 @@ $(document).ready(function(){
 function closeError() {
 //   $('div[class="alert alert-danger alert-dismissible"]').alert('close');
    $('div[class="alert alert-danger alert-dismissible"]').fadeTo(2000, 500).slideUp(500, function(){
-    $('div[class="alert alert-danger alert-dismissible"]').alert('close');
+   $('div[class="alert alert-danger alert-dismissible"]').alert('close');
 });
 }
 function closeSucess(){
@@ -23,7 +23,7 @@ function closeSucess(){
 });
 }
 $(document).ready(function () {
-    setTimeout(closeError, 10000);
+    setTimeout(closeError, 5000);
     setTimeout(closeSucess,5000);
 });
 // FIN DE LA FUNCION

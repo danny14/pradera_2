@@ -11,16 +11,34 @@ class indexActionClass extends controllerClass implements controllerActionInterf
     public function execute() {
         try {
             $where = NULL;
-//            if (request::getInstance()->hasPost('filter')) {
-//                $filter = request::getInstance()->getPost('filter');
-//                // aqui validar datos de filtros
-//                if (isset($filter['descripcion']) and $filter['descripcion'] !== NULL and $filter['descripcion'] !== '') {
-//                    $where[credencialTableClass::DESCRIPCION] = $filter['descripcion'];
-//                }
-//                session::getInstance()->setAttribute('credencialIndexFilters', $where);
-//            } else if (session::getInstance()->hasAttribute('credencialIndexFilters')) {
-//                $where = session::getInstance()->getAttribute('credencialIndexFilters');
-//            }
+            if (request::getInstance()->hasPost('filter')) {
+                $filter = request::getInstance()->getPost('filter');
+                
+              if(isset($filter[credencialTableClass::getNameField(credencialTableClass::NOMBRE,TRUE)]) and $filter[credencialTableClass::getNameField(credencialTableClass::NOMBRE,TRUE)] !== NULL and $filter[credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE)] !== ''){
+                    if(request::getInstance()->isMethod('POST')){
+                        $nombre = $filter[credencialTableClass::getNameField(credencialTableClass::NOMBRE,TRUE)];
+                        $this->ValidateName($nombre);
+                        $where[] = '(' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                                . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                                . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
+                        //$where[credencialTableClass::NOMBRE] = $nombre;
+                    }
+                }
+                if(isset($filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_1']) and $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_1'] !== NULL and $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_1'] !== '' and isset($filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_2']) and $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_2'] !== NULL and $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_2'] !== ''){
+                    $fecha_ini = $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO,TRUE).'_1'];
+                    $fecha_fin = $filter[credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE).'_2'];
+                    $this->ValidateFecha( $fecha_ini, $fecha_fin);
+                    $where[credencialTableClass::FECHA_INGRESO] = array(
+                        $fecha_ini,
+                        $fecha_fin
+//                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
+//                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
+                    );
+                }
+                session::getInstance()->setAttribute('credencialIndexFilters', $where);
+            } else if (session::getInstance()->hasAttribute('credencialIndexFilters')) {
+                $where = session::getInstance()->getAttribute('credencialIndexFilters');
+            }
             $fields = array(
             credencialTableClass::ID,
             credencialTableClass::NOMBRE,

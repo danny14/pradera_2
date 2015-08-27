@@ -8,6 +8,11 @@ use mvc\model\table\tableBaseClass;
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class recordarMeBaseTableClass extends tableBaseClass {
+    private $id;
+    private $usuario_id;
+    private $ip_address;
+    private $hash_cookie;
+    private $created_at;
 
   const ID = 'id';
   const USUARIO_ID = 'usuario_id';
@@ -16,7 +21,52 @@ class recordarMeBaseTableClass extends tableBaseClass {
   const HASH_COOKIE = 'hash_cookie';
   const HASH_COOKIE_LENGTH = 32;
   const CREATED_AT = 'created_at';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getUsuario_id() {
+      return $this->usuario_id;
+  }
+
+  public function getIp_address() {
+      return $this->ip_address;
+  }
+
+  public function getHash_cookie() {
+      return $this->hash_cookie;
+  }
+
+  public function getCreated_at() {
+      return $this->created_at;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setUsuario_id($usuario_id) {
+      $this->usuario_id = $usuario_id;
+      return $this;
+  }
+
+  public function setIp_address($ip_address) {
+      $this->ip_address = $ip_address;
+      return $this;
+  }
+
+  public function setHash_cookie($hash_cookie) {
+      $this->hash_cookie = $hash_cookie;
+      return $this;
+  }
+
+  public function setCreated_at($created_at) {
+      $this->created_at = $created_at;
+      return $this;
+  }
+
+  
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)

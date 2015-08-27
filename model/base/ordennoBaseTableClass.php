@@ -8,12 +8,64 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class ordennoBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $fecha_ordenno;
+    private $cantidad_leche;
+    private $id_trabajador;
+    private $id_animal;
 
   const ID = 'id';
   const FECHA_ORDENNO = 'fecha_ordeno';
   const CANTIDAD_LECHE = 'cantidad_leche';
   const ID_TRABAJADOR = 'id_trabajador';
   const ID_ANIMAL = 'id_animal';
+  public function getId() {
+      return $this->id;
+  }
+
+  public function getFecha_ordenno() {
+      return $this->fecha_ordenno;
+  }
+
+  public function getCantidad_leche() {
+      return $this->cantidad_leche;
+  }
+
+  public function getId_trabajador() {
+      return $this->id_trabajador;
+  }
+
+  public function getId_animal() {
+      return $this->id_animal;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setFecha_ordenno($fecha_ordenno) {
+      $this->fecha_ordenno = $fecha_ordenno;
+      return $this;
+  }
+
+  public function setCantidad_leche($cantidad_leche) {
+      $this->cantidad_leche = $cantidad_leche;
+      return $this;
+  }
+
+  public function setId_trabajador($id_trabajador) {
+      $this->id_trabajador = $id_trabajador;
+      return $this;
+  }
+
+  public function setId_animal($id_animal) {
+      $this->id_animal = $id_animal;
+      return $this;
+  }
+
+    
 
 
 

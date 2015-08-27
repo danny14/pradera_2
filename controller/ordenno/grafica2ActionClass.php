@@ -9,30 +9,39 @@ use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as bitacora;
 use mvc\model\modelClass as model;
 
-class graficaActionClass extends controllerClass implements controllerActionInterface {
+class grafica2ActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
         try {
-            if (request::getInstance()->isMethod('POST')) {
-                $fecha_inicio = request::getInstance()->getPost('start_date');
-                $fecha_fin = request::getInstance()->getPost('end_date');
-                $cantidad_leche = 'Sum("public"'.ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, FALSE).'';
-                $nombre_animal = animalTableClass::getNameField(animalTableClass::NOMBRE, FALSE);
-                $fecha_ordenno = ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, FALSE);
+//            if (request::getInstance()->isMethod('POST')) {
+                
+                
+//                $cantidad_leche = 'Sum("public"'.ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, FALSE).'';
+//                $nombre_animal = animalTableClass::getNameField(animalTableClass::NOMBRE, FALSE);
+//                $fecha_ordenno = ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, FALSE);
                 //$sql1 = 'select '.$cantidad_leche.', '.$nombre_animal.' from ordeno,hoja_de_vida where ordeno.id_animal=hoja_de_vida.id and '.ordennoTableClass::FECHA_ORDENNO
                     //    .' BETWEEN '."'$fecha_inicio'".' AND '."'$fecha_fin'".' GROUP BY '.$nombre_animal.' ORDER BY '.$nombre_animal.' ASC';
                 
                 //$hola = '"SELECT .$cantidad_leche,"public".hoja_de_vida.nombre FROM "public".hoja_de_vida INNER JOIN "public".ordeno ON "public".ordeno.id_animal = "public".hoja_de_vida."id" GROUP BY "public".hoja_de_vida.nombre ORDER BY "public".hoja_de_vida.nombre ASC "';
-                $sql = 'select SUM(ordeno.cantidad_leche) as cantidad_leche, hoja_de_vida.nombre from ordeno,hoja_de_vida where ordeno.id_animal=hoja_de_vida.id and fecha_ordeno BETWEEN '."'$fecha_inicio'".' AND '."'$fecha_fin'".' GROUP BY hoja_de_vida.nombre ORDER BY hoja_de_vida.nombre ASC';
+//                $sql = 'select SUM(ordeno.cantidad_leche) as cantidad_leche, hoja_de_vida.nombre from ordeno,hoja_de_vida where ordeno.id_animal=hoja_de_vida.id and fecha_ordeno BETWEEN '."'$fecha_inicio'".' AND '."'$fecha_fin'".' GROUP BY hoja_de_vida.nombre ORDER BY hoja_de_vida.nombre ASC';
 //                echo $sql;
 //                exit();
+                $fecha_inicio = '2015-08-01'; //request::getInstance()->getPost('start_date');
+                $fecha_fin = '2015-08-30' ;
+                $id_animal = 1;//request::getInstance()->getPost('end_date');
+                $sql = "SELECT ordeno.cantidad_leche, ordeno.fecha_ordeno FROM ordeno,hoja_de_vida WHERE ordeno.id_animal = hoja_de_vida.id and ordeno.id_animal = ".$id_animal." AND ordeno.fecha_ordeno BETWEEN '".$fecha_inicio."' AND '".$fecha_fin."' ORDER BY ordeno.fecha_ordeno ASC";
                 $this->fecha_inicio = $fecha_inicio;
                 $this->fecha_fin = $fecha_fin;
-                $this->objGrafica = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+                $this->arrayDatos = array();
+                $this->arrayDatos2 = array();
+                $objGrafica2 = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+                foreach ($objGrafica2 as $valor) {
+                    $this->arrayDatos[] = $valor->fecha_ordeno;
+                    $this->arrayDatos[] = $valor->cantidad_leche;
+                }
+            //}
 
-            }
-
-            $this->defineView('grafica', 'ordenno', session::getInstance()->getFormatOutput());
+            $this->defineView('grafica2', 'ordenno', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setError($exc->getMessage());
         }

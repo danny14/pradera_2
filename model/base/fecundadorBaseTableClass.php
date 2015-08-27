@@ -8,6 +8,13 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class fecundadorBaseTableClass extends tableBaseClass {
+   
+  private $id;
+  private $nombre;
+  private $edad;
+  private $peso;
+  private $observacion;
+  private $id_raza;
 
   const ID = 'id';
   const NOMBRE = 'nombre';
@@ -17,7 +24,61 @@ class fecundadorBaseTableClass extends tableBaseClass {
   const OBSERVACION = 'observacion';
   const OBSERVACION_LENGTH = 120;
   const ID_RAZA = 'id_raza';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getNombre() {
+      return $this->nombre;
+  }
+
+  public function getEdad() {
+      return $this->edad;
+  }
+
+  public function getPeso() {
+      return $this->peso;
+  }
+
+  public function getObservacion() {
+      return $this->observacion;
+  }
+
+  public function getId_raza() {
+      return $this->id_raza;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setNombre($nombre) {
+      $this->nombre = $nombre;
+      return $this;
+  }
+
+  public function setEdad($edad) {
+      $this->edad = $edad;
+      return $this;
+  }
+
+  public function setPeso($peso) {
+      $this->peso = $peso;
+      return $this;
+  }
+
+  public function setObservacion($observacion) {
+      $this->observacion = $observacion;
+      return $this;
+  }
+
+  public function setId_raza($id_raza) {
+      $this->id_raza = $id_raza;
+      return $this;
+  }
+
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

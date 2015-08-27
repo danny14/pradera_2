@@ -13,6 +13,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where = NULL;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
+                
                 // aqui validar datos de filtros
                 if (isset($filter['descripcion']) and $filter['descripcion'] !== NULL and $filter['descripcion'] !== '') {
                     $where[ciudadTableClass::DESCRIPCION] = $filter['descripcion'];
@@ -35,7 +36,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $page = $page * config::getRowGrid();
             }
             $this->cntPages = ciudadTableClass::getTotalPages(config::getRowGrid(),$where);
-            $this->objCiudad = ciudadTableClass::getAll($fields, false,$orderBy,'ASC',config::getRowGrid(),$page);
+            $this->objCiudad = ciudadTableClass::getAll($fields, false,$orderBy,'ASC',config::getRowGrid(),$page,$where);
             $this->defineView('index', 'ciudad',  session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();

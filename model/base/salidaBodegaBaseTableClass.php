@@ -8,11 +8,42 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class salidaBodegaBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $fecha;
+    private $id_trabajdor;
 
   const ID = 'id';
   const FECHA = 'fecha';
   const ID_TRABAJADOR = 'id_trabajador';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getFecha() {
+      return $this->fecha;
+  }
+
+  public function getId_trabajdor() {
+      return $this->id_trabajdor;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setFecha($fecha) {
+      $this->fecha = $fecha;
+      return $this;
+  }
+
+  public function setId_trabajdor($id_trabajdor) {
+      $this->id_trabajdor = $id_trabajdor;
+      return $this;
+  }
+
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

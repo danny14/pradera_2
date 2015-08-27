@@ -8,12 +8,65 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class entradaBodegaBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $fecha;
+    private $hora;
+    private $id_trabajador;
+    private $id_proveedor;
 
   const ID = 'id';
   const FECHA = 'fecha';
   const HORA = 'hora';
   const ID_TRABAJADOR = 'id_trabajador';
   const ID_PROVEEDOR = 'id_proveedor';
+  public function getId() {
+      return $this->id;
+  }
+
+  public function getFecha() {
+      return $this->fecha;
+  }
+
+  public function getHora() {
+      return $this->hora;
+  }
+
+  public function getId_trabajador() {
+      return $this->id_trabajador;
+  }
+
+  public function getId_proveedor() {
+      return $this->id_proveedor;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setFecha($fecha) {
+      $this->fecha = $fecha;
+      return $this;
+  }
+
+  public function setHora($hora) {
+      $this->hora = $hora;
+      return $this;
+  }
+
+  public function setId_trabajador($id_trabajador) {
+      $this->id_trabajador = $id_trabajador;
+      return $this;
+  }
+
+  public function setId_proveedor($id_proveedor) {
+      $this->id_proveedor = $id_proveedor;
+      return $this;
+  }
+
+    
+  
 
 
   /**

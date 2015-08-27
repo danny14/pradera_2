@@ -8,13 +8,65 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class detalleEntradaBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $valor;
+    private $id_entrada_bodega;
+    private $id_insumo;
+    private $id_tipo_insumo;
 
   const ID = 'id';
   const VALOR = 'valor';
   const ID_ENTRADA_BODEGA = 'id_entrada_bodega';
   const ID_INSUMO = 'id_insumo';
   const ID_TIPO_INSUMO = 'id_tipo_insumo';
+  
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getValor() {
+      return $this->valor;
+  }
+
+  public function getId_entrada_bodega() {
+      return $this->id_entrada_bodega;
+  }
+
+  public function getId_insumo() {
+      return $this->id_insumo;
+  }
+
+  public function getId_tipo_insumo() {
+      return $this->id_tipo_insumo;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setValor($valor) {
+      $this->valor = $valor;
+      return $this;
+  }
+
+  public function setId_entrada_bodega($id_entrada_bodega) {
+      $this->id_entrada_bodega = $id_entrada_bodega;
+      return $this;
+  }
+
+  public function setId_insumo($id_insumo) {
+      $this->id_insumo = $id_insumo;
+      return $this;
+  }
+
+  public function setId_tipo_insumo($id_tipo_insumo) {
+      $this->id_tipo_insumo = $id_tipo_insumo;
+      return $this;
+  }
+
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

@@ -62,7 +62,7 @@
                 <?php endif;?>
                 <!-- FIN -->
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                <a class="btn btn-default btn-xs" href="<?php // routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                <a class="btn btn-default btn-xs" href="<?php routing::getInstance()->getUrlWeb('ciudad', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
             </div>
                 <?php view::includeHandlerMessage() ?>
             <table class="table table-bordered table-responsive table-striped table-condensed">

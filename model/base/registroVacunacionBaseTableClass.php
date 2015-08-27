@@ -8,6 +8,14 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class registroVacunacionBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $fecha_registro;
+    private $id_trabajador;
+    private $dosis_vacuna;
+    private $hora_vacuna;
+    private $id_animal;
+    private $id_insumo;
 
   const ID = 'id';
   const FECHA_REGISTRO = 'fecha_registro';
@@ -16,7 +24,70 @@ class registroVacunacionBaseTableClass extends tableBaseClass {
   const HORA_VACUNA = 'hora_vacuna';
   const ID_ANIMAL = 'id_animal';
   const ID_INSUMO = 'id_insumo';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getFecha_registro() {
+      return $this->fecha_registro;
+  }
+
+  public function getId_trabajador() {
+      return $this->id_trabajador;
+  }
+
+  public function getDosis_vacuna() {
+      return $this->dosis_vacuna;
+  }
+
+  public function getHora_vacuna() {
+      return $this->hora_vacuna;
+  }
+
+  public function getId_animal() {
+      return $this->id_animal;
+  }
+
+  public function getId_insumo() {
+      return $this->id_insumo;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setFecha_registro($fecha_registro) {
+      $this->fecha_registro = $fecha_registro;
+      return $this;
+  }
+
+  public function setId_trabajador($id_trabajador) {
+      $this->id_trabajador = $id_trabajador;
+      return $this;
+  }
+
+  public function setDosis_vacuna($dosis_vacuna) {
+      $this->dosis_vacuna = $dosis_vacuna;
+      return $this;
+  }
+
+  public function setHora_vacuna($hora_vacuna) {
+      $this->hora_vacuna = $hora_vacuna;
+      return $this;
+  }
+
+  public function setId_animal($id_animal) {
+      $this->id_animal = $id_animal;
+      return $this;
+  }
+
+  public function setId_insumo($id_insumo) {
+      $this->id_insumo = $id_insumo;
+      return $this;
+  }
+
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

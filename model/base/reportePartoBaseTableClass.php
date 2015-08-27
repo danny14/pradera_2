@@ -8,6 +8,15 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class reportePartoBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $fecha_parto;
+    private $n_animales_vi;
+    private $n_animales_m;
+    private $n_machos;
+    private $n_hembras;
+    private $observaciones;
+    private $id_animal;
 
   const ID = 'id';
   const FECHA_PARTO = 'fecha_parto';
@@ -18,7 +27,79 @@ class reportePartoBaseTableClass extends tableBaseClass {
   const OBSERVACIONES = 'observaciones';
   const OBSERVACIONES_LENGTH = 150;
   const ID_ANIMAL = 'id_animal';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getFecha_parto() {
+      return $this->fecha_parto;
+  }
+
+  public function getN_animales_vi() {
+      return $this->n_animales_vi;
+  }
+
+  public function getN_animales_m() {
+      return $this->n_animales_m;
+  }
+
+  public function getN_machos() {
+      return $this->n_machos;
+  }
+
+  public function getN_hembras() {
+      return $this->n_hembras;
+  }
+
+  public function getObservaciones() {
+      return $this->observaciones;
+  }
+
+  public function getId_animal() {
+      return $this->id_animal;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setFecha_parto($fecha_parto) {
+      $this->fecha_parto = $fecha_parto;
+      return $this;
+  }
+
+  public function setN_animales_vi($n_animales_vi) {
+      $this->n_animales_vi = $n_animales_vi;
+      return $this;
+  }
+
+  public function setN_animales_m($n_animales_m) {
+      $this->n_animales_m = $n_animales_m;
+      return $this;
+  }
+
+  public function setN_machos($n_machos) {
+      $this->n_machos = $n_machos;
+      return $this;
+  }
+
+  public function setN_hembras($n_hembras) {
+      $this->n_hembras = $n_hembras;
+      return $this;
+  }
+
+  public function setObservaciones($observaciones) {
+      $this->observaciones = $observaciones;
+      return $this;
+  }
+
+  public function setId_animal($id_animal) {
+      $this->id_animal = $id_animal;
+      return $this;
+  }
+
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

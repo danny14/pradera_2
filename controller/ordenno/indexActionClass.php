@@ -47,8 +47,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $page = $page * 3;
             }
             $this->cntPages = ordennoTableClass::getTotalPages(config::getRowGrid(),$where);
-            
-            
             $this->objOrdenno =  ordennoTableClass::getAll($fields, FALSE,$orderBy,'ASC',config::getRowGrid(),$page,$where);
             $this->defineView('index', 'ordenno', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

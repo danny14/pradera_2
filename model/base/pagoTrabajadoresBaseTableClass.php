@@ -8,6 +8,15 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class pagoTrabajadoresBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $fecha_inicio;
+    private $fecha_fin;
+    private $subtotal;
+    private $valor_hora;
+    private $horas_extras;
+    private $cantidad_dias;
+    private $id_trabajador;
 
   const ID = 'id';
   const FECHA_INICIO = 'fecha_inicio';
@@ -17,6 +26,79 @@ class pagoTrabajadoresBaseTableClass extends tableBaseClass {
   const HORAS_EXTRAS = 'horas_extras';
   const CANTIDAD_DIAS = 'cantidad_dias';
   const ID_TRABAJADOR = 'id_trabajador';
+  public function getId() {
+      return $this->id;
+  }
+
+  public function getFecha_inicio() {
+      return $this->fecha_inicio;
+  }
+
+  public function getFecha_fin() {
+      return $this->fecha_fin;
+  }
+
+  public function getSubtotal() {
+      return $this->subtotal;
+  }
+
+  public function getValor_hora() {
+      return $this->valor_hora;
+  }
+
+  public function getHoras_extras() {
+      return $this->horas_extras;
+  }
+
+  public function getCantidad_dias() {
+      return $this->cantidad_dias;
+  }
+
+  public function getId_trabajador() {
+      return $this->id_trabajador;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setFecha_inicio($fecha_inicio) {
+      $this->fecha_inicio = $fecha_inicio;
+      return $this;
+  }
+
+  public function setFecha_fin($fecha_fin) {
+      $this->fecha_fin = $fecha_fin;
+      return $this;
+  }
+
+  public function setSubtotal($subtotal) {
+      $this->subtotal = $subtotal;
+      return $this;
+  }
+
+  public function setValor_hora($valor_hora) {
+      $this->valor_hora = $valor_hora;
+      return $this;
+  }
+
+  public function setHoras_extras($horas_extras) {
+      $this->horas_extras = $horas_extras;
+      return $this;
+  }
+
+  public function setCantidad_dias($cantidad_dias) {
+      $this->cantidad_dias = $cantidad_dias;
+      return $this;
+  }
+
+  public function setId_trabajador($id_trabajador) {
+      $this->id_trabajador = $id_trabajador;
+      return $this;
+  }
+
+    
 
 
   /**

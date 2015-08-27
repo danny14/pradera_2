@@ -277,6 +277,13 @@ ciudad_view:
   load:
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+
+ciudad_deleteFilters:
+  url:    /ciudad/borrar_filtros
+  param:  { module: ciudad, action: deleteFilters, format: html }
+#  load:
+#    - model/base/animalBaseTableClass.php
+#    - model/animalTableClass.php
 ##------------------------Credencial-------------------------##
 credencial_index:
   url:    /credencial/index
@@ -1020,6 +1027,15 @@ ordenno_grafica:
     - model/ordennoTableClass.php
     - model/base/animalBaseTableClass.php
     - model/animalTableClass.php
+    
+ordenno_grafica2:
+  url:    /ordenno/grafica2
+  param:  { module: ordenno, action: grafica2, format: html }
+  load:
+    - model/base/ordennoBaseTableClass.php
+    - model/ordennoTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php    
 ##-----------------------Pago Trabajadores-------------------##
 pago_trabajadores_index:
   url:    /pago_trabajadores/index

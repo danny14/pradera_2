@@ -8,13 +8,54 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class turnoBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $descripcion;
+    private $inicio_turno;
+    private $fin_turno;
 
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 140;
   const INICIO_TURNO = 'inicio_turno';
   const FIN_TURNO = 'fin_turno';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getDescripcion() {
+      return $this->descripcion;
+  }
+
+  public function getInicio_turno() {
+      return $this->inicio_turno;
+  }
+
+  public function getFin_turno() {
+      return $this->fin_turno;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setDescripcion($descripcion) {
+      $this->descripcion = $descripcion;
+      return $this;
+  }
+
+  public function setInicio_turno($inicio_turno) {
+      $this->inicio_turno = $inicio_turno;
+      return $this;
+  }
+
+  public function setFin_turno($fin_turno) {
+      $this->fin_turno = $fin_turno;
+      return $this;
+  }
+
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

@@ -8,6 +8,13 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class insumoBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $nombre;
+    private $fecha_fabricacion;
+    private $fecha_vencimiento;
+    private $valor;
+    private $id_tipo_insumo;
 
   const ID = 'id';
   const NOMBRE = 'nombre';
@@ -16,7 +23,61 @@ class insumoBaseTableClass extends tableBaseClass {
   const FECHA_VENCIMIENTO = 'fecha_vencimiento';
   const VALOR = 'valor';
   const ID_TIPO_INSUMO = 'id_tipo_insumo';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getNombre() {
+      return $this->nombre;
+  }
+
+  public function getFecha_fabricacion() {
+      return $this->fecha_fabricacion;
+  }
+
+  public function getFecha_vencimiento() {
+      return $this->fecha_vencimiento;
+  }
+
+  public function getValor() {
+      return $this->valor;
+  }
+
+  public function getId_tipo_insumo() {
+      return $this->id_tipo_insumo;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setNombre($nombre) {
+      $this->nombre = $nombre;
+      return $this;
+  }
+
+  public function setFecha_fabricacion($fecha_fabricacion) {
+      $this->fecha_fabricacion = $fecha_fabricacion;
+      return $this;
+  }
+
+  public function setFecha_vencimiento($fecha_vencimiento) {
+      $this->fecha_vencimiento = $fecha_vencimiento;
+      return $this;
+  }
+
+  public function setValor($valor) {
+      $this->valor = $valor;
+      return $this;
+  }
+
+  public function setId_tipo_insumo($id_tipo_insumo) {
+      $this->id_tipo_insumo = $id_tipo_insumo;
+      return $this;
+  }
+
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

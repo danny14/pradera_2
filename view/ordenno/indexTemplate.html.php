@@ -162,7 +162,7 @@
             </table>
             </form>
             <div>
-                Pagina<select id="sqlPaginador" onchange="paginador(this,'<?php// echo routing::getInstance()->getUrlWeb('ordenno', 'index') ?>')">
+                Pagina<select id="sqlPaginador" onchange="paginador(this,'<?php echo routing::getInstance()->getUrlWeb('ordenno', 'index') ?>')">
                     <?php for ($x = 1; $x <= $cntPages; $x++): ?>
                         <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
                     <?php endfor; ?>

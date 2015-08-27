@@ -47,7 +47,7 @@
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('end')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterDateCreate2" name="filter[dateCreate2]" placeholder="<?php echo i18n::__('end')?>">
+                                        <input type="date" class="form-control" id="filterDateCreate2" name="filter[dateCreate2]" placeholder="<?php echo i18n::__('end')?>">
                                     </div>
                                 </div>
                                 

@@ -8,6 +8,14 @@ use mvc\model\table\tableBaseClass;
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
 class inventarioBaseTableClass extends tableBaseClass {
+    
+    private $id;
+    private $fecha;
+    private $saldo;
+    private $edad;
+    private $cantidad;
+    private $valor;
+    private $id_tipo_insumo;
 
     
   /**
@@ -21,7 +29,70 @@ class inventarioBaseTableClass extends tableBaseClass {
   const CANTIDAD = 'cantidad';
   const VALOR = 'valor';
   const ID_TIPO_INSUMO = 'id_tipo_insumo';
+  public function getId() {
+      return $this->id;
+  }
 
+  public function getFecha() {
+      return $this->fecha;
+  }
+
+  public function getSaldo() {
+      return $this->saldo;
+  }
+
+  public function getEdad() {
+      return $this->edad;
+  }
+
+  public function getCantidad() {
+      return $this->cantidad;
+  }
+
+  public function getValor() {
+      return $this->valor;
+  }
+
+  public function getId_tipo_insumo() {
+      return $this->id_tipo_insumo;
+  }
+
+  public function setId($id) {
+      $this->id = $id;
+      return $this;
+  }
+
+  public function setFecha($fecha) {
+      $this->fecha = $fecha;
+      return $this;
+  }
+
+  public function setSaldo($saldo) {
+      $this->saldo = $saldo;
+      return $this;
+  }
+
+  public function setEdad($edad) {
+      $this->edad = $edad;
+      return $this;
+  }
+
+  public function setCantidad($cantidad) {
+      $this->cantidad = $cantidad;
+      return $this;
+  }
+
+  public function setValor($valor) {
+      $this->valor = $valor;
+      return $this;
+  }
+
+  public function setId_tipo_insumo($id_tipo_insumo) {
+      $this->id_tipo_insumo = $id_tipo_insumo;
+      return $this;
+  }
+
+  
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
