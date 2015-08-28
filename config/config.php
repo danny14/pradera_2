@@ -3,14 +3,14 @@
 use mvc\config\myConfigClass as config;
 use mvc\session\sessionClass as session;
 
-config::setRowGrid(2);
+config::setRowGrid(5);
 
 config::setDbHost('localhost');
 config::setDbDriver('pgsql'); // pgsql mysql
 config::setDbName('pradera_2');
 config::setDbPort(5432); // 5432 3306
 config::setDbUser('postgres');
-config::setDbPassword('danny');
+config::setDbPassword('karen');
 // Esto solo es necesario en caso de necesitar un socket para la DB
 config::setDbUnixSocket(NULL); //'/tmp/mysql.sock'
 

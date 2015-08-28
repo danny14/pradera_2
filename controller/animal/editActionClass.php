@@ -27,6 +27,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 );
                 $this->objAnimal = animalTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 
+                /*
+                 * Este campo es para traer los datos de la foranea RAZA
+                 */
                 $fields = array(
                 razaTableClass::ID,
                 razaTableClass::DESCRIPCION
@@ -36,6 +39,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 //                );
                 $this->objRaza = razaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
                 
+                /*
+                 * Este campo es para traer los datos de la foranea ESTADO
+                 */
                 $fields = array(
                 estadoTableClass::ID,
                 estadoTableClass::DESCRIPCION

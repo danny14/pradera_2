@@ -22,6 +22,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 fecundadorTableClass::ID => request::getInstance()->getGet(fecundadorTableClass::ID)
                 );
                 $this->objFecundador = fecundadorTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
+                 /*
+                 * Este campo es para traer los datos de la foranea RAZA
+                 */
                 
                 $fields = array(
                 razaTableClass::ID,

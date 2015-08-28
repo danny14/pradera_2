@@ -22,6 +22,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 insumoTableClass::ID => request::getInstance()->getGet(insumoTableClass::ID)
                 );
                 $this->objInsumo = insumoTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
+                 /*
+                 * Este campo es para traer los datos de la foranea TIPO_INSUMO
+                 */
                 
                 $fields = array(
                 tipoInsumoTableClass::ID,

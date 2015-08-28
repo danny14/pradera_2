@@ -22,6 +22,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 ordennoTableClass::ID => request::getInstance()->getGet(ordennoTableClass::ID)
                 );
                 $this->objOrdenno = ordennoTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
+                 /*
+                 * Este campo es para traer los datos de la foranea TRABAJADOR
+                 */
                 
                 $fields = array(
                 trabajadorTableClass::ID,
@@ -31,8 +34,16 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 $orderBy = array(
                 trabajadorTableClass::NOMBRE
                 );
-                
+//                $where = array(
+//                trabajadorTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_trabajador)
+//                );
+
+                 
+               
                 $this->objTrabajador = trabajadorTableClass::getAll($fields, FALSE,$orderBy,'ASC',NULL,NULL, NULL);
+                 /*
+                 * Este campo es para traer los datos de la foranea ANIMAL
+                 */
                 
                  $fields = array(
                 animalTableClass::ID,
@@ -42,6 +53,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 $orderBy = array(
                 animalTableClass::NOMBRE
                 );
+ //                $where = array(
+//                animalTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_ANIMAL)
+//                );
                 
                 $this->objAnimal = animalTableClass::getAll($fields, FALSE,$orderBy,'ASC',NULL,NULL, NULL);
                 
