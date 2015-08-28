@@ -23,6 +23,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 proveedorTableClass::ID => request::getInstance()->getGet(proveedorTableClass::ID)
                 );
                 $this->objProveedor = proveedorTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
+                 /*
+                 * Este campo es para traer los datos de la foranea CIUDAD
+                 */
                 
                 $fields = array(
                 ciudadTableClass::ID,
@@ -31,6 +34,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 $orderBy = array(
                 ciudadTableClass::DESCRIPCION
                 );
+//                $where = array(
+//                ciudadTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_CIUAD)
+//                );
                 
                 $this->objCiudad = ciudadTableClass::getAll($fields, FALSE,$orderBy,'ASC',NULL,NULL, NULL);
                 $this->defineView('edit', 'proveedor', session::getInstance()->getFormatOutput());
