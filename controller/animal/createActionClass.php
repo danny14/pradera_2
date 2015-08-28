@@ -159,13 +159,13 @@ class createActionClass extends controllerClass implements controllerActionInter
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);              
         }else if(!preg_match($pattern, $fecha_ingreso)){
-            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => animalTableClass::FECHA_INGRESO)),'errorFechaIngreso');
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => $fecha_ingreso)),'errorFechaIngreso');
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);             
         }if(strtotime($fecha_ingreso) >  strtotime($fechaActual)){
-          session::getInstance()->setError(i18n::__('ErrorDate', NULL,'default', array('%date%' => $fecha_ingreso)),'errorFechaIngreso');
+          session::getInstance()->setError(i18n::__('ErrorCurrentDate', NULL,'default', array('%date%' => $fecha_ingreso)),'errorFechaIngreso');
           $flag = TRUE;
-          session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::FECHA, TRUE), TRUE);
+          session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);
         }
         
         /*

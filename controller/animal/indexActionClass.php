@@ -96,7 +96,26 @@ class indexActionClass extends controllerClass implements controllerActionInterf
     private function ValidateFecha($fecha_ini, $fecha_fin) {
         $flag = FALSE;
         $pattern = "/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
+        $fechaActual = date('Y-m-d');
         
+        if(!preg_match($pattern, $fecha_ini)){
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => $fecha_ini)),'errorDateCreate');
+            $flag = TRUE;
+            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);             
+        }if(strtotime($fecha_ini) >  strtotime($fechaActual)){
+          session::getInstance()->setError(i18n::__('ErrorCurrentDate', NULL,'default', array('%date%' => $fecha_ini)),'errorDateCreate');
+          $flag = TRUE;
+          session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);
+        }       
+        if(!preg_match($pattern, $fecha_fin)){
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => $fecha_fin)),'errorDateEnd');
+            $flag = TRUE;
+            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);             
+        }if(strtotime($fecha_fin) >  strtotime($fechaActual)){
+          session::getInstance()->setError(i18n::__('ErrorCurrentDate', NULL,'default', array('%date%' => $fecha_fin)),'errorDateEnd');
+          $flag = TRUE;
+          session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);
+        }       
         if ($flag === TRUE) {
             request::getInstance()->setMethod('GET'); //POST
             session::getInstance()->setFlash('modalFilter', true);

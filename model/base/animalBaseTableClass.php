@@ -20,6 +20,8 @@ class animalBaseTableClass extends tableBaseClass {
     private $id_madre;
     private $created_at;
     private $update_at;
+    private $created_at;
+    private $updated_at;
     private $deleted_at;
 
     const ID = 'id';
@@ -35,6 +37,8 @@ class animalBaseTableClass extends tableBaseClass {
     const ID_RAZA = 'id_raza';
     const ID_ESTADO = 'id_estado';
     const ID_MADRE = 'id_madre';
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'created_at';
     const DELETED_AT = 'deleted_at';
     
     function getId() {

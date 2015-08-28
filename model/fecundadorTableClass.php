@@ -21,29 +21,21 @@ class fecundadorTableClass extends fecundadorBaseTableClass {
         public static function getTotalPages($lines, $where) {
         try {
             $sql = 'SELECT count(' . fecundadorTableClass::ID . ') AS cantidad ' .
-                    ' FROM ' . fecundadorTableClass::getNameTable(). ' ';
-//                  ' WHERE '. fecundadorTableClass::DELETED_AT.' IS NULL ';
+                    ' FROM ' . fecundadorTableClass::getNameTable(). ' ' .
+                  ' WHERE '. fecundadorTableClass::DELETED_AT.' IS NULL ';
             if (is_array($where) === TRUE) {
-                
                 foreach ($where as $field => $value) {
                     
-                    if (is_array($value)) {
-                        $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
+                    if (is_array($value)) {   
+                            $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
                     }else if(is_numeric($field)){
-                        $sql = $sql . ' WHERE ' . $value . ' ';
+                           $sql = $sql . ' AND ' . $value . ' ';  
                     } else { 
-                        $flag = FALSE;
-                        if($flag === TRUE){
-                        $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
-                        }else{
-                            $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
-                            $flag = TRUE;
-                        }
+                            $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
                     }
                 }
             }
-            echo $sql;
-            exit();
+
             $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);

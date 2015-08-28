@@ -13,12 +13,19 @@ class turnoBaseTableClass extends tableBaseClass {
     private $descripcion;
     private $inicio_turno;
     private $fin_turno;
-
+    private $created_at;
+    private $updated_at;
+    private $deleted_at;
+    
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 140;
   const INICIO_TURNO = 'inicio_turno';
   const FIN_TURNO = 'fin_turno';
+  const CREATED_AT = 'created_at';
+  const UPDATED_AT = 'updated_at';
+  const DELETED_AT = 'deleted_at';
+  
   public function getId() {
       return $this->id;
   }
@@ -54,8 +61,34 @@ class turnoBaseTableClass extends tableBaseClass {
       $this->fin_turno = $fin_turno;
       return $this;
   }
+  function getCreated_at() {
+      return $this->created_at;
+  }
 
-  
+  function getUpdated_at() {
+      return $this->updated_at;
+  }
+
+  function getDeleted_at() {
+      return $this->deleted_at;
+  }
+
+  function setCreated_at($created_at) {
+      $this->created_at = $created_at;
+      return $this;
+  }
+
+  function setUpdated_at($updated_at) {
+      $this->updated_at = $updated_at;
+      return $this;
+  }
+
+  function setDeleted_at($deleted_at) {
+      $this->deleted_at = $deleted_at;
+      return $this;
+  }
+
+    
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

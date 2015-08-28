@@ -52,72 +52,72 @@ class updateActionClass extends controllerClass implements controllerActionInter
          /*
           * Validacion para el Nombre
           */
-        if ($nombre === '' or $nombre === NULL){
-            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => fecundadorTableClass::NOMBRE)),'errorNombre');
+        if ($nombre === '' or $nombre === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => fecundadorTableClass::NOMBRE)), 'errorNombre');
             $flag = TRUE;
-            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE), TRUE);  
-        }else if (strlen($nombre) > fecundadorTableClass::NOMBRE_LENGTH) {
-             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$nombre,'%Character%' =>  fecundadorTableClass::NOMBRE_LENGTH) ),'errorNombre');
-             $flag = TRUE;
-             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE,TRUE), TRUE);      
-        }else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
-            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => fecundadorTableClass::NOMBRE)),'errorNombre');
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE), TRUE);
+        } else if (strlen($nombre) > fecundadorTableClass::NOMBRE_LENGTH) {
+            session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $nombre, '%Character%' => fecundadorTableClass::NOMBRE_LENGTH)), 'errorNombre');
+            $flag = TRUE;
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE), TRUE);
+        } else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $nombre)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default', array('%field%' => fecundadorTableClass::NOMBRE)), 'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE), TRUE);
         }
         /*
          * Validacion para la Edad
          */
-        if ($edad === '' or $edad === NULL){
-           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => fecundadorTableClass::EDAD)),'errorEdad');
+        if ($edad === '' or $edad === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => fecundadorTableClass::EDAD)), 'errorEdad');
             $flag = TRUE;
             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE), TRUE);
-        }else if (is_numeric($edad) === FALSE) {
-        session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=>$edad)),'errorEdad');
-        $flag = TRUE;
-        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE), TRUE);
+        } else if (is_numeric($edad) === FALSE) {
+            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $edad)), 'errorEdad');
+            $flag = TRUE;
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE), TRUE);
         }
-        
+
         /*
          * Validacion para el peso
          */
-         if ($peso === '' or $peso === NULL){
-           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => fecundadorTableClass::PESO)),'errorPeso');
+        if ($peso === '' or $peso === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => fecundadorTableClass::PESO)), 'errorPeso');
             $flag = TRUE;
             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
-         }else if (is_numeric($peso) === FALSE) {
-          session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=> $peso )),'errorPeso');
-          $flag = TRUE;
-        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
+        } else if (is_numeric($peso) === FALSE) {
+            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $peso)), 'errorPeso');
+            $flag = TRUE;
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
         }
-        
+
         /*
          * Validacion para la Observacion
          */
-        if ($observacion === '' or $observacion === NULL){
-           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => fecundadorTableClass::OBSERVACION)),'errorObservacion');
+        if ($observacion === '' or $observacion === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => fecundadorTableClass::OBSERVACION)), 'errorObservacion');
             $flag = TRUE;
             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);
-        }else if (strlen($observacion) > fecundadorTableClass::OBSERVACION_LENGTH){ 
-            session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%'=>$observacion,'%Character%' => fecundadorTableClass::OBSERVACION_LENGTH)),'errorObservacion');
+        } else if (strlen($observacion) > fecundadorTableClass::OBSERVACION_LENGTH) {
+            session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $observacion, '%Character%' => fecundadorTableClass::OBSERVACION_LENGTH)), 'errorObservacion');
             $flag = TRUE;
-        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);
-        }else if (!ereg("^[a-zA-Z]{3,20}$", $observacion)) {
-            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => fecundadorTableClass::OBSERVACION)),'errorObservacion');
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);
+        } else if (!preg_match("/^[a-zA-Z ]{3,120}$/", $observacion)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default', array('%field%' => fecundadorTableClass::OBSERVACION)), 'errorObservacion');
             $flag = TRUE;
             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);
         }
         /*
          * Validacion para ID Raza
          */
-         if ($id_raza === '' or $id_raza === NULL){
-           session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => fecundadorTableClass::ID_RAZA)),'errorRaza');
+        if ($id_raza === '' or $id_raza === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => fecundadorTableClass::ID_RAZA)), 'errorRaza');
             $flag = TRUE;
             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
-         }else if (is_numeric($id_raza) === FALSE) {
-          session::getInstance()->seterror(i18n::__('errorNumber',null,'default',array('%number%'=> $id_raza )),'errorRaza');
-          $flag = TRUE;
-        session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
+        } else if (is_numeric($id_raza) === FALSE) {
+            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $id_raza)), 'errorRaza');
+            $flag = TRUE;
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
         }
 
         if($flag === TRUE){

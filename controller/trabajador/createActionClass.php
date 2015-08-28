@@ -87,7 +87,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> trabajadorTableClass::NOMBRE_LENGTH)),'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE), TRUE);                  
-        }else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
+        }else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $nombre)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => trabajadorTableClass::NOMBRE)),'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE), TRUE);
@@ -103,7 +103,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> trabajadorTableClass::APELLIDO_LENGTH)),'errorApellido');
             $flag = TRUE;
             session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE), TRUE);                  
-        }else if (!ereg("^[a-zA-Z ]{3,80}$", $apellido)) {
+        }else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $apellido)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => trabajadorTableClass::APELLIDO)),'errorApellido');
             $flag = TRUE;
             session::getInstance()->setFlash(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE), TRUE);

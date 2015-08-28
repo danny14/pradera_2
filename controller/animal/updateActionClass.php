@@ -58,6 +58,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         private function Validate($nombre, $genero, $peso, $fecha_ingreso, $numero_partos, $id_raza, $id_estado) {
         $flag = FALSE;
         $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
+        $fechaActual = date('Y-m-d');
         
         // VALIDACION PARA EL NOMBRE
         if($nombre === '' or $nombre === NULL){
@@ -120,10 +121,14 @@ class updateActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::FECHA_INGRESO)),'errorFechaIngreso');
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);              
-        }else if(preg_match($pattern, $fecha_ingreso) === FALSE){
-            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => animalTableClass::FECHA_INGRESO)),'errorFechaIngreso');
+        }else if(!preg_match($pattern, $fecha_ingreso)){
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => $fecha_ingreso)),'errorFechaIngreso');
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);             
+        }if(strtotime($fecha_ingreso) >  strtotime($fechaActual)){
+          session::getInstance()->setError(i18n::__('ErrorCurrentDate', NULL,'default', array('%date%' => $fecha_ingreso)),'errorFechaIngreso');
+          $flag = TRUE;
+          session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);
         }
         
         /*

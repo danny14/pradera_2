@@ -1314,7 +1314,7 @@ raza_view:
     - model/razaTableClass.php
     
 raza_deleteFilters:
-  url:    / raza/borrar_filtros
+  url:    /raza/borrar_filtros
   param:  { module: raza, action: deleteFilters, format: html }
 
 ##------------------------Registro Celo---------------------##

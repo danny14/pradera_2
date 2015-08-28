@@ -16,15 +16,23 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where = NULL;
             if(request::getInstance()->hasPost('filter')){
                 $filter = request::getInstance()->getPost('filter');
-                // aqui validar datos de filtros
+                
                 if(isset($filter[fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)]) and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)] !== NULL and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)] !== ''){
-                    $where[fecundadorTableClass::NOMBRE] = $filter[fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)];
+                    $nombre = $filter[fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)];
+                    $this->validateName($nombre);
+                    $where[] = '(' . fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                                . 'OR ' . fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                                . 'OR ' . fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
                 }
                 if(isset($filter[fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)]) and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)] !== NULL and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)] !== ''){
-                    $where[fecundadorTableClass::EDAD] = $filter[fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)];
+                    $edad = $filter[fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)];
+                    $this->validateAge($edad);
+                    $where[fecundadorTableClass::EDAD] = $edad ;
                 }
                 if(isset($filter[fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)]) and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)] !== NULL and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)] !== ''){
-                    $where[fecundadorTableClass::PESO] = $filter[fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)];
+                    $peso = $filter[fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)];
+                    $this->validateWeight($peso);
+                    $where[fecundadorTableClass::PESO] = $peso;
                 }
                 session::getInstance()->setAttribute('fecundadorIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('fecundadorIndexFilters')){
@@ -73,5 +81,49 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             routing::getInstance()->forward('shfSecurity', 'exception'); 
         }
     }
+    private function validateName($nombre) {
+
+        if (strlen($nombre) > fecundadorTableClass::NOMBRE_LENGTH) {
+            session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $nombre, '%Character%' => fecundadorTableClass::NOMBRE_LENGTH)), 'errorNombre');
+            $flag = TRUE;
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE), TRUE);
+        } else if (!preg_match("/^[a-zA-Z]{3,20}$/", $nombre)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default', array('%field%' => fecundadorTableClass::NOMBRE)), 'errorNombre');
+            $flag = TRUE;
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE), TRUE);
+        }
+        if ($flag === TRUE) {
+            request::getInstance()->setMethod('GET'); //POST
+            session::getInstance()->setFlash('modalFilter', true);
+            routing::getInstance()->forward('animal', 'index');
+        }
+    }
+
+    private function validateAge($edad) {
+        if (is_numeric($edad) === FALSE) {
+            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $edad)), 'errorEdad');
+            $flag = TRUE;
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE), TRUE);
+        }
+        if ($flag === TRUE) {
+            request::getInstance()->setMethod('GET'); //POST
+            session::getInstance()->setFlash('modalFilter', true);
+            routing::getInstance()->forward('animal', 'index');
+        }
+    }
+
+    private function validateWeight($peso) {
+        if (is_numeric($peso) === FALSE) {
+            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $peso)), 'errorPeso');
+            $flag = TRUE;
+            session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE), TRUE);
+        }
+        if ($flag === TRUE) {
+            request::getInstance()->setMethod('GET'); //POST
+            session::getInstance()->setFlash('modalFilter', true);
+            routing::getInstance()->forward('fecundador', 'index');
+        }
+    }
+
 }
 

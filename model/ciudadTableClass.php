@@ -14,13 +14,13 @@ class ciudadTableClass extends ciudadBaseTableClass {
         try {
             $sql = 'SELECT count(' . ciudadTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . ciudadTableClass::getNameTable() .' ';
-//                    ' WHERE '. ciudadTableClass::DELETED_AT.' IS NULL ';
+                    ' WHERE '. ciudadTableClass::DELETED_AT.' IS NULL ';
                if(is_array($where) == TRUE){
                 foreach ($where as $field => $value) {
                     if(is_numeric($field)){
-                        $sql = $sql . ' WHERE '. $value . ' ';
+                        $sql = $sql . ' AND '. $value . ' ';
                     }else{
-                    $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                    $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
                     }
                 }
                }

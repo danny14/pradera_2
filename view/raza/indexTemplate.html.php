@@ -58,7 +58,7 @@
                 <a href="<?php echo routing::getInstance()->getUrlWeb('raza', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                <a class="btn btn-default btn-xs" href="<?php  routing::getInstance()->getUrlWeb('raza', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                <a class="btn btn-default btn-xs" href="<?php echo  routing::getInstance()->getUrlWeb('raza', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
             </div>
                 <?php view::includeHandlerMessage() ?>
             <table class="table table-bordered table-responsive table-striped table-condensed">

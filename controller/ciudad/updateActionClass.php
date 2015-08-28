@@ -37,6 +37,10 @@ class updateActionClass extends controllerClass implements controllerActionInter
     }
     
     private function Validate($descripcion) {
+        
+        $fechaActual = date('Y-m-d');
+        $flag = FALSE;
+        
         /*
          * VALIDACION PARA DESCRIPCION
          */

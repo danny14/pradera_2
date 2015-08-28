@@ -66,7 +66,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         }
     }
     private function validateName($nombre) {
+        $fechaActual = date('Y-m-d');
         $flag = FALSE;
+        
         if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
             session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $nombre, '%character%' => credencialTableClass::NOMBRE_LENGTH)));
             $flag = TRUE;
@@ -86,16 +88,30 @@ class indexActionClass extends controllerClass implements controllerActionInterf
     private function validateDate($fecha_ini,$fecha_fin) {
         $flag = FALSE;
         $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
+        $fechaActual = date('Y-m-d');
         
-        if(!preg_match($pattern, $fecha_ingreso)){
-            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => animalTableClass::FECHA_INGRESO)),'errorFechaIngreso');
+        if(!preg_match($pattern, $fecha_ini)){
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => $fecha_ini)),'errorFechaIngreso');
             $flag = TRUE;
-            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);             
-        }if(strtotime($fecha_ingreso) >  strtotime($fechaActual)){
-          session::getInstance()->setError(i18n::__('ErrorDate', NULL,'default', array('%date%' => $fecha_ingreso)),'errorFechaIngreso');
+            session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::FECHA_INGRESO, TRUE), TRUE);             
+        }
+        if(strtotime($fecha_ingreso) >  strtotime($fechaActual)){
+          session::getInstance()->setError(i18n::__('ErrorCurrentDate', NULL,'default', array('%date%' => $fecha_ini)),'errorFechaIngreso');
           $flag = TRUE;
           session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::FECHA, TRUE), TRUE);
         }
+        if(!preg_match($pattern, $fecha_fin)){
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => $fecha_fin)),'errorFechaIngreso');
+            $flag = TRUE;
+            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);             
+        }
+        if(strtotime($fecha_fin) >  strtotime($fechaActual)){
+          session::getInstance()->setError(i18n::__('ErrorCurrentDate', NULL,'default', array('%date%' => $fecha_fin)),'errorFechaIngreso');
+          $flag = TRUE;
+          session::getInstance()->setFlash(registroCeloTableClass::getNameField(registroCeloTableClass::FECHA, TRUE), TRUE);
+        }
+        
+     
         if($flag === TRUE){
             request::getInstance()->setMethod('GET'); //POST
             session::getInstance()->setFlash('modalFilter', true);

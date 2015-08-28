@@ -75,7 +75,7 @@ class createActionClass extends controllerClass implements controllerActionInter
              session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$nombre,'%Character%' =>  fecundadorTableClass::NOMBRE_LENGTH) ),'errorNombre');
              $flag = TRUE;
              session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE,TRUE), TRUE);      
-        }else if (!ereg("^[a-zA-Z]{3,20}$", $nombre)) {
+        }else if (!preg_match("/^[a-zA-Z]{3,20}$/", $nombre)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => fecundadorTableClass::NOMBRE)),'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE), TRUE);
@@ -108,7 +108,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%'=>$observacion,'%Character%' => fecundadorTableClass::OBSERVACION_LENGTH)),'errorObservacion');
             $flag = TRUE;
         session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);
-        }else if (!ereg("^[a-zA-Z]{3,20}$", $observacion)) {
+        }else if (!preg_match("/^[a-zA-Z]{3,20}$/", $observacion)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => fecundadorTableClass::OBSERVACION)),'errorObservacion');
             $flag = TRUE;
             session::getInstance()->setFlash(fecundadorTableClass::getNameField(fecundadorTableClass::OBSERVACION, TRUE), TRUE);

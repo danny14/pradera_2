@@ -199,6 +199,8 @@ dictionary:
     errorNumber:           El campo %field% solo puede contener numeros
     errorDate:             La fecha %date% es incorrecta
     errorDate2:            La fecha de inicio es mayor a la fecha de fin
+    errorDateExpiration:   La fecha de fabricacion es mayor a la fecha de vencimiento
+    errorCurrentDate:      La fecha %date% no puede ser mayor a la fecha actual
     23503:                 Error el registro no puede ser borrado por que esta siendo utilizado por otra tabla
     23505:                 Error el id no puede estar duplicado intente de nuevo
     42601:                 Error sintaxis incorrecta

@@ -38,6 +38,7 @@ class createActionClass extends controllerClass implements controllerActionInter
     }
     private function Validate($nombre) {
         $flag = FALSE;
+        $fechaActual = date('Y-m-d');
         $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
 
         if ($nombre === '' or $nombre === NULL) {
@@ -48,7 +49,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $nombre, '%character%' => credencialTableClass::NOMBRE_LENGTH)));
             $flag = TRUE;
             session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE), TRUE);
-        }else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
+        }else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $nombre)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => credencialTableClass::NOMBRE)),'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE), TRUE);

@@ -61,7 +61,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
              session::getInstance()->seterror(i18n::__('errorCharacter',null,'default',array('%name%' =>$nombre,'%Character%' =>  insumoTableClass::NOMBRE_LENGTH) ),'errorNombre');
              $flag = TRUE;
              session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::NOMBRE,TRUE), TRUE);      
-        }else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
+        }else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $nombre)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => insumoTableClass::NOMBRE)),'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE), TRUE);
@@ -74,9 +74,13 @@ class updateActionClass extends controllerClass implements controllerActionInter
             $flag = TRUE;
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, TRUE), TRUE);              
         }else if(!preg_match($pattern, $fecha_fabricacion)){
-            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => insumoTableClass::FECHA_FABRICACION)),'errorFechaFabricacion');
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => $fecha_fabricacion)),'errorFechaFabricacion');
             $flag = TRUE;
-            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_INGRESO, TRUE), TRUE);             
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, TRUE), TRUE);             
+        }else if(strtotime($fecha_fabricacion) > strtotime ($fecha_vencimiento)){
+            session::getInstance()->setError(i18n::__('errorDateExpiration', NULL, 'default'),'errorFechaFabricacion');
+            $flag = TRUE;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, TRUE), TRUE);             
         }
         /*
          * Validacion para Fecha Vencimiento
@@ -86,7 +90,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             $flag = TRUE;
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, TRUE), TRUE);              
         }else if(!preg_match($pattern, $fecha_vencimiento)){
-            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => insumoTableClass::FECHA_VENCIMIENTO)),'errorFechaVencimiento');
+            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => $fecha_vencimiento)),'errorFechaVencimiento');
             $flag = TRUE;
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, TRUE), TRUE);             
         } 

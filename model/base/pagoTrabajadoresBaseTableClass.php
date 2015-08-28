@@ -17,7 +17,10 @@ class pagoTrabajadoresBaseTableClass extends tableBaseClass {
     private $horas_extras;
     private $cantidad_dias;
     private $id_trabajador;
-
+    private $created_at;
+    private $updated_at;
+    private $deleted_at;
+    
   const ID = 'id';
   const FECHA_INICIO = 'fecha_inicio';
   const FECHA_FIN = 'fecha_fin';
@@ -26,6 +29,10 @@ class pagoTrabajadoresBaseTableClass extends tableBaseClass {
   const HORAS_EXTRAS = 'horas_extras';
   const CANTIDAD_DIAS = 'cantidad_dias';
   const ID_TRABAJADOR = 'id_trabajador';
+  const CREATED_AT = 'created_at';
+  const UPDATED_AT = 'updated_at';
+  const DELETED_AT = 'deleted_at';
+  
   public function getId() {
       return $this->id;
   }
@@ -97,8 +104,34 @@ class pagoTrabajadoresBaseTableClass extends tableBaseClass {
       $this->id_trabajador = $id_trabajador;
       return $this;
   }
+  function getCreated_at() {
+      return $this->created_at;
+  }
 
-    
+  function getUpdated_at() {
+      return $this->updated_at;
+  }
+
+  function getDeleted_at() {
+      return $this->deleted_at;
+  }
+
+  function setCreated_at($created_at) {
+      $this->created_at = $created_at;
+      return $this;
+  }
+
+  function setUpdated_at($updated_at) {
+      $this->updated_at = $updated_at;
+      return $this;
+  }
+
+  function setDeleted_at($deleted_at) {
+      $this->deleted_at = $deleted_at;
+      return $this;
+  }
+
+      
 
 
   /**

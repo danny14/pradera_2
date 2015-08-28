@@ -14,12 +14,19 @@ class ordennoBaseTableClass extends tableBaseClass {
     private $cantidad_leche;
     private $id_trabajador;
     private $id_animal;
-
+    private $created_at;
+    private $updated_at;
+    private $deleted_at;
+    
   const ID = 'id';
   const FECHA_ORDENNO = 'fecha_ordeno';
   const CANTIDAD_LECHE = 'cantidad_leche';
   const ID_TRABAJADOR = 'id_trabajador';
   const ID_ANIMAL = 'id_animal';
+  const CREATED_AT = 'created_at';
+  const UPDATED_AT = 'updated_at';
+  const DELETED_AT = 'deleted_at';
+  
   public function getId() {
       return $this->id;
   }
@@ -64,8 +71,34 @@ class ordennoBaseTableClass extends tableBaseClass {
       $this->id_animal = $id_animal;
       return $this;
   }
+  function getCreated_at() {
+      return $this->created_at;
+  }
 
-    
+  function getUpdated_at() {
+      return $this->updated_at;
+  }
+
+  function getDeleted_at() {
+      return $this->deleted_at;
+  }
+
+  function setCreated_at($created_at) {
+      $this->created_at = $created_at;
+      return $this;
+  }
+
+  function setUpdated_at($updated_at) {
+      $this->updated_at = $updated_at;
+      return $this;
+  }
+
+  function setDeleted_at($deleted_at) {
+      $this->deleted_at = $deleted_at;
+      return $this;
+  }
+
+      
 
 
 

@@ -13,10 +13,13 @@ class estadoTableClass extends estadoBaseTableClass {
         try{
             $sql = 'SELECT count('.estadoTableClass::ID.') AS cantidad '.
                     ' FROM '.estadoTableClass::getNameTable();
-//                    ' WHERE'. fecundadorTableClass::DELETED_AT.'IS NULL';
+                    ' WHERE'. estadoTableClass::DELETED_AT.' IS NULL ';
             if(is_array($where) == TRUE){
                 foreach ($where as $field => $value) {
-                    $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                    if(is_numeric($field)){
+                        $sql = $sql . ' AND ' . $value . ' ';
+                    }
+                    $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
                 }
                 
             }
