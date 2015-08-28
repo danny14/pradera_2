@@ -333,6 +333,10 @@ credencial_view:
   load:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+
+credencial_deleteFilters:
+  url:    /credencial/borrar_filtros
+  param:  { module: credencial, action: deleteFilters, format: html }
 ##------------------------Detalle Entrada ------------------##
 detalleEntrada_index:
   url:    /detalle_entrada/index
@@ -1296,8 +1300,8 @@ raza_deleteSelect:
   url:    /raza/eliminarSeleccion
   param:  { module: raza, action: deleteSelect, format: json }
   load:
-    - model/base/animalBaseTableClass.php
-    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
     - hooks/loghookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -1308,6 +1312,10 @@ raza_view:
   load:
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    
+raza_deleteFilters:
+  url:    / raza/borrar_filtros
+  param:  { module: raza, action: deleteFilters, format: html }
 
 ##------------------------Registro Celo---------------------##
 registro_celo_index:
@@ -1521,6 +1529,31 @@ registro_vacunacion_report:
     - libs/fpdf/fpdf.php
     - model/base/registroVacunacionBaseTableClass.php
     - model/registroVacunacionTableClass.php
+    
+##------------------------ REPORTE -------------------------##
+reportes_index:
+  url:    /reportes/index
+  param:  { module: reportes, action: index, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php
+
+reportes_insert:
+  url:    /reportes/insertar
+  param:  { module: reportes, action: insert, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php
+
+    
+reportes_create:
+  url:    /reportes/crear
+  param:  { module: reportes, action: create, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php
+
+
 ##------------------------Reporte Parto---------------------##
 reporte_parto_index:
   url:    /reporte_parto/index

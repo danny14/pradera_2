@@ -154,7 +154,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         /* _______________________________ */
         if($flag === TRUE){
             request::getInstance()->setMethod('GET'); //POST
-            routing::getInstance()->forward('animal', 'index');
+            routing::getInstance()->forward('trabajador', 'index');
         }
     }
 }

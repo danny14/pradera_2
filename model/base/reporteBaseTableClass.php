@@ -7,83 +7,69 @@ use mvc\model\table\tableBaseClass;
  *
  * @author Danny Steven Ruiz Hernandez <danny_ruiz_1995@hotmail.com>
  */
-class fecundadorBaseTableClass extends tableBaseClass {
-   
-  private $id;
-  private $nombre;
-  private $edad;
-  private $peso;
-  private $observacion;
-  private $id_raza;
-  private $deleted_at;
+class reporteBaseTableClass extends tableBaseClass {
 
-  const ID = 'id';
-  const NOMBRE = 'nombre';
-  const NOMBRE_LENGTH = 80;
-  const EDAD = 'edad';
-  const PESO = 'peso';
-  const OBSERVACION = 'observacion';
-  const OBSERVACION_LENGTH = 120;
-  const ID_RAZA = 'id_raza';
-  const DELETED_AT = 'deleted_at';
-  
-  public function getId() {
-      return $this->id;
-  }
+    private $id;
+    private $nombre;
+    private $descripcion;
+    private $direccion;
+    private $created_at;
 
-  public function getNombre() {
-      return $this->nombre;
-  }
+    const ID = 'id';
+    const NOMBRE = 'nombre';
+    const NOMBRE_LENGTH = 80;
+    const DESCRIPCION = 'descripcion';
+    const DESCRIPCION_LENGTH = 250;
+    const DIRECCION = 'direccion';
+    const DIRECCION_LENGTH = 200 ;
+    const CREATED_AT = 'created_at';
+    
+    function getId() {
+        return $this->id;
+    }
 
-  public function getEdad() {
-      return $this->edad;
-  }
+    function getNombre() {
+        return $this->nombre;
+    }
 
-  public function getPeso() {
-      return $this->peso;
-  }
+    function getDescripcion() {
+        return $this->descripcion;
+    }
 
-  public function getObservacion() {
-      return $this->observacion;
-  }
+    function getDireccion() {
+        return $this->direccion;
+    }
 
-  public function getId_raza() {
-      return $this->id_raza;
-  }
+    function getCreated_at() {
+        return $this->created_at;
+    }
 
-  public function setId($id) {
-      $this->id = $id;
-      return $this;
-  }
+    function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
 
-  public function setNombre($nombre) {
-      $this->nombre = $nombre;
-      return $this;
-  }
+    function setNombre($nombre) {
+        $this->nombre = $nombre;
+        return $this;
+    }
 
-  public function setEdad($edad) {
-      $this->edad = $edad;
-      return $this;
-  }
+    function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+        return $this;
+    }
 
-  public function setPeso($peso) {
-      $this->peso = $peso;
-      return $this;
-  }
+    function setDireccion($direccion) {
+        $this->direccion = $direccion;
+        return $this;
+    }
 
-  public function setObservacion($observacion) {
-      $this->observacion = $observacion;
-      return $this;
-  }
+    function setCreated_at($created_at) {
+        $this->created_at = $created_at;
+        return $this;
+    }
 
-  public function setId_raza($id_raza) {
-      $this->id_raza = $id_raza;
-      return $this;
-  }
-
-  
-
-  /**
+       /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
    *
@@ -101,7 +87,7 @@ class fecundadorBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'fecundador';
+    return 'reporte';
   }
 
   /**

@@ -73,10 +73,12 @@
             <!-- FIN FORMULARIO IDIOMA -->
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('credencial', 'deleteSelect') ?>" method="POST">
                 <div class="botones">
+                <?php if(session::getInstance()->hasCredential('admin')):?>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
-                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                <a class="btn btn-default btn-xs" href="<?php // routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                <?php endif;?>
+                <!--<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php // echo i18n::__('filters')?></a>
+                <a class="btn btn-default btn-xs" href="<?php//  routing::getInstance()->getUrlWeb('credencial', 'deleteFilters')?>" ><?php // echo i18n::__('delete')." ";echo i18n::__('filters')?></a> -->
             </div>
                 <?php view::includeHandlerMessage() ?>
             <table class="table table-bordered table-responsive table-striped table-condensed">

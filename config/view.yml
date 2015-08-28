@@ -125,6 +125,11 @@ registro_vacunacion:
   index:
     javascript:
       - index.js
+#--------------- Reporte -------------------------------------#
+reporte:
+  index:
+    javascript:
+      - index.js
 #--------------- Salida Bodega -------------------------
 #--------------- Tipo Insumo -------------------------
 tipo_insumo:

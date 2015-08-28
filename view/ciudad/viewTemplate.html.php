@@ -4,7 +4,7 @@
 <?php $id = ciudadTableClass::ID ?>
 <?php $descripcion = ciudadTableClass::DESCRIPCION ?>
 <div class="container container-fluid">
-    <h1><?php echo i18n::__('breed') ?></h1>
+    <h1><?php echo i18n::__('city') ?></h1>
     <div class="row">
         <header>
 
@@ -29,7 +29,7 @@
                 </tbody>
 
             </table>
-            <a href="<?php echo routing::getInstance()->getUrlWeb('raza', 'index')?>" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-arrow-left"></i></a>
+            <a href="<?php echo routing::getInstance()->getUrlWeb('ciudad', 'index')?>" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-arrow-left"></i></a>
         </section>
         <footer>
 

@@ -35,19 +35,19 @@
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name') ?>">
+                                        <input type="text" class="form-control" id="filter<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)?>" name="filter[<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)?>]" placeholder="<?php echo i18n::__('name') ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="filterAge" class="col-sm-2 control-label"><?php echo i18n::__('age') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="filter[edad]" class="form-control" id="filterEdad" placeholder="<?php echo i18n::__('age') ?>">
+                                        <input type="number" id="filter<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)?>" name="filter[<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)?>]" class="form-control" placeholder="<?php echo i18n::__('age') ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="filterWeight" class="col-sm-2 control-label"><?php echo i18n::__('weight') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="filter[peso]" class="form-control" id="filterPeso" placeholder="<?php echo i18n::__('weight')?>">
+                                        <input type="number" name="filter[<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)?>]" class="form-control" id="filter<?php echo fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)?>" placeholder="<?php echo i18n::__('weight')?>">
                                     </div>
                                 </div>
                             </form>

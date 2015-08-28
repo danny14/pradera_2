@@ -13,9 +13,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where = NULL;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
-                // aqui validar datos de filtros
-                if (isset($filter['descripcion']) and $filter['descripcion'] !== NULL and $filter['descripcion'] !== '') {
-                    $where[razaTableClass::DESCRIPCION] = $filter['descripcion'];
+  
+                if (isset($filter[razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE)]) and $filter[razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE)] !== NULL and $filter[razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE)] !== '') {
+                    $descripcion = $filter[razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE)];
+                    $where[] = '(' . razaTableClass::getNameField(razaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
+                                . 'OR ' . razaTableClass::getNameField(razaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
+                                . 'OR ' . razaTableClass::getNameField(razaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '\') ';
                 }
                 session::getInstance()->setAttribute('razaIndexFilters', $where);
             } else if (session::getInstance()->hasAttribute('razaIndexFilters')) {
@@ -35,7 +38,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $page = $page * config::getRowGrid();
             }
             $this->cntPages = razaTableClass::getTotalPages(config::getRowGrid(),$where);
-            $this->objRaza = razaTableClass::getAll($fields, false,$orderBy,'ASC',config::getRowGrid(),$page);
+            $this->objRaza = razaTableClass::getAll($fields, false,$orderBy,'ASC',config::getRowGrid(),$page,$where);
             $this->defineView('index', 'raza',  session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();

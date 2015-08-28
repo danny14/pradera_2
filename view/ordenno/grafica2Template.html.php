@@ -12,7 +12,7 @@
 $(document).ready(function(){
   var line1=[['2015-08-02',4], ['2015-08-04',6.5]];
   var plot1 = $.jqplot('chart1', [line1], {
-    title:'Default Date Axis',
+    title:'Grafica XD Intento',
     axes:{
         xaxis:{
             renderer:$.jqplot.DateAxisRenderer,
