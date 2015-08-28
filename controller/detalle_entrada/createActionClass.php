@@ -17,6 +17,13 @@ use hook\log\logHookClass as bitacora;
  * @category:
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
+      /* public function execute inicializa las variables 
+     * @return $valor=> valor (integer)
+     * @return $id_entrada=> id_entrada (integer)
+     * @return $id_insumo=> id_insumo (integer)
+     * @return $id_tipo_insumo=> id_tipo_insumo(integer)
+     * todas estos datos se pasa en la varible @var $data
+     * ** */
 
     public function execute() {
         try {

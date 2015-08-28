@@ -9,6 +9,15 @@ use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as bitacora;
 
 class createActionClass extends controllerClass implements controllerActionInterface{
+      /* public function execute inicializa las variables 
+     * @return $nombre=> nombre (string)
+     * @return $apellido=> apellido (string)
+     * @return $direccion=> direccion (integer)
+     * @return $telefono=> telefono(integer)
+     * @return $correo=> correo(integer)
+     * @return $id_ciudad=> id_ciudad(integer)
+     * todas estos datos se pasa en la varible @var $data
+     * ** */
     public function execute() {
         try {
             if(request::getInstance()->isMethod('POST')){

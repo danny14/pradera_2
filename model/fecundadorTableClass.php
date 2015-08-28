@@ -52,7 +52,12 @@ class fecundadorTableClass extends fecundadorBaseTableClass {
             throw $exc;
         }
     }
-
+        /**
+     * funcion para traer el nombre de una foranea
+     * @param type $id integer
+     * @return type
+     * @throws PDOException
+     */
         public static function getNameFieldForaneaRaza($id) {
         try {
             $sql = 'SELECT ' . razaTableClass::DESCRIPCION . ' AS nom_raza '

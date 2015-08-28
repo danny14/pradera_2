@@ -38,8 +38,8 @@ class animalTableClass extends animalBaseTableClass {
     }
     
     /**
-     * Recordar hacer otra funcion general
-     * @param type $id
+     * funcion para devolver el nombre de una foranea
+     * @param type $id integer
      * @return type
      * @throws PDOException
      */
@@ -62,6 +62,12 @@ class animalTableClass extends animalBaseTableClass {
         }
     }
     
+     /**
+     * funcion para devolver el nombre de una foranea
+     * @param type $id integer
+     * @return type
+     * @throws PDOException
+     */
     public static function getNameFieldForaneaEstado($id){
         try{
             $sql = 'SELECT '. estadoTableClass::DESCRIPCION . ' AS nom_estado '

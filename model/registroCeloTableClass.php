@@ -40,8 +40,8 @@ class registroCeloTableClass extends registroCeloBaseTableClass {
   }
 
   /**
-   * Recordar hacer otra funcion general
-   * @param type $id
+   * funcion para traer el nombre de una foranea
+   * @param type $id integer
    * @return type
    * @throws PDOException
    */
@@ -61,7 +61,12 @@ class registroCeloTableClass extends registroCeloBaseTableClass {
       throw $exc;
     }
   }
-
+    /**
+   * funcion para traer el nombre de una foranea
+   * @param type $id integer
+   * @return type
+   * @throws PDOException
+   */
   public static function getNameFieldForaneaFecundador($id) {
     try {
       $sql = 'SELECT ' . fecundadorTableClass::NOMBRE . ' AS nom_fecundador '
