@@ -37,7 +37,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
                
                 );
                 $orderBy = array(
-                registro_vacunacionTableClass::ID
+                registroVacunacionTableClass::ID
                     
                 );
                 $this->objRegistro_vacunacion = registroVacunacionTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL , NULL , $where);

@@ -11,43 +11,21 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
     public function execute() {
         try {
-            if(request::getInstance()->hasGet(animalTableClass::ID)){
+            if(request::getInstance()->hasGet(usuarioTableClass::ID)){
                 $fields= array(
-                animalTableClass::ID,
-                animalTableClass::NOMBRE,
-                animalTableClass::GENERO,
-                animalTableClass::PESO,
-                animalTableClass::FECHA_INGRESO,
-                animalTableClass::NUMERO_PARTOS,
-                animalTableClass::ID_RAZA,
-                animalTableClass::ID_ESTADO
+                usuarioTableClass::ID,
+                usuarioTableClass::USER,
+                usuarioTableClass::PASSWORD,
+  
                 );
                 $where = array(
-                    animalTableClass::ID => request::getInstance()->getGet(animalTableClass::ID)
+                    usuarioTableClass::ID => request::getInstance()->getGet(usuarioTableClass::ID)
                 );
-                $this->objAnimal = animalTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
+                $this->objUsuario = usuarioTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
                 
-                $fields = array(
-                razaTableClass::ID,
-                razaTableClass::DESCRIPCION
-                );
-//                $where = array(
-//                razaTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_RAZA)
-//                );
-                $this->objRaza = razaTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
-                
-                $fields = array(
-                estadoTableClass::ID,
-                estadoTableClass::DESCRIPCION
-                );
-//                $where = array(
-//                estadoTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_ESTADO)
-//                );
-                
-                $this->objEstado = estadoTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, NULL);
-                $this->defineView('edit', 'animal', session::getInstance()->getFormatOutput());
+                $this->defineView('edit', 'usuario', session::getInstance()->getFormatOutput());
             }else{
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('usuario', 'index');
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

@@ -17,10 +17,10 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 $report = request::getInstance()->getPost('report');
                 // aqui validar datos de filtros
                 if(isset($report['nombre']) and $report['nombre'] !== NULL and $report['nombre'] !== ''){
-                    $where[animalTableClass::NOMBRE] = $report['nombre'];
+                    $where[usuarioTableClass::NOMBRE] = $report['nombre'];
                 }
                 if(isset($report['fechaCreacion1']) and $report['fechaCreacion1'] !== NULL and $report['fechaCreacion1'] !== '' and isset($report['fechaCreacion2']) and $report['fechaCreacion2'] !== NULL and $report['fechaCreacion2'] !== ''){
-                    $where[animalTableClass::FECHA_INGRESO] = array(
+                    $where[usuarioTableClass::FECHA_INGRESO] = array(
                         $report['fechaCreacion1'],
                         $report['fechaCreacion2']
 //                        date(config::getFormatTimestamp(),  strtotime($report['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
@@ -28,21 +28,21 @@ class reportActionClass extends controllerClass implements controllerActionInter
                     );
                 }
                 $fields = array(
-                animalTableClass::ID,
-                animalTableClass::NOMBRE,
-                animalTableClass::GENERO,
-                animalTableClass::PESO,
-                animalTableClass::FECHA_INGRESO,
-                animalTableClass::NUMERO_PARTOS,
-                animalTableClass::ID_RAZA,
-                animalTableClass::ID_ESTADO
+                usuarioTableClass::ID,
+                usuarioTableClass::NOMBRE,
+                usuarioTableClass::GENERO,
+                usuarioTableClass::PESO,
+                usuarioTableClass::FECHA_INGRESO,
+                usuarioTableClass::NUMERO_PARTOS,
+                usuarioTableClass::ID_RAZA,
+                usuarioTableClass::ID_ESTADO
                 );
                 
                 $orderBy = array(
-                animalTableClass::ID
+                usuarioTableClass::ID
                 );
-                $this->objAnimal = animalTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL,NULL, $where);
-                $this->defineView('report', 'animal', session::getInstance()->getFormatOutput());
+                $this->objUsuario = usuarioTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL,NULL, $where);
+                $this->defineView('report', 'usuario', session::getInstance()->getFormatOutput());
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

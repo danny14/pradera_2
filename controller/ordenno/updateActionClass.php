@@ -60,7 +60,12 @@ class updateActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorDate', NULL, 'default', array('%date%' => ordennoTableClass::FECHA_ORDENNO)), 'errorFechaOrdenno');
             $flag = TRUE;
             session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE), TRUE);
+        }else if(strtotime($fecha_ordenno) >  strtotime($fechaActual)){
+          session::getInstance()->setError(i18n::__('ErrorCurrentDate', NULL,'default', array('%date%' => $fecha_orden)),'errorFechaOrdenno');
+          $flag = TRUE;
+          session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE), TRUE);
         }
+        
         /*
          * Validacion para Cantidad Leche
          */
@@ -77,7 +82,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
          * Validacion para ID TRABAJADOR
          */
         if ($id_trabajador === '' or $id_trabajador === NULL) {
-            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ordennoTableClass::id_trabajador)), 'errorTrabajador');
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ordennoTableClass::ID_TRABAJADOR)), 'errorTrabajador');
             $flag = TRUE;
             session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::id_trabajador, TRUE), TRUE);
         } else if (!is_numeric($id_trabajador)) {

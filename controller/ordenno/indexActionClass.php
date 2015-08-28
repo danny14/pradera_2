@@ -18,9 +18,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $filter = request::getInstance()->getPost('filter');
                 // aqui validar datos de filtros
                 if(isset($filter['fecha_ordenno']) and $filter['fecha_ordenno'] !== NULL and $filter['fecha_ordenno'] !== ''){
+                    $this->validate($fecha_ordenno);
+                    $fecha_ordenno = $filter['fecha_ordenno'];
                     $where[ordennoTableClass::FECHA_ORDENNO] = $filter['fecha_ordenno'];
                 }
                 if(isset($filter['cantidad_leche']) and $filter['cantidad_leche'] !== NULL and $filter['cantidad_leche'] !== ''){
+                    $cantidad_leche = $filter['cantidad_leche'];
+                    $this->validateCantidadLeche($cantidad_leche);
                     $where[ordennoTableClass::CANTIDAD_LECHE] = $filter['cantidad_leche'];
               
                 }

@@ -32,9 +32,12 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 routing::getInstance()->redirect('registro_vacunacion', 'index');
             }
          catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo "<br>";
-            echo $exc->getTraceAsString();
+            $this->arrayAjax = array(
+                'code' => 500,
+                'msg' => 'El dato esta siendo utilizado por otra tabla',
+                'modal' => 'myModalDelete'.$id
+            );
+            $this->defineView('delete', 'animal', session::getInstance()->getFormatOutput());
         }
     }
 

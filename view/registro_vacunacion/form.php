@@ -20,7 +20,7 @@
     <input type="hidden" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID,TRUE)?>" value="<?php echo $objRegistroVacunacion[0]->$id ?>">
     <?php endif ;?>
     
-    <div class="form-group" <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="date_register"><?php echo i18n::__('date_register')?>:</label> 
         <input class="form-control" type="date" value="<?php echo ((isset($objRegistroVacunacion)) ? $objRegistroVacunacion[0]->$fecha_registro : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE)) === TRUE ) ? request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO,TRUE)) : '') )?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE)?>" required placeholder="<?php echo i18n::__('enterDateRegister')?>">
         <?php if(session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
@@ -28,13 +28,13 @@
     
    
     
-    <div class="form-group" <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="dose_vaccine"><?php echo i18n::__('dose_vaccine')?>:</label> 
         <input class="form-control" type="number" value="<?php echo ((isset($objRegistroVacunacion)) ? $objRegistroVacunacion[0]->$dosis_vacuna : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA, TRUE)) === TRUE ) ? request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA,TRUE)) : '') )?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA, TRUE)?>" required placeholder="<?php echo i18n::__('enterDoseVaccine')?>">
         <?php if(session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
     
            
-    <div class="form-group" <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="time_vaccine"><?php echo i18n::__('time_vaccine')?>:</label> 
         <input class="form-control" type="time" value="<?php echo ((isset($objRegistroVacunacion)) ? $objRegistroVacunacion[0]->$hora_vacuna : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA, TRUE)) === TRUE ) ? request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA,TRUE)) : '') )?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA, TRUE)?>" required placeholder="<?php echo i18n::__('enterTimeVaccine')?>">
         <?php if(session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>

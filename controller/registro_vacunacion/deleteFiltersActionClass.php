@@ -11,8 +11,8 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
 
     public function execute() {
         try {
-            if(session::getInstance()->hasAttribute('registro_vacunacionIndexFilters')) {
-                session::getInstance()->deleteAttribute('registro_vacunacionIndexFilters');
+            if(session::getInstance()->hasAttribute('registroVacunacionIndexFilters')) {
+                session::getInstance()->deleteAttribute('registroVacunacionIndexFilters');
                 routing::getInstance()->redirect('registro_vacunacion', 'index');
             } else {
                 routing::getInstance()->redirect('registro_vacunacion', 'index');

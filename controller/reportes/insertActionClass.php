@@ -22,6 +22,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
             $orderBy = array(
             animalTableClass::NOMBRE
             );
+            $this->idReporte = $
             $this->objAnimal = animalTableClass::getAll($fields, FALSE, $orderBy, $order, $limit, $offset, $where);
             $this->defineView('insert', 'reportes',  session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

@@ -53,7 +53,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $page = $page * 3;
             }
             $this->cntPages = registroVacunacionTableClass::getTotalPages(config::getRowGrid(),$where);
-            $this->objRegistro_vacunacion =  registroVacunacionTableClass::getAll($fields, FALSE,$orderBy,'ASC',config::getRowGrid(),$page,$where);
+            $this->objRegistroVacunacion =  registroVacunacionTableClass::getAll($fields, FALSE,$orderBy,'ASC',config::getRowGrid(),$page,$where);
             $this->defineView('index', 'registro_vacunacion', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();

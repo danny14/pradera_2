@@ -14,29 +14,33 @@ class insertActionClass extends controllerClass implements controllerActionInter
             trabajadorTableClass::ID,
             trabajadorTableClass::NOMBRE
             );
-              $fields = array(
-            animalTableClass::ID,
-            animalTableClass::NOMBRE
-            );
-                $fields = array(
-            insumoTableClass::ID,
-            insumoTableClass::NOMBRE
-            );
+            
             $orderBy= array(
             trabajadorTableClass::NOMBRE
             );
-             $orderBy= array(
-             animalTableClass::NOMBRE
+            
+            $this->objTrabajador = trabajadorTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
+            
+            $fields = array(
+            animalTableClass::ID,
+            animalTableClass::NOMBRE
             );
-             $orderBy= array(
+            
+            $orderBy= array(
+             animalTableClass::NOMBRE
+            );            
+            $this->objAnimal = animalTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
+            
+            $fields = array(
+            insumoTableClass::ID,
+            insumoTableClass::NOMBRE
+            );
+
+
+            $orderBy= array(
              insumoTableClass::NOMBRE
             );
-             
-           
-            $this->objTrabajador = trabajadorTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
-            $this->defineView('insert', 'registro_vacunacion', session::getInstance()->getFormatOutput());
-            $this->objAnimal = animalTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
-            $this->defineView('insert', 'registro_vacunacion', session::getInstance()->getFormatOutput());
+                        
             $this->objInsumo = insumoTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
             $this->defineView('insert', 'registro_vacunacion', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

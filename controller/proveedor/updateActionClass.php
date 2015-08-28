@@ -63,7 +63,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $nombre, '%Character%' => proveedorTableClass::NOMBRE_LENGTH)), 'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE), TRUE);
-        } else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
+        } else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $nombre)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default', array('%field%' => proveedorTableClass::NOMBRE)), 'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE), TRUE);
@@ -80,7 +80,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $nombre, '%Character%' => proveedorTableClass::APELLIDO_LENGTH)), 'errorApellido');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE), TRUE);
-        } else if (!ereg("^[a-zA-Z ]{3,80}$", $apellido)) {
+        } else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $apellido)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default', array('%field%' => proveedorTableClass::APELLIDO)), 'errorApellido');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE), TRUE);

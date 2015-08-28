@@ -18,7 +18,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $filter = request::getInstance()->getPost('filter');
                 // aqui validar datos de filtros
                 if(isset($filter['nombre']) and $filter['nombre'] !== NULL and $filter['nombre'] !== ''){
-                    $where[proveedorTableClass::NOMBRE] = $filter['nombre'];
+                    $nombre = $filter['nombre'];
+                    $this->validateName($nombre);
+                    $where[proveedorTableClass::NOMBRE] = $nombre;
                 }
                 if(isset($filter['apellido']) and $filter['apellido'] !== NULL and $filter['apellido'] !== ''){
                     $where[proveedorTableClass::APELLIDO] = $filter['apellido'];

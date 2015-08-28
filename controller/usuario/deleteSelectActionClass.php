@@ -16,36 +16,36 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
                 $idsToDelete = request::getInstance()->getPost('chk');
                 foreach ($idsToDelete as $id){
                     $ids = array(
-                    animalTableClass::ID => $id
+                    usuarioTableClass::ID => $id
                     );
-                    animalTableClass::delete($ids, FALSE);
+                    usuarioTableClass::delete($ids, FALSE);
                 }
                 session::getInstance()->setSuccess('Los elementos seleccionados fueron borrados de forma exitosa');
-                bitacora::register('Eliminar Masivo', animalTableClass::getNameTable());
-                routing::getInstance()->redirect('animal','index');
+                bitacora::register('Eliminar Masivo', usuarioTableClass::getNameTable());
+                routing::getInstance()->redirect('usuario','index');
             } else {
                 session::getInstance()->setError('No selecciono ningun registro');
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('usuario', 'index');
             }
         } catch (PDOException $exc) {
             switch ($exc->getCode()) {
                 // 42601
                 case 23503:
                     session::getInstance()->setError(i18n::__('23503'));
-                    routing::getInstance()->redirect('animal', 'index');
+                    routing::getInstance()->redirect('usuario', 'index');
                     break;
                 case 23505:
                     session::getInstance()->setError(i18n::__('23505'));
-                    routing::getInstance()->redirect('animal', 'index');
+                    routing::getInstance()->redirect('usuario', 'index');
 //                    session::getInstance()->setError($exc->getMessage());
                 break;
                 case 42601:
                     session::getInstance()->setError(i18n::__('42601'));
-                    routing::getInstance()->redirect('animal', 'index');
+                    routing::getInstance()->redirect('usuario', 'index');
                     break;
                 default :
                     session::getInstance()->setError($exc->getMessage());
-                    routing::getInstance()->redirect('animal', 'index');
+                    routing::getInstance()->redirect('usuario', 'index');
                 break;
             }
 //            session::getInstance()->setFlash('exc', $exc);

@@ -9,7 +9,7 @@ use mvc\i18n\i18nClass as i18n;
 class editActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(registroVacunacionTableClass::ID)){
+            if(request::getInstance()->hasGet(registroVacunacionTableClass::ID)){
                 $fields = array(
                 registroVacunacionTableClass::ID,
                 registroVacunacionTableClass::FECHA_REGISTRO,
@@ -20,7 +20,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 registroVacunacionTableClass::ID_INSUMO
                 );
                 $where = array(
-                registroVacunacionTableClass::ID => request::getInstance()->getRequest(registroVacunacionTableClass::ID)
+                registroVacunacionTableClass::ID => request::getInstance()->getGet(registroVacunacionTableClass::ID)
                 );
                 $this->objRegistroVacunacion = registroVacunacionTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
                 
@@ -41,13 +41,12 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 animalTableClass::NOMBRE
                 );
                 $this->objAnimal = animalTableClass::getAll($fields, FALSE,$orderBy,'ASC',NULL,NULL, NULL);
-                  $fields = array(
+                
+                $fields = array(
                 insumoTableClass::ID,
                 insumoTableClass::NOMBRE
                 );
-                
-                
-                 
+                                                 
                 $orderBy = array(
                 insumoTableClass::NOMBRE
                 );

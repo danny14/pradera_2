@@ -10,18 +10,21 @@ use mvc\i18n\i18nClass as i18n;
 class viewActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {        
-           if(request::getInstance()->hasRequest(registro_vacunacionTableClass::ID)){
+           if(request::getInstance()->hasRequest(registroVacunacionTableClass::ID)){
                $fields = array (
-               registro_vacunacionTableClass::ID,
-               registro_vacunacionTableClass::FECHA_REGISTRO,
-               registro_vacunacionTableClass::ID_TRABAJADOR
+               registroVacunacionTableClass::ID,
+               registroVacunacionTableClass::FECHA_REGISTRO,
+               registroVacunacionTableClass::ID_TRABAJADOR,
+               registroVacunacionTableClass::HORA_VACUNA,
+               registroCeloTableClass::ID_ANIMAL,
+               registroVacunacionTableClass::ID_INSUMO
                
                );
                $where = array( 
-               registro_vacunacionTableClass::ID => request::getInstance()->getRequest(registro_vacunacionTableClass::ID)
+               registroVacunacionTableClass::ID => request::getInstance()->getRequest(registroVacunacionTableClass::ID)
                        
              );
-               $this->objRegistro_vacunacion =  registro_vacunacionTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
+               $this->objRegistroVacunacion =  registroVacunacionTableClass::getAll($fields, FALSE, NULL, NULL, NULL, NULL, $where);
                $this->defineView('view', 'registro_vacunacion', session::getInstance()->getFormatOutput());
            }
         } catch (PDOException $exc) {

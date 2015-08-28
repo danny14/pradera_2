@@ -11,25 +11,25 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
 
     public function execute() {
         try {
-            if(request::getInstance()->hasRequest(animalTableClass::ID)){
+            if(request::getInstance()->hasRequest(usuarioTableClass::ID)){
                 $fields= array(
-                animalTableClass::ID,
-                animalTableClass::NOMBRE,
-                animalTableClass::GENERO,
-                animalTableClass::PESO,
-                animalTableClass::FECHA_INGRESO,
-                animalTableClass::NUMERO_PARTOS,
-                animalTableClass::ID_RAZA,
-                animalTableClass::ID_ESTADO
+                usuarioTableClass::ID,
+                usuarioTableClass::NOMBRE,
+                usuarioTableClass::GENERO,
+                usuarioTableClass::PESO,
+                usuarioTableClass::FECHA_INGRESO,
+                usuarioTableClass::NUMERO_PARTOS,
+                usuarioTableClass::ID_RAZA,
+                usuarioTableClass::ID_ESTADO
                 );
                 $where = array(
-                    animalTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID)
+                    usuarioTableClass::ID => request::getInstance()->getRequest(usuarioTableClass::ID)
                 );
-                $this->objAnimal = animalTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
-                $this->defineView('view', 'animal', session::getInstance()->getFormatOutput());
+                $this->objUsuario = usuarioTableClass::getAll($fields, FALSE , NULL, NULL, NULL , NULL, $where);
+                $this->defineView('view', 'usuario', session::getInstance()->getFormatOutput());
             }else{
                 session::getInstance()->setError('Error no se pudo visualizar correctamente');
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('usuario', 'index');
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

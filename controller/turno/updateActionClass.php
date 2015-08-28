@@ -68,12 +68,11 @@ class updateActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorDate2', NULL, 'default', array('%field%' => turnoTableClass::INICIO_TURNO)),'errorInicioTurno');
             $flag = TRUE;
             session::getInstance()->setFlash(turnoTableClass::getNameField(turnoTableClass::INICIO_TURNO, TRUE), TRUE);
+        }else if(!preg_match($patternHora, $inicio_turno)){
+            session::getInstance()->setError(i18n::__('errorTime', NULL, 'default',array('%time%' => turnoTableClass::INICIO_TURNO)),'errorInicioTurno');
+            $flag = TRUE;
+            session::getInstance()->setFlash(turnoTableClass::getNameField(turnoTableClass::INICIO_TURNO, TRUE), TRUE);             
         }
-//        if(!preg_match($patternHora, $inicio_turno)){
-//            session::getInstance()->setError(i18n::__('errorTime', NULL, 'default',array('%time%' => turnoTableClass::INICIO_TURNO)),'errorInicioTurno');
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(turnoTableClass::getNameField(turnoTableClass::INICIO_TURNO, TRUE), TRUE);             
-//        }
         /*
          * VALIDACION DE FIN TURNO
          */
@@ -81,12 +80,11 @@ class updateActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => turnoTableClass::FIN_TURNO)),'errorFinTurno');
             $flag = TRUE;
             session::getInstance()->setFlash(turnoTableClass::getNameField(turnoTableClass::FIN_TURNO, TRUE), TRUE);
+        }else if(!preg_match($patternHora, $fin_turno)){
+            session::getInstance()->setError(i18n::__('errorTime', NULL, 'default',array('%time%' => turnoTableClass::FIN_TURNO)),'errorFinTurno');
+            $flag = TRUE;
+            session::getInstance()->setFlash(turnoTableClass::getNameField(turnoTableClass::FIN_TURNO, TRUE), TRUE);             
         }
-//        if(!preg_match($patternHora, $fin_turno)){
-//            session::getInstance()->setError(i18n::__('errorTime', NULL, 'default',array('%time%' => turnoTableClass::FIN_TURNO)),'errorFinTurno');
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(turnoTableClass::getNameField(turnoTableClass::FIN_TURNO, TRUE), TRUE);             
-//        }
         
         if($flag === TRUE){
             request::getInstance()->setMethod('GET'); //POST

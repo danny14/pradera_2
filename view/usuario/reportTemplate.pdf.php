@@ -1,14 +1,9 @@
 <?php
 use mvc\routing\routingClass as routing;
 
-$id = animalTableClass::ID;
-$nombre = animalTableClass::NOMBRE;
-$genero = animalTableClass::GENERO;
-$peso = animalTableClass::PESO;
-$fecha_ingreso = animalTableClass::FECHA_INGRESO;
-$numero_partos = animalTableClass::NUMERO_PARTOS;
-$id_raza = animalTableClass::ID_RAZA;
-$id_estado = animalTableClass::ID_ESTADO;
+ $id = usuarioTableClass::ID;
+ $user_name = usuarioTableClass::USER; 
+ $created_at = usuarioTableClass::CREATED_AT;
 
 
 

@@ -18,14 +18,14 @@
     <?php endif ;?>
     
     <?php view::getMessageError('errorNombre')?>
-    <div class="form-group" <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="name"><?php echo i18n::__('name')?>:</label> 
         <input class="form-control" type="text" value="<?php echo ((isset($objProveedor)) ? $objProveedor[0]->$nombre : ((session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)) === TRUE) ?  '' :  (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE))  : '' ) )?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)?>" maxlength="80" required placeholder="<?php echo i18n::__('enterName')?>">
         <?php if(session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
     </div>
     
     <?php view::getMessageError('errorApellido')?>
-    <div class="form-group" <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="last_name">
            <?php echo i18n::__('last_name')?>: 
         </label>
@@ -34,7 +34,7 @@
     </div>
     
     <?php view::getMessageError('errorDireccion')?>
-    <div class="form-group" <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="Address">
              <?php echo i18n::__('address')?>:            
         </label>
@@ -42,7 +42,7 @@
             <?php if(session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
     </div>
     <?php view::getMessageError('errorTelefono')?>
-        <div class="form-group" <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+        <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="phone">
             <?php echo i18n::__('phone')?>:            
         </label>
@@ -51,16 +51,16 @@
     </div>
     
     <?php view::getMessageError('errorCorreo')?>
-    <div class="form-group" <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="mail">
             <?php echo i18n::__('mail')?>:           
         </label>
-            <input class="form-control" type="mail" value="<?php echo ((isset($objProveedor))? $objProveedor[0]->$correo : ((session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE)) === TRUE) ?  '' :  (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE))  : '' ) )?>"name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE)?>" maxlength="120" required placeholder="<?php echo i18n::__('enterMail')?>">
-            <?php if(session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
+            <input class="form-control" type="mail" value="<?php echo ((isset($objProveedor))? $objProveedor[0]->$correo : ((session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE)) === TRUE) ?  '' :  (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE))  : '' ) )?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE)?>" maxlength="120" required placeholder="<?php echo i18n::__('enterMail')?>">
+            <?php if(session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ;?>
     </div>
     
 <?php view::getMessageError('errorCiudad')?>
-    <div class="form-group" <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="id_ciudad">
                <?php echo i18n::__('id_city')?>:
         </label>

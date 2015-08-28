@@ -34,9 +34,6 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 $orderBy = array(
                 ciudadTableClass::DESCRIPCION
                 );
-//                $where = array(
-//                ciudadTableClass::ID => request::getInstance()->getRequest(animalTableClass::ID_CIUAD)
-//                );
                 
                 $this->objCiudad = ciudadTableClass::getAll($fields, FALSE,$orderBy,'ASC',NULL,NULL, NULL);
                 $this->defineView('edit', 'proveedor', session::getInstance()->getFormatOutput());

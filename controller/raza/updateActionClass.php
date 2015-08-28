@@ -46,7 +46,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorCharacterName', NULL, 'default', array('%name%' => $descripcion, '%character%' => razaTableClass::NOMBRE_LENGTH)),'errorDescripcion');
             $flag = TRUE;
             session::getInstance()->setFlash(razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE), TRUE);
-        }else if (!ereg("^[a-zA-Z ]{3,140}$", $descripcion)) {
+        }else if (!preg_match("/^[a-zA-Z ]{3,140}$/", $descripcion)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => razaTableClass::DESCRIPCION)),'errorDescripcion');
             $flag = TRUE;
             session::getInstance()->setFlash(razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE), TRUE);

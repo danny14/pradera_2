@@ -19,8 +19,6 @@ class animalBaseTableClass extends tableBaseClass {
     private $id_estado;
     private $id_madre;
     private $created_at;
-    private $update_at;
-    private $created_at;
     private $updated_at;
     private $deleted_at;
 

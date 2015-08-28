@@ -65,7 +65,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $nombre, '%Character%' => proveedorTableClass::NOMBRE_LENGTH)), 'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE), TRUE);
-        } else if (!ereg("^[a-zA-Z ]{3,80}$", $nombre)) {
+        } else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $nombre)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default', array('%field%' => proveedorTableClass::NOMBRE)), 'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE), TRUE);
@@ -82,7 +82,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $nombre, '%Character%' => proveedorTableClass::APELLIDO_LENGTH)), 'errorApellido');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE), TRUE);
-        } else if (!ereg("^[a-zA-Z ]{3,80}$", $apellido)) {
+        } else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $apellido)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default', array('%field%' => proveedorTableClass::APELLIDO)), 'errorApellido');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE), TRUE);
@@ -109,7 +109,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         if ($direccion === '' or $direccion === NULL) {
             session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => proveedorTableClass::DIRECCION)),'errorDireccion');
             $flag = TRUE;
-            session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::direccion, TRUE), TRUE);
+            session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, TRUE), TRUE);
         }
 
         /*
@@ -120,7 +120,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => proveedorTableClass::CORREO)),'errorCorreo');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE), TRUE);
-        }else if (filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        }else if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
             session::getInstance()->setError(i18n::__('errorCharacterMail', NULL, 'default'),'errorCorreo');
             $flag = TRUE;
             session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE), TRUE);
