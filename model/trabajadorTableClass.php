@@ -14,7 +14,7 @@ class trabajadorTableClass extends trabajadorBaseTableClass {
         try {
             $sql = 'SELECT count(' . trabajadorTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . trabajadorTableClass::getNameTable(). ' ';
-                    ' WHERE'. trabajadorTableClass::DELETED_AT. ' IS NULL ';
+                    ' WHERE '. trabajadorTableClass::DELETED_AT. ' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {   

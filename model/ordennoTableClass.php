@@ -22,7 +22,7 @@ class ordennoTableClass extends ordennoBaseTableClass {
         try {
             $sql = 'SELECT count(' . ordennoTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . ordennoTableClass::getNameTable(). ' '.
-                    ' WHERE'. ordennoTableClass::DELETED_AT.'IS NULL';
+                    ' WHERE '. ordennoTableClass::DELETED_AT.' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     

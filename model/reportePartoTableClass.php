@@ -13,7 +13,7 @@ class reportePartoTableClass extends reportePartoBaseTableClass {
         try {
             $sql = 'SELECT count(' . reportePartoTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . reportePartoTableClass::getNameTable(). ' '.
-                   ' WHERE'. reportePartoTableClass::DELETED_AT.' IS NULL ';
+                   ' WHERE '. reportePartoTableClass::DELETED_AT.' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {   

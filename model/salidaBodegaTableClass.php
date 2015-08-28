@@ -14,7 +14,7 @@ class salidaBodegaTableClass extends salidaBodegaBaseTableClass {
     try {
       $sql = 'SELECT count(' . salidaBodegaTableClass::ID . ') AS cantidad ' .
               ' FROM ' . salidaBodegaTableClass::getNameTable() . ' ';
-              ' WHERE ' . salidaBodegaTableClass::DELETED_AT . ' IS NULL ';
+//              ' WHERE ' . salidaBodegaTableClass::DELETED_AT . ' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {   

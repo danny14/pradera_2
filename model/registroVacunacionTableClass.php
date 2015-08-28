@@ -14,7 +14,7 @@ class registroVacunacionTableClass extends registroVacunacionBaseTableClass {
         try {
             $sql = 'SELECT count(' . registroVacunacionTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . registroVacunacionTableClass::getNameTable(). ' ' .
-                    ' WHERE'. registroVacunacionTableClass::DELETED_AT.' IS NULL';
+                    ' WHERE '. registroVacunacionTableClass::DELETED_AT.' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {   

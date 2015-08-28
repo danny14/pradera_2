@@ -13,7 +13,7 @@ class pagoTrabajadoresTableClass extends pagoTrabajadoresBaseTableClass {
         try {
             $sql = 'SELECT count(' . pagoTrabajadoresTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . pagoTrabajadoresTableClass::getNameTable(). ' ' .
-                   ' WHERE'. pagoTrabajadoresTableClass::DELETED_AT.'IS NULL';
+                   ' WHERE '. pagoTrabajadoresTableClass::DELETED_AT.' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     

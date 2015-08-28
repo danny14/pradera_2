@@ -14,7 +14,7 @@ class tipoInsumoTableClass extends tipoInsumoBaseTableClass {
         try {
             $sql = 'SELECT count(' . tipoInsumoTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . tipoInsumoTableClass::getNameTable(). ' ';
-                    ' WHERE'. tipoInsumoTableClass::DELETED_AT. ' IS NULL ';
+                    ' WHERE '. tipoInsumoTableClass::DELETED_AT. ' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {   

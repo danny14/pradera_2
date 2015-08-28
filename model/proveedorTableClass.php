@@ -21,7 +21,7 @@ class proveedorTableClass extends proveedorBaseTableClass {
         try {
             $sql = 'SELECT count(' . proveedorTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . proveedorTableClass::getNameTable(). ' ' .
-                    ' WHERE'. proveedorTableClass::DELETED_AT.'IS NULL';
+                    ' WHERE '. proveedorTableClass::DELETED_AT.' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     

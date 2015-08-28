@@ -14,7 +14,7 @@ class insumoTableClass extends insumoBaseTableClass {
         try {
             $sql = 'SELECT count(' . insumoTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . insumoTableClass::getNameTable(). ' ';
-//                    ' WHERE'. insumoTableClass::DELETED_AT.'IS NULL';
+                    ' WHERE '. insumoTableClass::DELETED_AT.' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {   
