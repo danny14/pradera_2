@@ -38,6 +38,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         }
     }
     private function Validate($descripcion) {
+        $flag = FALSE;
         /*
          * VALIDACION PARA DESCRIPCION
          */

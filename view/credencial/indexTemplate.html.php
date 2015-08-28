@@ -33,21 +33,21 @@
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterDescripcion" name="filter[name]" placeholder="<?php echo i18n::__('name')?>">
+                                        <input type="text" class="form-control" id="filter<?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE)?>" name="filter[<?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE)?>]" placeholder="<?php echo i18n::__('name')?>">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="filterDateCreate1" class="col-sm-2 control-label"><?php echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="filterDateCreate1" name="filter[dateCreate1]" placeholder="<?php echo i18n::__('start')?>">
+                                        <input type="date" class="form-control" id="filter<?php echo credencialTableClass::getNameField(credencialTableClass::CREATED_AT, TRUE).'_1'?>" name="filter[<?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE).'_1'?>]" placeholder="<?php echo i18n::__('start')?>">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('end')?></label>
+                                    <label for="filterDateCreate2" class="col-sm-2 control-label"><?php echo i18n::__('end')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="filterDateCreate2" name="filter[dateCreate2]" placeholder="<?php echo i18n::__('end')?>">
+                                        <input type="date" class="form-control" id="filter<?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE).'_2'?>" name="filter[<?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE).'_2'?>]" placeholder="<?php echo i18n::__('end')?>">
                                     </div>
                                 </div>
                                 
@@ -73,10 +73,12 @@
             <!-- FIN FORMULARIO IDIOMA -->
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('credencial', 'deleteSelect') ?>" method="POST">
                 <div class="botones">
+                <?php if(session::getInstance()->hasCredential('admin')):?>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a onclick="eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
-                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                <a class="btn btn-default btn-xs" href="<?php // routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                <?php endif;?>
+                <!--<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php // echo i18n::__('filters')?></a>
+                <a class="btn btn-default btn-xs" href="<?php//  routing::getInstance()->getUrlWeb('credencial', 'deleteFilters')?>" ><?php // echo i18n::__('delete')." ";echo i18n::__('filters')?></a> -->
             </div>
                 <?php view::includeHandlerMessage() ?>
             <table class="table table-bordered table-responsive table-striped table-condensed">

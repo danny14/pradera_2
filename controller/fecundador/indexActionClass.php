@@ -17,14 +17,14 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             if(request::getInstance()->hasPost('filter')){
                 $filter = request::getInstance()->getPost('filter');
                 // aqui validar datos de filtros
-                if(isset($filter['nombre']) and $filter['nombre'] !== NULL and $filter['nombre'] !== ''){
-                    $where[fecundadorTableClass::NOMBRE] = $filter['nombre'];
+                if(isset($filter[fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)]) and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)] !== NULL and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)] !== ''){
+                    $where[fecundadorTableClass::NOMBRE] = $filter[fecundadorTableClass::getNameField(fecundadorTableClass::NOMBRE, TRUE)];
                 }
-                if(isset($filter['edad']) and $filter['edad'] !== NULL and $filter['edad'] !== ''){
-                    $where[fecundadorTableClass::EDAD] = $filter['edad'];
+                if(isset($filter[fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)]) and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)] !== NULL and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)] !== ''){
+                    $where[fecundadorTableClass::EDAD] = $filter[fecundadorTableClass::getNameField(fecundadorTableClass::EDAD, TRUE)];
                 }
-                if(isset($filter['peso']) and $filter['peso'] !== NULL and $filter['peso'] !== ''){
-                    $where[fecundadorTableClass::PESO] = $filter['peso'];
+                if(isset($filter[fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)]) and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)] !== NULL and $filter[fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)] !== ''){
+                    $where[fecundadorTableClass::PESO] = $filter[fecundadorTableClass::getNameField(fecundadorTableClass::PESO, TRUE)];
                 }
                 session::getInstance()->setAttribute('fecundadorIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('fecundadorIndexFilters')){
@@ -62,7 +62,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                     session::getInstance()->setError(i18n::__('42601'));
                     break;
                 case "22P02":
-                    session::getInstance()->setError('hola este es un error xD ');
+                    session::getInstance()->setError($exc);
                     break;
                 default :
                     session::getInstance()->setError($exc->getMessage());

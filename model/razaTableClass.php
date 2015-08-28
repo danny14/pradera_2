@@ -16,7 +16,11 @@ class razaTableClass extends razaBaseTableClass {
 //                    ' WHERE'. fecundadorTableClass::DELETED_AT.'IS NULL';
                if(is_array($where) == TRUE){
                 foreach ($where as $field => $value) {
-                    $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                    if(is_numeric($field)){
+                    $sql = $sql . ' WHERE ' . $value . ' ';
+                    }else{
+                        $sql = $sql . ' WHERE ' .$field . ' = ' . $value . ' ';
+                    }
                 }
                }
             $answer = model::getInstance()->prepare($sql);

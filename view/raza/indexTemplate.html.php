@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('description')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="<?php echo i18n::__('description')?>">
+                                        <input type="text" class="form-control" id="filter<?php echo razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE)?>" name="filter[<?php echo razaTableClass::getNameField(razaTableClass::DESCRIPCION, TRUE)?>]" placeholder="<?php echo i18n::__('description')?>">
                                     </div>
                                 </div>
                             </form>
@@ -58,7 +58,7 @@
                 <a href="<?php echo routing::getInstance()->getUrlWeb('raza', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
                 <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                <a class="btn btn-default btn-xs" href="<?php // routing::getInstance()->getUrlWeb('animal', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                <a class="btn btn-default btn-xs" href="<?php  routing::getInstance()->getUrlWeb('raza', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
             </div>
                 <?php view::includeHandlerMessage() ?>
             <table class="table table-bordered table-responsive table-striped table-condensed">

@@ -27,10 +27,11 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('ciudad', 'index')?>">
+                                <?php view::getMessageError('errorDescripcion')?>
                                 <div class="form-group">
-                                    <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('description')?></label>
+                                    <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('description')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="<?php echo i18n::__('description')?>">
+                                        <input type="text" class="form-control" id="filter<?php echo ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE)?>" name="filter[<?php echo ciudadTableClass::getNameField(ciudadTableClass::DESCRIPCION, TRUE)?>]" placeholder="<?php echo i18n::__('description')?>">
                                     </div>
                                 </div>
                             </form>
@@ -61,8 +62,8 @@
                 <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
                 <?php endif;?>
                 <!-- FIN -->
-                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters')?></a>
-                <a class="btn btn-default btn-xs" href="<?php routing::getInstance()->getUrlWeb('ciudad', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>
+                <!--<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php// echo i18n::__('filters')?></a>-->
+                <!--<a class="btn btn-default btn-xs" href="<?php routing::getInstance()->getUrlWeb('ciudad', 'deleteFilters')?>" ><?php echo i18n::__('delete')." ";echo i18n::__('filters')?></a>-->
             </div>
                 <?php view::includeHandlerMessage() ?>
             <table class="table table-bordered table-responsive table-striped table-condensed">

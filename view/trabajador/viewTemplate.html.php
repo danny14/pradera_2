@@ -3,14 +3,13 @@
 <?php use mvc\view\viewClass as view ?>
 <?php $id = trabajadorTableClass::ID ?>
 <?php $nombre = trabajadorTableClass::NOMBRE ?>
-<?php $genero = trabajadorTableClass::GENERO ?>
-<?php $edad = trabajadorTableClass::EDAD ?>
-<?php $peso = trabajadorTableClass::PESO; ?>
-<?php $fecha_ingreso = trabajadorTableClass::FECHA_INGRESO; ?>
-<?php $numero_partos = trabajadorTableClass::NUMERO_PARTOS ?>
-<?php $id_raza = trabajadorTableClass::ID_RAZA ?>
-<?php $id_estado = trabajadorTableClass::ID_ESTADO ?>
-<?php view::includePartial('trabajador/menuPrincipal'); ?>
+<?php $apellido = trabajadorTableClass::APELLIDO ?>
+<?php $direccion= trabajadorTableClass::DIRECCION ?>
+<?php $telefono = trabajadorTableClass::TELEFONO; ?>
+<?php $id_turno = trabajadorTableClass::ID_TURNO; ?>
+<?php $id_credencial = trabajadorTableClass::ID_CREDENCIAL ?>
+<?php $id_ciudad = trabajadorTableClass::ID_CIUDAD ?>
+<?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('employee') ?></h1>
     <div class="row">
