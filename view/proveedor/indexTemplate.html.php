@@ -167,7 +167,7 @@
                         <td><?php echo $proveedor->$direccion?></td>
                         <td><?php echo $proveedor->$telefono?></td>
                         <td><?php echo $proveedor->$correo?></td>
-                        <td><?php echo $proveedor->$id_ciudad?></td>
+                        <td><?php echo proveedorTableClass::getNameFieldForaneaCiudad($proveedor->$id_ciudad) ?></td>
                         <td>
                             <div>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'view',array(proveedorTableClass::ID => $proveedor->$id));?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>

@@ -32,34 +32,40 @@
         <label class="control-label" for="dose_vaccine"><?php echo i18n::__('dose_vaccine')?>:</label> 
         <input class="form-control" type="number" value="<?php echo ((isset($objRegistroVacunacion)) ? $objRegistroVacunacion[0]->$dosis_vacuna : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA, TRUE)) === TRUE ) ? request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA,TRUE)) : '') )?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA, TRUE)?>" required placeholder="<?php echo i18n::__('enterDoseVaccine')?>">
         <?php if(session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
-    
+    </div>
            
     <div class="form-group <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="time_vaccine"><?php echo i18n::__('time_vaccine')?>:</label> 
         <input class="form-control" type="time" value="<?php echo ((isset($objRegistroVacunacion)) ? $objRegistroVacunacion[0]->$hora_vacuna : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA, TRUE)) === TRUE ) ? request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA,TRUE)) : '') )?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA, TRUE)?>" required placeholder="<?php echo i18n::__('enterTimeVaccine')?>">
         <?php if(session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::HORA_VACUNA,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
-              
+    </div>          
        
 
-        <div class="form-group">
-        <label class="control-label" for="id_trabajador"><?php echo i18n::__('id_employee')?></label> 
+    <?php view::getMessageError('errorTrabajador')?>
+    <div class="form-group" <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_TRABAJADOR, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+        <label class="control-label" for="id_trabajador">
+               <?php echo i18n::__('id_employee')?>:
+        </label>
             <select class="form-control" id="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_TRABAJADOR, TRUE)?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_TRABAJADOR, TRUE)?>" required>
                 <option><?php echo i18n::__('selectEmployee')?></option>
                   <?php foreach($objTrabajador as $trabajador):?>
-                <option value="<?php echo $trabajador->$idTrabajador?>"><?php echo $trabajador->$nombretrabajador?></option>
-                  <?php endforeach;?>
-            </select>
-        </div>
-           
-        <div class="form-group">
-            <label class="control-label" for="id_animal"><?php echo i18n::__('id_animal')?></label>
-         <select class="form-control" id="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)?>" required>
+                <option <?php echo (isset($objRegistroVacunacion[0]->$id_trabajador) === TRUE and $objRegistroVacunacion[0]->$id_trabajador == $trabajador->$idTrabajador) ? 'selected' : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_TRABAJADOR, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_TRABAJADOR, TRUE)) and request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_TRABAJADOR, TRUE)) == $trabajador->$idTrabajador) ? 'selected' : '') ?> value="<?php echo $trabajador->$idTrabajador?>"><?php echo $trabajador->$nombreTrabajador.' '.$trabajador->$apellidoTrabajador?></option>
+         <?php endforeach;?>
+     </select>
+    </div>
+    
+        <?php view::getMessageError('errorAnimal')?>
+        <div class="form-group" <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+        <label class="control-label" for="id_animal">
+               <?php echo i18n::__('id_animal')?>:
+        </label>
+            <select class="form-control" id="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)?>" required>
                 <option><?php echo i18n::__('selectAnimal')?></option>
                   <?php foreach($objAnimal as $animal):?>
-         <option value="<?php echo $animal->$idAnimal?>"><?php echo $animal->$nombreanimal?></option>
+                <option <?php echo (isset($objRegistroVacunacion[0]->$id_animal) === TRUE and $objRegistroVacunacion[0]->$id_animal == $animal->$idAnimal) ? 'selected' : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) and request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) == $animal->$idAnimal) ? 'selected' : '') ?> value="<?php echo $animal->$idAnimal?>"><?php echo $animal->$nombreAnimal?></option>
          <?php endforeach;?>
-         </select>
-        </div>
+     </select>
+    </div>
         
         <div class="form-group">
             <label class="control-label" for="id_insumo"><?php echo i18n::__('id_input')?></label>

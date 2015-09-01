@@ -27,8 +27,8 @@ dictionary:
     number_births:        Numero Partos
     female:               Femenino
     male:                 Masculino
-    id_raza:              ID Raza
-    id_status:            ID Estado
+    id_raza:              Raza
+    id_status:            Estado
     selectRaza:           Seleccione la raza
     selectEstado:         Seleccione el estado
     selectGender:         Seleccione el Genero
@@ -41,14 +41,14 @@ dictionary:
     credential:           Credencial
 #-------- Detalle Entrada --------#
     entry_detail:         Detalle Entrada
-    id_entry_cellar:      ID Entrada Bodega
-    id_input:             ID Insumo
+    id_entry_cellar:      Entrada Bodega
+    id_input:             Insumo
     selectEntryCellar:    Seleccione la Entrada de Bodega
     selectInput:          Seleccione el Insumo
     selectTypeInput:      Seleccione el Tipo de Insumo
 #-------- Detalle Salida ---------#
     output_of_cellars_details :     detalle salida bodega
-    id_salida_bodega :    id salida bodega
+    id_salida_bodega :    salida bodega
     quantity :            cantidad
     salida_bodega:        salida_bodega
     detail:               Detalle
@@ -64,7 +64,7 @@ dictionary:
     fecundador:           Fecundador
 #-------- Insumo -----------------#
     input:                Insumo
-    id_type_input:        ID Tipo Insumo
+    id_type_input:        Tipo Insumo
 #-------- Inventario -------------#
 #-------- Ordeño -----------------#
     ordenno:              Ordeño
@@ -87,6 +87,11 @@ dictionary:
     register_celo:        Registro Celo
     age_animal:           Edad Animal
 #-------- Registro Vacunacion ----#
+    register_vacunacion:    Registro Vacunacion
+    date_register:          Fecha Registro
+    dose_vaccine:           Dosis Vacuna
+    time_vaccine:           Hora Vacuna
+    enterDoseVaccine:       Ingrese la Dosis Vacuna
 #-------- Reporte Parto ----------#
     report_parto :        reporte_parto
     date_delivery:        fecha_parto
@@ -102,8 +107,8 @@ dictionary:
     input_type:           Tipo Insumo
 #-------- Trabajador -------------#
     employee:             Trabajador
-    id_credential:        ID Credencial
-    id_turn:              ID Turno
+    id_credential:        Credencial
+    id_turn:              Turno
     selectTurn:           Seleccione el Turno
     selectCredential:     Seleccione la Credencial
 #-------- Turno ------------------#
@@ -131,9 +136,9 @@ dictionary:
 
 
 
-    id_employee:          ID Trabajador
-    id_provider:          ID Proveedor
-    id_city:              ID Ciudad
+    id_employee:          Trabajador
+    id_provider:          Proveedor
+    id_city:              Ciudad
 
 
     new:                  Nuevo
@@ -166,8 +171,8 @@ dictionary:
     logout:               Cerrar Sesion
     register_celo:        Registro Celo
 
-    id_fecundador:        Id fecundador 
-    id_animal:            Id Animal
+    id_fecundador:        Fecundador 
+    id_animal:            Animal
     return:               Volver
     enterName:            Ingrese el Nombre
     enterLastName:        Ingrese el Apellido

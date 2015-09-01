@@ -33,7 +33,7 @@ $pdf->Cell(255,10,'REGISTRO_VACUNACION',1,1,'C');
   $pdf->Cell(40,10,  utf8_decode("ID_INSUMO"),1);
   $pdf->Ln();
   
-foreach ($objRegistro_vacunacion as $registro_vacunacion){
+foreach ($objRegistroVacunacion as $registro_vacunacion){
   $pdf->Cell(40,10,  utf8_decode($registro_vacunacion->$id),1);
   $pdf->Cell(45,10,  utf8_decode($registro_vacunacion->$fecha_registro),1);
   $pdf->Cell(40,10,  utf8_decode($registro_vacunacion->$id_trabajador),1);

@@ -40,9 +40,9 @@
                             <td><?php echo $trabajador->$apellido ?></td>
                             <td><?php echo $trabajador->$direccion ?></td>
                             <td><?php echo $trabajador->$telefono ?></td>
-                            <td><?php echo trabajadorTableClass::getNameFieldForaneaRaza($trabajador->$id_turno) ?></td>
-                            <td><?php echo trabajadorTableClass::getNameFieldForaneaRaza($trabajador->$id_credencial) ?></td>
-                            <td><?php echo trabajadorTableClass::getNameFieldForaneaEstado($trabajador->$id_ciudad) ?></td>
+                            <td><?php echo trabajadorTableClass::getNameFieldForaneaTurno($trabajador->$id_turno) ?></td>
+                            <td><?php echo trabajadorTableClass::getNameFieldForaneaCredencial($trabajador->$id_credencial) ?></td>
+                            <td><?php echo trabajadorTableClass::getNameFieldForaneaCiudad($trabajador->$id_ciudad) ?></td>
                         </tr>
                     <?php endforeach; ?> 
                 </tbody>

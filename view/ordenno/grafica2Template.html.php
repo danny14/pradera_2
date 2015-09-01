@@ -25,7 +25,7 @@ $(document).ready(function(){
   });
 });
 </script>
-<div id="chart1" style="width:500px;height:300px ;"></div>
+<div id="chart1" style="width:800px;height:300px ;"></div>
        
 
 

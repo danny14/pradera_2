@@ -941,6 +941,10 @@ ordenno_index:
   load:
     - model/base/ordennoBaseTableClass.php
     - model/ordennoTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
     
 ordenno_insert:
   url:    /ordenno/insertar
@@ -1014,7 +1018,11 @@ ordenno_view:
   load:
     - model/base/ordennoBaseTableClass.php
     - model/ordennoTableClass.php
-
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    
 ordenno_report:
   url:    /ordenno/reporte
   param:  { module: ordenno, action: report, format: pdf }
@@ -1167,7 +1175,9 @@ proveedor_index:
   load:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
-
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
 proveedor_insert:
   url:    /proveedor/insertar
   param:  { module: proveedor, action: insert, format: html }
@@ -1236,6 +1246,8 @@ proveedor_view:
   load:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
     
 proveedor_report:
   url:    /proveedor/reporte
@@ -1447,7 +1459,7 @@ registro_celo_report:
 
 ##------------------------Registro Vacunacion---------------##
 registro_vacunacion_index:
-  url:    /registro_vacunacion/hola
+  url:    /registro_vacunacion/index
   param:  { module: registro_vacunacion, action: index, format: html }
   load:
     - model/base/registroVacunacionBaseTableClass.php
@@ -1461,6 +1473,10 @@ registro_vacunacion_insert:
     - model/registroVacunacionTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
     
 registro_vacunacion_create:
   url:    /registro_vacunacion/crear

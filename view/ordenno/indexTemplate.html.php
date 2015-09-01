@@ -125,8 +125,8 @@
                         <td><input type="checkbox" name="chk[]" value="<?php echo $ordenno->$id?>"></td>
                         <td><?php echo $ordenno->$fecha_ordenno?></td>
                         <td><?php echo $ordenno->$cantidad_leche?></td>
-                        <td><?php echo $ordenno->$id_trabajador?></td>
-                        <td><?php echo $ordenno->$id_animal?></td>
+                        <td><?php echo ordennoTableClass::getNameFieldForaneaTrabajador($ordenno->$id_trabajador) ?></td>
+                        <td><?php echo ordennoTableClass::getNameFieldForaneaAnimal($ordenno->$id_animal) ?></td>
                         
                         <td>
                             <div>

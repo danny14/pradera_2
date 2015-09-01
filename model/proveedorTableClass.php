@@ -42,4 +42,22 @@ class proveedorTableClass extends proveedorBaseTableClass {
             throw $exc;
         }
     }
+    
+        public static function getNameFieldForaneaCiudad($id){
+        try{
+            $sql = 'SELECT '. ciudadTableClass::DESCRIPCION . ' AS des_ciudad '
+                   .' FROM '.ciudadTableClass::getNameTable() . ' '
+                   . ' WHERE ' .ciudadTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->des_ciudad;
+        }
+        catch (PDOException $exc){
+            throw $exc;
+        }
+    }
 }

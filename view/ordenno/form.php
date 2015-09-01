@@ -17,12 +17,14 @@
     <?php if (isset($objOrdenno) == TRUE): ?>
     <input type="hidden" name="<?php echo ordennoTableClass::getNameField(ordennoTableClass::ID,TRUE)?>" value="<?php echo $objOrdenno[0]->$id ?>">
     <?php endif ;?>
+    
     <?php view::getMessageError('errorFechaOrdenno') ?>
     <div class="form-group" <?php echo (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
         <label class="control-label" for="date_ordenno"><?php echo i18n::__('date_ordenno')?>:</label> 
         <input class="form-control" type="date" value="<?php echo ((isset($objOrdenno)) ? $objOrdenno[0]->$fecha_ordenno : ((session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE)) === TRUE) ?  '' :  (request::getInstance()->hasPost(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE))) ? request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE))  : '' ) )?>" name="<?php echo ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE)?>" min="2014-01-01" step="1" required placeholder="<?php echo i18n::__('enterDateOrdenno')?>">
         <?php if(session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
     </div>
+    
     <?php view::getMessageError('errorCantidadLeche')?>
     <div class="form-group" <?php echo (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
         <label class="control-label" for="quantity_milk">
@@ -32,8 +34,8 @@
         <?php if(session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
     </div>
     
-        <?php view::getMessageError('errorTrabajador')?>
-        <div class="form-group" <?php echo (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_TRABAJADOR, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
+    <?php view::getMessageError('errorTrabajador')?>
+    <div class="form-group" <?php echo (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_TRABAJADOR, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
         <label class="control-label" for="id_trabajador">
                <?php echo i18n::__('id_employee')?>:
         </label>
@@ -44,7 +46,7 @@
          <?php endforeach;?>
      </select>
     </div>
-    
+  
         <?php view::getMessageError('errorAnimal')?>
         <div class="form-group" <?php echo (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
         <label class="control-label" for="id_animal">

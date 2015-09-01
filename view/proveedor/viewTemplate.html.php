@@ -38,7 +38,7 @@
                         <td><?php echo $proveedor->$direccion?></td>
                         <td><?php echo $proveedor->$telefono?></td>
                         <td><?php echo $proveedor->$correo?></td>
-                        <td><?php echo $proveedor->$id_ciudad?></td>
+                        <td><?php echo proveedorTableClass::getNameFieldForaneaCiudad($proveedor->$id_ciudad)?></td>
                     </tr>
                     <?php endforeach;?>
                 </tbody>

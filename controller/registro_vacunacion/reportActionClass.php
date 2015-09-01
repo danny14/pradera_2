@@ -30,7 +30,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 registroVacunacionTableClass::ID,
                 registroVacunacionTableClass::FECHA_REGISTRO,
                 registroVacunacionTableClass::ID_TRABAJADOR,
-                registoVacunacionTableClass::DOSIS_VACUNA,
+                registroVacunacionTableClass::DOSIS_VACUNA,
                 registroVacunacionTableClass::HORA_VACUNA,
                 registroVacunacionTableClass::ID_ANIMAL,
                 registroVacunacionTableClass::ID_INSUMO
@@ -40,7 +40,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 registroVacunacionTableClass::ID
                     
                 );
-                $this->objRegistro_vacunacion = registroVacunacionTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL , NULL , $where);
+                $this->objRegistroVacunacion = registroVacunacionTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL , NULL , $where);
                 $this->defineView('report', 'registro_vacunacion', session::getInstance()->getFormatOutput());
                 }
             }

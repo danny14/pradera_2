@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($objRegistro_vacunacion as $registro_vacunacion): ?>
+                    <?php foreach ($objRegistroVacunacion as $registro_vacunacion): ?>
                     <tr>
                         <td><?php echo $registro_vacunacion->$id?></td>
                         <td><?php echo $registro_vacunacion->$fecha_registro?></td>
