@@ -42,6 +42,13 @@ class grafica2ActionClass extends controllerClass implements controllerActionInt
                     );
                 }
                 $this->arrayDatos3 = $arrayDatos3;
+                
+                $grafica = array();
+                foreach ($objGrafica2 as $dato) {
+                    $grafica[] = array($dato->fecha_ordeno, $dato->cantidad_leche);
+                }
+                $this->grafica = $grafica;
+
 
             $this->defineView('grafica2', 'ordenno', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

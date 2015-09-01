@@ -1544,6 +1544,12 @@ reportes_insert:
   load:
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php
+    - model/base/ordennoBaseTableClass.php
+    - model/ordennoTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
 
     
 reportes_create:
@@ -1552,7 +1558,25 @@ reportes_create:
   load:
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php
-
+    - model/base/ordennoBaseTableClass.php
+    - model/ordennoTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    
+reportes_grafica:
+  url:    /reportes/grafica
+  param:  { module: reportes, action: grafica, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php
+    - model/base/ordennoBaseTableClass.php
+    - model/ordennoTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
 
 ##------------------------Reporte Parto---------------------##
 reporte_parto_index:

@@ -279,8 +279,8 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
         <div class="modal-body">
-            <!--<form class="form-signin" role="form" action="<?php //echo routing::getInstance()->getUrlWeb('shfSecurity', 'login') ?>" method="POST">
-                <h2 class="form-signin-heading">Identificación</h2>
+            <form class="" role="form" action="<?php //echo routing::getInstance()->getUrlWeb('shfSecurity', 'login') ?>" method="POST">
+                <h2 class="">Identificación</h2>
                 <label for="inputUser" class="sr-only">Email address</label>
                 <input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="Usuario" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
@@ -290,15 +290,15 @@
                         <input type="checkbox" value="true" name="chkRememberMe"> Recordar me
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-                <?php //if (session::getInstance()->hasError() or session::getInstance()->hasInformation() or session::getInstance()->hasSuccess() or session::getInstance()->hasWarning()): ?>
-                    <?php //view::includeHandlerMessage() ?>
-                <?php// endif ?>
-            </form>-->
+                
+                <?php if (session::getInstance()->hasError() or session::getInstance()->hasInformation() or session::getInstance()->hasSuccess() or session::getInstance()->hasWarning()): ?>
+                    <?php view::includeHandlerMessage() ?>
+                <?php endif ?>
+            </form>
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
       </div>
     </div>
   </div>

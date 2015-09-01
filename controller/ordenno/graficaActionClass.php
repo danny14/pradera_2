@@ -31,7 +31,6 @@ class graficaActionClass extends controllerClass implements controllerActionInte
                 $this->objGrafica = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
 
             }
-
             $this->defineView('grafica', 'ordenno', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setError($exc->getMessage());

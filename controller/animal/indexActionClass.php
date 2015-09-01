@@ -112,7 +112,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);             
         }if(strtotime($fecha_fin) >  strtotime($fechaActual)){
-          session::getInstance()->setError(i18n::__('ErrorCurrentDate', NULL,'default', array('%date%' => $fecha_fin)),'errorDateEnd');
+          session::getInstance()->setError(i18n::__('errorCurrentDate', NULL,'default', array('%date%' => $fecha_fin)),'errorDateEnd');
           $flag = TRUE;
           session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);
         }       

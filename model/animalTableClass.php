@@ -26,8 +26,6 @@ class animalTableClass extends animalBaseTableClass {
                     }
                 }
             }
-
-
             $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);

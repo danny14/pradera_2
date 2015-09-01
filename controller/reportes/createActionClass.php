@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as bitacora;
+use mvc\model\modelClass as model;
 
 /*
  * @author: Danny Steven Ruiz Hernandez
@@ -21,38 +22,22 @@ class createActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
             if (request::getInstance()->isMethod('POST')) {
-                
-                $nombre = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NOMBRE, true)));
-                $genero = strtoupper(trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::GENERO, true))));
-                $peso = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::PESO, true)));
-                $fecha_ingreso = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, true)));
-                $numero_partos = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::NUMERO_PARTOS, true)));
-                $id_raza = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_RAZA, true)));
-                $id_estado = trim(request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::ID_ESTADO, true)));
-                
-                if($genero === "M"){
-                   $numero_partos = 0; 
+                $idReporte = request::getInstance()->getPost('idReporte');
+                $fecha_inicio = request::getInstance()->getPost('fecha_inicio');
+                $fecha_fin = request::getInstance()->getPost('fecha_fin');
+                if($idReporte == 1){
+                    $sql = 'select SUM(ordeno.cantidad_leche) as cantidad_leche, hoja_de_vida.nombre from ordeno,hoja_de_vida where ordeno.id_animal=hoja_de_vida.id and fecha_ordeno BETWEEN '."'$fecha_inicio'".' AND '."'$fecha_fin'".' GROUP BY hoja_de_vida.nombre ORDER BY hoja_de_vida.nombre ASC';
+                }else{
+                    
                 }
-                
-                $this->Validate($nombre,$genero,$peso,$fecha_ingreso,$numero_partos,$id_raza,$id_estado);
-
-                $data = array(
-                    animalTableClass::NOMBRE => $nombre,
-                    animalTableClass::GENERO => $genero,
-                    animalTableClass::PESO => $peso,
-                    animalTableClass::FECHA_INGRESO => $fecha_ingreso,
-                    animalTableClass::NUMERO_PARTOS => $numero_partos,
-                    animalTableClass::ID_RAZA => $id_raza,
-                    animalTableClass::ID_ESTADO => $id_estado
-                );
-
-                animalTableClass::insert($data);
-                session::getInstance()->setSuccess('Los datos fueron registrados de forma exitosa');
-                bitacora::register('Insertar', animalTableClass::getNameTable());
-                routing::getInstance()->redirect('animal', 'index');
+                $this->objOrdenno = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+                   
             } else {
-                routing::getInstance()->redirect('animal', 'index');
+                routing::getInstance()->redirect('reportes', 'index');
             }
+            $this->fecha_inicio = $fecha_inicio;
+            $this->fecha_fin = $fecha_fin;
+            $this->defineView('grafica', 'reportes', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             switch ($exc->getCode()) {
                 // 42601

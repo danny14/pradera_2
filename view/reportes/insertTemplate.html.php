@@ -5,7 +5,7 @@
 <?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('new')." "; echo i18n::__('animal')?></h1>
-<?php view::includePartial('animal/form')?>
+<h1><?php echo i18n::__('new')." "; echo i18n::__('report')?></h1>
+<?php view::includePartial('reportes/form',array('reporteId' => $reporteId))?>
     </div>
 </div>

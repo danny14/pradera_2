@@ -13,7 +13,7 @@ class razaTableClass extends razaBaseTableClass {
         try {
             $sql = 'SELECT count(' . razaTableClass::ID . ') AS cantidad ' .
                     ' FROM ' . razaTableClass::getNameTable() . ' '.
-                    ' WHERE '. fecundadorTableClass::DELETED_AT.' IS NULL ';
+                    ' WHERE '. razaTableClass::DELETED_AT.' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {   

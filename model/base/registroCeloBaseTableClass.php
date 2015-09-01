@@ -10,7 +10,6 @@ use mvc\model\table\tableBaseClass;
 class registroCeloBaseTableClass extends tableBaseClass {
     
     private $id;
-    private $edad_animal;
     private $fecha;
     private $id_fecundador;
     private $id_animal;
@@ -19,8 +18,6 @@ class registroCeloBaseTableClass extends tableBaseClass {
     private $deleted_at;
     
   const ID = 'id';
-  const EDAD_ANIMAL = 'edad_animal';
-  const EDAD_ANIMAL_LENGTH = 2;
   const FECHA = 'fecha';
   const ID_FECUNDADOR = 'id_fecundador';
   const ID_ANIMAL = 'id_animal';
@@ -32,9 +29,6 @@ class registroCeloBaseTableClass extends tableBaseClass {
       return $this->id;
   }
 
-  public function getEdad_animal() {
-      return $this->edad_animal;
-  }
 
   public function getFecha() {
       return $this->fecha;
@@ -50,11 +44,6 @@ class registroCeloBaseTableClass extends tableBaseClass {
 
   public function setId($id) {
       $this->id = $id;
-      return $this;
-  }
-
-  public function setEdad_animal($edad_animal) {
-      $this->edad_animal = $edad_animal;
       return $this;
   }
 

@@ -9,28 +9,27 @@
 <?php $descripcionraza = razaTableClass::DESCRIPCION;?>
 
 
-<form method="POST" action="<?php echo routing::getInstance()->getUrlWeb('animal', ((isset($objAnimal)) ? 'update' : 'create' ))?>">
-    <?php if (isset($objAnimal)== true):?>
-    <input name="<?php echo animalTableClass::getNameField(animalTableClass::ID,TRUE)?>" value="<?php echo $objAnimal[0]->$id ?>" type="hidden">
-    <?php endif ?>
+<form method="POST" action="<?php echo routing::getInstance()->getUrlWeb('reportes', 'create' )?>">
+
+    <input name="idReporte" value="<?php echo $reporteId?>" type="hidden">
 
 
     <!-- se inclule el mensaje de error puntual -->
     <?php view::getMessageError('errorFechaInicio') ?>
     <!-- FIN-->
     <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?>"">
-        <label class="control-label" for="date_entry"><?php echo i18n::__('date_entry')?>:</label> 
-        <input class="form-control" type="date" value="" name="<?php ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_1'?>"  required />
-   <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
+        <label class="control-label" for="date_entry"><?php echo i18n::__('start_date')?>:</label> 
+        <input class="form-control" type="date" value="" name="fecha_inicio"  required />
+   <?php  if (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_1') === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
     </div>
 
     <!-- se inclule el mensaje de error puntual -->
     <?php view::getMessageError('errorFechaFin') ?>
     <!-- FIN-->
     <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NUMERO_PARTOS, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?>"">
-        <label class="control-label" for="date_entry"><?php echo i18n::__('date_end')?>: </label>
-        <input class="form-control" type="number" value="" name="<?php echo ordennoTableClass::getNameField(ordennoTableClass::, $html)?>" min="0" max="99"  required placeholder="<?php echo i18n::__('enterNumberBirths')?>"/>
-   <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NUMERO_PARTOS, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
+        <label class="control-label" for="date_entry"><?php echo i18n::__('end_date')?>: </label>
+        <input class="form-control" type="date" value="" name="fecha_fin" min="0" max="99"  required/>
+   <?php  if (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_2') === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
     </div>
 
     <!-- se inclule el mensaje de error puntual -->
@@ -49,20 +48,20 @@
    </div>
    <?php endif; ?>
     <!-- se inclule el mensaje de error puntual -->
-    <?php view::getMessageError('errorAnimal') ?>
-    <!-- FIN-->    
+<!--    <?php // view::getMessageError('errorAnimal') ?>
+     FIN    
     <div class="form-group <?php // echo ((isset($animal[$id_estado])) ? 'has-error has-feedback' : '') ?>">
-        <label class="control-label" for="anima"><?php echo i18n::__('animal')?></label>
-        <select class="form-control" id="<?php ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)?>" name="<?php echo ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE);?>" required />
-   <option><?php echo i18n::__('selectEstado')?></option>
-       <?php foreach($objAnimal as $animal):?>
-   <option  value="<?php echo $animal->$id_animal?>"><?php echo $animal->$nombre?></option>
-       <?php endforeach;?>
+        <label class="control-label" for="anima"><?php // echo i18n::__('animal')?></label>
+        <select class="form-control" id="<?php // ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)?>" name="<?php // echo ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE);?>" required />
+   <option><?php // echo i18n::__('selectEstado')?></option>
+       <?php // foreach($objAnimal as $animal):?>
+   <option  value="<?php // echo $animal->$id_animal?>"><?php // echo $animal->$nombre?></option>
+       <?php // endforeach;?>
    </select>
-    </div>
+    </div>-->
    <br>
-   <input class="btn btn-primary btn-xs" type="submit" value="<?php echo i18n::__((isset($objAnimal) ? 'update': 'register'))?>">
-   <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>"><i class="glyphicon glyphicon-arrow-left"> </i> <?php echo i18n::__('return')?></a>
+   <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>"><i class="glyphicon glyphicon-arrow-left"><?php echo i18n::__('return')?></i> </a>
+   <input class="btn btn-primary btn-xs" type="submit" value="<?php echo i18n::__('report')?>">
     </div>
 </form>
 

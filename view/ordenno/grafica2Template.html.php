@@ -10,7 +10,7 @@
 <pre><?php echo json_encode($arrayDatos3);?></pre>
 <script class="code" type="text/javascript">
 $(document).ready(function(){
-  var line1=[['2015-08-02',4], ['2015-08-04',6.5]];
+  var line1= <?php echo json_encode($grafica) ?>;
   var plot1 = $.jqplot('chart1', [line1], {
     title:'Grafica XD Intento',
     axes:{
