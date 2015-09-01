@@ -31,7 +31,6 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 animalTableClass::ID,
                 animalTableClass::NOMBRE,
                 animalTableClass::GENERO,
-                animalTableClass::EDAD,
                 animalTableClass::PESO,
                 animalTableClass::FECHA_INGRESO,
                 animalTableClass::NUMERO_PARTOS,

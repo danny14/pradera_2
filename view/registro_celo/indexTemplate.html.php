@@ -30,13 +30,21 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('registro_celo', 'index')?>">
-                                
+                                <?php view::getMessageError('errorDateCreate')?>
                                 <div class="form-group">
-                                    <label for="filterFecha" class="col-sm-2 control-label"><?php echo i18n::__('date')?></label>
+                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="filter[Fecha]" class="form-control" id="filter[Fecha]" placeholder="<?php echo i18n::__('date')?>">
+                                        <input type="date" name="filter[<?php echo registroCeloTableClass::getNameField(registroCeloTableClass::FECHA,TRUE).'_1'?>]" class="form-control" id="filter<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
                                     </div>
                                 </div>
+                                <?php view::getMessageError('errorDateEnd')?>
+                                <div class="form-group">
+                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="filter[<?php echo registroCeloTableClass::getNameField(registroCeloTableClass::FECHA,TRUE).'_2'?>]" class="form-control" id="filter<?php animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                    </div>
+                                </div>
+                                    
                                
                                     <div class="form-group"> <!--filtro para llamar foranea-->
                             <label for="filterAnimal" class="col-sm-2 control-label"><?php echo i18n::__('animal') ?></label>
@@ -71,13 +79,21 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="reportForm" action="<?php echo routing::getInstance()->getUrlWeb('registro_celo', 'report')?>">
-                             
+                             <?php view::getMessageError('errorDateCreate')?>
                                 <div class="form-group">
-                                    <label for="reportDate" class="col-sm-2 control-label"><?php echo i18n::__('date')?></label>
+                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
-                                      <input type="date" name="report[fecha]" class="form-control" id="reportFecha" placeholder="<?php echo i18n::__('date')?>">
+                                        <input type="date" name="report[<?php echo registroCeloTableClass::getNameField(registroCeloTableClass::FECHA,TRUE).'_1'?>]" class="form-control" id="filter<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
                                     </div>
                                 </div>
+                                <?php view::getMessageError('errorDateEnd')?>
+                                <div class="form-group">
+                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="report[<?php echo registroCeloTableClass::getNameField(registroCeloTableClass::FECHA,TRUE).'_2'?>]" class="form-control" id="filter<?php animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                    </div>
+                                </div>
+                                
                                 
                               <div class="form-group"> <!--filtro para llamar foranea-->
                             <label for="filterAnimal" class="col-sm-2 control-label"><?php echo i18n::__('animal') ?></label>
@@ -155,7 +171,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $registro_celo->$id ?>, '<?php echo registroCeloTableClass::getNameField(registroCeloTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('registro_celo', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $registro_celo->$id ?>, '<?php echo registroCeloTableClass::getNameField(registroCeloTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('registro_celo', 'delete') ?>', '<?php echo routing::getInstance()->getUrlWeb('registro_celo', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

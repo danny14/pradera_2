@@ -84,13 +84,22 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="reportFilterForm" action="<?php  echo routing::getInstance()->getUrlWeb('animal', 'report')?>">
-                                <div class="form-group ">
-                                    <label for="reportName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
+                                <?php view::getMessageError('errorDateCreate')?>
+                                <div class="form-group">
+                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="report[nombre]" placeholder="<?php echo i18n::__('name')?>">
-                                        
+                                        <input type="date" name="report[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>]" class="form-control" id="filter<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
                                     </div>
                                 </div>
+                                <?php view::getMessageError('errorDateEnd')?>
+                                <div class="form-group">
+                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="report[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>]" class="form-control" id="filter<?php animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                                 <div class="form-group">
                                     <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
