@@ -1,6 +1,9 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
 <?php use mvc\view\viewClass as view ?>
+<?php use mvc\config\configClass as config?>
+<?php use mvc\request\requestClass as request?>
+<?php use mvc\session\sessionClass as session?>
 <?php $id = pagoTrabajadoresTableClass::ID ;?>
 <?php $fecha_inicio = pagoTrabajadoresTableClass::FECHA_INICIO ;?>
 <?php $fecha_fin = pagoTrabajadoresTableClass::FECHA_FIN ;?>
@@ -156,8 +159,8 @@
                                 <td><?php echo '$' . number_format($pago_trabajadores->$subtotal, 0, ',', '.') ?></td>
                                 <td><?php echo '$' . number_format($pago_trabajadores->$valor_hora,0, ',', '.') ?></td>
                                 <td><?php echo pagoTrabajadoresTableClass::getNameFieldForaneaTrabajador($pago_trabajadores->$id_trabajador) ?></td>
-                                <td><?php echo $pago_trabajadores->$cantidad_dias?></td>
                                 <td><?php echo $pago_trabajadores->$horas_extras ?></td>
+                                <td><?php echo $pago_trabajadores->$cantidad_dias?></td>
                                 
                                 <td>
                                     <div class="btn btn-group btn-xs">
@@ -180,7 +183,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $pago_trabajadores->$id ?>, '<?php echo pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $pago_trabajadores->$id ?>, '<?php echo pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'delete') ?>', '<?php echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

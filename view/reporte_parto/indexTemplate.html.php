@@ -182,7 +182,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $reporte_parto->$id ?>, '<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('reporte_parto', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $reporte_parto->$id ?>, '<?php echo reportePartoTableClass::getNameField(reportePartoTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('reporte_parto', 'delete') ?>', '<?php echo routing::getInstance()->getUrlWeb('reporte_parto', 'index') ?>')"><?php echo i18n::__('confirm') ?></button>
                                     </div>
                                 </div>
                             </div>

@@ -1444,6 +1444,10 @@ registro_celo_report:
     - libs/fpdf/fpdf.php
     - model/base/registroCeloBaseTableClass.php
     - model/registroCeloTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
 
 ##------------------------Registro Vacunacion---------------##
 registro_vacunacion_index:

@@ -13,7 +13,7 @@ class registroCeloTableClass extends registroCeloBaseTableClass {
   public static function getTotalPages($lines, $where) {
     try {
       $sql = 'SELECT count(' . registroCeloTableClass::ID . ') AS cantidad ' .
-              ' FROM ' . registroCeloTableClass::getNameTable() . ' ';
+              ' FROM ' . registroCeloTableClass::getNameTable() .
               ' WHERE ' . registroCeloTableClass::DELETED_AT . ' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {

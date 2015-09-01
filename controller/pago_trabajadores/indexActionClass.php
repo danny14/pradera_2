@@ -19,8 +19,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             if(request::getInstance()->hasPost('filter')){
                 $filter = request::getInstance()->getPost('filter');
                 // aqui validar datos de filtros
-                if(isset($filter['Fecha_inicio']) and $filter['Fecha_inicio'] !== NULL and $filter['Fecha_inicio'] !== ''){
-                    $where[pagoTrabajadoresTableClass::FECHA_INICIO] = $filter['Fecha_inicio'];
+                 if(isset($filter[pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE).'_1']) and $filter[pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE).'_1'] !== NULL and $filter[pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE).'_1'] !== '' and isset($filter[pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE).'_2']) and $filter[pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE).'_2'] !== NULL and $filter[pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE).'_2'] !== ''){
+                    $fecha_ini = $filter[pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_ININICIO,TRUE).'_1'];
+                    $fecha_fin = $filter[pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE).'_2'];
+                    $this->ValidateFecha( $fecha_ini, $fecha_fin);
+                    $where[pagoTrabajadoresTableClass::FECHA_INICIO] = array(
+                        $fecha_ini,
+                        $fecha_fin
+//                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
+//                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
+                    );
                 }
                 
                 if(isset($filter['Cantidad_dias']) and $filter['Cantidad_dias'] !== NULL and $filter['Cantidad_dias'] !== ''){

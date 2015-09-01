@@ -19,10 +19,14 @@ class reportActionClass extends controllerClass implements controllerActionInter
        if(isset($filter['Animal']) and $report['Animal'] !== NULL and $report['Animal'] !== ''){
        $where[registroCeloTableClass::ID_ANIMAL] = $report['Animal'];  
        }
-        if(isset($filter['Fecha']) and $filter['Fecha'] !== NULL and $filter['Fecha'] !== ''){
-                    $where[registroCeloTableClass::FECHA] = $filter['Fecha'];
+        if(isset($report['fechaCreacion1']) and $report['fechaCreacion1'] !== NULL and $report['fechaCreacion1'] !== '' and isset($report['fechaCreacion2']) and $report['fechaCreacion2'] !== NULL and $report['fechaCreacion2'] !== ''){
+                    $where[registroCeloTableClass::FECHA] = array(
+                        $report['fechaCreacion1'],
+                        $report['fechaCreacion2']
+//                        date(config::getFormatTimestamp(),  strtotime($report['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
+//                        date(config::getFormatTimestamp(),  strtotime($report['fechaCreacion2']. ' 23:59:59'))
+                    );
                 }
-      }
        $fields = array(
       registroCeloTableClass::ID,
       registroCeloTableClass::FECHA,
@@ -34,7 +38,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
        );
        $this->objRegistroCelo = registroCeloTableClass::getAll($fields, FALSE, $orderBy, 'ASC', NULL, NULL, $where);
        $this->defineView('report', 'registro_celo', session::getInstance()->getFormatOutput());
-      }  
+      } 
+    }
      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

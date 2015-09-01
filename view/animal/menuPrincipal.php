@@ -88,7 +88,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bodega <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="<?php  echo routing::getInstance()->getUrlWeb('entrada_bodega', 'index')?>">Entrada Bodega</a></li>
-            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('entrada_bodega', 'index')?>">Salida Bodega</a></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('salida_bodega', 'index')?>">Salida Bodega</a></li>
           </ul>
         </li>
       </ul>
