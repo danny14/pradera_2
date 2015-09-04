@@ -93,12 +93,12 @@ dictionary:
     time_vaccine:           Hora Vacuna
     enterDoseVaccine:       Ingrese la Dosis Vacuna
 #-------- Reporte Parto ----------#
-    report_parto :        reporte_parto
-    date_delivery:        fecha_parto
-    n_animales_living:    n_animales_vivos
-    n_animales_dead:      n_animales_muertos
-    n_males:              n_machhos
-    n_females:            n_hembras
+    report_parto:        reporte_parto
+    date_delivery :        fecha_parto
+    n_animales_living :    n_animales_vivos
+    n_animales_dead :      n_animales_muertos
+    n_males :              n_machhos
+    n_females :            n_hembras
     observation:          observaciones
 #-------- Salida Bodega ----------#
     Output_bodega:        Salida Bodega
@@ -188,6 +188,7 @@ dictionary:
     enterDateExpiration:  Ingrese la fecha de Vencimiento
     enterValue:           Ingrese el Valor
     selectFecundador:     Seleccione el fecundador
+    selectEmployee:       Seleccione el empleado
     selectAnimal:         Seleccione el Animal
     selectCity:           Seleccione la Ciudad
     selectEmployee:       Seleccione el Empleado
@@ -196,7 +197,7 @@ dictionary:
     Do you want to delete the record?:       ¿Desea eliminar el registro?
     Do you want to remove the selected records?: ¿Deseas eliminar los registros seleccionados?
     errorCharacterName:   el nombre %name% excede los %character% caracteres maximos permitidos
-    errorCharacter:       el nombre %name% excede los %Character% caracteres maximos permitidos  
+    errorCharacter:       el campo %campo% excede los %Character% caracteres maximos permitidos  
     errorCharacterSpecial: el campo %field% no puede contener caracteres especiales
     errorCharacterEmpty:   el campo %field% no puede estar vacio
     errorCharacterMail:    el correo debe ser (example@example.com)
@@ -211,29 +212,7 @@ dictionary:
     42601:                 Error sintaxis incorrecta
     08006:                 La base de datos se ha cerrado inesperadamente
     22007:                 la sintaxis de entrada no es válida para tipo date
-#   diccionario de argenis
-    ErrorCharacterAge_animal: la edad %Age_animal% excede los caracteres %character% maximos permitidos
-    #ErrorCharacterDate:   la fecha %date% excede los caracteres %character% maximos permitidos
-    ErrorCharacterId_fecundador: El id_fecundador %id_fecundador% excede los caracteres %character% maximos permitidos
-    ErrorCharacterId_animal: El id_animal %id_animal% excede los  caracteres %character% maximos permitidos
-    ErrorCharacterEmpty:  El campo % field % no debe estar vacio
-    ErrorCharacterName:   el nombre %name% excede los  caracteres %character% maximos permitidos
-    ErrorCharacterDate_manufacture: La fecha_fabricacion %date_manufacture% excede los caracteres %character% maximos permitidos
-    ErrorCharacterDate_defeat: La fecha_vencimiento %fecha_defeat% excede los caracteres %character% maximos permitidos
-    ErrorCharacterValue: el valor %value% excede los caracteres %character% maximos permitidos
-    ErrorCharacterId_input_type: el id_tipo_insumo %id_input_type% excede los caracteres %character% maximos permitidos
-    date_manufacture:     Fecha_fabricacion
-    date_defeat:          Fecha_vencimiento
-    value:                valor
-    id_tipo_insumo:       id_tipo_insumo 
-    tipo_insumo:          tipo_insumo
-    selectTipoInsumo:     selectTipoInsumo
-    insumo:               Insumo
-    generate report:      Generar Reporte
-
-# fin del diccionario argenis
-    
-  errors:
+    errors:
     00001:                El módulo y la acción solicitada, no existe.
     00002:                La dirección que solicita no está registrada.
     00003:                Los datos de usuario y contrseña son inválidos.

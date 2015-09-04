@@ -3,59 +3,161 @@ culture:                  English
 dictionary:
   default:
     id:                   ID
-    user:                 User
-    user_id:              User ID
-    pass:                 Password
-    writ:                 citizenship card
+    user:                 USER
+    user_id:              USER ID
+    pass:                 Pass
+    writ:                 Write
     name:                 Name
-    last_name:            Last Name
+    last_name:            Last_Name
     register:             Register
-    created_at:           Created at
-    updated_at:           Update at
-    deleted_at:           Deleted at
+    created_at:           Created_at
+    updated_at:           Updated_at
+    deleted_at:           Deleted_at
     credencial:           CREDENCIAL
     credencial_id:        CREDENCIAL ID
-    data:                 Data
+    data:                 DATA
     action:               Action
     update:               Update
-    description:          Description
+    description:          Description       
     start:                Start
     end:                  End
-    city:                 City
+#-------  Animal ------------------#
     animal:               Animal
+    age_animal:           Age Animal
+    number_births:        Number_births
+    female:               Female
+    male:                 Male
+    id_raza:              Id_raza
+    id_status:            Id_status
+    selectRaza:           SelectRaza
+    selectEstado:         SelectEstado
+    selectGender:         SelectGender
+    enterNumberBirths:    EnterNumberBirths
+#-------  Bitacora ----------------#
+    logbook:              Logbook
+#-------- Ciudad -----------------#
+    city:                 City
+#-------- Credencial -------------#
+    credential:           Credential
+#-------- Detalle Entrada --------#
+    entry_detail:         Entry_detail
+    id_entry_cellar:      Id_entry_cellar
+    id_input:             Id_input
+    selectEntryCellar:    SelectEntryCellar
+    selectInput:          SelectInput
+    selectTypeInput:      SelectTypeInput
+#-------- Detalle Salida ---------#
+    output_of_cellars_details : Output_of_cellars_details    
+    id_salida_bodega :    Id_salida_bodega
+    quantity :            Quantity
+    salida_bodega:        Salida_bodega
+    detail:               Detail
+#-------- Entrada Bodega ---------#
+    entrance_cellar:      Entrance_cellar
+    # toca mirar cual se utiliza si el entrance cellar o el entry_cellar
+    entry_cellar:         Entry_cellar
+    time:                 Time
+    detail:               Detail
+#-------- Estado -----------------#
+    status:               Status
+#-------- Fecudandor -------------#
+    fecundador:           Fecundador
+#-------- Insumo -----------------#
+    input:                Input
+    id_type_input:        Id_type_input
+#-------- Inventario -------------#
+#-------- Ordeño -----------------#
+    ordenno:              Ordenno
+    date_ordenno:         Date_ordenno
+    quantity_milk:        Quantity_milk
+    enterQuantityMilk:    EnterQuantityMilk
+#-------- Pago Trabajador --------#
+    payment of employee:  Payment of employee   
+    start_date  :         Start_date  
+    end_date:             End_date  
+    subtotal :            Subtotal  
+    time_value :          Time_value 
+    extra_time :          Extra_time  
+    number of days:       Number of days  
+#-------- Proveeedor -------------#
+    provider:             Provider
+#-------- Raza -------------------#
+    breed:                Breed
+#-------- Registro Celo ----------#
+    register_celo:        Register_celo
+    age_animal:           Age_animal
+#-------- Registro Vacunacion ----#
+    register_vacunacion:  Register_vacunacion  
+    date_register:        Date_register  
+    dose_vaccine:         Dose_vaccine  
+    time_vaccine:         Time_vaccine  
+    enterDoseVaccine:     EnterDoseVaccine 
+#-------- Reporte Parto ----------#
+    report_parto:         Report_parto
+    date_delivery :       Date_delivery 
+    n_animales_living :   N_animales_living 
+    n_animales_dead :     N_animales_dead 
+    n_males :             N_males
+    n_females :           N_females 
+    observation:          Observation
+#-------- Salida Bodega ----------#
+    Output_bodega:        Output_bodega
+#-------- Tipo Insumo ------------#
+    type_input:           Type_input
+    input_type:           Input_type
+#-------- Trabajador -------------#
+    employee:             Employee
+    id_credential:        Id_credential
+    id_turn:              Id_turn
+    selectTurn:           SelectTurn
+    selectCredential:     SelectCredential
+#-------- Turno ------------------#
+    turn:                 Turn
+    start_turn:           Start_turn
+    end_turn:             End_turn
+    errorTime:            ErrorTime
+#-------- Usuario ----------------#
+#-------- Usuario Credencial -----#
+
+    name:                 Name
+    last_name:            Last_name
     address:              Address
     phone:                Phone
     mail:                 Mail
     gender:               Gender
     age:                  Age
     weight:               Weight
-    date_entry:           Date of entry
-    number_births:        Number of births
-    id_raza:              ID Breed
-    id_status:            ID Status
-    id_type_doc:          ID Type Document
-    id_employee:          ID employee
-    id_provider:          ID Provider
-    status:               Status
+
+
+    date_entry:           Date_entry
+    date_create:          Date_create
+    date_expiration:      Date_expiration
+
+
+
+
+    id_employee:          Id_employee
+    id_provider:          Id_provider
+    id_city:              Id_city
+
+
     new:                  New
     edit:                 Edit
     delete:               Delete
-    provider:             Provider
-    breed:                Breed
-    logbook:              Logbook
+
+
+
     record:               Record
     date:                 Date
     observation:          Observation
     table:                Table
-    credential:           Credential
-    entrance_cellar:      Entrance of the cellar
-    turn:                 Turn
-    start_turn:           Start Turn
-    end_turn:             End Turn
-    input_type:           Type Input
-    employee:             Employee
-    fecundador:           Fecundador
-    animal:               Animal
+
+
+
+
+
+
+    
     return:               Return
     filters:              Filters
     filter:               Filter
@@ -63,36 +165,56 @@ dictionary:
     generate report:      Generate report
     generate:             Generate
     confirm:              Confirm
-    confirm_delete:       Confirm Delete
-    selected_items:       items selected
+    confirm_delete:       Confirm_delete
+    selected_items:       Selected_items
     close:                Close
-    register_celo:        Register_celo 
-    age_animal:           Age_animal 
-    id_fecundador:        Id_fecundador
-    id_animal:            Id_animal 
+    logout:               logout
+          
+
+    id_fecundador:        Id_fecundador 
+    id_animal:            Id_animal
     return:               Return
-    enterName:            Enter Name
-    enterLastName:        Enter the Last Name
-    enterGender:          Enter the gender
-    enterAge:             Enter the age
-    enterWeight:          Enter the weight
-    enterAddress:         Enter the Address
-    enterPhone:           Enter the Phone
-    enterMail:            Enter the Email
-    enterObservation:     Enter the Observation
-    enterNumberBirths:    Enter the number of births
-    selectRaza:           Select the breed
-    selectEstado:         Select the status
-    selectCity:           Select the city
-    generate report:      Generate Report
-    logout:               Logout
-    karen:               Yellow
-    Do you want to delete the record?:       ¿Do you want to delete the record?
-    Do you want to remove the selected records?: ¿Do you want to remove the selected records?
-  errors:
-    00001:                The module and the action requested does not exist.
-    00002:                The requested address is not registered.
-    00003:                Data username and password are invalid.
+    enterName:            EnterName
+    enterLastName:        EnterLastName
+    enterGender:          EnterGender
+    enterAge:             EnterAge
+    enterWeight:          EnterWeight
+    enterPhone:           EnterPhone
+    enterAddress:         EnterAddress
+    enterMail:            EnterMail
+    enterObservation:     EnterObservation
+    enterTime:            EnterTime
+    enterDateCreate:      EnterDateCreate
+    enterDateExpiration:  EnterDateExpiration
+    enterValue:           EnterValue
+    selectFecundador:     SelectFecundador
+    selectEmployee:       SelectEmployee
+    selectAnimal:         SelectAnimal
+    selectCity:           SelectCity       
+    selectTypeInput:      SelectTypeInput
+    generate report:      Generate report
+    Do you want to delete the record?: Do you want to delete the record?      
+    Do you want to remove the selected records?: Do you want to remove the selected records?
+    errorCharacterName:   el nombre %name% excede los %character% caracteres maximos permitidos
+    errorCharacter:       el campo %campo% excede los %Character% caracteres maximos permitidos  
+    errorCharacterSpecial: el campo %field% no puede contener caracteres especiales
+    errorCharacterEmpty:   el campo %field% no puede estar vacio
+    errorCharacterMail:    el correo debe ser (example@example.com)
+    errorGender:           El genero debe ser M o F 
+    errorNumber:           El campo %field% solo puede contener numeros
+    errorDate:             La fecha %date% es incorrecta
+    errorDate2:            La fecha de inicio es mayor a la fecha de fin
+    errorDateExpiration:   La fecha de fabricacion es mayor a la fecha de vencimiento
+    errorCurrentDate:      La fecha %date% no puede ser mayor a la fecha actual
+    23503:                 Error el registro no puede ser borrado por que esta siendo utilizado por otra tabla
+    23505:                 Error el id no puede estar duplicado intente de nuevo
+    42601:                 Error sintaxis incorrecta
+    08006:                 La base de datos se ha cerrado inesperadamente
+    22007:                 la sintaxis de entrada no es válida para tipo date
+    errors:
+    00001:                El módulo y la acción solicitada, no existe.
+    00002:                La dirección que solicita no está registrada.
+    00003:                Los datos de usuario y contrseña son inválidos.
 #    00001:  Lo que buscas no existe
 #    10001:  Existe un error en la definición de los includes
 #    10002:  No hay definido un ambito (dev o prod) para la aplicación
