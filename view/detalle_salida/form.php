@@ -53,7 +53,7 @@
    <!-- Fin de mensaje error puntual -->
      <?php echo i18n::__('type_input')?>
    <select class="form-control" id="<?php detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_TIPO_INSUMO, TRUE)?>" name="<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_TIPO_INSUMO, TRUE);?>"required placeholder="<?php i18n::__('id_type_input') ?>">
-     <option><?php echo i18n::__('selectType_input') ?></option>
+     <option><?php echo i18n::__('selectTypeInput') ?></option>
        <?php foreach($objTipoInsumo as $tipo_insumo):?>
        <option  <?php echo(( isset($objDetalleSalida[0]->$id_tipo_insumo) and $objDetalleSalida[0]->$id_tipo_insumo == $tipo_insumo->$tipo_insumo_id) ? 'selected' : ((session::getInstance()->hasFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_TIPO_INSUMO, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_TIPO_INSUMO, TRUE))and request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_TIPO_INSUMO, TRUE))== $tipo_insumo-> $tipo_insumo_id)  ? 'selected' : ''))?> value="<?php echo $tipo_insumo->$tipo_insumo_id?>"><?php echo $tipo_insumo->$descripcion?></option>
        <?php endforeach;?>

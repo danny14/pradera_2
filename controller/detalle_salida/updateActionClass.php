@@ -50,70 +50,70 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
 
    if (is_numeric($cantidad) === FALSE) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterQuantity', NULL,'default', array('%Quantity%' => $cantidad,'%character%'=>  detalleSalidaTableClass::CANTIDAD)),'errorCantidad');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%Quantity%' => $cantidad,'%character%'=>  detalleSalidaTableClass::CANTIDAD)),'errorCantidad');
         $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::CANTIDAD, TRUE), TRUE);
         }
         if($cantidad === '' or $cantidad === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%Quantity%' => $cantidad,'%character%'=>  detalleSalidaTableClass::CANTIDAD)),'errorCantidad');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%Quantity%' => $cantidad,'%character%'=>  detalleSalidaTableClass::CANTIDAD)),'errorCantidad');
           $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::CANTIDAD, TRUE), TRUE);
         }
       if($cantidad < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $cantidad)),'errorCantidad');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%number%' => $cantidad)),'errorCantidad');
           $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::CANTIDAD, TRUE), TRUE);
         }
         if(strlen($cantidad) > 3){
-          session::getInstance()->setError(i18n::__('ErrorCharacter', NULL,'default', array('%number%' => $cantidad)),'errorCantidad');
+          session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%number%' => $cantidad)),'errorCantidad');
           $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::CANTIDAD, TRUE), TRUE);
         }
   
       if (is_numeric($id_salida_bodega) === FALSE) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterId_salida_bodega', NULL,'default', array('%Id_salida_bodega%' => $id_salida_bodega,'%character%'=>  detalleSalidaTableClass::ID_SALIDA_BODEGA)),'errorSalidaBodega');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%Id_salida_bodega%' => $id_salida_bodega,'%character%'=>  detalleSalidaTableClass::ID_SALIDA_BODEGA)),'errorSalidaBodega');
         $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE), TRUE);
         }
         if($id_salida_bodega === '' or $id_salida_bodega === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%N_animales_dead%' => $id_salida_bodega,'%character%'=>  detalleSalidaTableClass::ID_SALIDA_BODEGA)),'errorSalidaBodega');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%N_animales_dead%' => $id_salida_bodega,'%character%'=>  detalleSalidaTableClass::ID_SALIDA_BODEGA)),'errorSalidaBodega');
           $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE), TRUE);
         }
         if($id_salida_bodega < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $id_salida_bodega)),'errorSalidaBodega');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%number%' => $id_salida_bodega)),'errorSalidaBodega');
           $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE), TRUE);
         }
         
         if (is_numeric($id_insumo) === FALSE) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterId_input', NULL,'default', array('%Id_input%' => $id_insumo,'%character%'=>  detalleSalidaTableClass::ID_INSUMO)),'errorInsumo');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%Id_input%' => $id_insumo,'%character%'=>  detalleSalidaTableClass::ID_INSUMO)),'errorInsumo');
         $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_INSUMO, TRUE), TRUE);
         }
         if($id_insumo === '' or $id_insumo === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%Id_input%' => $id_insumo,'%character%'=>  detalleSalidaTableClass::ID_INSUMO)),'errorInsumo');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%Id_input%' => $id_insumo,'%character%'=>  detalleSalidaTableClass::ID_INSUMO)),'errorInsumo');
           $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_INSUMO, TRUE), TRUE);
         }
         if($id_insumo < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $id_insumo)),'errorInsumo');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%number%' => $id_insumo)),'errorInsumo');
           $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_INSUMO, TRUE), TRUE);
         }
         
         if (is_numeric($id_tipo_insumo) === FALSE) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterId_type_input', NULL,'default', array('%Id_type_input%' => $id_tipo_insumo,'%character%'=>  detalleSalidaTableClass::ID_TIPO_INSUMO)),'errorTipoInsumo');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%Id_type_input%' => $id_tipo_insumo,'%character%'=>  detalleSalidaTableClass::ID_TIPO_INSUMO)),'errorTipoInsumo');
         $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_TIPO_INSUMO, TRUE), TRUE);
         }
         if($id_tipo_insumo === '' or $id_tipo_insumo === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%Id_type_input%' => $id_tipo_insumo,'%character%'=>  detalleSalidaTableClass::ID_TIPO_INSUMO)),'errorTipoInsumo');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%Id_type_input%' => $id_tipo_insumo,'%character%'=>  detalleSalidaTableClass::ID_TIPO_INSUMO)),'errorTipoInsumo');
           $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_TIPO_INSUMO, TRUE), TRUE);
         }
         if($id_tipo_insumo < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $id_tipo_insumo)),'errorTipoInsumo');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%number%' => $id_tipo_insumo)),'errorTipoInsumo');
           $flag = TRUE;
         session::getInstance()->setFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_TIPO_INSUMO, TRUE), TRUE);
         }

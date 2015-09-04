@@ -81,125 +81,125 @@ class createActionClass extends controllerClass implements controllerActionInter
     $fechaActual = date('Y-m-d');
       
     if(preg_match($pattern,$fecha_parto) === FALSE){
-        session::getInstance()->getError(in18::__('ErrorCharacterDate_delivery',NULL,'default',array('%date_delivery%'=>$fecha_parto,'%character%'=> reportePartoTableClass::FECHA_PARTO )),'errorFechaParto');
+        session::getInstance()->geterror(in18::__('errorDate',NULL,'default',array('%date_delivery%'=>$fecha_parto,'%character%'=> reportePartoTableClass::FECHA_PARTO )),'errorFechaParto');
         $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, TRUE), TRUE);
       }
       if($fecha_parto === '' or $fecha_parto === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%date_delivery%' => $fecha_parto,'%character%'=>  reportePartoTableClass::FECHA_PARTO)),'errorFechaParto');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%date_delivery%' => $fecha_parto,'%character%'=>  reportePartoTableClass::FECHA_PARTO)),'errorFechaParto');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, TRUE), TRUE);
         }
         if(strtotime($fecha_parto) >  strtotime($fechaActual)){
-          session::getInstance()->setError(i18n::__('ErrorCharacterDate_delivery', NULL,'default', array('%date_delivery%' => $fecha_parto,'%character%'=>  reportePartoTableClass::FECHA_PARTO)),'errorFechaParto');
+          session::getInstance()->setError(i18n::__('errorDate', NULL,'default', array('%date_delivery%' => $fecha_parto,'%character%'=>  reportePartoTableClass::FECHA_PARTO)),'errorFechaParto');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::FECHA_PARTO, TRUE), TRUE);
         }
     
     if (is_numeric($n_animales_vi) === FALSE) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterN_animales_living', NULL,'default', array('%N_animales_living%' => $n_animales_vi,'%character%'=>  reportePartoTableClass::N_ANIMALES_VI)),'errorNumeroAnimalesVivos');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%N_animales_living%' => $n_animales_vi,'%character%'=>  reportePartoTableClass::N_ANIMALES_VI)),'errorNumeroAnimalesVivos');
         $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE), TRUE);
         }
         if($n_animales_vi === '' or $n_animales_vi === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%N_animales_living%' => $n_animales_vi,'%character%'=>  reportePartoTableClass::N_ANIMALES_VI)),'errorNumeroAnimalesVivos');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%N_animales_living%' => $n_animales_vi,'%character%'=>  reportePartoTableClass::N_ANIMALES_VI)),'errorNumeroAnimalesVivos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE), TRUE);
         }
        if($n_animales_vi < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $n_animales_vi)),'errorNumeroAnimalesVivos');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%number%' => $n_animales_vi)),'errorNumeroAnimalesVivos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE), TRUE);
         }
         if(strlen($n_animales_vi) >2){
-          session::getInstance()->setError(i18n::__('ErrorCharacter', NULL,'default', array('%N_animales_living%' => $n_animales_vi,'%character%'=>  reportePartoTableClass::N_ANIMALES_VI)),'errorNumeroAnimalesVivos');
+          session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%N_animales_living%' => $n_animales_vi,'%character%'=>  reportePartoTableClass::N_ANIMALES_VI)),'errorNumeroAnimalesVivos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_VI, TRUE), TRUE);
         }
   
       if (is_numeric($n_animales_m) === FALSE) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterN_animales_dead', NULL,'default', array('%N_animales_dead%' => $n_animales_m,'%character%'=>  reportePartoTableClass::N_ANIMALES_M)),'errorNumeroAnimalesMuertos');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%N_animales_dead%' => $n_animales_m,'%character%'=>  reportePartoTableClass::N_ANIMALES_M)),'errorNumeroAnimalesMuertos');
         $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, TRUE), TRUE);
         }
         if($n_animales_m === '' or $n_animales_m === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%N_animales_dead%' => $n_animales_m,'%character%'=>  reportePartoTableClass::N_ANIMALES_M)),'errorNumeroAnimalesMuertos');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%N_animales_dead%' => $n_animales_m,'%character%'=>  reportePartoTableClass::N_ANIMALES_M)),'errorNumeroAnimalesMuertos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, TRUE), TRUE);
         }
         if($n_animales_m < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $n_animales_m)),'errorNumeroAnimalesMuertos');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%number%' => $n_animales_m)),'errorNumeroAnimalesMuertos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, TRUE), TRUE);
         }
         if(strlen($n_animales_m) >2){
-          session::getInstance()->setError(i18n::__('ErrorCharacter', NULL,'default', array('%N_animales_dead%' => $n_animales_m,'%character%'=>  reportePartoTableClass::N_ANIMALES_M)),'errorNumeroAnimalesMuertos');
+          session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%N_animales_dead%' => $n_animales_m,'%character%'=>  reportePartoTableClass::N_ANIMALES_M)),'errorNumeroAnimalesMuertos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_ANIMALES_M, TRUE), TRUE);
         }
         
         if (is_numeric($n_machos) === FALSE) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterN_males', NULL,'default', array('%N_males%' => $n_machos,'%character%'=>  reportePartoTableClass::N_MACHOS)),'errorNumeroMachos');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%N_males%' => $n_machos,'%character%'=>  reportePartoTableClass::N_MACHOS)),'errorNumeroMachos');
         $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, TRUE), TRUE);
         }
         if($n_machos === '' or $n_machos === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%N_males%' => $n_machos,'%character%'=>  reportePartoTableClass::N_MACHOS)),'errorNumeroMachos');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%N_males%' => $n_machos,'%character%'=>  reportePartoTableClass::N_MACHOS)),'errorNumeroMachos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, TRUE), TRUE);
         }
         if($n_machos < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $n_machos)),'errorNumeroMachos');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%number%' => $n_machos)),'errorNumeroMachos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, TRUE), TRUE);
         }
         if(strlen($n_machos) >2){
-          session::getInstance()->setError(i18n::__('ErrorCharacter', NULL,'default', array('%N_males%' => $n_machos,'%character%'=>  reportePartoTableClass::N_MACHOS)),'errorNumeroMachos');
+          session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%N_males%' => $n_machos,'%character%'=>  reportePartoTableClass::N_MACHOS)),'errorNumeroMachos');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_MACHOS, TRUE), TRUE);
         }
         if (is_numeric($n_hembras) === FALSE) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterN_females', NULL,'default', array('%N_females%' => $n_hembras,'%character%'=>  reportePartoTableClass::N_HEMBRAS)),'errorNumeroHembras');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%N_females%' => $n_hembras,'%character%'=>  reportePartoTableClass::N_HEMBRAS)),'errorNumeroHembras');
         $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, TRUE), TRUE);
         }
         if($n_hembras === '' or $n_hembras === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%N_females%' => $n_hembras,'%character%'=>  reportePartoTableClass::N_HEMBRAS)),'errorNumeroHembras');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%N_females%' => $n_hembras,'%character%'=>  reportePartoTableClass::N_HEMBRAS)),'errorNumeroHembras');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, TRUE), TRUE);
         }
         if($n_hembras < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $n_hembras)),'errorNumeroHembras');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%number%' => $n_hembras)),'errorNumeroHembras');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, TRUE), TRUE);
         }
         if(strlen($n_hembras) >2){
-          session::getInstance()->setError(i18n::__('ErrorCharacter', NULL,'default', array('%N_females%' => $n_hembras,'%character%'=>  reportePartoTableClass::N_HEMBRAS)),'errorNumeroHembras');
+          session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%N_females%' => $n_hembras,'%character%'=>  reportePartoTableClass::N_HEMBRAS)),'errorNumeroHembras');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::N_HEMBRAS, TRUE), TRUE);
         }
-//        if (!preg_match("^[a-zA-Z0-9]{3,80}$", $observaciones)) {
-//            session::getInstance()->setError(i18n::__('ErrorCharacterSpecial', NULL, 'default',array('%field%' => reportePartoTableClass::OBSERVACIONES)),'errorObservaciones');
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE), TRUE);
-//        }
-//        if($observaciones === '' or $observaciones === NULL){
-//            session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL, 'default',array('%field%' => reportePartoTableClass::OBSERVACIONES)),'errorObservaciones');
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE), TRUE);
-//        }                             
+        if (!preg_match("/^[a-zA-Z0-9]{3,80}$/", $observaciones)) {
+            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => reportePartoTableClass::OBSERVACIONES)),'errorObservaciones');
+            $flag = TRUE;
+            session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE), TRUE);
+        }
+        if($observaciones === '' or $observaciones === NULL){
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => reportePartoTableClass::OBSERVACIONES)),'errorObservaciones');
+            $flag = TRUE;
+            session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE), TRUE);
+        }                             
         if (!is_numeric($id_animal)) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterId_animal', NULL,'default', array('%id_animal%'=>$id_animal,'%character%'=>  reportePartoTableClass::ID_ANIMAL)),'errorIdAnimal');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL,'default', array('%id_animal%'=>$id_animal,'%character%'=>  reportePartoTableClass::ID_ANIMAL)),'errorIdAnimal');
         $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE), TRUE);
         }
         if($id_animal === '' or $id_animal === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%id_animal%' => $id_animal,'%character%'=>  reportePartoTableClass::ID_ANIMAL)),'errorIdAnimal');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%id_animal%' => $id_animal,'%character%'=>  reportePartoTableClass::ID_ANIMAL)),'errorIdAnimal');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE), TRUE);
         }
         if($id_animal < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%number%' => $id_animal)),'errorIdAnimal');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%number%' => $id_animal)),'errorIdAnimal');
           $flag = TRUE;
         session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::ID_ANIMAL, TRUE), TRUE);
         }

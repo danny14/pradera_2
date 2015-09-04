@@ -67,10 +67,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
-        $page = $page * 3;
+        $page = $page * 10;
       }
       $this->cntPages = pagoTrabajadoresTableClass::getTotalPages(3, $where);
-      $this->objPagoTrabajadores = pagoTrabajadoresTableClass::getAll($fields, FALSE, $orderBy, 'ASC', 3, $page, $where);
+      $this->objPagoTrabajadores = pagoTrabajadoresTableClass::getAll($fields, FALSE, $orderBy, 'ASC', 10, $page, $where);
       
       //llamado de la foranea
       $fieldsTrabajador = array(/* foranea trabajador */

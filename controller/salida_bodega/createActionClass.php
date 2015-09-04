@@ -66,32 +66,32 @@ class createActionClass extends controllerClass implements controllerActionInter
     $fechaActual = date('Y-m-d');
       
     if(preg_match($pattern,$fecha) === FALSE){
-        session::getInstance()->getError(in18::__('ErrorCharacterDate',NULL,array('%date%'=>$fecha,'%character%'=> salidaBodegaTableClass::FECHA )),'errorFecha');
+        session::getInstance()->geterror(in18::__('errorDate',NULL,array('%date%'=>$fecha,'%character%'=> salidaBodegaTableClass::FECHA )),'errorFecha');
         $flag = TRUE;
         session::getInstance()->setFlash(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::FECHA, TRUE), TRUE);
       }
       if($fecha === '' or $fecha === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%date%' => $fecha,'%character%'=>  salidaBodegaTableClass::FECHA)),'errorFecha');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%date%' => $fecha,'%character%'=>  salidaBodegaTableClass::FECHA)),'errorFecha');
           $flag = TRUE;
         session::getInstance()->setFlash(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::FECHA, TRUE), TRUE);
         }
         if(strtotime($fecha) >  strtotime($fechaActual)){
-          session::getInstance()->setError(i18n::__('ErrorCharacterDate', NULL,'default', array('%date%' => $fecha,'%character%'=>  salidaBodegaTableClass::FECHA)),'errorFecha');
+          session::getInstance()->setError(i18n::__('errorDate', NULL,'default', array('%date%' => $fecha,'%character%'=>  salidaBodegaTableClass::FECHA)),'errorFecha');
           $flag = TRUE;
         session::getInstance()->setFlash(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::FECHA, TRUE), TRUE);
         }
         if (!is_numeric($id_trabajador)) {
-        session::getInstance()->setError(i18n::__('ErrorCharacterId_employee', NULL, array('%id_employee%'=>$id_trabajador,'%character%'=>  salidaBodegaTableClass::ID_TRABAJADOR)),'errorTrabajador');
+        session::getInstance()->setError(i18n::__('errorCharacter', NULL, array('%id_employee%'=>$id_trabajador,'%character%'=>  salidaBodegaTableClass::ID_TRABAJADOR)),'errorTrabajador');
         $flag = TRUE;
         session::getInstance()->setFlash(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE), TRUE);
         }
         if($id_trabajador === '' or $id_trabajador === NULL){
-          session::getInstance()->setError(i18n::__('ErrorCharacterEmpty', NULL,'default', array('%id_employye%' => $id_trabajador,'%character%'=>  salidaBodegaTableClass::ID_TRABAJADOR)),'errorTrabajador');
+          session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL,'default', array('%id_employye%' => $id_trabajador,'%character%'=>  salidaBodegaTableClass::ID_TRABAJADOR)),'errorTrabajador');
           $flag = TRUE;
         session::getInstance()->setFlash(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE), TRUE);
         }
         if($id_trabajador < 0){
-          session::getInstance()->setError(i18n::__('ErrorNumberNegative', NULL,'default', array('%id_employee%' => $id_trabajador)),'errorTrabajador');
+          session::getInstance()->setError(i18n::__('errorNumberNegative', NULL,'default', array('%id_employee%' => $id_trabajador)),'errorTrabajador');
           $flag = TRUE;
         session::getInstance()->setFlash(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID_TRABAJADOR, TRUE), TRUE);
         }
