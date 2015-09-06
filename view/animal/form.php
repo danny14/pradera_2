@@ -15,7 +15,7 @@
 <?php $descripcionraza = razaTableClass::DESCRIPCION;?>
 <?php $id_estado = estadoTableClass::ID; ?>
 <?php $descripcionestado = estadoTableClass::DESCRIPCION;?>
-<form method="POST" action="<?php echo routing::getInstance()->getUrlWeb('animal', ((isset($objAnimal)) ? 'update' : 'create' ))?>">
+<form method="POST" class="form-horizontal" action="<?php echo routing::getInstance()->getUrlWeb('animal', ((isset($objAnimal)) ? 'update' : 'create' ))?>">
     <?php if (isset($objAnimal)== true):?>
     <input name="<?php echo animalTableClass::getNameField(animalTableClass::ID,TRUE)?>" value="<?php echo $objAnimal[0]->$id ?>" type="hidden">
     <?php endif ?>
@@ -49,6 +49,7 @@
     <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::PESO, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?>">
         <label class="control-label" for="weight"><?php echo i18n::__('weight')?>: </label>
         <div class="input-group">
+        <span class="input-group-addon" id="kg">.Kg</span>
         <input class="form-control" type="number" value="<?php echo ((isset($objAnimal)) ? $objAnimal[0]->$peso : ((session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::PESO, TRUE)) === TRUE) ?  request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::PESO, TRUE)) : (request::getInstance()->hasPost(animalTableClass::getNameField(animalTableClass::PESO, TRUE))) ? request::getInstance()->getPost(animalTableClass::getNameField(animalTableClass::PESO, TRUE)) : '' ))  ?>" name="<?php echo animalTableClass::getNameField(animalTableClass::PESO, true )?>" required placeholder="<?php echo i18n::__('enterWeight')?>">
         <span class="input-group-addon" id="kg">.Kg</span>
         </div>

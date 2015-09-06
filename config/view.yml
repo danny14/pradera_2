@@ -98,7 +98,7 @@ ordenno:
   grafica2:
     javascript:
       - jqPlot/jquery.jqplot.min.js
-      - jqPlot/plugins/jqplot.canvasTextRenderer.min.js
+      - jqPlot/plugins/jqplot.canvasTextRenderer.min7.js
       - jqPlot/plugins/jqplot.canvasAxisTickRenderer.min.js
       - jqPlot/plugins/jqplot.dateAxisRenderer.js
       - grafica.js
@@ -126,10 +126,19 @@ registro_vacunacion:
     javascript:
       - index.js
 #--------------- Reporte -------------------------------------#
-reporte:
+reportes:
   index:
     javascript:
       - index.js
+  grafica2:
+    javascript:
+      - jqPlot/jquery.jqplot.min.js
+      - jqPlot/plugins/jqplot.canvasTextRenderer.min.js
+      - jqPlot/plugins/jqplot.canvasAxisTickRenderer.min.js
+      - jqPlot/plugins/jqplot.dateAxisRenderer.js
+      - grafica.js
+    stylesheet:
+      - jquery.jqplot.min.css      
 #--------------- Salida Bodega -------------------------
 #--------------- Tipo Insumo -------------------------
 tipo_insumo:

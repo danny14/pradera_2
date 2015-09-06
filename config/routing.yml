@@ -1598,6 +1598,18 @@ reportes_grafica:
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
 
+reportes_grafica2:
+  url:    /reportes/grafica2
+  param:  { module: reportes, action: grafica2, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php
+    - model/base/ordennoBaseTableClass.php
+    - model/ordennoTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
 ##------------------------Reporte Parto---------------------##
 reporte_parto_index:
   url:    /reporte_parto/index

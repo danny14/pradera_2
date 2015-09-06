@@ -6,6 +6,7 @@
 <?php use mvc\session\sessionClass as session?>
 <?php $cantidad_leche = ordennoTableClass::CANTIDAD_LECHE?>
 <?php $nombre = animalTableClass::NOMBRE?>
+<?php $id_animal = ordennoTableClass::ID_ANIMAL?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="row">
@@ -13,9 +14,30 @@
     <h1><?php echo i18n::__('date')?></h1>
     <h2><?php echo $fecha_inicio.' HASTA '.$fecha_fin?></h2>
     </div>
-    
+    <?php if($idReporte == 1 ):?>
+    <!-- VENTANAS O TAP ------------->
+    <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Buenas</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Regulares</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Malas</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  </div>
+
+</div>
+    <!-- FIN DE VENTANAS-->
     <?php foreach ($objOrdenno as $ordenno):?>
-        <a href="<?php// echo routing::getInstance()->getUrlWeb('ordenno', 'grafica2')?>">
+        <a href="<?php  echo routing::getInstance()->getUrlWeb('reportes', 'grafica2',array('id_animal'=>$ordenno->$id_animal,'fecha_inicio' => $fecha_inicio,'fecha_fin' =>$fecha_fin)) ?>">
             <div class="alert <?php echo ($ordenno->$cantidad_leche >= config::getCantidad() ) ? 'alert-success' : 'alert-danger' ?>" role="alert">
     <table class="table table-bordered table-responsive table-striped alert-success" >
         
@@ -27,11 +49,15 @@
             <td>Nombre: <?php echo $ordenno->$nombre?></td>
         </tr>
         <tr>
-            <td>Cantidad: <?php echo $ordenno->cantidad_leche?></td>
+            <td>Cantidad: <?php echo $ordenno->$cantidad_leche?></td>
         </tr>    
     </table>
             </div>
         </a>
     <?php endforeach;?>
+   
+    <?php elseif($idReporte == 2): ?>
+        
+    <?php endif; ?>
     </div>
 </div>

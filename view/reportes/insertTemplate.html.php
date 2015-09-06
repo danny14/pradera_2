@@ -6,6 +6,9 @@
 <div class="container container-fluid">
     <div class="row">
 <h1><?php echo i18n::__('new')." "; echo i18n::__('report')?></h1>
-<?php view::includePartial('reportes/form',array('reporteId' => $reporteId))?>
+<?php if(isset($objRaza)):?>
+    <?php view::includePartial('reportes/form',array('reporteId' => $reporteId,'objRaza'=>$objRaza))?>
+<?php endif;?>
+    <?php view::includePartial('reportes/form',array('reporteId' => $reporteId))?>
     </div>
 </div>

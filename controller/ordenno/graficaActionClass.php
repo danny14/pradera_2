@@ -24,8 +24,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
                 
                 //$hola = '"SELECT .$cantidad_leche,"public".hoja_de_vida.nombre FROM "public".hoja_de_vida INNER JOIN "public".ordeno ON "public".ordeno.id_animal = "public".hoja_de_vida."id" GROUP BY "public".hoja_de_vida.nombre ORDER BY "public".hoja_de_vida.nombre ASC "';
                 $sql = 'select SUM(ordeno.cantidad_leche) as cantidad_leche, hoja_de_vida.nombre from ordeno,hoja_de_vida where ordeno.id_animal=hoja_de_vida.id and fecha_ordeno BETWEEN '."'$fecha_inicio'".' AND '."'$fecha_fin'".' GROUP BY hoja_de_vida.nombre ORDER BY hoja_de_vida.nombre ASC';
-//                echo $sql;
-//                exit();
+                //$sql1 = 'SELECT SUM('. ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, FALSE).') AS '.ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, FALSE).', '.animalTableClass::getNameField(animalTableClass::NOMBRE, FALSE).' FROM '.ordennoTableClass::getNameTable().', '.animalTableClass::getNameTable().' WHERE '.ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, FALSE).'='.animalTableClass::getNameField(animalTableClass::ID, FALSE).' AND '.ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, FALSE).' BETWEEN '."'$fecha_inicio'".' AND '."'.$fecha_fin'".' GROUP BY '.animalTableClass::getNameField(animalTableClass::NOMBRE, FALSE).' ORDER BY '.animalTableClass::getNameField(animalTableClass::NOMBRE, FALSE).' ASC ';
                 $this->fecha_inicio = $fecha_inicio;
                 $this->fecha_fin = $fecha_fin;
                 $this->objGrafica = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
