@@ -118,7 +118,6 @@
                     <thead>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
-                            <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('date') ?></th>
                             <th><?php echo i18n::__('employee') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
@@ -128,7 +127,6 @@
                         <?php foreach ($objSalidaBodega as $salida_bodega): ?>
                             <tr>
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $salida_bodega->$id ?>"></td>
-                                <td><?php echo $salida_bodega->$id ?></td>
                                 <td><?php echo $salida_bodega->$fecha ?></td>
                                 <td><?php echo salidaBodegaTableClass::getNameFieldForaneaTrabajador($salida_bodega->$id_trabajador) ?></td>
                                 
