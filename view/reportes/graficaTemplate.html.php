@@ -20,25 +20,60 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Buenas</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Regulares</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Malas</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Buenas <span class="badge"><?php echo count($alta) ?></span></a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Regulares <span class="badge"><?php echo count($media) ?></span></a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Malas <span class="badge"><?php echo count($baja) ?></span></a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">...</div>
-    <div role="tabpanel" class="tab-pane" id="profile">...</div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
-  </div>
-
-</div>
-    <!-- FIN DE VENTANAS-->
-    <?php foreach ($objOrdenno as $ordenno):?>
+   
+    <div role="tabpanel" class="tab-pane active" id="home">
+        <?php foreach ($alta as $ordenno) :?>
         <a href="<?php  echo routing::getInstance()->getUrlWeb('reportes', 'grafica2',array('id_animal'=>$ordenno->$id_animal,'fecha_inicio' => $fecha_inicio,'fecha_fin' =>$fecha_fin)) ?>">
-            <div class="alert <?php echo ($ordenno->$cantidad_leche >= config::getCantidad() ) ? 'alert-success' : 'alert-danger' ?>" role="alert">
+            
+    <table class="table table-bordered table-responsive table-striped" >
+        
+        <tr>
+            <td rowspan="3" ><img src="<?php echo routing::getInstance()->getUrlImg('carga1.png')?>"></img></td>
+            <td>Fecha: <?php echo $fecha_inicio ?> Hasta <?php echo $fecha_fin?></td>
+        </tr>
+        <tr >
+            <td>Nombre: <?php echo $ordenno->$nombre?></td>
+        </tr>
+        <tr>
+            <td>Cantidad: <?php echo $ordenno->$cantidad_leche?></td>
+        </tr>    
+    </table>
+         
+        </a>
+        <?php endforeach; ?>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+        <?php foreach ($media as $ordenno) :?>
+        <a href="<?php  echo routing::getInstance()->getUrlWeb('reportes', 'grafica2',array('id_animal'=>$ordenno->$id_animal,'fecha_inicio' => $fecha_inicio,'fecha_fin' =>$fecha_fin)) ?>">
+            
+    <table class="table table-bordered table-responsive table-striped " >
+        
+        <tr>
+            <td rowspan="3" ><img src="<?php echo routing::getInstance()->getUrlImg('carga1.png')?>"></img></td>
+            <td>Fecha: <?php echo $fecha_inicio ?> Hasta <?php echo $fecha_fin?></td>
+        </tr>
+        <tr >
+            <td>Nombre: <?php echo $ordenno->$nombre?></td>
+        </tr>
+        <tr>
+            <td>Cantidad: <?php echo $ordenno->$cantidad_leche?></td>
+        </tr>    
+    </table>
+            
+        </a>
+        <?php endforeach; ?>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+        <?php foreach ($baja as $ordenno) :?>
+        <a href="<?php  echo routing::getInstance()->getUrlWeb('reportes', 'grafica2',array('id_animal'=>$ordenno->$id_animal,'fecha_inicio' => $fecha_inicio,'fecha_fin' =>$fecha_fin)) ?>">
+            
     <table class="table table-bordered table-responsive table-striped alert-success" >
         
         <tr>
@@ -52,9 +87,15 @@
             <td>Cantidad: <?php echo $ordenno->$cantidad_leche?></td>
         </tr>    
     </table>
-            </div>
+            
         </a>
-    <?php endforeach;?>
+        <?php endforeach; ?>
+    </div>
+    
+  </div>
+
+</div>
+    <!-- FIN DE VENTANAS-->
    
     <?php elseif($idReporte == 2): ?>
         

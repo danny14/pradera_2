@@ -130,6 +130,21 @@ reportes:
   index:
     javascript:
       - index.js
+  graficar:
+    javascript:
+      - jqPlot/jquery.jqplot.min.js
+      - jqPlot/plugins/jqplot.canvasTextRenderer.js
+      - jqPlot/plugins/jqplot.canvasTextRenderer.min.js
+      - jqPlot/plugins/jqplot.canvasAxisTickRenderer.min.js
+      - jqPlot/plugins/jqplot.canvasLabelRenderer.min.js
+      - jqPlot/plugins/jqplot.dateAxisRenderer.js
+      - jqPlot/plugins/jqplot.barRenderer.js
+      - jqPlot/plugins/jqplot.pieRenderer.js
+      - jqPlot/plugins/jqplot.categoryAxisRenderer.js
+      - jqPlot/plugins/jqplot.pointLabels.js
+      - grafica.js
+    stylesheet:
+      - jquery.jqplot.min.css
   grafica2:
     javascript:
       - jqPlot/jquery.jqplot.min.js

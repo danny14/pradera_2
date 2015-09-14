@@ -100,20 +100,6 @@
                                 </div>
                             </form>
                         </div>
-                                <div class="form-group">
-                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
-                                    <div class="col-sm-10">
-                                        <input type="date" name="report[fechaCreacion1]" class="form-control" id="filterCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
-                                    <div class="col-sm-10">
-                                        <input type="date" name="report[fechaCreacion2]" class="form-control" id="filterCreacion2" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close')?></button>
                             <button type="button" onclick="$('#reportFilterForm').submit()" class="btn btn-primary"><?php echo i18n::__('generate')?></button>
