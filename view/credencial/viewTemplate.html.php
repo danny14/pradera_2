@@ -8,6 +8,7 @@
 <?php $deleted_at = credencialTableClass::DELETED_AT?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('credential') ?></h1>
+    <h1<i class="fa fa-tags"><?php echo i18n::__('credencial') ?></i></h1>
     <div class="row">
         <header>
 

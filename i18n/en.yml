@@ -24,6 +24,7 @@ dictionary:
     city:                 City
     animal:               Animal
     address:              Address
+    output_bodega:        Salida_bodega
     phone:                Phone
     mail:                 Mail
     gender:               Gender

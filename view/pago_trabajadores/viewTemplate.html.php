@@ -18,6 +18,7 @@ use mvc\view\viewClass as view ?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
   <h1><?php echo i18n::__('payment of employee') ?></h1>
+  <h1<i class="fa fa-diamond"><?php echo i18n::__('pago_trabajadores') ?></i></h1>
   <div class="row">
     <header>
     </header>

@@ -10,8 +10,9 @@
 <?php $id_animal =ordennoTableClass::ID_ANIMAL ?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
-    <div class="page page-header text-center">
-    <h1><?php echo i18n::__('ordenno')?></h1>
+  <div class="page page-header text-center">  
+  <h1><i class="fa fa-ship"><?php echo i18n::__('ordenno')?></i></h1>
+   
     </div>
     <div class="row" >
         <header>
