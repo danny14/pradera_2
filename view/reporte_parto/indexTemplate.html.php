@@ -136,7 +136,6 @@
                     <thead>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
-                            <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('date_delivery') ?></th>
                             <th><?php echo i18n::__('n_animales_living') ?></th>
                             <th><?php echo i18n::__('n_animales_dead') ?></th>
@@ -152,7 +151,6 @@
                         <?php foreach ($objReporteParto as $reporte_parto): ?>
                             <tr>
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $reporte_parto->$id ?>"></td>
-                                <td><?php echo $reporte_parto->$id ?></td>
                                 <td><?php echo $reporte_parto->$fecha_parto ?></td>
                                 <td><?php echo $reporte_parto->$n_animales_vi ?></td>
                                 <td><?php echo $reporte_parto->$n_animales_m ?></td>
