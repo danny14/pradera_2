@@ -10,6 +10,7 @@
 <?php view::includePartial('animal/menuPrincipal')?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('registro_vacunacion')?></h1>
+    <h1<i class="fa fa-baxtery-quarter"><?php echo i18n::__('registro_vacunacion') ?></i></h1>
     <div class="row" >
         <header>
             

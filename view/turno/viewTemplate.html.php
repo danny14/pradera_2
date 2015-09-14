@@ -7,6 +7,7 @@
 <?php $fin_turno = turnoTableClass::FIN_TURNO ?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('breed') ?></h1>
+    <h1<i class="fa fa-clock"><?php echo i18n::__('turno') ?></i></h1>
     <div class="row">
         <header>
 

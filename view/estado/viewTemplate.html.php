@@ -7,6 +7,7 @@
 <div class="container container-fluid">
     
     <h1><?php echo i18n::__('status')?></h1>
+    <h1<i class="fa fa-caret-square-o-up"><?php echo i18n::__('estado') ?></i></h1>
     <div class="row">
         <header>
             

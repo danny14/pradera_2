@@ -11,6 +11,7 @@
 <?php view::includePartial('animal/menuPrincipal')?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('provider')?></h1>
+    <h1<i class="fa fa-smile-o"><?php echo i18n::__('proveedor') ?></i></h1>
     <div class="row" >
         <header>
             

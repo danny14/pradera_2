@@ -12,6 +12,7 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('employee') ?></h1>
+    <h1<i class="fa fa-child"><?php echo i18n::__('trabajador') ?></i></h1>
     <div class="row">
         <header>
 

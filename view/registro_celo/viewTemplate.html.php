@@ -9,6 +9,7 @@
 
 <div class="container container-fluid">
     <h1><?php echo i18n::__('register_celo')?></h1>
+    <h1<i class="fa fa-github-alt"><?php echo i18n::__('registro_celo') ?></i></h1>
     <div class="row">
         <header>
             

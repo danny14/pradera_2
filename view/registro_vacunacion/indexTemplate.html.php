@@ -11,8 +11,9 @@
 <?php $id_insumo =registroVacunacionTableClass::ID_INSUMO ?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
-    <div class="page page-header text-center">
-    <h1><?php echo i18n::__('register_vacunacion')?></h1>
+     <div class="page page-header text-center">
+   <h1><i class="fa fa-eyedropper"><?php echo i18n::__('register_vacunacion')?></i></h1>
+   
     </div>
     <div class="row" >
         <header>

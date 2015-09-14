@@ -12,8 +12,9 @@
 
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
-    <div class="page page-header text-center">
-        <h1><i class="fa fa-paw"><?php echo i18n::__('report') ?></i></h1>
+   <div class="page page-header text-center"> 
+   <h1><i class="fa fa-file-text-o"><?php echo i18n::__('report')?></i></h1>
+        
     </div>
     <div class="row">
         <header>

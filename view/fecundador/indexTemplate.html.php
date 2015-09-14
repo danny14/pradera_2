@@ -12,7 +12,7 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
-    <h1><?php echo i18n::__('fecundador')?></h1>
+        <h1><i class="fa fa-mars-stroke"><?php echo i18n::__('fecundador')?></i></h1>
     </div>
     <div class="row" >
         <header>

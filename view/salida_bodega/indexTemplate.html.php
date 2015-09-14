@@ -8,8 +8,9 @@
 <?php $nombre = trabajadorTableClass::NOMBRE ;?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
-    <div class="page page-header text-center">
-    <h1><?php echo i18n::__('Output_bodega') ?></h1>
+  <div class="page page-header text-center">  
+  <h1><i class="fa fa-arrow-circle-o-right"><?php echo i18n::__('salida_bodega')?></i></h1>
+ 
     </div>
     <div class="row">
         <header>

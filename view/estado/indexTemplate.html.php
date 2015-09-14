@@ -7,7 +7,7 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="pager page-header text-center">
-        <h1><i class="fa fa-eye"><?php echo i18n::__('status')?></i></h1>
+        <h1><i class="fa fa-lightbulb-o"><?php echo i18n::__('status')?></i></h1>
     </div>
     <div class="row">
         <header>

@@ -5,6 +5,7 @@
 <?php $descripcion = razaTableClass::DESCRIPCION ?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('breed') ?></h1>
+    <h1<i class="fa fa-paw"><?php echo i18n::__('raza') ?></i></h1>
     <div class="row">
         <header>
 

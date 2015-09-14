@@ -1,12 +1,13 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
 <?php use mvc\view\viewClass as view;?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $id = tipoInsumoTableClass::ID?>
 <?php $descripcion = tipoInsumoTableClass::DESCRIPCION?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
-    <h1><i class="fa fa-paw"><?php echo i18n::__('type_input')?></i></h1>
+    <h1><i class=" glyphicon glyphicon-object-align-bottom"><?php echo i18n::__('type_input')?></i></h1>
     </div>
     <div class="row">
         <header>

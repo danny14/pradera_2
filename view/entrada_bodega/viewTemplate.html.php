@@ -9,6 +9,7 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('entry_cellar') ?></h1>
+    <h1<i class="fa fa-truck"><?php echo i18n::__('entrada_bodega') ?></i></h1>
     <div class="row">
         <header>
 
