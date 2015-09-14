@@ -15,8 +15,9 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
                registroVacunacionTableClass::ID,
                registroVacunacionTableClass::FECHA_REGISTRO,
                registroVacunacionTableClass::ID_TRABAJADOR,
+               registroVacunacionTableClass::DOSIS_VACUNA,
                registroVacunacionTableClass::HORA_VACUNA,
-               registroCeloTableClass::ID_ANIMAL,
+               registroVacunacionTableClass::ID_ANIMAL,
                registroVacunacionTableClass::ID_INSUMO
                
                );

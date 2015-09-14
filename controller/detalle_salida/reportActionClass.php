@@ -24,14 +24,6 @@ class reportActionClass extends controllerClass implements controllerActionInter
           $where[detalleSalidaTableClass::ID_INSUMO] = $filter['Insumo'];
         }
 
-//                if(isset($filter['fechaCreacion1']) and $filter['fechaCreacion1'] !== NULL and $filter['fechaCreacion1'] !== '' and isset($filter['fechaCreacion2']) and $filter['fechaCreacion2'] !== NULL and $filter['fechaCreacion2'] !== ''){
-//                    $where[registroCeloTableClass::FECHA_INGRESO] = array(
-//                        $filter['fechaCreacion1'],
-//                        $filter['fechaCreacion2']
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
-//                    );
-//                }
         session::getInstance()->setAttribute('detalleSalidaIndexFilters', $where);
       } else if (session::getInstance()->hasAttribute('detalleSalidaIndexFilters')) {
         $where = session::getInstance()->getAttribute('detalleSalidaIndexFilters');
@@ -62,9 +54,10 @@ class reportActionClass extends controllerClass implements controllerActionInter
 //llamado de la foranea
       $fieldsInsumo = array(/* foranea insumo */
           insumoTableClass::ID,
+          insumoTableClass::NOMBRE
       );
       $orderByInsumo = array(
-          insumoTableClass::ID
+          insumoTableClass::NOMBRE
       );
       $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, false, $orderByInsumo, 'ASC');
 

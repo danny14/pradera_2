@@ -133,7 +133,6 @@
                     <thead>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
-                            <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('date') ?></th>
                             <th><?php echo i18n::__('fecundador') ?></th>
                             <th><?php echo i18n::__('animal') ?></th>
@@ -144,7 +143,6 @@
                         <?php foreach ($objRegistroCelo as $registro_celo): ?>
                             <tr>
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $registro_celo->$id ?>"></td>
-                                <td><?php echo $registro_celo->$id ?></td>
                                 <td><?php echo $registro_celo->$fecha ?></td>
                                 <td><?php echo registroCeloTableClass::getNameFieldForaneaFecundador($registro_celo->$id_fecundador) ?></td>
                                 <td><?php echo registroCeloTableClass::getNameFieldForaneaAnimal($registro_celo->$id_animal) ?></td>

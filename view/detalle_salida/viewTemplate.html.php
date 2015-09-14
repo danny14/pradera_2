@@ -15,14 +15,15 @@
 <?php $id_trabajador = salidaBodegaTableClass::ID_TRABAJADOR ?>
 
 <?php view::includePartial('animal/menuPrincipal'); ?>
-<h1><?php echo i18n::__('Output_bodega')?></h1>
+<div class="container container-fluid">
+<h1><i class="fa fa-paw"><?php echo i18n::__('Output_bodega')?></i></h1>
 <div class="container container-fluid">
   <div class="page page-header text-center">
     <table class="table table-bordered table-responsive table-condensed">
                 <thead>
                     <tr class="active">
                        
-                        <th><?php echo i18n::__('id')?></th>
+                      
                         <th><?php echo i18n::__('date')?></th>
                         <th><?php echo i18n::__('id_employee')?></th>              
                     </tr>
@@ -31,7 +32,7 @@
                     <?php foreach ($objSalidaBodega as $salida_bodega): ?>
                     <tr>
                         
-                        <td><?php echo $salida_bodega->$idS ?></td>
+                     
                         <td><?php echo $salida_bodega->$fecha ?></td>
                         <td><?php echo salidaBodegaTableClass::getNameFieldForaneaTrabajador($salida_bodega->$id_trabajador) ?></td>
                                
@@ -40,7 +41,7 @@
                 </tbody>
                 
             </table>
-    <h1><?php echo i18n::__('output_of_cellars_details') ?></h1>
+    <h1><i class="fa fa-paw"><?php echo i18n::__('output_of_cellars_details') ?></i></h1>
   </div>
   <div class="row">
     <header>
@@ -119,7 +120,7 @@
                   </div>
                 </div> <!--fin de filtro foranea-->
 <div class="form-group"> <!--filtro para llamar foranea-->
-                  <label for="filterInput" class="col-sm-2 control-label"><?php echo i18n::__('input') ?></label>
+                  <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('input') ?></label>
                   <div class="col-sm-10">
                     <select class="form-control" id="filterInsumo" name="filter[Insumo]">
                       <option value=""><?php echo i18n::__('input') ?></option>
@@ -145,18 +146,20 @@
       <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'deleteSelect') ?>" method="POST">
         <div>
           <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'insert',array(salidaBodegaTableClass::ID => $salida_bodega->$idS)) ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
-          <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
-          <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters') ?></a>
-          <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'deleteFilters') ?>" ><?php echo i18n::__('delete') . " ";
-        echo i18n::__('filters') ?></a>
+          <!--<a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php // echo i18n::__('delete') ?></a>-->
+          <!--<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php // echo i18n::__('filters') ?></a>-->
+         <!-- <a class="btn btn-default btn-xs" href="<?php // echo routing::getInstance()->getUrlWeb('detalle_salida', 'deleteFilters') ?>" ><?php // echo i18n::__('delete') . " ";
+//        echo i18n::__('filters') ?></a>-->
           <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalREPORTES"><i class=" fa fa-file-pdf-o"> <?php echo i18n::__('report') ?></i></a>
+          <a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('salida_bodega', 'index')?>"><i class="fa fa-hand-o-left"> </i> <?php echo i18n::__('return')?></a>
         </div>
+        
 <?php view::includeHandlerMessage() ?>
         <table class="table table-bordered table-responsive table-condensed">
           <thead>
             <tr class="active">
               <th><input type="checkbox" id="chkAll"></th>
-              <th><?php echo i18n::__('id') ?></th>
+              
               <th><?php echo i18n::__('quantity') ?></th>
               <th><?php echo i18n::__('id_salida_bodega') ?></th>
               <th><?php echo i18n::__('id_input') ?></th>
@@ -168,7 +171,7 @@
 <?php foreach ($objDetalleSalida as $detalle_salida): ?>
               <tr>
                 <td><input type="checkbox" name="chk[]" value="<?php echo $detalle_salida->$id ?>"></td>
-                <td><?php echo $detalle_salida->$id ?></td>
+                
                 <td><?php echo $detalle_salida->$cantidad ?></td>
                 <td><?php echo detalleSalidaTableClass::getNameFieldForaneaSalidaBodega($detalle_salida->$id_salida_bodega) ?></td>
                 <td><?php echo detalleSalidaTableClass::getNameFieldForaneaInsumo($detalle_salida->$id_insumo) ?></td>
@@ -176,10 +179,10 @@
 
                 <td>
                   <div class="btn btn-group btn-xs">
-                    <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'view', array(detalleSalidaTableClass::ID => $detalle_salida->$id)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'edit', array(detalleSalidaTableClass::ID => $detalle_salida->$id, detalleSalidaTableClass::ID_SALIDA_BODEGA => $salida_bodega->$idS)) ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+<!--                    <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'view', array(detalleSalidaTableClass::ID => $detalle_salida->$id_salida_bodega)) ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>-->
+                    <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'edit', array(detalleSalidaTableClass::ID => $detalle_salida->$id_salida_bodega)) ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                     <a data-toggle="modal" data-target="#myModalDelete<?php echo $detalle_salida->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
-                    <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'index')?>"><i class="fa fa-hand-o-left"> </i> <?php echo i18n::__('return')?></a>
+                  
               
                    
                   </div>   
@@ -216,12 +219,15 @@
 <?php endfor; ?>
         </select> de <?php echo $cntPages ?>
       </div>
+      
+      
     </section>
     <footer>
 
     </footer>
   </div>
 </div>
+
 <!-- Ventana MODAL ELIMINAR MASIVO -->
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -242,4 +248,5 @@ echo i18n::__('selected_items')
       </div>
     </div>
   </div>
+</div>
 </div>

@@ -12,7 +12,7 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
-    <h1><?php echo i18n::__('register_vacunacion')?></h1>
+    <h1><?php echo i18n::__('register_vacunacion') ?></h1>
     </div>
     <div class="row" >
         <header>
@@ -126,7 +126,6 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"</th>
-                        <th><?php echo i18n::__('id')?></th>
                         <th><?php echo i18n::__('date_register')?></th>
                         <th><?php echo i18n::__('id_employee')?></th>
                         <th><?php echo i18n::__('dose_vaccine')?></th>
@@ -140,13 +139,12 @@
                     <?php foreach ($objRegistroVacunacion as $registro_vacunacion): ?>
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $registro_vacunacion->$id?>"></td>
-                        <td><?php echo $registro_vacunacion->$id?></td>
                         <td><?php echo $registro_vacunacion->$fecha_registro?></td>
                        <td><?php echo $registro_vacunacion->$id_trabajador?></td>
                        <td><?php echo $registro_vacunacion->$dosis_vacuna?></td>
                        <td><?php echo $registro_vacunacion->$hora_vacuna?></td>
-                       <td><?php echo $registro_vacunacion->$id_animal?></td>
-                       <td><?php echo $registro_vacunacion->$id_insumo?></td>
+                       <td><?php echo registroVacunacionTableClass::getNameFieldForaneaAnimal($registro_vacunacion->$id_animal)?></td>
+                       <td><?php echo registroVacunacionTableClass::getNameFieldForaneaInsumo($registro_vacunacion->$id_insumo)?></td>
                         <td>
                             <div>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('registro_vacunacion', 'view',array(registroVacunacionTableClass::ID => $registro_vacunacion->$id));?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>

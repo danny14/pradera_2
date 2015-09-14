@@ -26,7 +26,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
                 
                 $fields = array(
                 trabajadorTableClass::ID,
-                trabajadorTableClass::NOMBRE
+                trabajadorTableClass::NOMBRE,
+                trabajadorTableClass::APELLIDO
                 );
                 $orderBy = array(
                 trabajadorTableClass::NOMBRE

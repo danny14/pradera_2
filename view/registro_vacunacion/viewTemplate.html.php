@@ -7,9 +7,10 @@
 <?php $dosis_vacuna =registroVacunacionTableClass::DOSIS_VACUNA ?>
 <?php $hora_vacuna =registroVacunacionTableClass::HORA_VACUNA ?>
 <?php $id_animal =registroVacunacionTableClass::ID_ANIMAL ?>
+<?php $id_insumo =registroVacunacionTableClass::ID_INSUMO ?>
 <?php view::includePartial('animal/menuPrincipal')?>
 <div class="container container-fluid">
-    <h1><?php echo i18n::__('registro_vacunacion')?></h1>
+    <h1><?php echo i18n::__('register_vacunacion')?></h1>
     <div class="row" >
         <header>
             
@@ -27,7 +28,7 @@
                         <th><?php echo i18n::__('dose_vaccine')?></th>
                         <th><?php echo i18n::__('time_vaccine')?></th>
                         <th><?php echo i18n::__('id_animal')?></th>
-                        <th><?php echo i18n::__('id_insumo')?></th>
+                        <th><?php echo i18n::__('id_input')?></th>
                     </tr>
                 </thead>
                 <tbody>

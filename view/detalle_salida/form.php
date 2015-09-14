@@ -28,6 +28,7 @@
    <?php if(session::getInstance()->hasFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::CANTIDAD, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif;?>
    </div>
    
+   <?php  $idSalida = request::getInstance()->getGet('id') ?>
    <!--este  es para el mensaje de error puntual -->
    <?php view::getMessageError('errorSalidaBodega') ?>
    <!-- Fin de mensaje error puntual -->
@@ -35,7 +36,7 @@
    <select class="form-control" id="<?php detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE)?>" name="<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE);?>"required placeholder="<?php i18n::__('id_salida_bodega') ?>">
      <option value=""> <?php echo i18n::__('selectSalidaBodega') ?></option>
        <?php foreach($objSalidaBodega as $salida_bodega):?>
-       <option <?php echo ((isset($objDetalleSalida[0]->$id_salida_bodega) and $objDetalleSalida[0]->$id_salida_bodega === $salida_bodega->$salida_bodega_id ) ? 'selected' : ((session::getInstance()->hasFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE))and request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE))== $salida_bodega-> $salida_bodega_id) ? 'selected' : ''))?> value="<?php echo $salida_bodega->$salida_bodega_id?>"><?php echo $salida_bodega->$salida_bodega_id?></option>
+       <option <?php echo ((isset($objDetalleSalida[0]->$id_salida_bodega) and $objDetalleSalida[0]->$id_salida_bodega === $salida_bodega->$salida_bodega_id ) ? 'selected' : ((session::getInstance()->hasFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE))===TRUE)? '' :(request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE))and request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID_SALIDA_BODEGA, TRUE))== $salida_bodega-> $salida_bodega_id) ? 'selected' : ''))?> <?php echo ($idSalida == $salida_bodega -> $salida_bodega_id) ? 'selected' : '' ?> value="<?php echo $salida_bodega->$salida_bodega_id?>"><?php echo $salida_bodega->$salida_bodega_id?></option>
        <?php endforeach;?>
    </select>
    <!--este  es para el mensaje de error puntual -->
@@ -60,7 +61,7 @@
    </select>
    <br>
    <input class="btn btn-primary btn-xs" type="submit" value="<?php echo i18n::__((isset($objDetalleSalida) ? 'update': 'register'))?>">
-   <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'index') ?>"class="btn btn-info btn-xs"> <i class="fa fa-hand-o-left"> <?php echo i18n::__('return') ?></i></a>
+   <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'view',array(salidaBodegaTableClass::ID => $idSalida)) ?>"class="btn btn-info btn-xs"> <i class="fa fa-hand-o-left"> <?php echo i18n::__('return') ?></i></a>
    </div>
 </form>
 

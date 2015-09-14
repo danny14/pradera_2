@@ -130,7 +130,20 @@ reporte:
   index:
     javascript:
       - index.js
-#--------------- Salida Bodega -------------------------
+#--------------- Salida Bodega -------------------------#
+salida_bodega:
+  index:
+    javascript:
+      - index.js
+#--------------- Salida Bodega -------------------------#
+
+#--------------- Salida Bodega -------------------------#
+detalle_salida:
+  view:
+    javascript:
+      - index.js
+#--------------- Salida Bodega -------------------------#
+
 #--------------- Tipo Insumo -------------------------
 tipo_insumo:
   index:

@@ -10,7 +10,7 @@ $pdf->AddPage();
 $pdf->Cell(80);
 $pdf->SetFont('Arial','B',12);
 $pdf->Image(routing::getInstance()->getUrlImg('fondoOriginal.jpg'),0,0,270);
-$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,90);
+$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,85);
 
 $pdf->Image(routing::getInstance()->getUrlImg('sena.jpg'),120,0,'C');
 

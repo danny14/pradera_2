@@ -49,6 +49,19 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
                 session::getInstance()->setError('Error no se pudo visualizar correctamente');
                 routing::getInstance()->redirect('detalle_salida', 'index');
             }
+             //fin llamado a foranea*/
+//llamado de la foranea
+      $fieldsInsumo = array(/* foranea insumo */
+          insumoTableClass::ID,
+          insumoTableClass::NOMBRE
+      );
+      $orderByInsumo = array(
+          insumoTableClass::NOMBRE
+      );
+      $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, false, $orderByInsumo, 'ASC');
+
+      //fin llamado a foranea*/
+
         } catch (PDOException $exc) {
             echo $exc->getMessage();
             echo "<br>";

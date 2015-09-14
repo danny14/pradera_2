@@ -12,9 +12,10 @@
 <?php $idTrabajador = trabajadorTableClass::ID ?>
 <?php $idAnimal = animalTableClass::ID ?>
 <?php $idInsumo = insumoTableClass::ID ?>
-<?php $nombreanimal = animalTableClass::NOMBRE?>
-<?php $nombreinsumo = insumoTableClass::NOMBRE?>
-<?php $nombretrabajador = trabajadorTableClass::NOMBRE?>
+<?php $nombreAnimal = animalTableClass::NOMBRE?>
+<?php $nombreInsumo = insumoTableClass::NOMBRE?>
+<?php $nombreTrabajador = trabajadorTableClass::NOMBRE?>
+<?php $apellidoTrabajador = trabajadorTableClass::APELLIDO?>
 <form method="POST" action="<?php echo routing::getInstance()->getUrlWeb('registro_vacunacion', ((isset($objRegistroVacunacion)) ? 'update' : 'create')) ?>">
     <?php if (isset($objRegistroVacunacion) == TRUE): ?>
     <input type="hidden" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID,TRUE)?>" value="<?php echo $objRegistroVacunacion[0]->$id ?>">
@@ -41,7 +42,7 @@
     </div>          
        
 
-    <?php view::getMessageError('errorTrabajador')?>
+    <?php // view::getMessageError('errorTrabajador')?>
     <div class="form-group" <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_TRABAJADOR, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
         <label class="control-label" for="id_trabajador">
                <?php echo i18n::__('id_employee')?>:
@@ -54,7 +55,7 @@
      </select>
     </div>
     
-        <?php view::getMessageError('errorAnimal')?>
+        <?php // view::getMessageError('errorAnimal')?>
         <div class="form-group" <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>>
         <label class="control-label" for="id_animal">
                <?php echo i18n::__('id_animal')?>:
@@ -72,16 +73,10 @@
        <select class="form-control" id="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)?>" required>
                 <option><?php echo i18n::__('selectInput')?></option>
                   <?php foreach($objInsumo as $insumo):?>
-         <option value="<?php echo $insumo->$idInsumo?>"><?php echo $insumo->$nombreinsumo?></option>
+                <option <?php echo (isset($objRegistroVacunacion[0]->$id_insumo) === TRUE and $objRegistroVacunacion[0]->$id_insumo == $insumo->$idInsumo) ? 'selected' : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)) and request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)) == $insumo->$idInsumo) ? 'selected' : '') ?> value="<?php echo $insumo->$idInsumo?>"><?php echo $insumo->$nombreInsumo?></option>
          <?php endforeach;?>
      </select>
     </div>
-     
-    
-     
-   
-    
-    
       <br>
      <input class="btn btn-primary btn-xs" type="submit" value="<?php echo i18n::__((isset($objRegistroVacunacion)? 'update': 'register'))?>">
      <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('registro_vacunacion', 'index')?>"><i class="fa fa-hand-o-left"><?php echo i18n::__('return')?></i></a>

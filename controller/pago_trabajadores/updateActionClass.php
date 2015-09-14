@@ -14,7 +14,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-        
+
         $id = request::getInstance()->getPost(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID, true));
         $fecha_inicio = request::getInstance()->getPost(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, true));
         $fecha_fin = request::getInstance()->getPost(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_FIN, true));
@@ -23,9 +23,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $id_trabajador = request::getInstance()->getPost(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID_TRABAJADOR, true));
         $horas_extras = request::getInstance()->getPost(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::HORAS_EXTRAS, true));
         $cantidad_dias = request::getInstance()->getPost(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::CANTIDAD_DIAS, true));
-        
+
         $this->Validate($fecha_inicio, $fecha_fin, $subtotal, $valor_hora, $id_trabajador, $horas_extras, $cantidad_dias);
-        
+
         $ids = array(
             pagoTrabajadoresTableClass::ID => $id
         );
@@ -50,44 +50,47 @@ class updateActionClass extends controllerClass implements controllerActionInter
     }
   }
 
-  private function Validate($fecha_inicio, $fecha_fin, $subtotal, $valor_hora, $id_trabajador,$horas_extras, $cantidad_dias ) {
+  private function Validate($fecha_inicio, $fecha_fin, $subtotal, $valor_hora, $id_trabajador, $horas_extras, $cantidad_dias) {
     $flag = FALSE;
     $pattern = "/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
 
+    // VALIDACION PARA LA FECHA INICIO    
     if (preg_match($pattern, $fecha_inicio) === FALSE) {
-      session::getInstance()->geterror(in18::__('errorDate', NULL,'default', array('%Start_date%' => $fecha_inicio, '%character%' => pagoTrabajadoresTableClass::FECHA_INICIO)),'errorFechaInicio');
+      session::getInstance()->geterror(in18::__('errorDate', NULL, 'default', array('%Start_date%' => $fecha_inicio, '%character%' => pagoTrabajadoresTableClass::FECHA_INICIO)), 'errorFechaInicio');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE), TRUE);
     }
-       if(strtotime($fecha_inicio) > strtotime ($fecha_fin)){
-        session::getInstance()->geterror(i18n::__('errorDate2',NULL,'default',array('%Start_date%'=>$fecha_inicio,'%character%'=> pagoTrabajadoresTableClass::FECHA_INICIO)),'errorFechaInicio');
-        $flag = TRUE;
-        session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE), TRUE);
-      }
+    if (strtotime($fecha_inicio) > strtotime($fecha_fin)) {
+      session::getInstance()->geterror(i18n::__('errorDate2', NULL, 'default', array('%Start_date%' => $fecha_inicio, '%character%' => pagoTrabajadoresTableClass::FECHA_INICIO)), 'errorFechaInicio');
+      $flag = TRUE;
+      session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE), TRUE);
+    }
     if ($fecha_inicio === '' or $fecha_inicio === NULL) {
-      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Start_date%' => $fecha_inicio, '%character%' => pagoTrabajadoresTableClass::FECHA_INICIO)),'errorFechaInicio');
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Start_date%' => $fecha_inicio, '%character%' => pagoTrabajadoresTableClass::FECHA_INICIO)), 'errorFechaInicio');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_INICIO, TRUE), TRUE);
     }
-
+    // FIN VALIDACION PARA LA FECHA INICIO
+    // VALIDACION PARA LA FECHA FIN
     if (preg_match($pattern, $fecha_fin) === FALSE) {
-      session::getInstance()->geterror(in18::__('errorDate', NULL, array('%End_date%' => $fecha_fin, '%character%' => pagoTrabajadoresTableClass::FECHA_FIN)),'errorFechaFin');
+      session::getInstance()->geterror(in18::__('errorDate', NULL, array('%End_date%' => $fecha_fin, '%character%' => pagoTrabajadoresTableClass::FECHA_FIN)), 'errorFechaFin');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_PARTO, TRUE), TRUE);
     }
     if ($fecha_fin === '' or $fecha_fin === NULL) {
-      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%End_date%' => $fecha_fin, '%character%' => pagoTrabajadoresTableClass::FECHA_FIN)),'errorFechaFin');
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%End_date%' => $fecha_fin, '%character%' => pagoTrabajadoresTableClass::FECHA_FIN)), 'errorFechaFin');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::FECHA_FIN, TRUE), TRUE);
     }
-
+    // FIN VALIDACION PARA LA FECHA FIN
+    // VALIDACION PARA SUBTOTAL
     if (is_numeric($subtotal) === FALSE) {
-      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Subtotal%' => $subtotal, '%character%' => pagoTrabajadoresTableClass::SUBTOTAL)),'errorSubtotal');
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Subtotal%' => $subtotal, '%character%' => pagoTrabajadoresTableClass::SUBTOTAL)), 'errorSubtotal');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::SUBTOTAL, TRUE), TRUE);
     }
     if ($subtotal === '' or $subtotal === NULL) {
-      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Subtotal%' => $subtotal, '%character%' => pagoTrabajadoresTableClass::SUBTOTAL)),'errorSubtotal');
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Subtotal%' => $subtotal, '%character%' => pagoTrabajadoresTableClass::SUBTOTAL)), 'errorSubtotal');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::SUBTOTAL, TRUE), TRUE);
     }
@@ -96,19 +99,20 @@ class updateActionClass extends controllerClass implements controllerActionInter
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::SUBTOTAL, TRUE), TRUE);
     }
-    if (strlen($subtotal) >10) {
+    if (strlen($subtotal) > 10) {
       session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%subtotal%' => $subtotal)), 'errorSubtotal');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::SUBTOTAL, TRUE), TRUE);
     }
-
+    // FIN VALIDACION PARA SUBTOTAL
+    // VALIDACION PARA VALOR HORA
     if (is_numeric($valor_hora) === FALSE) {
-      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Time_value%' => $valor_hora, '%character%' => pagoTrabajadoresTableClass::VALOR_HORA)),'errorValorHora');
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Time_value%' => $valor_hora, '%character%' => pagoTrabajadoresTableClass::VALOR_HORA)), 'errorValorHora');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::VALOR_HORA, TRUE), TRUE);
     }
     if ($valor_hora === '' or $valor_hora === NULL) {
-      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Time_value%' => $valor_hora, '%character%' => pagoTrabajadoresTableClass::VALOR_HORA)),'errorValorHora');
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Time_value%' => $valor_hora, '%character%' => pagoTrabajadoresTableClass::VALOR_HORA)), 'errorValorHora');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::VALOR_HORA, TRUE), TRUE);
     }
@@ -122,14 +126,15 @@ class updateActionClass extends controllerClass implements controllerActionInter
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::VALOR_HORA, TRUE), TRUE);
     }
-
+    // FIN VALIDACION PARA VALOR HORA
+    // VALIDACION PARA TRABAJADOR
     if (is_numeric($id_trabajador) === FALSE) {
-      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Id_employee%' => $id_trabajador, '%character%' => pagoTrabajadoresTableClass::ID_TRABAJADOR)),'errorTrabajador');
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Id_employee%' => $id_trabajador, '%character%' => pagoTrabajadoresTableClass::ID_TRABAJADOR)), 'errorTrabajador');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID_TRABAJADOR, TRUE), TRUE);
     }
     if ($id_trabajador === '' or $id_trabajador === NULL) {
-      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Id_employee%' => $id_trabajador, '%character%' => pagoTrabajadoresTableClass::ID_TRABAJADOR)),'errorTrabajador');
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Id_employee%' => $id_trabajador, '%character%' => pagoTrabajadoresTableClass::ID_TRABAJADOR)), 'errorTrabajador');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID_TRABAJADOR, TRUE), TRUE);
     }
@@ -138,14 +143,15 @@ class updateActionClass extends controllerClass implements controllerActionInter
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID_TRABAJADOR, TRUE), TRUE);
     }
-
+    // FIN VALIDACION PARA TRABAJADOR
+    // VALIDACION PARA HORAS EXTRAS
     if (is_numeric($horas_extras) === FALSE) {
-      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Extra_time%' => $horas_extras, '%character%' => pagoTrabajadoresTableClass::HORAS_EXTRAS)),'errorHorasExtras');
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Extra_time%' => $horas_extras, '%character%' => pagoTrabajadoresTableClass::HORAS_EXTRAS)), 'errorHorasExtras');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::HORAS_EXTRAS, TRUE), TRUE);
     }
     if ($horas_extras === '' or $horas_extras === NULL) {
-      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Extra_time%' => $horas_extras, '%character%' => pagoTrabajadoresTableClass::HORAS_EXTRAS)),'errorHorasExtras');
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Extra_time%' => $horas_extras, '%character%' => pagoTrabajadoresTableClass::HORAS_EXTRAS)), 'errorHorasExtras');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::HORAS_EXTRAS, TRUE), TRUE);
     }
@@ -159,13 +165,15 @@ class updateActionClass extends controllerClass implements controllerActionInter
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::HORAS_EXTRAS, TRUE), TRUE);
     }
+    // FIN VALIDACION PARA HORAS EXTRAS
+    // VALIDACION PARA CANTIDAD DIAS
     if (is_numeric($cantidad_dias) === FALSE) {
-      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Number of days%' => $cantidad_dias, '%character%' => pagoTrabajadoresTableClass::CANTIDAD_DIAS)),'errorCantidadDias');
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Number of days%' => $cantidad_dias, '%character%' => pagoTrabajadoresTableClass::CANTIDAD_DIAS)), 'errorCantidadDias');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::CANTIDAD_DIAS, TRUE), TRUE);
     }
     if ($cantidad_dias === '' or $cantidad_dias === NULL) {
-      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Number of days%' => $cantidad_dias, '%character%' => pagoTrabajadoresTableClass::CANTIDAD_DIAS)),'errorCantidadDias');
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Number of days%' => $cantidad_dias, '%character%' => pagoTrabajadoresTableClass::CANTIDAD_DIAS)), 'errorCantidadDias');
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::CANTIDAD_DIAS, TRUE), TRUE);
     }
@@ -179,6 +187,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
       $flag = TRUE;
       session::getInstance()->setFlash(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::CANTIDAD_DIAS, TRUE), TRUE);
     }
+    // FIN VALIDACION PARA CANTIDAD DIAS
     if ($flag === TRUE) {
       request::getInstance()->setMethod('GET');
       request::getInstance()->addParamGet(array(pagoTrabajadoresTableClass::ID => request::getInstance()->getPost(pagoTrabajadoresTableClass::getNameField(pagoTrabajadoresTableClass::ID, TRUE))));

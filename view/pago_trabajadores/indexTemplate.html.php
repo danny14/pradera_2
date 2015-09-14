@@ -137,7 +137,6 @@
                     <thead>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
-                            <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('start_date') ?></th>
                             <th><?php echo i18n::__('end_date') ?></th>
                             <th><?php echo i18n::__('subtotal') ?></th>
@@ -153,7 +152,6 @@
                         <?php foreach ($objPagoTrabajadores as $pago_trabajadores): ?>
                             <tr>
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $pago_trabajadores->$id ?>"></td>
-                                <td><?php echo $pago_trabajadores->$id ?></td>
                                 <td><?php echo $pago_trabajadores->$fecha_inicio ?></td>
                                 <td><?php echo $pago_trabajadores->$fecha_fin ?></td>
                                 <td><?php echo '$' . number_format($pago_trabajadores->$subtotal, 0, ',', '.') ?></td>

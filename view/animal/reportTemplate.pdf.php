@@ -18,32 +18,32 @@ $pdf->AddPage();
 $pdf->Cell(80);
 $pdf->SetFont('Arial','B',12);
 $pdf->Image(routing::getInstance()->getUrlImg('fondoOriginal.jpg'),0,0,270);
-$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,90);
+$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,85);
 
 $pdf->Image(routing::getInstance()->getUrlImg('sena.jpg'),120,0,'C');
 
 $pdf ->Ln(50);
-
-$pdf->Cell(255,10,'ANIMAL',1,1,'C');
-
-
+$pdf->SetFillColor(175,238,238);
+$pdf->Cell(255,10,'ANIMAL',1,1,'C',true);
 
 
-  $pdf->Cell(40,10,  utf8_decode("NOMBRE"),1);
-  $pdf->Cell(20,10,  utf8_decode("GENERO"),1);
-  $pdf->Cell(20,10,  utf8_decode("PESO"),1);
-  $pdf->Cell(40,10,  utf8_decode("FECHA_INGRESO"),1);
-  $pdf->Cell(35,10,  utf8_decode("NUMERO_PARTOS"),1);
-  $pdf->Cell(40,10,  utf8_decode("ID_RAZA"),1);
-  $pdf->Cell(30,10,  utf8_decode("ID_ESTADO"),1);
+
+
+  $pdf->Cell(40,10,  utf8_decode("NOMBRE"),1,0,'C',TRUE);
+  $pdf->Cell(20,10,  utf8_decode("GENERO"),1,0,'C',TRUE);
+  $pdf->Cell(30,10,  utf8_decode("PESO"),1,0,'C',TRUE);
+  $pdf->Cell(43,10,  utf8_decode("FECHA_INGRESO"),1,0,'C',TRUE);
+  $pdf->Cell(45,10,  utf8_decode("NUMERO_PARTOS"),1,0,'C',TRUE);
+  $pdf->Cell(45,10,  utf8_decode("RAZA"),1,0,'C',TRUE);
+  $pdf->Cell(30,10,  utf8_decode("ESTADO"),1,0,'C',TRUE);
   $pdf->Ln();
 foreach ($objAnimal as $animal){
   $pdf->Cell(40,10,  utf8_decode($animal->$nombre),1);
-  $pdf->Cell(20,10,  utf8_decode($animal->$genero),1);
+  $pdf->Cell(30,10,  utf8_decode($animal->$genero),1);
   $pdf->Cell(20,10,  utf8_decode($animal->$peso),1);
-  $pdf->Cell(40,10,  utf8_decode($animal->$fecha_ingreso),1);
-  $pdf->Cell(35,10,  utf8_decode($animal->$numero_partos),1);
-  $pdf->Cell(40,10,  utf8_decode(animalTableClass::getNameFieldForaneaRaza($animal->$id_raza)),1);
+  $pdf->Cell(43,10,  utf8_decode($animal->$fecha_ingreso),1);
+  $pdf->Cell(45,10,  utf8_decode($animal->$numero_partos),1);
+  $pdf->Cell(45,10,  utf8_decode(animalTableClass::getNameFieldForaneaRaza($animal->$id_raza)),1);
   $pdf->Cell(30,10,  utf8_decode(animalTableClass::getNameFieldForaneaEstado($animal->$id_estado)),1);
   
   

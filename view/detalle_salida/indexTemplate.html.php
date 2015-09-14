@@ -1,6 +1,9 @@
 <?php use mvc\routing\routingClass as routing; ?>
 <?php use mvc\i18n\i18nClass as i18n; ?>
-<?php use mvc\view\viewClass as view ?>
+<?php use mvc\view\viewClass as view; ?>
+<?php use mvc\config\configClass as config?>
+<?php use mvc\request\requestClass as request?>
+<?php use mvc\session\sessionClass as session?>
 <?php $id = detalleSalidaTableClass::ID ?>
 <?php $cantidad= detalleSalidaTableClass::CANTIDAD ?>
 <?php $id_salida_bodega = detalleSalidaTableClass::ID_SALIDA_BODEGA ?>
@@ -14,7 +17,7 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
   <div class="page page-header text-center">
-    <h1><?php echo i18n::__('output_of_cellars_details') ?></h1>
+    <h1><i class="fa fa-paw"><?php echo i18n::__('output_of_cellars_details') ?></i></h1>
   </div>
   <div class="row">
     <header>
@@ -132,7 +135,6 @@
           <thead>
             <tr class="active">
               <th><input type="checkbox" id="chkAll"></th>
-              <th><?php echo i18n::__('id') ?></th>
               <th><?php echo i18n::__('quantity') ?></th>
               <th><?php echo i18n::__('salida_bodega') ?></th>
               <th><?php echo i18n::__('input') ?></th>
@@ -144,7 +146,6 @@
 <?php foreach ($objDetalleSalida as $detalle_salida): ?>
               <tr>
                 <td><input type="checkbox" name="chk[]" value="<?php echo $detalle_salida->$id ?>"></td>
-                <td><?php echo $detalle_salida->$id ?></td>
                 <td><?php echo $detalle_salida->$cantidad ?></td>
                 <td><?php echo detalleSalidaTableClass::getNameFieldForaneaSalidaBodega($detalle_salida->$id_salida_bodega) ?></td>
                 <td><?php echo detalleSalidaTableClass::getNameFieldForaneaInsumo($detalle_salida->$id_insumo) ?></td>

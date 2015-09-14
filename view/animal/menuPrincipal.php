@@ -93,6 +93,16 @@
         </li>
       </ul>
         <!-- Fin Modulo -->
+        <!-- Modulo Registro Vacunacion -->
+       <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Registro Vacunacion <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('registro_vacunacion', 'index')?>">Registro Vacunacion</a></li>
+          </ul>
+        </li>
+      </ul>
+        <!-- Fin Modulo -->
         <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Registro Celo <span class="caret"></span></a>
