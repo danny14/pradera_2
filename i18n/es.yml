@@ -93,13 +93,13 @@ dictionary:
     time_vaccine:           Hora Vacuna
     enterDoseVaccine:       Ingrese la Dosis Vacuna
 #-------- Reporte Parto ----------#
-    report_parto :        reporte_parto
-    date_delivery:        fecha_parto
-    n_animales_living:    n_animales_vivos
-    n_animales_dead:      n_animales_muertos
-    n_males:              n_machhos
-    n_females:            n_hembras
-    observation:          observaciones
+    report_parto :        Reporte Parto
+    date_delivery:        Fecha Parto
+    n_animales_living:    Numero Animales Vivos
+    n_animales_dead:      N Animales Muertos
+    n_males:              N Machos
+    n_females:            N Hembras
+    observation:          Observaciones
 #-------- Salida Bodega ----------#
     Output_bodega:        Salida Bodega
 #-------- Tipo Insumo ------------#

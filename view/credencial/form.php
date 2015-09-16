@@ -15,7 +15,7 @@
     <?php view::getMessageError('errorNombre')?>
    <div class="form-group <?php echo (session::getInstance()->hasFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE)) === TRUE) ? 'has-error has-feedback' : ''; ?>">
    <label class="control-label" for="name"><?php echo i18n::__('name') ?>: </label>
-   <input class="form-control" type="text" value="<?php echo ((isset($objCredencial)) ? $objCredencial[0]->$nombre : ((session::getInstance()->hasFlash(credencialTableClass::getNameField(credencialTableClass::DESCRIPCION, TRUE)) === TRUE) ?  '' :  (request::getInstance()->hasPost(credencialTableClass::getNameField(credencialTableClass::DESCRIPCION, TRUE))) ? request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::DESCRIPCION, TRUE))  : '' ) ) ?>" name="<?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, true )?>" maxlength="80">
+   <input class="form-control" type="text" value="<?php echo ((isset($objCredencial)) ? $objCredencial[0]->$nombre : ((session::getInstance()->hasFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE)) === TRUE) ?  '' :  (request::getInstance()->hasPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE))) ? request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE))  : '' ) ) ?>" name="<?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, true )?>" maxlength="80">
    <?php if (session::getInstance()->hasFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
    </div>
     

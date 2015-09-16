@@ -4,7 +4,7 @@
 <?php view::includePartial('animal/menuPrincipal')?>
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('new')." "; echo i18n::__('turn')?></h1>
+        <h1><i class="fa fa-clock-o"><?php echo i18n::__('new')." "; echo i18n::__('turn')?></i></h1>
 <?php view::includePartial('turno/form')?>
     </div>
 </div>  

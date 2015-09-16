@@ -9,10 +9,10 @@
 <?php $id_turno = trabajadorTableClass::ID_TURNO; ?>
 <?php $id_credencial = trabajadorTableClass::ID_CREDENCIAL ?>
 <?php $id_ciudad = trabajadorTableClass::ID_CIUDAD ?>
-<?php view::includePartial('animal/menuPrincipal'); ?>
+<?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
-    <h1><?php echo i18n::__('employee') ?></h1>
-    <h1<i class="fa fa-child"><?php echo i18n::__('trabajador') ?></i></h1>
+    <h1><i class="fa fa-child"><?php echo i18n::__('employee') ?></i></h1>
     <div class="row">
         <header>
 

@@ -5,7 +5,7 @@
 <?php view::includePartial('animal/menuPrincipal')?>
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('edit')." "; echo i18n::__('type_input')." ";echo $objTipoInsumo[0]->$descripcion?></h1>
+        <h1><i class="glyphicon glyphicon-object-align-bottom"><?php echo i18n::__('edit')." "; echo i18n::__('type_input')." ";echo $objTipoInsumo[0]->$descripcion?></i></h1>
 <?php view::includePartial('tipo_insumo/form',array('objTipoInsumo'=> $objTipoInsumo))?> 
     </div>
 </div>

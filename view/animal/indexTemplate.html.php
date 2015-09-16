@@ -158,6 +158,8 @@
                                        <?php if(session::getInstance()->hasCredential('admin')) : ?>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('animal','edit', array(animalTableClass::ID => $animal->$id, animalTableClass::ID_RAZA => $animal->$id_raza, animalTableClass::ID_ESTADO => $animal->$id_estado)) ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                         <a data-toggle="modal" data-target="#myModalDelete<?php echo $animal->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a href="<?php echo routing::getInstance()->getUrlWeb('animal','detail', array(animalTableClass::ID => $animal->$id)) ?>" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detalle</a>
+                                        
                                         <?php endif;?>
                                         <!-- -->
                                     </div>

@@ -1,5 +1,5 @@
 <br><br><br><br><br>
-<?php echo json_encode($datos) ?>
+<?php //echo json_encode($datos) ?>
 <br><br><br><br>
 <?php
 // $datos = array(
@@ -32,13 +32,14 @@
             <div id="info2c"></div>
             <script>
                 $(document).ready(function () {
-                    var texto = ['Brix', 'Ph', 'Ar', 'Sacaroza', 'Pureza'];
-                    plot2b = $.jqplot('chart2b', <?php echo json_encode($datos) ?> /*[
-                     
-                     [[1,2, { proveedor: 'castilla', fecha: '02/10/2015' } ], [2,4], [3,6], [4,3]],
-                     [[1,5], [2,1], [3,3], [4,4]],
-                     [[1,4], [2 ,7], [3,1], [4,2]]
-                     ]*/, {
+                    var texto = <?php echo json_encode($razaTick) ?>;
+                    plot2b = $.jqplot('chart2b',
+                    <?php echo json_encode($raza) ?>
+//                    [
+//                        [[1,100], [2,80]],
+//                        [[1,30], [2,20]]
+//                    ]
+                    , {
                         seriesDefaults: {
                             renderer: $.jqplot.BarRenderer,
                             pointLabels: {show: true, location: 'e', edgeTolerance: -15},
@@ -46,17 +47,19 @@
                             rendererOptions: {
                                 barDirection: 'vertical'
                             },
-                            pointLabels: {show: false}
+                            pointLabels: {show: false},
+                        },
+                        axesDefault: {
+                           pad: 1 
                         },
                         axes: {
                             xaxis: {
-                                renderer: $.jqplot.DateAxisRenderer,
-                                min: '<?php echo json_encode($fecha_inicio) ?>',
-                                max: '<?php echo json_encode($fecha_fin) ?>',
-                            
+                                // renderer: $.jqplot.DateAxisRenderer,
+                                 //min: 149,
+                                 //max: 152
                             },
                             yaxis: {
-                                max: 60
+                                //max: 60
                             }
                         },
                         legend: {show: true, labels: texto, location: 'nw'}

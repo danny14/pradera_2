@@ -4,9 +4,8 @@
 <?php view::includePartial('animal/menuPrincipal')?>
 <?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
- <h1<i class="fa fa-file-text-o"><?php echo i18n::__('reporte') ?></i></h1>
     <div class="row">
-<h1><?php echo i18n::__('new')." "; echo i18n::__('report')?></h1>
+<h1> <i class="fa fa-file-text-o"> <?php echo i18n::__('new')." "; echo i18n::__('report')?></i></h1>        
 <?php if(isset($objRaza)):?>
     <?php view::includePartial('reportes/form',array('reporteId' => $reporteId,'objRaza'=>$objRaza))?>
 <?php endif;?>

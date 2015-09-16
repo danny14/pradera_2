@@ -5,7 +5,7 @@
 <?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('new')." "; echo i18n::__('entry_cellar')?></h1>
+        <h1><i class="fa fa-truck"><?php echo i18n::__('new')." "; echo i18n::__('entry_cellar')?></i></h1>
 <?php //view::includeHandlerMessage()?>
 <?php view::includePartial('entrada_bodega/form', array('objTrabajador' => $objTrabajador,'objProveedor' => $objProveedor))?>
     </div>
