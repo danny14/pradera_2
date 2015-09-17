@@ -83,8 +83,8 @@
                     <?php foreach ($objOrdenno as $ordenno): ?>
                         <tr>
                             <td><?php echo $ordenno->$fecha_ordenno ?></td>
-                            <td><?php echo $ordenno->$id_animal_o ?></td>
-                            <td><?php echo $ordenno->$id_empleado_o ?></td>
+                            <td><?php echo ordennoTableClass::getNameFieldForaneaAnimal($ordenno->$id_animal_o) ?></td>
+                            <td><?php echo ordennoTableClass::getNameFieldForaneaTrabajador($ordenno->$id_empleado_o) ?></td>
                         </tr>
                     <?php endforeach; ?> 
                 </tbody>
@@ -109,8 +109,8 @@
                             <td><?php echo $registro_vacunacion->$id_trabajador_r ?></td>
                             <td><?php echo $registro_vacunacion->$dosis_vacuna?></td>
                             <td><?php echo $registro_vacunacion->$hora_vacuna ?></td>
-                            <td><?php echo $registro_vacunacion->$id_animal_r ?></td>
-                            <td><?php echo $registro_vacunacion->$id_insumo_r ?></td>
+                            <td><?php echo registroVacunacionTableClass::getNameFieldForaneaAnimal($registro_vacunacion->$id_animal_r) ?></td>
+                            <td><?php echo registroVacunacionTableClass::getNameFieldForaneaInsumo($registro_vacunacion->$id_insumo_r) ?></td>
                         </tr>
                     <?php endforeach; ?> 
                 </tbody>
@@ -137,7 +137,7 @@
                             <td><?php echo $reporte_parto->$n_animales_m ?> .Kg</td>
                             <td><?php echo $reporte_parto->$n_machos ?></td>
                             <td><?php echo $reporte_parto->$n_hembras ?></td>
-                            <td><?php echo $reporte_parto->$id_animal_re ?></td>
+                            <td><?php echo reportePartoTableClass::getNameFieldForaneaAnimal($reporte_parto->$id_animal_re) ?></td>
                             <td><?php echo $reporte_parto->$observaciones ?></td>
                         </tr>
                     <?php endforeach; ?> 
@@ -157,8 +157,8 @@
                     <?php foreach ($objRegistroCelo as $registro_celo): ?>
                         <tr>
                             <td><?php echo $registro_celo->$fecha ?></td>
-                            <td><?php echo $registro_celo->$id_animal_r_c ?></td>
-                            <td><?php echo $registro_celo->$id_fecundador_r_c ?></td>
+                            <td><?php echo registroCeloTableClass::getNameFieldForaneaAnimal($registro_celo->$id_animal_r_c) ?></td>
+                            <td><?php echo registroCeloTableClass::getNameFieldForaneaFecundador($registro_celo->$id_fecundador_r_c) ?></td>
                         </tr>
                     <?php endforeach; ?> 
                 </tbody>

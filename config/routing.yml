@@ -231,7 +231,11 @@ animal_detail:
     - model/base/registroCeloBaseTableClass.php
     - model/registroCeloTableClass.php    
     - model/base/reportePartoBaseTableClass.php
-    - model/reportePartoTableClass.php    
+    - model/reportePartoTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
 
 ##----------------------Bitacora------------------------------##
 bitacora_index:
@@ -874,6 +878,8 @@ insumo_index:
   load:
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
     
 insumo_insert:
   url:    /insumo/insertar

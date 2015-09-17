@@ -15,25 +15,25 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where = NULL;
             if(request::getInstance()->hasPost('filter') and request::getInstance()->isMethod('POST')){
                 $filter = request::getInstance()->getPost('filter');
-                
                 /**
                  * Validacion de los filtros
                  */
-                 //echo $filter[animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)];          
-                if(isset($filter[animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)]) and $filter[animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)] !== NULL and $filter[animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)] !== ''){
-                    if(request::getInstance()->isMethod('POST')){
+                 //echo $filter[animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)]; 
+
+                if(isset($filter[animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)]) and $filter[animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)] !== NULL AND $filter[animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)] !== ''){
                         $nombre = $filter[animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)];
                         $this->ValidateName($nombre);
                         $where[] = '(' . animalTableClass::getNameField(animalTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
                                 . 'OR ' . animalTableClass::getNameField(animalTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
                                 . 'OR ' . animalTableClass::getNameField(animalTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
                         //$where[animalTableClass::NOMBRE] = $nombre;
-                    }
+                    
                 }
                 if(isset($filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_1']) and $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_1'] !== NULL and $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_1'] !== '' and isset($filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_2']) and $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_2'] !== NULL and $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_2'] !== ''){
+                    
                     $fecha_ini = $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'];
                     $fecha_fin = $filter[animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE).'_2'];
-                    $this->ValidateFecha( $fecha_ini, $fecha_fin);
+                    $this->ValidateFecha($fecha_ini, $fecha_fin);
                     $where[animalTableClass::FECHA_INGRESO] = array(
                         $fecha_ini,
                         $fecha_fin
@@ -41,10 +41,42 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
                     );
                 }
+                if(isset($filter[animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)]) and $filter[animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)] !== NULL and $filter[animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)] !== ''){
+                    $id_raza = $filter[animalTableClass::getNameField(animalTableClass::ID_RAZA,TRUE)];
+                    
+                    $where[animalTableClass::ID_RAZA] = $id_raza;
+                }
+                if(isset($filter[animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE)]) and $filter[animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE)] !== NULL and $filter[animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)] !== ''){
+                    $id_estado = $filter[animalTableClass::getNameField(animalTableClass::ID_RAZA,TRUE)];
+                    $where[animalTableClass::ID_RAZA] = $id_raza;
+                }
                 session::getInstance()->setAttribute('animalIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('animalIndexFilters')){
             $where = session::getInstance()->getAttribute('animalIndexFilters');
             }
+            /*
+             * FOREANEA RAZA PARA FILTROS Y REPORTES
+             */
+            $fields = array(
+            razaTableClass::ID,
+            razaTableClass::DESCRIPCION
+            );
+            $orderBy = array(
+            razaTableClass::DESCRIPCION
+            );
+            $this->objRaza = razaTableClass::getAll($fields, FALSE, $orderBy);
+            /*
+             *  FORANEA ESTADO PARA FILTRO Y REPORTES
+             */
+            $fields = array(
+            estadoTableClass::ID,
+            estadoTableClass::DESCRIPCION
+            );
+            $orderBy = array(
+            estadoTableClass::DESCRIPCION
+            );
+            $this->objEstado = estadoTableClass::getAll($fields, FALSE, $orderBy);
+            
             $fields = array(
             animalTableClass::ID,
             animalTableClass::NOMBRE,

@@ -12,6 +12,10 @@
 <?php $numero_partos = animalTableClass::NUMERO_PARTOS ?>
 <?php $id_raza = animalTableClass::ID_RAZA ?>
 <?php $id_estado = animalTableClass::ID_ESTADO ?>
+<?php $idRaza = razaTableClass::ID?>
+<?php $descripcionRaza = razaTableClass::DESCRIPCION?>
+<?php $idEstado = estadoTableClass::ID?>
+<?php $descripcionEstado = estadoTableClass::DESCRIPCION?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
@@ -57,6 +61,29 @@
                                         <input type="date" name="filter[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>]" class="form-control" id="filter<?php animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="filterRaza" class="col-sm-2 control-label"><?php echo i18n::__('breed') ?>:</label>
+                                    <div class="col-sm-10">
+                                    <select class="form-control" id="filter[<?php echo animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE) ?>]" name="filter[<?php echo animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE); ?>]" required />
+                                    <option value=""><?php echo i18n::__('selectRaza') ?></option>
+                                    <?php foreach ($objRaza as $raza): ?>
+                                        <option <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)) and request::getInstance()->getPost(animalTableClass::getNameField(animalBaseTableClass::ID_RAZA, TRUE)) == $raza->$id_raza) ? 'selected' : ''  ?> value="<?php echo $raza->$idRaza ?>"><?php echo $raza->$descripcionRaza ?></option>
+                                    <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="filterEstado" class="col-sm-2 control-label"><?php echo i18n::__('status') ?>:</label>
+                                    <div class="col-sm-10">
+                                    <select class="form-control" id="filter[<?php echo animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE) ?>]" name="filter[<?php echo animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE); ?>]" required />
+                                    <option value=""><?php echo i18n::__('selectEstado') ?></option>
+                                    <?php foreach ($objEstado as $estado): ?>
+                                        <option <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE)) and request::getInstance()->getPost(animalTableClass::getNameField(animalBaseTableClass::ID_ESTADO, TRUE)) == $estado->$idEstado) ? 'selected' : ''  ?> value="<?php echo $estado->$idEstado ?>"><?php echo $estado->$descripcionEstado ?></option>
+                                    <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                </div>
+              
                             </form>
                         </div>
                         <div class="modal-footer">

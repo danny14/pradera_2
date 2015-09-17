@@ -36,13 +36,13 @@
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name') ?>">
+                                        <input type="text" class="form-control" id="filter<?php echo insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE)?>" name="filter[<?php echo insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE)?>]" placeholder="<?php echo i18n::__('name') ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="filterDate_create" class="col-sm-2 control-label"><?php echo i18n::__('date_create') ?></label>
+                                    <label for="filterDateCreate" class="col-sm-2 control-label"><?php echo i18n::__('date_create') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="filter[fecha_fabricacion]" class="form-control" id="filterFecha_fabricacion" placeholder="<?php echo i18n::__('date_create') ?>">
+                                        <input type="date" name="filter[fecha_fabricacion]" class="form-control" id="filterFecha_fabricacion" placeholder="<?php echo i18n::__('date_create') ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -149,7 +149,7 @@
                         <td><?php echo $insumo->$fecha_fabricacion?></td>
                         <td><?php echo $insumo->$fecha_vencimiento?></td>
                         <td>$<?php echo $insumo->$valor?>.00</td>
-                        <td><?php echo $insumo->$id_tipo_insumo?></td>
+                        <td><?php echo insumoTableClass::getNameFieldForaneaTipoInsumo($insumo->$id_tipo_insumo)?></td>
                         <td>
                             <div>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'view',array(insumoTableClass::ID => $insumo->$id));?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
