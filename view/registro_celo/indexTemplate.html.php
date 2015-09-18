@@ -99,7 +99,7 @@
                               <div class="form-group"> <!--filtro para llamar foranea-->
                             <label for="filterAnimal" class="col-sm-2 control-label"><?php echo i18n::__('animal') ?></label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="filterAnimal" name="filter[Animal]">
+                                <select class="form-control" id="reportAnimal" name="report[Animal]">
                                     <option value=""><?php echo i18n::__('animal') ?></option>
                                      <?php foreach ($objAnimal as $nombre_animal): ?>
                                         <option value="<?php echo $nombre_animal->$animal_id ?>"><?php echo $nombre_animal->$nombre ?></option>

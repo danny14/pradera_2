@@ -1,11 +1,11 @@
-<?php use mvc\routing\routingClass as routing; ?>
-<?php use mvc\i18n\i18nClass as i18n; ?>
-<?php use mvc\view\viewClass as view; ?>
-<?php use mvc\config\configClass as config?>
-<?php use mvc\request\requestClass as request?>
-<?php use mvc\session\sessionClass as session?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view ?>
+<?php use mvc\config\configClass as config ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $id = detalleSalidaTableClass::ID ?>
-<?php $cantidad= detalleSalidaTableClass::CANTIDAD ?>
+<?php $cantidad = detalleSalidaTableClass::CANTIDAD ?>
 <?php $id_salida_bodega = detalleSalidaTableClass::ID_SALIDA_BODEGA ?>
 <?php $id_insumo = detalleSalidaTableClass::ID_INSUMO ?>
 <?php $id_tipo_insumo = detalleSalidaTableClass::ID_TIPO_INSUMO ?>
@@ -43,13 +43,13 @@
                   <div class="col-sm-10">
                     <select class="form-control" id="filterSalidaBodega" name="filter[Salida_bodega]">
                       <option value=""><?php echo i18n::__('salida_bodega') ?></option>
-<?php foreach ($objSalidaBodega as $id_salida): ?>
+                      <?php foreach ($objSalidaBodega as $id_salida): ?>
                         <option value="<?php echo $id_salida->$salida_bodega_id ?>"><?php echo $id_salida->$salida_bodega_id ?></option>
-<?php endforeach; ?>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                 </div> <!--fin de filtro foranea-->
-<div class="form-group"> <!--filtro para llamar foranea-->
+                <div class="form-group"> <!--filtro para llamar foranea-->
                   <label for="filterInput" class="col-sm-2 control-label"><?php echo i18n::__('input') ?></label>
                   <div class="col-sm-10">
                     <select class="form-control" id="filterInsumo" name="filter[Input]">
@@ -84,18 +84,18 @@
             <div class="modal-body">
               <form method="POST" class="form-horizontal" id="reportForm" action="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'report') ?>">
 
-                 <div class="form-group"> <!--filtro para llamar foranea-->
+                <div class="form-group"> <!--filtro para llamar foranea-->
                   <label for="filterSalidaBodega" class="col-sm-2 control-label"><?php echo i18n::__('salida_bodega') ?></label>
                   <div class="col-sm-10">
                     <select class="form-control" id="filterSalidaBodega" name="filter[Salida_bodega]">
                       <option value=""><?php echo i18n::__('salida_bodega') ?></option>
-<?php foreach ($objSalidaBodega as $id_salida): ?>
+                      <?php foreach ($objSalidaBodega as $id_salida): ?>
                         <option value="<?php echo $id_salida->$salida_bodega_id ?>"><?php echo $id_salida->$id_salida_bodega ?></option>
-<?php endforeach; ?>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                 </div> <!--fin de filtro foranea-->
-<div class="form-group"> <!--filtro para llamar foranea-->
+                <div class="form-group"> <!--filtro para llamar foranea-->
                   <label for="filterInput" class="col-sm-2 control-label"><?php echo i18n::__('input') ?></label>
                   <div class="col-sm-10">
                     <select class="form-control" id="filterInsumo" name="filter[Insumo]">
@@ -119,7 +119,7 @@
       </div>
       <!--Fin Ventana Modal Reportes-->
       <!--Formulario para el Cambio de Idiomas-->
-      <?php view::includePartial('animal/formTraductor')?>
+        <?php view::includePartial('animal/formTraductor') ?>
       <!-- Fin del Formulario de Cambio de Idiomas-->
 
       <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'deleteSelect') ?>" method="POST">
@@ -127,7 +127,8 @@
           <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'insert') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
           <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModalDeleteMasivo" id="btnDeleteMasivo"><?php echo i18n::__('delete') ?></a>
           <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFILTROS"><?php echo i18n::__('filters') ?></a>
-          <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'deleteFilters') ?>" ><?php echo i18n::__('delete') . " "; echo i18n::__('filters') ?></a>
+          <a class="btn btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'deleteFilters') ?>" ><?php echo i18n::__('delete') . " ";
+        echo i18n::__('filters') ?></a>
           <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalREPORTES"><i class=" fa fa-file-pdf-o"> <?php echo i18n::__('report') ?></i></a>
         </div>
 <?php view::includeHandlerMessage() ?>
@@ -169,17 +170,17 @@
                     <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('confirm_delete') ?></h4>
                   </div>
                   <div class="modal-body">
-  <?php // echo i18n::__('Do you want to delete the record?')  ?> <?php // echo $salida_bodega->$  ?> 
+  <?php // echo i18n::__('Do you want to delete the record?')   ?> <?php // echo $salida_bodega->$id   ?> 
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
-                    <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $detalle_salida->$id ?>, '<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'delete') ?>')"><?php echo i18n::__('confirm') ?></button>
+                    <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $detalle_salida->$id ?>, '<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID, TRUE) ?>', '<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'delete') ?>','<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'view',array(salidaBodegaTableClass::ID=>$detalle_salida->$id_salida_bodega)) ?>')"><?php echo i18n::__('confirm') ?></button>
                   </div>
                 </div>
               </div>
             </div>
             <!-- Fin de la ventana MODAL -->
-          <?php endforeach; ?> 
+<?php endforeach; ?> 
           </tbody>
         </table>
       </form>
@@ -202,7 +203,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('confirm_delete') . " ";
+        <h4 class="modal-title" id="myModalLabel"><?php
+echo i18n::__('confirm_delete') . " ";
 echo i18n::__('selected_items')
 ?></h4>
       </div>
@@ -216,3 +218,21 @@ echo i18n::__('selected_items')
     </div>
   </div>
 </div>
+<!-----------------Ventana Modal de Error Eliminar Individual----------------------->
+<div class="modal fade" id="myModalErrorDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><?php echo "Este es un mensaje de error "?>;
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------------------FIN-------------------------------------->

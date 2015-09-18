@@ -10,18 +10,18 @@ $pdf->AddPage();
 $pdf->Cell(80);
 $pdf->SetFont('Arial','B',12);
 $pdf->Image(routing::getInstance()->getUrlImg('fondoOriginal.jpg'),0,0,270);
-$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,85);
+//$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,85);
 
-$pdf->Image(routing::getInstance()->getUrlImg('sena.jpg'),120,0,'C');
+$pdf->Image(routing::getInstance()->getUrlImg('sena.jpg'),110,0,'C');
 
 $pdf ->Ln(50);
-
-$pdf->Cell(0,10,'SALIDA BODEGA',1,1,'C');
+$pdf->SetFillColor(175,238,238);
+$pdf->Cell(0,10,'SALIDA BODEGA',1,1,'C',true);
 
 
   $pdf ->Ln();
-  $pdf->Cell(80,10,  utf8_decode("FECHA REGISTRO "),1);
-  $pdf->Cell(180,10,  utf8_decode("TRABAJADOR DE TURNO"),1);
+  $pdf->Cell(80,10,  utf8_decode("FECHA REGISTRO "),1,0,'C',true);
+  $pdf->Cell(180,10,  utf8_decode("TRABAJADOR DE TURNO"),1,0,'C',true);
   
   $pdf ->Ln();
 foreach ($objSalidaBodega as $salida_bodega){

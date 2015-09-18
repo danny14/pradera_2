@@ -536,7 +536,7 @@ detalle_salida_view:
     
 detalle_salida_delete:
   url:    /detalle_salida/borrado
-  param:  { module: detalle_salida, action: delete, format: html }
+  param:  { module: detalle_salida, action: delete, format: json }
   load:
     - model/base/detalleSalidaBaseTableClass.php
     - model/detalleSalidaTableClass.php
@@ -855,6 +855,8 @@ insumo_index:
   load:
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
     
 insumo_insert:
   url:    /insumo/insertar
@@ -1030,6 +1032,10 @@ ordenno_report:
     - libs/fpdf/fpdf.php
     - model/base/ordennoBaseTableClass.php
     - model/ordennoTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
     
 ordenno_grafica:
   url:    /ordenno/grafica
@@ -1120,7 +1126,7 @@ pago_trabajadores_view:
     
 pago_trabajadores_delete:
   url:    /pago_trabajadores/borrado
-  param:  { module: pago_trabajadores, action: delete, format: html }
+  param:  { module: pago_trabajadores, action: delete, format: json }
   load:
     - model/base/pagoTrabajadoresBaseTableClass.php
     - model/pagoTrabajadoresTableClass.php
@@ -1415,7 +1421,7 @@ registro_celo_view:
     
 registro_celo_delete:
   url:    /registro_celo/borrado
-  param:  { module: registro_celo, action: delete, format: html }
+  param:  { module: registro_celo, action: delete, format: json }
   load:
     - model/base/registroCeloBaseTableClass.php
     - model/registroCeloTableClass.php
@@ -1559,6 +1565,12 @@ registro_vacunacion_report:
     - libs/fpdf/fpdf.php
     - model/base/registroVacunacionBaseTableClass.php
     - model/registroVacunacionTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
     
 ##------------------------ REPORTE -------------------------##
 reportes_index:
@@ -1705,7 +1717,7 @@ reporte_parto_view:
     
 reporte_parto_delete:
   url:    /reporte_parto/borrado
-  param:  { module: reporte_parto, action: delete, format: html }
+  param:  { module: reporte_parto, action: delete, format: json }
   load:
     - model/base/reportePartoBaseTableClass.php
     - model/reportePartoTableClass.php
@@ -1822,7 +1834,7 @@ salida_bodega_view:
     
 salida_bodega_delete:
   url:    /salida_bodega/borrado
-  param:  { module: salida_bodega, action: delete, format: html }
+  param:  { module: salida_bodega, action: delete, format: json }
   load:
     - model/base/salidaBodegaBaseTableClass.php
     - model/salidaBodegaTableClass.php

@@ -1,7 +1,7 @@
 <?php use mvc\routing\routingClass as routing;?>
 <?php use mvc\i18n\i18nClass as i18n;?>
 <?php use mvc\session\sessionClass as session ;?>
-<?php use mvc\view\viewClass as view?>
+<?php use mvc\view\viewClass as view; ?>
 <?php use mvc\request\requestClass as request?>
 <?php $id = detallesalidaTableClass::ID ;?>
 <?php $cantidad = detallesalidaTableClass::CANTIDAD ;?>
@@ -61,8 +61,6 @@
    </select>
    <br>
    <input class="btn btn-primary btn-xs" type="submit" value="<?php echo i18n::__((isset($objDetalleSalida) ? 'update': 'register'))?>">
-   <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_salida', 'view',array(salidaBodegaTableClass::ID => $idSalida)) ?>"class="btn btn-info btn-xs"> <i class="fa fa-hand-o-left"> <?php echo i18n::__('return') ?></i></a>
+   <a href="<?=$_SERVER["HTTP_REFERER"]?>" class="btn btn-info btn-xs"><?php echo i18n::__('return') ?></a>
    </div>
 </form>
-
-

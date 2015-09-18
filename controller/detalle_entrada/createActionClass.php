@@ -73,92 +73,84 @@ class createActionClass extends controllerClass implements controllerActionInter
      */
     private function Validate($valor,$id_entrada,$id_insumo,$id_tipo_insumo) {
         $flag = FALSE;
-        $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
+//        $pattern="/^((19|20)?[0-9]{2})[\/|-](0?[1-9]|[1][012])[\/|-](0?[1-9]|[12][0-9]|3[01])$/";
         
-//        if (strlen($nombre) > animalTableClass::NOMBRE_LENGTH) {
-//            session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> animalTableClass::NOMBRE_LENGTH)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
-//                    
-//        }
-//
-//        if (!ereg("^[a-zA-Z0-9]{3,80}$", $nombre)) {
-//            session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => animalTableClass::NOMBRE)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
-//        }
-//        if($nombre === '' or $nombre === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::NOMBRE)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);
-//        }
-//        if($genero === '' or $genero === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::GENERO)), 'errorGenero');
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::GENERO, TRUE), TRUE);            
-//        }
-//        if($genero !== "F" and $genero !== "M"){// and $genero !== "f"  and $genero !== "m"  ){
-//                                                                                       /* se le agrega una llave para el error*/
-//            session::getInstance()->setError(i18n::__('errorGender', NULL, 'default'), 'errorGenero');
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::GENERO, TRUE), TRUE);
-//        }
-//        if (!is_numeric($edad)) {
-//            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => animalTableClass::EDAD)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::EDAD, TRUE), TRUE);
-//        }
-//        if($edad === '' or $edad === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::EDAD)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::EDAD, TRUE), TRUE);            
-//        }
-//        if (!is_numeric($peso)) {
-//            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => animalTableClass::PESO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::PESO, TRUE), TRUE);
-//        }
-//        if($peso === '' or $peso === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::PESO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::PESO, TRUE), TRUE);                        
-//        }
-//        if(preg_match($pattern, $fecha_ingreso) === FALSE){
-//            session::getInstance()->setError(i18n::__('errorDate', NULL, 'default',array('%date%' => animalTableClass::FECHA_INGRESO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);             
-//        }
-//        if($fecha_ingreso === '' or $fecha_ingreso === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::FECHA_INGRESO)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::FECHA_INGRESO, TRUE), TRUE);              
-//        }
-//        if(!is_numeric($numero_partos)){
-//            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => animalTableClass::NUMERO_PARTOS)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NUMERO_PARTOS, TRUE), TRUE);            
-//        }
-//        if($numero_partos === '' or $numero_partos === NULL){
-//            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default',array('%field%' => animalTableClass::NUMERO_PARTOS)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NUMERO_PARTOS, TRUE), TRUE);            
-//        }
-//        if(!is_numeric($id_raza)){
-//            session::getInstance()->setError(i18n::__('errorNumber', NULL, 'default',array('%field%' => animalTableClass::ID_RAZA)));
-//            $flag = TRUE;
-//            session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE), TRUE);             
-//        }
-//        if($id_raza === '' or $id_raza === NULL ){
-//            
-//        }
-//        if(!is_numeric($id_estado)){
-//            
-//        }
-//        if($id_estado === '' or $id_raza === NULL){}
-        /* _______________________________ */
+       // VALIDACION PARA VALOR 
+    if (is_numeric($valor) === FALSE) {
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%value%' => $valor, '%character%' => detalleEntradaTableClass::VALOR)), 'errorValorHora');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::VALOR, TRUE), TRUE);
+    }
+    if ($valor === '' or $valor === NULL) {
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%value%' => $valor, '%character%' => detalleEntradaTableClass::VALOR)), 'errorValorHora');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::VALOR, TRUE), TRUE);
+    }
+    if ($valor < 0) {
+      session::getInstance()->setError(i18n::__('errorNumberNegative', NULL, 'default', array('%number%' => $valor)), 'errorValorHora');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::VALOR, TRUE), TRUE);
+    }
+    if (strlen($valor) > 10) {
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%number%' => $valor)), 'errorValorHora');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::VALOR, TRUE), TRUE);
+    }
+    // FIN VALIDACION PARA VALOR 
+    // VALIDACION PARA ENTRADA BODEGA
+    if (is_numeric($id_entrada) === FALSE) {
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%id_entrada%' => $id_entrada, '%character%' => detalleEntradaTableClass::ID_ENTRADA_BODEGA)), 'errorEntradaBodega');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID_ENTRADA_BODEGA, TRUE), TRUE);
+    }
+    if ($id_entrada === '' or $id_entrada === NULL) {
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%id_entrada%' => $id_entrada, '%character%' => detalleEntradaTableClass::ID_ENTRADA_BODEGA)), 'errorEntradaBodega');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID_ENTRADA_BODEGA, TRUE), TRUE);
+    }
+    if ($id_entrada < 0) {
+      session::getInstance()->setError(i18n::__('errorNumberNegative', NULL, 'default', array('%number%' => $id_entrada)), 'errorEntradaBodega');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID_ENTRADA_BODEGA, TRUE), TRUE);
+    }
+    // FIN VALIDACION PARA SALIDA BODEGA
+    // VALIDACION PARA INSUMO
+    if (is_numeric($id_insumo) === FALSE) {
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Id_input%' => $id_insumo, '%character%' => detalleEntradaTableClass::ID_INSUMO)), 'errorInsumo');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID_INSUMO, TRUE), TRUE);
+    }
+    if ($id_insumo === '' or $id_insumo === NULL) {
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Id_input%' => $id_insumo, '%character%' => detalleEntradaTableClass::ID_INSUMO)), 'errorInsumo');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID_INSUMO, TRUE), TRUE);
+    }
+    if ($id_insumo < 0) {
+      session::getInstance()->setError(i18n::__('errorNumberNegative', NULL, 'default', array('%number%' => $id_insumo)), 'errorInsumo');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID_INSUMO, TRUE), TRUE);
+    }
+    // FIN VALIDACION PARA INSUMO
+    // VALIDACION PARA TIPO INSUMO
+    if (is_numeric($id_tipo_insumo) === FALSE) {
+      session::getInstance()->setError(i18n::__('errorCharacter', NULL, 'default', array('%Id_type_input%' => $id_tipo_insumo, '%character%' => detalleEntradaTableClass::ID_TIPO_INSUMO)), 'errorTipoInsumo');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID_TIPO_INSUMO, TRUE), TRUE);
+    }
+    if ($id_tipo_insumo === '' or $id_tipo_insumo === NULL) {
+      session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%Id_type_input%' => $id_tipo_insumo, '%character%' => detalleEntradaTableClass::ID_TIPO_INSUMO)), 'errorTipoInsumo');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID_TIPO_INSUMO, TRUE), TRUE);
+    }
+    if ($id_tipo_insumo < 0) {
+      session::getInstance()->setError(i18n::__('errorNumberNegative', NULL, 'default', array('%number%' => $id_tipo_insumo)), 'errorTipoInsumo');
+      $flag = TRUE;
+      session::getInstance()->setFlash(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID_TIPO_INSUMO, TRUE), TRUE);
+    }
+    // FIN VALIDACION PARA TIPO INSUMO 
         if($flag === TRUE){
             request::getInstance()->setMethod('GET'); //POST
-            routing::getInstance()->forward('animal', 'insert');
+            routing::getInstance()->forward('detalle_entrada', 'insert');
         }
     }
 

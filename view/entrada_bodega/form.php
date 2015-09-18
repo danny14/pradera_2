@@ -52,7 +52,7 @@
     <div class="form-group <?php // echo ((isset($animal[$id_estado])) ? 'has-error has-feedback' : '') ?>">
         <label class="control-label" for="provider"><?php echo i18n::__('provider')?></label>
         <select class="form-control" id="<?php entradaBodegaTableClass::getNameField(entradaBodegaTableClass::ID_PROVEEDOR, TRUE)?>" name="<?php echo entradaBodegaTableClass::getNameField(entradaBodegaTableClass::ID_PROVEEDOR, TRUE);?>" required />
-   <option><?php echo i18n::__('selectEstado')?></option>
+   <option><?php echo i18n::__('selectProvider')?></option>
        <?php foreach($objProveedor as $proveedor):?>
        <option <?php echo (isset($objEntradaBodega[0]->$id_proveedor_e) === true and $objEntradaBodega[0]->$id_proveedor_e == $proveedor->$id_proveedor) ? 'selected' : '' ?> value="<?php echo $proveedor->$id_proveedor?>"><?php echo $proveedor->$nombre_proveedor?></option>
        <?php endforeach;?>

@@ -59,6 +59,7 @@ dictionary:
     time:                 Hora
     detail:               Ver Detalle
     value:                Valor
+    selectProvider:       Seleccione el Proveedor
 #-------- Estado -----------------#
     status:               Estado
 #-------- Fecudandor -------------#
@@ -70,6 +71,7 @@ dictionary:
 #-------- Ordeño -----------------#
     ordenno:              Ordeño
     date_ordenno:         Fecha Ordeño
+    enterDateOrdenno:     Error Fecha Ordenno
     quantity_milk:        Cantidad de Leche
     enterQuantityMilk:    Ingrese la Cantidad de Leche
 #-------- Pago Trabajador --------#
@@ -96,7 +98,7 @@ dictionary:
     enterDateRegister:      Ingrese Fecha Registro
     enterTimeVaccine:       Ingrese Hora Vacunacion
 #-------- Reporte Parto ----------#
-    report_parto:        reporte_parto
+    report_parto:          reporte_parto
     date_delivery :        fecha_parto
     n_animales_living :    n_animales_vivos
     n_animales_dead :      n_animales_muertos

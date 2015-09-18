@@ -57,7 +57,7 @@
                   <?php foreach($objAnimal as $animal):?>
                 <option <?php echo (isset($objOrdenno[0]->$id_animal) === TRUE and $objOrdenno[0]->$id_animal == $animal->$idAnimal) ? 'selected' : ((session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)) and request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)) == $animal->$idAnimal) ? 'selected' : '') ?> value="<?php echo $animal->$idAnimal?>"><?php echo $animal->$nombreAnimal?></option>
          <?php endforeach;?>
-     </select>
+            </select>
     </div>
  
     

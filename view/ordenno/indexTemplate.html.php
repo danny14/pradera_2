@@ -72,7 +72,7 @@
                             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('generate report') ?></h4>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" class="form-horizontal" id="reportForm" action="<?php // echo routing::getInstance()->getUrlWeb('ordenno', 'report') ?>">
+                            <form method="POST" class="form-horizontal" id="reportForm" action="<?php echo routing::getInstance()->getUrlWeb('ordenno', 'report') ?>">
                                 <div class="form-group">
                                     <label for="reportDate_ordenno" class="col-sm-2 control-label"><?php echo i18n::__('date_ordenno') ?></label>
                                     <div class="col-sm-10">

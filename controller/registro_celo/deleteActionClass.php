@@ -25,11 +25,11 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             'code' => 200,
             'msg' => 'la eliminacion del registro fue exitosa'
         );
-        $this->defineView('delete', 'registro_celo', session::getInstance()->getFormatOutput());
        bitacora::register('ELIMINAR', registroCeloBaseTableClass::getNameTable());
-        session::getInstance()->setSuccess('el registro fue eliminado exitosamente');
+       session::getInstance()->setSuccess('el registro fue eliminado exitosamente');
+       $this->defineView('delete', 'registro_celo', session::getInstance()->getFormatOutput());
       } else {
-        routing::getInstance()->redirect('registro_celo', 'delete');
+        routing::getInstance()->redirect('registro_celo', 'index');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();

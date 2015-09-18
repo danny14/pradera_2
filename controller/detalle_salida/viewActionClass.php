@@ -12,8 +12,8 @@ use mvc\i18n\i18nClass as i18n;
 class viewActionClass extends controllerClass implements controllerActionInterface{
     public function execute() {
         try {
-          $salida_bodega_id = request::getInstance()->getRequest(salidaBodegaTableClass::ID);
-          if(request::getInstance()->hasRequest(salidaBodegaTableClass::ID)){
+          $salida_bodega_id = request::getInstance()->getGet(salidaBodegaTableClass::ID);
+          if(request::getInstance()->hasGet(salidaBodegaTableClass::ID)){
             $fields = array(
             salidaBodegaTableClass::ID,
             salidaBodegaTableClass::FECHA,
@@ -47,9 +47,9 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
                 $this->defineView('view', 'detalle_salida', session::getInstance()->getFormatOutput());
             }else{
                 session::getInstance()->setError('Error no se pudo visualizar correctamente');
-                routing::getInstance()->redirect('detalle_salida', 'index');
+                routing::getInstance()->redirect('detalle_salida', 'view');
             }
-             //fin llamado a foranea*/
+//             //fin llamado a foranea*/
 //llamado de la foranea
       $fieldsInsumo = array(/* foranea insumo */
           insumoTableClass::ID,
@@ -60,7 +60,7 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
       );
       $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, false, $orderByInsumo, 'ASC');
 
-      //fin llamado a foranea*/
+//      //fin llamado a foranea*/
 
         } catch (PDOException $exc) {
             echo $exc->getMessage();

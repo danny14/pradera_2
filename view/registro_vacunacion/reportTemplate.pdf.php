@@ -13,24 +13,24 @@ $pdf->AddPage();
 $pdf->Cell(80);
 $pdf->SetFont('Arial','B',12);
 $pdf->Image(routing::getInstance()->getUrlImg('fondoOriginal.jpg'),0,0,270);
-$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,90);
+//$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,90);
 
-$pdf->Image(routing::getInstance()->getUrlImg('sena.jpg'),120,0,'C');
+$pdf->Image(routing::getInstance()->getUrlImg('sena.jpg'),110,0,'C');
 
 $pdf ->Ln(50);
-
-$pdf->Cell(255,10,'REGISTRO_VACUNACION',1,1,'C');
-
-
+$pdf->SetFillColor(175,238,238);
+$pdf->Cell(255,10,'REGISTRO_VACUNACION',1,1,'C',true);
 
 
-  $pdf->Cell(40,10,  utf8_decode("ID"),1);
-  $pdf->Cell(45,10,  utf8_decode("FECHA_REGISTRO"),1);
-  $pdf->Cell(40,10,  utf8_decode("ID_TRABAJADOR"),1);
-  $pdf->Cell(40,10,  utf8_decode("DOSIS_VACUNA"),1);
-  $pdf->Cell(40,10,  utf8_decode("HORA_VACUNA"),1);
-  $pdf->Cell(40,10,  utf8_decode("ID_ANIMAL"),1);
-  $pdf->Cell(40,10,  utf8_decode("ID_INSUMO"),1);
+
+
+  $pdf->Cell(40,10,  utf8_decode("ID"),1,0,'C',true);
+  $pdf->Cell(45,10,  utf8_decode("FECHA_REGISTRO"),1,0,'C',true);
+  $pdf->Cell(40,10,  utf8_decode("ID_TRABAJADOR"),1,0,'C',true);
+  $pdf->Cell(40,10,  utf8_decode("DOSIS_VACUNA"),1,0,'C',true);
+  $pdf->Cell(40,10,  utf8_decode("HORA_VACUNA"),1,0,'C',true);
+  $pdf->Cell(40,10,  utf8_decode("ANIMAL"),1,0,'C',true);
+  $pdf->Cell(40,10,  utf8_decode("INSUMO"),1,0,'C',true);
   $pdf->Ln();
   
 foreach ($objRegistroVacunacion as $registro_vacunacion){

@@ -37,6 +37,8 @@
             <li><a href="<?php  echo routing::getInstance()->getUrlWeb('credencial', 'index')?>">Credencial</a></li>
             <li class="divider"></li>
             <li><a href="<?php  echo routing::getInstance()->getUrlWeb('turno', 'index')?>">Turno</a></li>
+            <li class="divider"></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'index')?>">Pago Trabajadores</a></li>
           </ul>
         </li>
       </ul>
@@ -72,16 +74,6 @@
         </li>
       </ul>
         <!-- Fin Modulo -->
-        <!-- Modulo Pago Trabajador -->
-       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pago Trabajador <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('pago_trabajadores', 'index')?>">Pago Trabajadores</a></li>
-          </ul>
-        </li>
-      </ul>
-        <!-- Fin Modulo -->
         <!-- Modulo Bodega -->
        <ul class="nav navbar-nav">
         <li class="dropdown">
@@ -103,6 +95,7 @@
         </li>
       </ul>
         <!-- Fin Modulo -->
+        <!-- Modulo Registro celo, Reporte Parto -->
         <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Registro Celo <span class="caret"></span></a>
@@ -117,6 +110,23 @@
           </ul>
         </li>
       </ul>
+        <!-- Fin Modulo -->
+         <!-- Modulo Insumo, Tipo Insumo -->
+        <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Insumo <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('insumo', 'index')?>">Insumo</a></li>
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('tipo_insumo', 'index')?>">Tipo Insumo</a></li>
+            <!--<li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+            -->
+          </ul>
+        </li>
+      </ul>
+        <!-- Fin Modulo -->
       <ul class="nav navbar-nav navbar-right">
         <!--<li><a href="#">Link</a></li>-->
         <li class="dropdown">

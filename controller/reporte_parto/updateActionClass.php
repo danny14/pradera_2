@@ -162,7 +162,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
     }
     // FIN VALIDACION PARA EL NUMERO DE HEMBRAS
     // VALIDACION PARA LAS OBSERVACIONES
-    if (!preg_match("/^[a-zA-Z0-9]{3,80}$/", $observaciones)) {
+    if (!preg_match("/^[a-zA-Z0-9 ]{3,80}$/", $observaciones)) {
       session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default', array('%field%' => reportePartoTableClass::OBSERVACIONES)), 'errorObservaciones');
       $flag = TRUE;
       session::getInstance()->setFlash(reportePartoTableClass::getNameField(reportePartoTableClass::OBSERVACIONES, TRUE), TRUE);

@@ -34,4 +34,23 @@ class insumoTableClass extends insumoBaseTableClass {
             throw $exc;
         }
     }
+
+
+ public static function getNameFieldForaneaTipoInsumo($id) {
+        try {
+            $sql = 'SELECT ' . tipoInsumoTableClass::DESCRIPCION . ' AS nom_tipo_insumo '
+                    . ' FROM ' . tipoInsumoTableClass::getNameTable() . ' '
+                    . ' WHERE ' . tipoInsumoTableClass::ID . ' = :id';
+            $params = array(
+                ':id' => $id
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->nom_tipo_insumo;
+        } catch (PDOException $exc) {
+            throw $exc;
+        }
+    }
+
 }

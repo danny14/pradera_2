@@ -149,7 +149,7 @@
                         <td><?php echo $insumo->$fecha_fabricacion?></td>
                         <td><?php echo $insumo->$fecha_vencimiento?></td>
                         <td>$<?php echo $insumo->$valor?>.00</td>
-                        <td><?php echo $insumo->$id_tipo_insumo?></td>
+                        <td><?php echo insumoTableClass::getNameFieldForaneaTipoInsumo($insumo->$id_tipo_insumo) ?></td>
                         <td>
                             <div>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'view',array(insumoTableClass::ID => $insumo->$id));?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>

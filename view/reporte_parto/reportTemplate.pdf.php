@@ -15,9 +15,9 @@ $pdf->AddPage();
 $pdf->Cell(80);
 $pdf->SetFont('Arial','B',12);
 $pdf->Image(routing::getInstance()->getUrlImg('fondoOriginal.jpg'),0,0,270);
-$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,85);
+//$pdf->Image(routing::getInstance()->getUrlImg('vak.jpg'),0,0,85);
 
-$pdf->Image(routing::getInstance()->getUrlImg('sena.jpg'),120,0,'C');
+$pdf->Image(routing::getInstance()->getUrlImg('sena.jpg'),110,0,'C');
 
 $pdf->Ln(50);
 $pdf->SetFillColor(175,238,238);
@@ -49,6 +49,8 @@ foreach ($objReporteParto as $reporteParto){
   $pdf->SetFont('Arial','',10);
   $pdf->Cell(228,10,  utf8_decode($reporteParto->observaciones),1); 
   $pdf->Ln();
+  $pdf ->Ln();
+  $pdf ->Ln();
   $pdf ->Ln();
   
 

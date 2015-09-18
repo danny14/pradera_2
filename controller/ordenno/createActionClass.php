@@ -79,10 +79,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             $flag = TRUE;
             session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, TRUE), TRUE);
         }
-        /*
-         * Validacion para ID TRABAJADOR
-         */
-/*
+         /*
          * Validacion para ID TRABAJADOR
          */
         if ($id_trabajador === '' or $id_trabajador === NULL) {
@@ -94,19 +91,20 @@ class createActionClass extends controllerClass implements controllerActionInter
             $flag = TRUE;
             session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_TRABAJADOR, TRUE), TRUE);
         }
+        
         /*
          * Validacion para ID ANIMAL
          */
-        if (!is_numeric($id_animal) === FALSE) {
-            session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $id_animal)),'errorAnimal');
+        if ($id_animal === '' or $id_animal === NULL) {
+            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ordennoTableClass::ID_ANIMAL)),'errorAnimal');
+            $flag = TRUE;
+            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::id_animal, TRUE), TRUE);
+        }else if (is_numeric($id_animal) === FALSE) {
+            session::getInstance()->seterror(i18n::__('errorNumber', NULL, 'default', array('%number%' => $id_animal)),'errorAnimal');
             $flag = TRUE;
             session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE), TRUE);
         }
-        if ($id_animal === '' or $id_animal === NULL) {
-            session::getInstance()->setError(i18n::__('errorCharacterEmpty', NULL, 'default', array('%field%' => ordennoTableClass::id_animal)),'errorAnimal');
-            $flag = TRUE;
-            session::getInstance()->setFlash(ordennoTableClass::getNameField(ordennoTableClass::id_animal, TRUE), TRUE);
-        }
+
 
         
         if($flag === TRUE){
