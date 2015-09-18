@@ -37,32 +37,32 @@
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name') ?>">
+                                        <input type="text" class="form-control" id="filter<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)?>" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)?>]" placeholder="<?php echo i18n::__('name') ?>">
                                     </div>
                                 </div>
                                    <div class="form-group">
                                     <label for="filterLast_name" class="col-sm-2 control-label"><?php echo i18n::__('last_name') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterApellido" name="filter[apellido]" placeholder="<?php echo i18n::__('last_name') ?>">
+                                        <input type="text" class="form-control" id="filter<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE)?>" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE)?>]" placeholder="<?php echo i18n::__('last_name') ?>">
                                     </div>
                                 </div>
                                
                                 <div class="form-group">
                                     <label for="filterAddress" class="col-sm-2 control-label"><?php echo i18n::__('address') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="filter[direccion]" class="form-control" id="filterDireccion" placeholder="<?php echo i18n::__('address')?>">
+                                        <input type="text" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, TRUE)?>]" class="form-control" id="filter<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, TRUE)?>" placeholder="<?php echo i18n::__('address')?>">
                                     </div>
                                 </div>
                                   <div class="form-group">
                                     <label for="filterPhone" class="col-sm-2 control-label"><?php echo i18n::__('phone') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="filter[telefono]" class="form-control" id="filterPeso" placeholder="<?php echo i18n::__('phone')?>">
+                                        <input type="number" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, TRUE)?>]" class="form-control" id="filter<?php echo proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, TRUE)?>" placeholder="<?php echo i18n::__('phone')?>">
                                     </div>
                                   </div>
                                  <div class="form-group">
                                     <label for="filterMail" class="col-sm-2 control-label"><?php echo i18n::__('mail') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterCorreo" name="filter[correo]" placeholder="<?php echo i18n::__('mail') ?>">
+                                        <input type="text" class="form-control" id="filter<?php echo proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE)?>" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE)?>]" placeholder="<?php echo i18n::__('mail') ?>">
                                     </div>
                                  </div>
                             </form>

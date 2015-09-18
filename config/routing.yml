@@ -1493,6 +1493,10 @@ registro_vacunacion_index:
   load:
     - model/base/registroVacunacionBaseTableClass.php
     - model/registroVacunacionTableClass.php
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
     
 registro_vacunacion_insert:
   url:    /registro_vacunacion/insertar
