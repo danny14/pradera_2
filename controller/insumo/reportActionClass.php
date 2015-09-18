@@ -16,7 +16,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 $report =  request::getInstance()->getPost('report');
                 
                 if( isset($report['nombre']) and $report['nombre'] !== NULL and $report['nombre'] !== ''){
-                    $where[fecundadorTableClass::NOMBRE] = $report['nombre'];
+                    $where[insumoTableClass::NOMBRE] = $report['nombre'];
                 }
                 
                 if( isset($report['fecha_fabricacion']) and $report['fecha_fabricacion'] !== NULL and $report['fecha_fabricacion'] !== ''){
