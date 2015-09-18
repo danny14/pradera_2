@@ -111,19 +111,49 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="reportFilterForm" action="<?php  echo routing::getInstance()->getUrlWeb('animal', 'report')?>">
+                                <?php view::getMessageError('errorName')?>
+                                <div class="form-group <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?> " >
+                                    <label for="reportName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="report<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)?>" name="report[<?php echo animalTableClass::getNameField(animalTableClass::NOMBRE,TRUE)?>]" placeholder="<?php echo i18n::__('name')?>">
+                                        <?php  if (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
+                                    </div>
+                                </div>
                                 <?php view::getMessageError('errorDateCreate')?>
                                 <div class="form-group">
                                     <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="report[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>]" class="form-control" id="filter<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
+                                        <input type="date" name="report[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>]" class="form-control" id="report<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_1'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
                                     </div>
                                 </div>
                                 <?php view::getMessageError('errorDateEnd')?>
                                 <div class="form-group">
                                     <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="report[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>]" class="form-control" id="filter<?php animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                        <input type="date" name="report[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>]" class="form-control" id="report<?php animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reportRaza" class="col-sm-2 control-label"><?php echo i18n::__('breed') ?>:</label>
+                                    <div class="col-sm-10">
+                                    <select class="form-control" id="report<?php echo animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE) ?>" name="report[<?php echo animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE); ?>]" required />
+                                    <option value=""><?php echo i18n::__('selectRaza') ?></option>
+                                    <?php foreach ($objRaza as $raza): ?>
+                                        <option <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)) and request::getInstance()->getPost(animalTableClass::getNameField(animalBaseTableClass::ID_RAZA, TRUE)) == $raza->$id_raza) ? 'selected' : ''  ?> value="<?php echo $raza->$idRaza ?>"><?php echo $raza->$descripcionRaza ?></option>
+                                    <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="filterEstado" class="col-sm-2 control-label"><?php echo i18n::__('status') ?>:</label>
+                                    <div class="col-sm-10">
+                                    <select class="form-control" id="report<?php echo animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE) ?>" name="report[<?php echo animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE); ?>]" required />
+                                    <option value=""><?php echo i18n::__('selectEstado') ?></option>
+                                    <?php foreach ($objEstado as $estado): ?>
+                                        <option <?php echo (session::getInstance()->hasFlash(animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(animalTableClass::getNameField(animalTableClass::ID_ESTADO, TRUE)) and request::getInstance()->getPost(animalTableClass::getNameField(animalBaseTableClass::ID_ESTADO, TRUE)) == $estado->$idEstado) ? 'selected' : ''  ?> value="<?php echo $estado->$idEstado ?>"><?php echo $estado->$descripcionEstado ?></option>
+                                    <?php endforeach; ?>
+                                    </select>
+                                </div>
                                 </div>
                             </form>
                         </div>

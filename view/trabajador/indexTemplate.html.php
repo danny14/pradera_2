@@ -39,25 +39,13 @@
                                 <div class="form-group" >
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name')?>">
+                                        <input type="text" class="form-control" id="filter<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE)?>" name="filter[<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE)?>]" placeholder="<?php echo i18n::__('name')?>">
                                     </div>
                                 </div>
                                 <div class="form-group" >
                                     <label for="filterLastName" class="col-sm-2 control-label"><?php echo i18n::__('last_name')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterApellido" name="filter[apellido]" placeholder="<?php echo i18n::__('last_name')?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
-                                    <div class="col-sm-10">
-                                        <input type="date" name="filter[fechaCreacion1]" class="form-control" id="filterCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
-                                    <div class="col-sm-10">
-                                        <input type="date" name="filter[fechaCreacion2]" class="form-control" id="filterCreacion2" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
+                                        <input type="text" class="form-control" id="filter<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE)?>" name="filter[<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE)?>]" placeholder="<?php echo i18n::__('last_name')?>">
                                     </div>
                                 </div>
                             </form>

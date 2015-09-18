@@ -134,7 +134,7 @@
                         <tr>
                             <td><?php echo $reporte_parto->$fecha_parto ?></td>
                             <td><?php echo $reporte_parto->$n_animales_vi ?></td>
-                            <td><?php echo $reporte_parto->$n_animales_m ?> .Kg</td>
+                            <td><?php echo $reporte_parto->$n_animales_m ?></td>
                             <td><?php echo $reporte_parto->$n_machos ?></td>
                             <td><?php echo $reporte_parto->$n_hembras ?></td>
                             <td><?php echo reportePartoTableClass::getNameFieldForaneaAnimal($reporte_parto->$id_animal_re) ?></td>
