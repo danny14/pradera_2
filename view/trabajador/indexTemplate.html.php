@@ -42,6 +42,12 @@
                                         <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name')?>">
                                     </div>
                                 </div>
+                                <div class="form-group" >
+                                    <label for="filterLastName" class="col-sm-2 control-label"><?php echo i18n::__('last_name')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="filterApellido" name="filter[apellido]" placeholder="<?php echo i18n::__('last_name')?>">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
@@ -78,7 +84,12 @@
                                     <label for="reportName" class="col-sm-2 control-label"><?php echo i18n::__('name')?></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="filterNombre" name="report[nombre]" placeholder="<?php echo i18n::__('name')?>">
-                                        
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="reportLastName" class="col-sm-2 control-label"><?php echo i18n::__('last_name')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="filterApellido" name="report[apellido]" placeholder="<?php echo i18n::__('last_name')?>">
                                     </div>
                                 </div>
                                 <div class="form-group">

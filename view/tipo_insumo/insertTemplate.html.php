@@ -4,7 +4,7 @@
 <?php view::includePartial('animal/menuPrincipal')?>
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('new')." "; echo i18n::__('type_input')?></h1>
+        <h1><i class="glyphicon glyphicon-object-align-bottom"><?php echo i18n::__('new')." "; echo i18n::__('type_input')?></i></h1>
 <?php view::includePartial('tipo_insumo/form')?>
     </div>
 </div>

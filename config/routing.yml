@@ -213,7 +213,30 @@ animal_report:
     - model/razaTableClass.php
     - model/base/estadoBaseTableClass.php
     - model/estadoTableClass.php
-    
+
+animal_detail:
+  url:    /animal/detalle
+  param:  { module: animal, action: detail, format: html }
+  load:
+    - model/base/animalBaseTableClass.php
+    - model/animalTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php    
+    - model/base/ordennoBaseTableClass.php
+    - model/ordennoTableClass.php    
+    - model/base/registroVacunacionBaseTableClass.php
+    - model/registroVacunacionTableClass.php    
+    - model/base/registroCeloBaseTableClass.php
+    - model/registroCeloTableClass.php    
+    - model/base/reportePartoBaseTableClass.php
+    - model/reportePartoTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/fecundadorBaseTableClass.php
+    - model/fecundadorTableClass.php
+
 ##----------------------Bitacora------------------------------##
 bitacora_index:
   url:    /bitacora/index

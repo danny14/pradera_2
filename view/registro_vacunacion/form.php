@@ -15,7 +15,7 @@
 <?php $nombreAnimal = animalTableClass::NOMBRE?>
 <?php $nombreInsumo = insumoTableClass::NOMBRE?>
 <?php $nombreTrabajador = trabajadorTableClass::NOMBRE?>
-<?php $apellidoTrabajador = trabajadorTableClass::APELLIDO?>
+<?php $apellidoTrabajador= trabajadorTableClass::APELLIDO?>
 <form method="POST" action="<?php echo routing::getInstance()->getUrlWeb('registro_vacunacion', ((isset($objRegistroVacunacion)) ? 'update' : 'create')) ?>">
     <?php if (isset($objRegistroVacunacion) == TRUE): ?>
     <input type="hidden" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID,TRUE)?>" value="<?php echo $objRegistroVacunacion[0]->$id ?>">
@@ -73,7 +73,7 @@
        <select class="form-control" id="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)?>" required>
                 <option><?php echo i18n::__('selectInput')?></option>
                   <?php foreach($objInsumo as $insumo):?>
-                <option <?php echo (isset($objRegistroVacunacion[0]->$id_insumo) === TRUE and $objRegistroVacunacion[0]->$id_insumo == $insumo->$idInsumo) ? 'selected' : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)) and request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)) == $insumo->$idInsumo) ? 'selected' : '') ?> value="<?php echo $insumo->$idInsumo?>"><?php echo $insumo->$nombreInsumo?></option>
+                <option <?php echo (isset($objRegistroVacunacion[0]->$id_insumo) === TRUE and $objRegistroVacunacion[0]->$id_insumo == $insumo->$idInsumo) ? 'selected' : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) and request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) == $insumo->$idInsumo) ? 'selected' : '') ?> value="<?php echo $insumo->$idInsumo ?>"><?php echo $insumo->$nombreInsumo ?></option>
          <?php endforeach;?>
      </select>
     </div>

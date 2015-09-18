@@ -6,9 +6,10 @@
 <?php $created_at= credencialTableClass::CREATED_AT?>
 <?php $updated_at = credencialTableClass::UPDATED_AT?>
 <?php $deleted_at = credencialTableClass::DELETED_AT?>
+<?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
-    <h1><?php echo i18n::__('credential') ?></h1>
-    <h1<i class="fa fa-tags"><?php echo i18n::__('credencial') ?></i></h1>
+    <h1><i class="fa fa-tags"><?php echo i18n::__('credential') ?></i></h1>
     <div class="row">
         <header>
 
@@ -21,9 +22,9 @@
             <table class="table table-bordered table-responsive table-condensed">
                 <thead>
                     <tr class="active">
-                        <th><?php echo i18n::__('nombre')?></th>
+                        <th><?php echo i18n::__('name')?></th>
                         <th><?php echo i18n::__('created_at')?></th>
-                        <th><?php echo i18n::__('update_at')?></th>
+                        <th><?php echo i18n::__('updated_at')?></th>
                         <th><?php echo i18n::__('deleted_at')?></th>
                         <th><?php echo i18n::__('action')?></th>
                     </tr>

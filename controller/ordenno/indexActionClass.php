@@ -16,22 +16,35 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where = NULL;
             if(request::getInstance()->hasPost('filter')){
                 $filter = request::getInstance()->getPost('filter');
-                // aqui validar datos de filtros
-                if(isset($filter['fecha_ordenno']) and $filter['fecha_ordenno'] !== NULL and $filter['fecha_ordenno'] !== ''){
-                    $this->validate($fecha_ordenno);
-                    $fecha_ordenno = $filter['fecha_ordenno'];
-                    $where[ordennoTableClass::FECHA_ORDENNO] = $filter['fecha_ordenno'];
+                // aqui validar datos de filtros                
+
+                if(isset($filter[ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_1']) and $filter[ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_1'] !== NULL and $filter[ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_1'] !== '' and isset($filter[ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_2']) and $filter[ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_2'] !== NULL and $filter[ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_2'] !== ''){
+                    $fecha_ini = $filter[ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO,TRUE).'_1'];
+                    $fecha_fin = $filter[ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_2'];
+                    //$this->ValidateFecha($fecha_ini, $fecha_fin);
+                    $where[ordennoTableClass::FECHA_ORDENNO] = array(
+                        $fecha_ini,
+                        $fecha_fin
+                    );
                 }
-                if(isset($filter['cantidad_leche']) and $filter['cantidad_leche'] !== NULL and $filter['cantidad_leche'] !== ''){
-                    $cantidad_leche = $filter['cantidad_leche'];
-                    $this->validateCantidadLeche($cantidad_leche);
-                    $where[ordennoTableClass::CANTIDAD_LECHE] = $filter['cantidad_leche'];
-              
+                
+                if(isset($filter[ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)]) and $filter[ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)] !== NULL and $filter[ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)] !== ''){
+                    $id_animal = $filter[ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)];
+                    $where[ordennoTableClass::ID_ANIMAL] = $id_animal;
                 }
+                
                 session::getInstance()->setAttribute('ordennoIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('ordennoIndexFilters')){
             $where = session::getInstance()->getAttribute('ordennoIndexFilters');
             }
+            $fields = array(
+            animalTableClass::ID,
+            animalTableClass::NOMBRE
+            );
+            $orderBy = array(
+            animalTableClass::NOMBRE
+            );
+            $this->objAnimal = animalTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
             
             $fields= array(
             ordennoTableClass::ID,

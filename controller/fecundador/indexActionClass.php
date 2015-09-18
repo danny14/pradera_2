@@ -82,7 +82,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         }
     }
     private function validateName($nombre) {
-
+        $flag = FALSE;
         if (strlen($nombre) > fecundadorTableClass::NOMBRE_LENGTH) {
             session::getInstance()->seterror(i18n::__('errorCharacter', null, 'default', array('%name%' => $nombre, '%Character%' => fecundadorTableClass::NOMBRE_LENGTH)), 'errorNombre');
             $flag = TRUE;
@@ -100,6 +100,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
     }
 
     private function validateAge($edad) {
+        $flag = FALSE;
         if (is_numeric($edad) === FALSE) {
             session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $edad)), 'errorEdad');
             $flag = TRUE;
@@ -113,6 +114,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
     }
 
     private function validateWeight($peso) {
+        $flag = FALSE;
         if (is_numeric($peso) === FALSE) {
             session::getInstance()->seterror(i18n::__('errorNumber', null, 'default', array('%number%' => $peso)), 'errorPeso');
             $flag = TRUE;

@@ -106,7 +106,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setError(i18n::__('errorCharacterName', NULL,'default', array('%name%'=>$nombre,'%character%'=> animalTableClass::NOMBRE_LENGTH)),'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);          
-        }else if (!preg_match("/^[a-z A-Z]{3,80}$/", $nombre)) {
+        }else if (!preg_match("/^[a-zA-Z ]{3,80}$/", $nombre)) {
             session::getInstance()->setError(i18n::__('errorCharacterSpecial', NULL, 'default',array('%field%' => animalTableClass::NOMBRE)),'errorNombre');
             $flag = TRUE;
             session::getInstance()->setFlash(animalTableClass::getNameField(animalTableClass::NOMBRE, TRUE), TRUE);

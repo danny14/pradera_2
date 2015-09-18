@@ -3,7 +3,7 @@
 <?php use mvc\view\viewClass as view ?>
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('new')." "; echo i18n::__('payment of employee')?></h1>
+        <h1><i class="fa fa-diamond"><?php echo i18n::__('new')." "; echo i18n::__('payment of employee')?></i></h1>
 <?php view::includePartial('pago_trabajadores/form',array('objTrabajador' => $objTrabajador))?>
     </div>
 </div>

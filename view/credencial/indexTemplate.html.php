@@ -104,7 +104,7 @@
                             <div class="btn btn-group btn-xs">
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'view',array(credencialTableClass::ID => $credencial->$id))?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"><?php?></i></a>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'edit', array(credencialTableClass::ID => $credencial->$id));?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                                <a data-toggle="modal" data-target="#myModalDelete<?php echo $crendencial->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                <a data-toggle="modal" data-target="#myModalDelete<?php echo $credencial->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
                             </div>
                         </td>
                     </tr>

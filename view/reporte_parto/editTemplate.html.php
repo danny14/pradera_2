@@ -4,7 +4,7 @@
 
 <div class="container container-fluid">
     <div class="row">
-<h1><?php echo i18n::__('edit')." "; echo i18n::__('report_parto')?></h1>
+        <h1><i class="fa fa-file-pdf-o"><?php echo i18n::__('edit')." "; echo i18n::__('report_parto')?></i></h1>
 <?php view::includePartial('reporte_parto/form',array('objReporteParto'=> $objReporteParto,'objAnimal'=>$objAnimal))?>
     </div>
 </div>

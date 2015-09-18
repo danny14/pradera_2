@@ -2,6 +2,8 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session?>
+<?php use mvc\request\requestClass as request?>
 <?php $id = registroVacunacionTableClass::ID ?>
 <?php $fecha_registro =registroVacunacionTableClass::FECHA_REGISTRO ?>
 <?php $id_trabajador =registroVacunacionTableClass::ID_TRABAJADOR ?>
@@ -9,6 +11,10 @@
 <?php $hora_vacuna =registroVacunacionTableClass::HORA_VACUNA ?>
 <?php $id_animal =registroVacunacionTableClass::ID_ANIMAL ?>
 <?php $id_insumo =registroVacunacionTableClass::ID_INSUMO ?>
+<?php $idAnimal = animalTableClass::ID?>
+<?php $nombreAnimal = animalTableClass::NOMBRE?>
+<?php $idInsumo = insumoTableClass::ID ?>
+<?php $nombreInsumo = insumoTableClass::NOMBRE?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
      <div class="page page-header text-center">
@@ -32,31 +38,49 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php echo routing::getInstance()->getUrlWeb('registro_vacunacion', 'index') ?>">
+                                <?php view::getMessageError('errorDateCreate')?>
                                 <div class="form-group">
-                                    <label for="filterDate_register" class="col-sm-2 control-label"><?php echo i18n::__('date_register') ?></label>
+                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="filter[fecha_registro]" placeholder="<?php echo i18n::__('date_register') ?>">
+                                        <input type="date" name="filter[<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO,TRUE).'_1'?>]" class="form-control" id="filter<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO,TRUE).'_1'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
+                                    </div>
+                                </div>
+                                
+                                <?php view::getMessageError('errorDateEnd')?>
+                                <div class="form-group">
+                                    <label for="filterDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="filter[<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO,TRUE).'_2'?>]" class="form-control" id="filter<?php registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO,TRUE).'_2'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="filterDose_vaccine" class="col-sm-2 control-label"><?php echo i18n::__('dose_vaccine') ?></label>
+                                    <label class="col-sm-2 control-label" for="id_animal">
+                                        <?php echo i18n::__('id_animal') ?>:
+                                    </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="filter[dosis_vacuna]" placeholder="<?php echo i18n::__('dose_vaccine') ?>">
+                                        <select class="form-control" id="filter<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE) ?>" name="filter[<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE) ?>]" required>
+                                            <option value=""><?php echo i18n::__('selectAnimal') ?></option>
+                                            <?php foreach ($objAnimal as $animal): ?>
+                                                <option <?php echo ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) and request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) == $animal->$idAnimal) ? 'selected' : '') ?> value="<?php echo $animal->$idAnimal ?>"><?php echo $animal->$nombreAnimal ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
-                                     
-             
+
                                 <div class="form-group">
-                                    <label for="filterTime_vaccine" class="col-sm-2 control-label"><?php echo i18n::__('time_vaccine') ?></label>
+                                    <label class="col-sm-2 control-label" for="id_insumo"><?php echo i18n::__('id_input') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="filter[hora_vacuna]" placeholder="<?php echo i18n::__('time_vaccine') ?>">
+                                    <select class="form-control" id="filter<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE) ?>" name="filter[<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE) ?>]" required>
+                                        <option value=""><?php echo i18n::__('selectInput') ?></option>
+                                        <?php foreach ($objInsumo as $insumo): ?>
+                                            <option <?php echo ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) and request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) == $insumo->$idInsumo) ? 'selected' : '') ?> value="<?php echo $insumo->$idInsumo ?>"><?php echo $insumo->$nombreInsumo ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                     </div>
                                 </div>
-                     
-                                    </div>
-                                </div>
-                            </form>
+                                
+                               </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>

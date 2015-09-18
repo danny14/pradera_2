@@ -7,7 +7,7 @@
 <div class="container container-fluid">
     <div class="row">
     
-<h1><?php echo i18n::__('edit')." "; echo i18n::__('employee')." ";echo $objTrabajador[0]->$nombre?></h1>
+        <h1><i class="fa fa-child"><?php echo i18n::__('edit')." "; echo i18n::__('employee')." ";echo $objTrabajador[0]->$nombre?></i></h1>
 <?php view::includeHandlerMessage() ?>
 <?php view::includePartial('trabajador/form',array('objTrabajador'=> $objTrabajador,'objTurno'=>$objTurno,'objCredencial' => $objCredencial,'objCiudad'=> $objCiudad))?>
     </div>

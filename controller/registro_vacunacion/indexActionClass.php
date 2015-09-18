@@ -16,16 +16,27 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where = NULL;
             if(request::getInstance()->hasPost('filter')){
                 $filter = request::getInstance()->getPost('filter');
+
                 // aqui validar datos de filtros
-                if(isset($filter['fecha_registro']) and $filter['fecha_registro'] !== NULL and $filter['fecha_registro'] !== ''){
-                    $where[registroVacunacionTableClass::FECHA_REGISTRO] = $filter['fecha_registro'];
+                if(isset($filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE).'_1']) and $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE).'_1'] !== NULL and $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE).'_1'] !== '' and isset($filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE).'_2']) and $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE).'_2'] !== NULL and $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE).'_2'] !== ''){
                     
+                    $fecha_ini = $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO,TRUE).'_1'];
+                    $fecha_fin = $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::FECHA_REGISTRO, TRUE).'_2'];
+//                    $this->ValidateFecha($fecha_ini, $fecha_fin);
+                    $where[registroVacunacionTableClass::FECHA_REGISTRO] = array(
+                        $fecha_ini,
+                        $fecha_fin
+//                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
+//                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
+                    );
                 }
-                 if(isset($filter['dosis_vacuna']) and $filter['dosis_vacuna'] !== NULL and $filter['dosis_vacuna'] !== ''){
-                    $where[registroVacunacionTableClass::DOSIS_VACUNA] = $filter['dosis_vacuna'];
+                 if(isset($filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)]) and $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)] !== NULL and $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)] !== ''){
+                    $id_animal = $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)];
+                     $where[registroVacunacionTableClass::ID_ANIMAL] = $id_animal;
                 }
-                 if(isset($filter['hora_vacuna']) and $filter['hora_vacuna'] !== NULL and $filter['hora_vacuna'] !== ''){
-                    $where[registroVacunacionTableClass::HORA_VACUNA] = $filter['hora_vacuna'];
+                 if(isset($filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)]) and $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)] !== NULL and $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)] !== ''){
+                     $id_insumo = $filter[registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE)];
+                    $where[registroVacunacionTableClass::HORA_VACUNA] = $id_insumo;
                  }
                  
                     
@@ -33,6 +44,24 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             } else if(session::getInstance()->hasAttribute('registroVacunacionIndexFilters')){
             $where = session::getInstance()->getAttribute('registroVacunacionIndexFilters');
             }
+            
+            $fields = array(
+            animalTableClass::ID,
+            animalTableClass::NOMBRE
+            );
+            $orderBy = array(
+            animalTableClass::NOMBRE
+            );
+            $this->objAnimal = animalTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
+            
+            $fields= array(
+            insumoTableClass::ID,
+            insumoTableClass::NOMBRE
+            );
+            $orderBy = array(
+            insumoTableClass::NOMBRE
+            );
+            $this->objInsumo = insumoTableClass::getAll($fields, FALSE, $orderBy, 'ASC');
             
             $fields= array(
             registroVacunacionTableClass::ID,

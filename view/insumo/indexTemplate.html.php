@@ -3,12 +3,15 @@
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session?>
+<?php use mvc\request\requestClass as request?>
 <?php $id = insumoTableClass::ID ?>
 <?php $nombre =insumoTableClass::NOMBRE ?>
 <?php $fecha_fabricacion =insumoTableClass::FECHA_FABRICACION ?>
 <?php $fecha_vencimiento =insumoTableClass::FECHA_VENCIMIENTO ?>
 <?php $valor =insumoTableClass::VALOR ?>
 <?php $id_tipo_insumo =insumoTableClass::ID_TIPO_INSUMO ?>
+<?php $idTipoInsumo = tipoInsumoTableClass::ID ?>
+<?php $descripcionTipoInsumo = tipoInsumoTableClass::DESCRIPCION?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
    <div class="page page-header text-center"> 
@@ -36,25 +39,18 @@
                                 <div class="form-group">
                                     <label for="filterName" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('name') ?>">
+                                        <input type="text" class="form-control" id="filter<?php echo insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE)?>" name="filter[<?php echo insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE)?>]" placeholder="<?php echo i18n::__('name') ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="filterDate_create" class="col-sm-2 control-label"><?php echo i18n::__('date_create') ?></label>
+                                    <label class="col-sm-2 control-label" for="id_tipo_insumo"><?php echo i18n::__('input_type') ?>:</label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="filter[fecha_fabricacion]" class="form-control" id="filterFecha_fabricacion" placeholder="<?php echo i18n::__('date_create') ?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="filterDate_expiration" class="col-sm-2 control-label"><?php echo i18n::__('date_expiration') ?></label>
-                                    <div class="col-sm-10">
-                                        <input type="number" name="filter[fecha_vencimiento]" class="form-control" id="filterFecha_vencimiento" placeholder="<?php echo i18n::__('date_expiration')?>">
-                                    </div>
-                                </div>
-                                 <div class="form-group">
-                                    <label for="filterValue" class="col-sm-2 control-label"><?php echo i18n::__('value') ?></label>
-                                    <div class="col-sm-10">
-                                        <input type="number" name="filter[valor]" class="form-control" id="valor" placeholder="<?php echo i18n::__('value')?>">
+                                    <select class="form-control" id="filter<?php echo insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE) ?>" name="filter[<?php echo insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE) ?>]" required>
+                                        <option value=""><?php echo i18n::__('selectTypeInput') ?></option>
+                                        <?php foreach ($objTipoInsumo as $tipo_insumo): ?>
+                                            <option <?php echo  ((session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE)) and request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE)) == $tipo_insumo->$idTipoInsumo) ? 'selected' : '') ?> value="<?php echo $tipo_insumo->$idTipoInsumo ?>"><?php echo $tipo_insumo->$descripcionTipoInsumo ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                     </div>
                                 </div>
                             </form>
@@ -149,7 +145,7 @@
                         <td><?php echo $insumo->$fecha_fabricacion?></td>
                         <td><?php echo $insumo->$fecha_vencimiento?></td>
                         <td>$<?php echo $insumo->$valor?>.00</td>
-                        <td><?php echo insumoTableClass::getNameFieldForaneaTipoInsumo($insumo->$id_tipo_insumo) ?></td>
+                        <td><?php echo insumoTableClass::getNameFieldForaneaTipoInsumo($insumo->$id_tipo_insumo)?></td>
                         <td>
                             <div>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'view',array(insumoTableClass::ID => $insumo->$id));?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>

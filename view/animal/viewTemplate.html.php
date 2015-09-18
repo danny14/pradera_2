@@ -11,7 +11,7 @@
 <?php $id_estado = animalTableClass::ID_ESTADO ?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
-    <h1<i class="fa fa-bug"><?php echo i18n::__('animal') ?></i></h1>
+    <h1><i class="fa fa-bug"><?php echo i18n::__('animal') ?></i></h1>
     <div class="row">
         <header>
 
