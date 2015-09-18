@@ -42,13 +42,6 @@
                                         <input type="date" name="filter[fecha_parto]" class="form-control" id="filterFecha" placeholder="<?php echo i18n::__('date_delivery')?>">
                                     </div>
                                 </div>
-                              
-                              <div class="form-group">
-                                    <label for="filterN_animales_vi" class="col-sm-2 control-label"><?php echo i18n::__('n_animales_living')?></label>
-                                    <div class="col-sm-10">
-                                      <input type="number" name="filter[N_animales_vi]" class="form-control" id="filter[N_animales_vi]" placeholder="<?php echo i18n::__('n_animales_living')?>">
-                                    </div>
-                                </div>
                           <div class="form-group"> <!--filtro para llamar foranea-->
                             <label for="filterAnimal" class="col-sm-2 control-label"><?php echo i18n::__('animal') ?></label>
                             <div class="col-sm-10">

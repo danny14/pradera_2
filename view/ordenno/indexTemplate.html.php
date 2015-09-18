@@ -3,11 +3,14 @@
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
 <?php $id = ordennoTableClass::ID ?>
 <?php $fecha_ordenno =ordennoTableClass::FECHA_ORDENNO ?>
 <?php $cantidad_leche =ordennoTableClass::CANTIDAD_LECHE ?>
 <?php $id_trabajador =ordennoTableClass::ID_TRABAJADOR ?>
 <?php $id_animal =ordennoTableClass::ID_ANIMAL ?>
+<?php $idAnimal = animalTableClass::ID?>
+<?php $nombreAnimal = animalTableClass::NOMBRE?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
   <div class="page page-header text-center">  
@@ -33,15 +36,26 @@
                         <div class="modal-body">
                             <form method="POST" class="form-horizontal" id="filterForm" action="<?php //echo routing::getInstance()->getUrlWeb('ordenno', 'index') ?>">
                                 <div class="form-group">
-                                    <label for="filterdate_ordenno" class="col-sm-2 control-label"><?php echo i18n::__('date_ordenno') ?></label>
+                                    <label for="filterdate_ordenno" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterFecha_ordenno" name="filter[fecha_ordenno]" placeholder="<?php echo i18n::__('date_ordenno') ?>">
+                                        <input type="date" class="form-control" id="filter<?php echo ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_1'?>" name="filter[<?php echo ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_1'?>]" placeholder="<?php echo i18n::__('date_ordenno') ?>">
                                     </div>
                                 </div>
-                                   <div class="form-group">
-                                    <label for="filterquantity_milk" class="col-sm-2 control-label"><?php echo i18n::__('quantity_milk') ?></label>
+                                <div class="form-group">
+                                    <label for="filterdate_ordenno" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filterCantidad_leche" name="filter[cantidad_leche]" placeholder="<?php echo i18n::__('quantity_milk') ?>">
+                                        <input type="date" class="form-control" id="filter<?php echo ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_2'?>" name="filter[<?php echo ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, TRUE).'_2'?>]" placeholder="<?php echo i18n::__('date_ordenno') ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group" <?php echo (session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)) === TRUE ) ? 'has-error has-feedback' : ''; ?>>
+                                    <label class="col-sm-2 control-label" for="id_animal"><?php echo i18n::__('id_animal') ?>:</label>
+                                    <div class="col-sm-10">
+                                    <select class="form-control" id="filter<?php echo ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE) ?>" name="filter[<?php echo ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE) ?>]" required>
+                                        <option value=""><?php echo i18n::__('selectAnimal') ?></option>
+                                        <?php foreach ($objAnimal as $animal): ?>
+                                            <option <?php echo ((session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)) and request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)) == $animal->$idAnimal) ? 'selected' : '') ?> value="<?php echo $animal->$idAnimal ?>"><?php echo $animal->$nombreAnimal ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                     </div>
                                 </div>
                                
@@ -79,12 +93,7 @@
                                         <input type="text" class="form-control" id="reportFecha_ordenno" name="report[fecha_ordenno]" placeholder="<?php echo i18n::__('date_ordenno') ?>">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="reportQuantity_milk" class="col-sm-2 control-label"><?php echo i18n::__('quantity_milk') ?></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="reportCantidad_leche" name="report[cantidad_leche]" placeholder="<?php echo i18n::__('quantity_milk') ?>">
-                                    </div>
-                            
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('close') ?></button>
                             <button type="button" onclick="$('#reportForm').submit()" class="btn btn-primary"><?php echo i18n::__('generate report') ?></button>
@@ -125,7 +134,7 @@
                     <tr>
                         <td><input type="checkbox" name="chk[]" value="<?php echo $ordenno->$id?>"></td>
                         <td><?php echo $ordenno->$fecha_ordenno?></td>
-                        <td><?php echo $ordenno->$cantidad_leche?></td>
+                        <td><?php echo $ordenno->$cantidad_leche?> .Litros</td>
                         <td><?php echo ordennoTableClass::getNameFieldForaneaTrabajador($ordenno->$id_trabajador) ?></td>
                         <td><?php echo ordennoTableClass::getNameFieldForaneaAnimal($ordenno->$id_animal) ?></td>
                         

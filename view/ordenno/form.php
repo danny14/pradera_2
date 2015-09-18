@@ -30,7 +30,10 @@
         <label class="control-label" for="quantity_milk">
            <?php echo i18n::__('quantity_milk')?>: 
         </label>
+        <div class="input-group">
         <input class="form-control" type="number" value="<?php echo ((isset($objOrdenno)) ? $objOrdenno[0]->$cantidad_leche : ((session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, TRUE)) === TRUE) ?  '' :  (request::getInstance()->hasPost(ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, TRUE))) ? request::getInstance()->getPost(ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, TRUE))  : '' ))?>" name="<?php echo ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, TRUE)?>" min="0" max="999" required placeholder="<?php echo i18n::__('enterQuantityMilk')?>">
+        <span class="input-group-addon" id="basic-addon1">.L</span>
+        </div>
         <?php if(session::getInstance()->hasFlash(ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
     </div>
     

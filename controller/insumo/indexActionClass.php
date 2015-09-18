@@ -16,24 +16,34 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where = NULL;
             if(request::getInstance()->hasPost('filter')){
                 $filter = request::getInstance()->getPost('filter');
+
                 // aqui validar datos de filtros
-                if(isset($filter['nombre']) and $filter['nombre'] !== NULL and $filter['nombre'] !== ''){
-                    $where[insumoTableClass::NOMBRE] = $filter['nombre'];
+                if(isset($filter[insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE)]) and $filter[insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE)] !== NULL and $filter[insumoTableClass::getNameField(insumoTableClass::NOMBRE, TRUE)] !== ''){
+                        $nombre = $filter[insumoTableClass::getNameField(insumoTableClass::NOMBRE,TRUE)];
+                        //$this->ValidateName($nombre);
+                        $where[] = '(' . insumoTableClass::getNameField(insumoTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                                . 'OR ' . insumoTableClass::getNameField(insumoTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                                . 'OR ' . insumoTableClass::getNameField(insumoTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
                 }
-                if(isset($filter['fecha_fabricacion']) and $filter['fecha_fabricacion'] !== NULL and $filter['fecha_fabricacion'] !== ''){
-                    $where[insumoTableClass::FECHA_FABRICACION] = $filter['fecha_fabricacion'];
-                }
-                if(isset($filter['fecha_vencimiento']) and $filter['fecha_vencimiento'] !== NULL and $filter['fecha_vencimiento'] !== ''){
-                    $where[insumoTableClass::FECHA_VENCIMIENTO] = $filter['fecha_vencimiento'];
-                }
-                if(isset($filter['valor']) and $filter['valor'] !== NULL and $filter['valor'] !== ''){
-                    $where[insumoTableClass::VALOR] = $filter['valor'];
+                if(isset($filter[insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE)]) and $filter[insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE)] !== NULL and $filter[insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE)] !== ''){
+                    $where[insumoTableClass::ID_TIPO_INSUMO] = $filter[insumoTableClass::getNameField(insumoTableClass::ID_TIPO_INSUMO, TRUE)];
                 }
                 session::getInstance()->setAttribute('insumoIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('insumoIndexFilters')){
             $where = session::getInstance()->getAttribute('insumoIndexFilters');
             }
-            
+            /*
+             * Foranea Tipo Insumo
+             */
+            $fields= array(
+            tipoInsumoTableClass::ID,
+            tipoInsumoTableClass::DESCRIPCION
+            );
+            $orderBy = array(
+            tipoInsumoTableClass::DESCRIPCION
+            );
+            $this->objTipoInsumo = tipoInsumoTableClass::getAll($fields, FALSE, $orderBy);
+            // FIn
             $fields= array(
             insumoTableClass::ID,
             insumoTableClass::NOMBRE,

@@ -17,22 +17,33 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             if(request::getInstance()->hasPost('filter')){
                 $filter = request::getInstance()->getPost('filter');
                 // aqui validar datos de filtros
-                if(isset($filter['nombre']) and $filter['nombre'] !== NULL and $filter['nombre'] !== ''){
-                    $nombre = $filter['nombre'];
-                    $this->validateName($nombre);
-                    $where[proveedorTableClass::NOMBRE] = $nombre;
+                if(isset($filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)]) and $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)] !== NULL AND $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)] !== ''){
+                        $nombre = $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)];
+                        $this->ValidateName($nombre);
+                        $where[] = '(' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                                . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                                . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
                 }
-                if(isset($filter['apellido']) and $filter['apellido'] !== NULL and $filter['apellido'] !== ''){
-                    $where[proveedorTableClass::APELLIDO] = $filter['apellido'];
+                if(isset($filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)]) and $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)] !== NULL AND $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)] !== ''){
+                        $nombre = $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)];
+                        $this->ValidateName($nombre);
+                        $where[] = '(' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                                . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                                . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
                 }
-                if(isset($filter['direccion']) and $filter['direccion'] !== NULL and $filter['direccion'] !== ''){
-                    $where[proveedorTableClass::DIRECCION] = $filter['direccion'];
+                if(isset($filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)]) and $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)] !== NULL AND $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)] !== ''){
+                        $nombre = $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)];
+                        $this->ValidateName($nombre);
+                        $where[] = '(' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                                . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                                . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
                 }
-                if(isset($filter['telefono']) and $filter['telefono'] !== NULL and $filter['telefono'] !== ''){
-                    $where[proveedorTableClass::TELEFONO] = $filter['telefono'];
-                }
-                 if(isset($filter['correo']) and $filter['correo'] !== NULL and $filter['correo'] !== ''){
-                    $where[proveedorTableClass::CORREO] = $filter['correo'];
+                if(isset($filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)]) and $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)] !== NULL AND $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE)] !== ''){
+                        $nombre = $filter[proveedorTableClass::getNameField(proveedorTableClass::NOMBRE,TRUE)];
+                        $this->ValidateName($nombre);
+                        $where[] = '(' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                                . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                                . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
                 }
                 session::getInstance()->setAttribute('proveedorIndexFilters', $where);
             } else if(session::getInstance()->hasAttribute('proveedorIndexFilters')){

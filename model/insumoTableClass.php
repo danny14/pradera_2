@@ -13,7 +13,7 @@ class insumoTableClass extends insumoBaseTableClass {
   public static function getTotalPages($lines, $where) {
         try {
             $sql = 'SELECT count(' . insumoTableClass::ID . ') AS cantidad ' .
-                    ' FROM ' . insumoTableClass::getNameTable(). ' ';
+                    ' FROM ' . insumoTableClass::getNameTable(). ' '.
                     ' WHERE '. insumoTableClass::DELETED_AT.' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {
@@ -26,6 +26,7 @@ class insumoTableClass extends insumoBaseTableClass {
                     }
                 }
             }
+
             $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
