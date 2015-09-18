@@ -1,5 +1,11 @@
 <?php
 
+// genera copia de seguridad
+// shell_exec('"C:\Program Files\PostgreSQL\9.4\bin\pg_dump.exe" -i -h localhost -p 5432 -U postgres -F c -b -f "C:\copia\desdePHP.backup" pradera_2');
+
+// restaura
+// shell_exec('"C:\Program Files\PostgreSQL\9.4\bin\pg_restore.exe" --host localhost --port 5432 --username "postgres" --dbname "desdephp" --no-password "C:\copia\desdePHP.backup"');
+
 /*
 $fechaCreacion = '03/11/2015';
 $fechaVencimiento = '05/01/2015';

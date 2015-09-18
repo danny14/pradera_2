@@ -11,8 +11,9 @@
 <?php $id_tipo_insumo =insumoTableClass::ID_TIPO_INSUMO ?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
-    <div class="page page-header text-center">
-    <h1><?php echo i18n::__('input')?></h1>
+   <div class="page page-header text-center"> 
+   <h1><i class="fa fa-beer"><?php echo i18n::__('input')?></i></h1>
+   
     </div>
     <div class="row" >
         <header>

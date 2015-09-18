@@ -5,6 +5,7 @@
 <?php $descripcion = ciudadTableClass::DESCRIPCION ?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('city') ?></h1>
+    <h1<i class="fa fa-plane"><?php echo i18n::__('ciudad') ?></i></h1>
     <div class="row">
         <header>
 

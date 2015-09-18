@@ -8,7 +8,9 @@
 <?php $observacion = bitacoraTableClass::OBSERVACION ?>
 <?php $fecha = bitacoraTableClass::FECHA ?>
 <div class="container container-fluid">
-    <h1><?php echo i18n::__('logbook')?></h1>
+    <div class="pager page-header text-center">
+  <h1><i class="fa fa-book"><?php echo i18n::__('logbook') ?></i></h1>
+    </div>
     <div class="row">
         <header>
             

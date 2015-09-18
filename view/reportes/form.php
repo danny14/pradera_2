@@ -35,7 +35,7 @@
     <!-- se inclule el mensaje de error puntual -->
     <?php view::getMessageError('errorRaza') ?>
     <!-- FIN-->
-    <?php if(session::getInstance()->getAttribute('idReporte') == 2) :?>
+    <?php if($reporteId == 2) : ?>
     <div class="form-group <?php// echo ((isset($animal[$id _raza])) ? 'has-error has-feedback' : '') ?>">
         <label class="control-label" for="breed"><?php echo i18n::__('breed') ?>:</label> 
    <select class="form-control" id="<?php animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE)?>" name="<?php echo animalTableClass::getNameField(animalTableClass::ID_RAZA, TRUE);?>" required />
@@ -47,18 +47,6 @@
    <?php //if (isset($animal[$id_raza])):?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php //endif ?>
    </div>
    <?php endif; ?>
-    <!-- se inclule el mensaje de error puntual -->
-<!--    <?php // view::getMessageError('errorAnimal') ?>
-     FIN    
-    <div class="form-group <?php // echo ((isset($animal[$id_estado])) ? 'has-error has-feedback' : '') ?>">
-        <label class="control-label" for="anima"><?php // echo i18n::__('animal')?></label>
-        <select class="form-control" id="<?php // ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE)?>" name="<?php // echo ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, TRUE);?>" required />
-   <option><?php // echo i18n::__('selectEstado')?></option>
-       <?php // foreach($objAnimal as $animal):?>
-   <option  value="<?php // echo $animal->$id_animal?>"><?php // echo $animal->$nombre?></option>
-       <?php // endforeach;?>
-   </select>
-    </div>-->
    <br>
    <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index')?>"><i class="glyphicon glyphicon-arrow-left"><?php echo i18n::__('return')?></i> </a>
    <input class="btn btn-primary btn-xs" type="submit" value="<?php echo i18n::__('report')?>">

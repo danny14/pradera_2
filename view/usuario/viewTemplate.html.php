@@ -8,6 +8,7 @@
 <?php view::includePartial('usuario/menuPrincipal'); ?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('user') ?></h1>
+    <h1<i class="fa fa-user"><?php echo i18n::__('usuario') ?></i></h1>
     <div class="row">
         <header>
 

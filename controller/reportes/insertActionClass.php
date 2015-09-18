@@ -14,10 +14,19 @@ class insertActionClass extends controllerClass implements controllerActionInter
             $id = array(
             reporteTableClass::ID => request::getInstance()->getRequest(reporteTableClass::ID)
         );
-//        print_r($id); 
+         if($reporteId == 2){
+             $fields = array(
+             razaTableClass::ID,
+             razaTableClass::DESCRIPCION
+             );
+             $orderBy = array(
+             razaTableClass::DESCRIPCION
+             );
+             $this->objRaza = razaTableClass::getAll($fields, false, $orderBy, 'ASC');
+         }
          session::getInstance()->setAttribute('idReporte', $id);
-//    exit();
-            $this->reporteId = $reporteId;
+
+         $this->reporteId = $reporteId;
             $this->defineView('insert', 'reportes',  session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

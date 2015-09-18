@@ -45,6 +45,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //            } else if(session::getInstance()->hasAttribute('animalIndexFilters')){
 //            $where = session::getInstance()->getAttribute('animalIndexFilters');
 //            }
+            
             $fields = array(
             reporteTableClass::ID,
             reporteTableClass::NOMBRE,

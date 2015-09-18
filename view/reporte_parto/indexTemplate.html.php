@@ -14,7 +14,8 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
-    <h1><?php echo i18n::__('report_parto') ?></h1>
+   <h1><i class="fa fa-file-pdf-o"><?php echo i18n::__('report_parto')?></i></h1>
+   
     </div>
     <div class="row">
         <header>

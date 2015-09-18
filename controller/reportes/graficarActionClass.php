@@ -17,46 +17,28 @@ use mvc\model\modelClass as model;
  * @abstract
  * @category:
  */
-class createActionClass extends controllerClass implements controllerActionInterface {
+class graficarActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
         try {
-            if (request::getInstance()->isMethod('POST')) {
-                $idReporte = request::getInstance()->getPost('idReporte');
-                $fecha_inicio = request::getInstance()->getPost('fecha_inicio');
-                $fecha_fin = request::getInstance()->getPost('fecha_fin');
-                if($idReporte == 1){
-                    $alta = array();
-                    $media = array();
-                    $baja = array();
-                    //$sql = 'select SUM(ordeno.cantidad_leche) AS cantidad_leche, hoja_de_vida.nombre,hoja_de_vida.id as id_animal FROM ordeno,hoja_de_vida WHERE ordeno.id_animal=hoja_de_vida.id AND fecha_ordeno BETWEEN '."'$fecha_inicio'".' AND '."'$fecha_fin'".' GROUP BY hoja_de_vida.id ORDER BY hoja_de_vida.id ASC';
-                    $objOrdenno = reporteTableClass::getCantidadLeche($fecha_inicio, $fecha_fin);
-                    foreach ($objOrdenno as $ordeno) {
-                        if($ordeno->cantidad_leche > config::getCantidad()){
-                           $alta[] = $ordeno;
-                        }else if($ordeno->cantidad_leche == config::getCantidad()){
-                            $media[] = $ordeno;
-                        }else if($ordeno->cantidad_leche < config::getCantidad()){
-                            $baja[] = $ordeno;
-                        }
-                    }
-                    $this->alta = $alta;
-                    $this->media = $media;
-                    $this->baja = $baja;
-                }else{
-                    echo 'Hola';
-                    exit();
-                }
-                  
-                //$this->objOrdenno = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
-                   
-            } else {
-                routing::getInstance()->redirect('reportes', 'index');
+            $fecha_inicio = "'2015-08-01'";
+            $fecha_fin = "'2015-08-31'";
+            $sql = 'SELECT raza.descripcion,SUM(ordeno.cantidad_leche) AS cantidad_leche FROM ordeno,hoja_de_vida,raza WHERE ordeno.id_animal=hoja_de_vida.id AND hoja_de_vida.id_raza=raza.id AND ordeno.fecha_ordeno BETWEEN '."'2015-08-01'".' AND '."'2015-08-31'".' GROUP BY raza.descripcion';
+            $datos = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+            
+            foreach ($datos as $value) {
+             $descripcion[] = $value->descripcion;   
+             $cantidad_leche[] = (int)$value->cantidad_leche ;
             }
+            $this->datos = array(
+                $descripcion,
+                $cantidad_leche
+            );
             $this->fecha_inicio = $fecha_inicio;
             $this->fecha_fin = $fecha_fin;
-            $this->idReporte = $idReporte;
-            $this->defineView('grafica', 'reportes', session::getInstance()->getFormatOutput());
+
+            
+                    $this->defineView('graficar', 'reportes', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             switch ($exc->getCode()) {
                 // 42601

@@ -38,7 +38,7 @@ class reporteTableClass extends reporteBaseTableClass {
     }
     
     /**
-     * Recordar hacer otra funcion general
+     * Funcion para la cantidad de leche por animal
      * @param type $id
      * @return type
      * @throws PDOException
@@ -61,23 +61,40 @@ class reporteTableClass extends reporteBaseTableClass {
 //            throw $exc;
 //        }
 //    }
-//    
-//    public static function getNameFieldForaneaEstado($id){
-//        try{
-//            $sql = 'SELECT '. estadoTableClass::DESCRIPCION . ' AS nom_estado '
-//                   .' FROM '.estadoTableClass::getNameTable() . ' '
-//                   . ' WHERE ' .estadoTableClass::ID . ' = :id';
-//            $params = array(
-//                ':id' => $id
-//            );
-//            $answer = model::getInstance()->prepare($sql);
-//            $answer->execute($params);
-//            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-//            return $answer[0]->nom_estado;
-//        }
-//        catch (PDOException $exc){
-//            throw $exc;
-//        }
-//    }
+    /*
+     * Funcion para la cantidad de Leche en total de Cada Vaca
+     */
+    public static function getCantidadLeche($fecha_inicio,$fecha_fin){
+        try {
+            $sql = 'SELECT SUM('.ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, FALSE).') AS '.ordennoTableClass::CANTIDAD_LECHE.', '
+                    . animalTableClass::getNameField(animalTableClass::NOMBRE, FALSE).', '.animalTableClass::getNameField(animalTableClass::ID, FALSE).
+                    ' AS '.ordennoTableClass::ID_ANIMAL.' FROM '.ordennoTableClass::getNameTable().', '.animalTableClass::getNameTable().
+                    ' WHERE '.ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL,FALSE).'='.animalTableClass::getNameField(animalTableClass::ID,FALSE).' AND '.ordennoTableClass::getNameField(ordennoTableClass::FECHA_ORDENNO, FALSE).
+                    ' BETWEEN :fecha_inicio AND :fecha_fin GROUP BY '.animalTableClass::getNameField(animalTableClass::ID,FALSE).' ORDER BY '.animalTableClass::getNameField(animalTableClass::ID,FALSE).' ASC ';
+            $params = array(
+                ':fecha_inicio' => $fecha_inicio,
+                ':fecha_fin' => $fecha_fin
+            );
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute($params);
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer;
+        } catch (PDOException $exc) {
+            throw $exc;
+        }
+    }
 
+    /*
+     * Funcion para la cantidad de leche por Raza
+     */
+    public function getCantidadLecheRaza($fecha_inicio,$fecha_fin){
+        try {
+            $sql = 'SELECT '.razaTableClass::getNameField(razaTableClass::DESCRIPCION, FALSE).', '.'SUM('.ordennoTableClass::getNameField(ordennoTableClass::CANTIDAD_LECHE, FALSE).') AS '.ordennoTableClass::CANTIDAD_LECHE.''
+                    . ' FROM '.ordennoTableClass::getNameTable().', '.animalTableClass::getNameTable().', '.razaTableClass::getNameTable().''
+                    . ' WHERE '.ordennoTableClass::getNameField(ordennoTableClass::ID_ANIMAL, FALSE).'='.animalTableClass::getNameField(animalTableClass::ID, FALSE).''
+                    . '';
+        } catch (PDOException $exc) {
+            throw $exc;
+        }
+        }
 }

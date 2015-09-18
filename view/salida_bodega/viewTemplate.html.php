@@ -6,6 +6,7 @@
 <?php $id_trabajador = salidaBodegaTableClass::ID_TRABAJADOR ?>
 
 <?php view::includePartial('animal/menuPrincipal'); ?>
+<h1<i class="fa fa-arrow-circle-o-right"><?php echo i18n::__('salida_bodega') ?></i></h1>
 
 <div class="container container-fluid">
     <h1><?php echo i18n::__('Output_bodega')?></h1>

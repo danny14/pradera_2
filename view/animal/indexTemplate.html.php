@@ -15,7 +15,7 @@
 <?php view::includePartial('animal/menuPrincipal'); ?>
 <div class="container container-fluid">
     <div class="page page-header text-center">
-        <h1><i class="fa fa-paw"><?php echo i18n::__('animal') ?></i></h1>
+        <h1><i class="fa fa-bug"><?php echo i18n::__('animal') ?></i></h1>
     </div>
     <div class="row">
         <header>
@@ -96,20 +96,6 @@
                                     <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
                                     <div class="col-sm-10">
                                         <input type="date" name="report[<?php echo animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>]" class="form-control" id="filter<?php animalTableClass::getNameField(animalTableClass::FECHA_INGRESO,TRUE).'_2'?>" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                                <div class="form-group">
-                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('start')?></label>
-                                    <div class="col-sm-10">
-                                        <input type="date" name="report[fechaCreacion1]" class="form-control" id="filterCreacion1" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('start')?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="reportDate1" class="col-sm-2 control-label"><?php echo i18n::__('date').' ';echo i18n::__('end')?></label>
-                                    <div class="col-sm-10">
-                                        <input type="date" name="report[fechaCreacion2]" class="form-control" id="filterCreacion2" placeholder="<?php echo i18n::__('date').' ';echo i18n::__('end')?>">
                                     </div>
                                 </div>
                             </form>

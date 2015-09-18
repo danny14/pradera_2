@@ -2,7 +2,7 @@
 
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
-use mvc\config\myConfigClass as config;
+use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
@@ -17,46 +17,27 @@ use mvc\model\modelClass as model;
  * @abstract
  * @category:
  */
-class createActionClass extends controllerClass implements controllerActionInterface {
+class grafica2ActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
         try {
-            if (request::getInstance()->isMethod('POST')) {
-                $idReporte = request::getInstance()->getPost('idReporte');
-                $fecha_inicio = request::getInstance()->getPost('fecha_inicio');
-                $fecha_fin = request::getInstance()->getPost('fecha_fin');
-                if($idReporte == 1){
-                    $alta = array();
-                    $media = array();
-                    $baja = array();
-                    //$sql = 'select SUM(ordeno.cantidad_leche) AS cantidad_leche, hoja_de_vida.nombre,hoja_de_vida.id as id_animal FROM ordeno,hoja_de_vida WHERE ordeno.id_animal=hoja_de_vida.id AND fecha_ordeno BETWEEN '."'$fecha_inicio'".' AND '."'$fecha_fin'".' GROUP BY hoja_de_vida.id ORDER BY hoja_de_vida.id ASC';
-                    $objOrdenno = reporteTableClass::getCantidadLeche($fecha_inicio, $fecha_fin);
-                    foreach ($objOrdenno as $ordeno) {
-                        if($ordeno->cantidad_leche > config::getCantidad()){
-                           $alta[] = $ordeno;
-                        }else if($ordeno->cantidad_leche == config::getCantidad()){
-                            $media[] = $ordeno;
-                        }else if($ordeno->cantidad_leche < config::getCantidad()){
-                            $baja[] = $ordeno;
-                        }
-                    }
-                    $this->alta = $alta;
-                    $this->media = $media;
-                    $this->baja = $baja;
-                }else{
-                    echo 'Hola';
-                    exit();
+            if (request::getInstance()->isMethod('GET')) {
+                $id_animal = request::getInstance()->getGet('id_animal');
+                $fecha_inicio = request::getInstance()->getGet('fecha_inicio');
+                $fecha_fin = request::getInstance()->getGet('fecha_fin');
+                    $sql = 'select ordeno.cantidad_leche,ordeno.fecha_ordeno from ordeno,hoja_de_vida where ordeno.id_animal=hoja_de_vida.id and fecha_ordeno BETWEEN '."'$fecha_inicio'".' AND '."'$fecha_fin'".' AND ordeno.id_animal = '.$id_animal.' GROUP BY ordeno.cantidad_leche,ordeno.fecha_ordeno';
+                            
+                $objOrdenno = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+                foreach ($objOrdenno as $ordenno) {
+                    $grafica[] = array($ordenno->fecha_ordeno,$ordenno->cantidad_leche);
                 }
-                  
-                //$this->objOrdenno = model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
-                   
+                $this->grafica = $grafica;
             } else {
                 routing::getInstance()->redirect('reportes', 'index');
             }
             $this->fecha_inicio = $fecha_inicio;
             $this->fecha_fin = $fecha_fin;
-            $this->idReporte = $idReporte;
-            $this->defineView('grafica', 'reportes', session::getInstance()->getFormatOutput());
+            $this->defineView('grafica2', 'reportes', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             switch ($exc->getCode()) {
                 // 42601

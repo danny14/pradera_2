@@ -122,6 +122,7 @@ dictionary:
     name:                 Name
     last_name:            Last_name
     address:              Address
+    output_bodega:        Salida_bodega
     phone:                Phone
     mail:                 Mail
     gender:               Gender
