@@ -21,7 +21,7 @@
    <?php view::getMessageError('errorFecha')?>
    <div class="form-group <?php echo (session::getInstance()->hasFlash(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::FECHA, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?>">
    <label class="control-label" for="date"><?php echo i18n::__('date')?>: </label>
-   <input class="form-control" type="date" value="<?php echo ((isset($objEntradaBodega)) ? $objEntradaBodega[0]->$fecha : ((session::getInstance()->hasFlash(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::FECHA, TRUE)) === TRUE) ?  request::getInstance()->getPost(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::FECHA, TRUE)) : '' ) ) ?>" name="<?php echo entradaBodegaTableClass::getNameField(entradaBodegaTableClass::FECHA, true )?>" required />
+   <input class="form-control" type="date" value="<?php echo ((isset($objEntradaBodega)) ? $objEntradaBodega[0]->$fecha : ((session::getInstance()->hasFlash(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::FECHA, TRUE)) === TRUE) ?  request::getInstance()->getPost(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::FECHA, TRUE)) :  date('Y-m-d') ) ) ?>" name="<?php echo entradaBodegaTableClass::getNameField(entradaBodegaTableClass::FECHA, true )?>" required />
    <?php  if (session::getInstance()->hasFlash(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::FECHA, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
    </div>
 
@@ -30,13 +30,10 @@
     <!-- FIN-->
     <div class="form-group <?php echo (session::getInstance()->hasFlash(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::HORA, TRUE)) === TRUE) ?  'has-error has-feedback' : '' ; ?>">
     <label class="control-label" for="time"><?php echo i18n::__('time')?>:</label>
-    <input class="form-control" type="time" value="<?php echo ((isset($objEntradaBodega)) ? $objEntradaBodega[0]->$hora :  ((session::getInstance()->hasFlash(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::HORA, TRUE)) === TRUE) ?  request::getInstance()->getPost(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::HORA, TRUE)) : '' )) ?>" name="<?php echo entradaBodegaTableClass::getNameField(entradaBodegaTableClass::HORA, true )?>" required placeholder="<?php echo i18n::__('enterTime')?>"/>
+    <input class="form-control" type="time" value="<?php echo ((isset($objEntradaBodega)) ? $objEntradaBodega[0]->$hora :  ((session::getInstance()->hasFlash(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::HORA, TRUE)) === TRUE) ?  request::getInstance()->getPost(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::HORA, TRUE)) :  date('H-m-a') )) ?>" name="<?php echo entradaBodegaTableClass::getNameField(entradaBodegaTableClass::HORA, true )?>" required placeholder="<?php echo i18n::__('enterTime')?>"/>
     <?php  if (session::getInstance()->hasFlash(entradaBodegaTableClass::getNameField(entradaBodegaTableClass::HORA, TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif ?>
     </div>
     
-    <input type="text" value="<?php echo date('d-m-Y'); date('Y-m-d');?>" readonly="readonly">
-    
-    <input type="text" value="<?php echo date('H-i-s')?>" readonly="readonly">
     <?php view::getMessageError('errorEmpleado') ?>  
     <div class="form-group <?php// echo ((isset($animal[$id_raza])) ? 'has-error has-feedback' : '') ?>">
         <label class="control-label" for="employee"><?php echo i18n::__('employee') ?>:</label> 

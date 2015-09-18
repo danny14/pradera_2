@@ -26,7 +26,6 @@
             <table class="table table-bordered table-responsive table-condensed">
                 <thead>
                     <tr class="active">
-                        <th><?php echo i18n::__('id') ?></th>
                         <th><?php echo i18n::__('date') ?></th>
                         <th><?php echo i18n::__('time') ?></th>
                         <th><?php echo i18n::__('id_employee') ?></th>
@@ -36,7 +35,6 @@
                 <tbody>
                     <?php foreach ($objEntradaBodega as $entrada_bodega): ?>
                         <tr>
-                            <td><?php echo $entrada_bodega->$idE ?></td>
                             <td><?php echo $entrada_bodega->$fecha ?></td>
                             <td><?php echo $entrada_bodega->$hora ?></td>
                             <td><?php echo entradaBodegaTableClass::getNameFieldForaneaTrabajador($entrada_bodega->$id_trabajador) ?></td>
@@ -151,7 +149,6 @@
                     <thead>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
-                            <th><?php echo i18n::__('id') ?></th>
                             <th><?php echo i18n::__('value') ?></th>
                             <th><?php echo i18n::__('id_entry_cellar') ?></th>
                             <th><?php echo i18n::__('id_input') ?></th>
@@ -163,7 +160,6 @@
                         <?php foreach ( $objDetalleEntrada as $detalle_entrada ): ?>
                             <tr>
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $detalle_entrada->$id ?>"></td>
-                                <td><?php echo $detalle_entrada->$id ?></td>
                                 <td><?php echo $detalle_entrada->$valor ?></td>
                                 <td><?php echo $detalle_entrada->$id_entrada_bodega ?></td>
                                 <td><?php echo detalleEntradaTableClass::getNameFieldForaneaInsumo($detalle_entrada->$id_insumo) ?></td>
