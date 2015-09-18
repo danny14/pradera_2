@@ -7,6 +7,7 @@
 <?php $id_trabajador =ordennoTableClass::ID_TRABAJADOR ?>
 <?php $id_animal =ordennoTableClass::ID_ANIMAL ?>
 <?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('ordenno')?></h1>
     <h1<i class="fa fa-ship-tint"><?php echo i18n::__('ordenno') ?></i></h1>

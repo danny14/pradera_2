@@ -116,6 +116,8 @@
             </div>
             <!--Fin Ventana Modal reportes-->
             <!-- -->
+           
+           <?php view::includePartial('animal/formTraductor')?>
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'deleteSelect') ?>" method="POST">
                 <div id="botones">
                 <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>

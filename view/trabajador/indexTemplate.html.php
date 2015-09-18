@@ -45,7 +45,7 @@
                                 <div class="form-group" >
                                     <label for="filterLastName" class="col-sm-2 control-label"><?php echo i18n::__('last_name')?></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filter<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE)?>" name="filter[<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE)?>]" placeholder="<?php echo i18n::__('last_name')?>">
+                                        <input type="text" class="form-control" id="filter<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE)?>" name="filter[<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE)?>]" placeholder="<?php echo i18n::__('last_name')?>">
                                     </div>
                                 </div>
                             </form>

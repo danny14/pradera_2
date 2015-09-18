@@ -3,6 +3,8 @@
 <?php use mvc\view\viewClass as view ?>
 <?php $id = tipoInsumoTableClass::ID ?>
 <?php $descripcion = tipoInsumoTableClass::DESCRIPCION ?>
+<?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('type_input') ?></h1>
     <div class="row">

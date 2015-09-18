@@ -7,6 +7,7 @@
 <?php $registro = bitacoraTableClass::REGISTRO ?>
 <?php $observacion = bitacoraTableClass::OBSERVACION ?>
 <?php $fecha = bitacoraTableClass::FECHA ?>
+<?php view::includePartial('animal/menuPrincipal')?>
 <div class="container container-fluid">
     <div class="pager page-header text-center">
   <h1><i class="fa fa-book"><?php echo i18n::__('logbook') ?></i></h1>
@@ -19,6 +20,7 @@
             
         </nav>
         <section>
+<?php view::includePartial('animal/formTraductor')?>
             <div>
                 <a href="#" class="btn btn-success btn-xs">Nuevo</a>
                 <a href="#" class="btn btn-danger btn-xs" onclick="borrarSeleccion">Borrar</a>

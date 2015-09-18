@@ -9,6 +9,7 @@
 <?php $id_animal =registroVacunacionTableClass::ID_ANIMAL ?>
 <?php $id_insumo =registroVacunacionTableClass::ID_INSUMO ?>
 <?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <h1<i class="fa fa-baxtery-quarter"><?php echo i18n::__('register_vacunacion') ?></i></h1>
     <div class="row" >

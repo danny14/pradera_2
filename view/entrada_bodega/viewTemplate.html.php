@@ -7,6 +7,7 @@
 <?php $id_trabajador = entradaBodegaTableClass::ID_TRABAJADOR ?>
 <?php $id_proveedor = entradaBodegaTableClass::ID_PROVEEDOR; ?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <h1<i class="fa fa-truck"><?php echo i18n::__('entry_cellar') ?></i></h1>
     <div class="row">

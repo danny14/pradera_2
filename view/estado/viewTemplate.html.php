@@ -4,6 +4,7 @@
 <?php $id = estadoTableClass::ID ;?>
 <?php $descripcion = estadoTableClass::DESCRIPCION ;?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <h1><i class="fa fa-caret-square-o-up"> <?php echo i18n::__('status') ?></i></h1>
     <div class="row">

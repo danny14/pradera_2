@@ -13,32 +13,29 @@ class indexActionClass extends controllerClass implements controllerActionInterf
     public function execute() {
         try {
             $where = NULL;
-//            if(request::getInstance()->hasPost('filter') and request::getInstance()->isMethod('POST')){
-//                $filter = request::getInstance()->getPost('filter');
-//                /**
-//                 * Validacion de los filtros
-//                 */
-//                $nombre = $filter['nombre'];
-//                $fecha_ini = $filter['fechaCreacion1'];
-//                $fecha_fin = $filter['fechaCreacion2'];
-//                
-//                $this->Validate($nombre,$fecha_ini,$fecha_fin);
-//                
-//                if(isset($filter['nombre']) and $filter['nombre'] !== NULL and $filter['nombre'] !== ''){
-//                    $where[animalTableClass::NOMBRE] = $filter['nombre'];
-//                }
-//                if(isset($filter['fechaCreacion1']) and $filter['fechaCreacion1'] !== NULL and $filter['fechaCreacion1'] !== '' and isset($filter['fechaCreacion2']) and $filter['fechaCreacion2'] !== NULL and $filter['fechaCreacion2'] !== ''){
-//                    $where[animalTableClass::FECHA_INGRESO] = array(
-//                        $filter['fechaCreacion1'],
-//                        $filter['fechaCreacion2']
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion1']. ' 00:00:00')) se puede de dos maneras
-////                        date(config::getFormatTimestamp(),  strtotime($filter['fechaCreacion2']. ' 23:59:59'))
-//                    );
-//                }
-//                session::getInstance()->setAttribute('trabajadorIndexFilters', $where);
-//            } else if(session::getInstance()->hasAttribute('trabajadorIndexFilters')){
-//            $where = session::getInstance()->getAttribute('trabajadorIndexFilters');
-//            }
+            if(request::getInstance()->hasPost('filter') and request::getInstance()->isMethod('POST')){
+                $filter = request::getInstance()->getPost('filter');
+
+                if(isset($filter[trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE,TRUE)]) and $filter[trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE,TRUE)] !== NULL AND $filter[trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE, TRUE)] !== ''){
+                        $nombre = $filter[trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE,TRUE)];
+                        $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                                . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                                . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
+                        //$where[trabajadorTableClass::NOMBRE] = $nombre;
+                    
+                }
+                if(isset($filter[trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO,TRUE)]) and $filter[trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO,TRUE)] !== NULL AND $filter[trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, TRUE)] !== ''){
+                        $apellido = $filter[trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO,TRUE)];
+                        $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'' . $apellido . '%\'  '
+                                . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '%\' '
+                                . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '\') ';
+                        //$where[trabajadorTableClass::NOMBRE] = $nombre;
+                    
+                }
+                session::getInstance()->setAttribute('trabajadorIndexFilters', $where);
+            } else if(session::getInstance()->hasAttribute('trabajadorIndexFilters')){
+            $where = session::getInstance()->getAttribute('trabajadorIndexFilters');
+            }
             $fields = array(
             trabajadorTableClass::ID,
             trabajadorTableClass::NOMBRE,

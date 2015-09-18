@@ -11,6 +11,7 @@
 <?php $observaciones = reportePartoTableClass::OBSERVACIONES ?>
 
 <?php view::includePartial('animal/menuPrincipal'); ?>
+<?php view::includePartial('animal/formTraductor')?>
 
 
 <div class="container container-fluid">

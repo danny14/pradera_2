@@ -3,6 +3,8 @@
 <?php use mvc\view\viewClass as view ?>
 <?php $id = razaTableClass::ID ?>
 <?php $descripcion = razaTableClass::DESCRIPCION ?>
+<?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('breed') ?></h1>
     <h1<i class="fa fa-paw"><?php echo i18n::__('raza') ?></i></h1>
