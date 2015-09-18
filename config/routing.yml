@@ -870,6 +870,8 @@ fecundador_report:
     - libs/fpdf/fpdf.php
     - model/base/fecundadorBaseTableClass.php
     - model/fecundadorTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
 
 ##-----------------------Insumo------------------------------##
 insumo_index:

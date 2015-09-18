@@ -95,6 +95,16 @@
         </li>
       </ul>
         <!-- Fin Modulo -->
+        <!-- Modulo Reportes -->
+       <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php  echo routing::getInstance()->getUrlWeb('reportes', 'index')?>">Reportes</a></li>
+          </ul>
+        </li>
+      </ul>
+        <!-- Fin Modulo -->
         <!-- Modulo Registro celo, Reporte Parto -->
         <ul class="nav navbar-nav">
         <li class="dropdown">

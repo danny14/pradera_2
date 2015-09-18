@@ -20,24 +20,19 @@ $pdf ->Ln(50);
 $pdf->SetFillColor(175,238,238);
 $pdf->Cell(255,10,'FECUNDADOR',1,1,'C',true);
 
-
-
-
-  $pdf->Cell(40,10,  utf8_decode("ID"),1,0,'C',true);
-  $pdf->Cell(45,10,  utf8_decode("NOMBRE"),1,0,'C',true);
+  $pdf->Cell(50,10,  utf8_decode("NOMBRE"),1,0,'C',true);
   $pdf->Cell(40,10,  utf8_decode("EDAD"),1,0,'C',true);
   $pdf->Cell(50,10,  utf8_decode("PESO"),1,0,'C',true);
-  $pdf->Cell(40,10,  utf8_decode("OBSERVACION"),1,0,'C',true);
-  $pdf->Cell(40,10,  utf8_decode("RAZA"),1,0,'C',true);
+  $pdf->Cell(70,10,  utf8_decode("OBSERVACION"),1,0,'C',true);
+  $pdf->Cell(46,10,  utf8_decode("RAZA"),1,0,'C',true);
   $pdf->Ln();
   
 foreach ($objFecundador as $fecundador){
-  $pdf->Cell(40,10,  utf8_decode($fecundador->$id),1);
-  $pdf->Cell(45,10,  utf8_decode($fecundador->$nombre),1);
+  $pdf->Cell(50,10,  utf8_decode($fecundador->$nombre),1);
   $pdf->Cell(40,10,  utf8_decode($fecundador->$edad),1);
   $pdf->Cell(50,10,  utf8_decode($fecundador->$peso),1);
-  $pdf->Cell(40,10,  utf8_decode($fecundador->$observacion),1);
-  $pdf->Cell(40,10,  utf8_decode($fecundador->$id_raza),1);
+  $pdf->Cell(70,10,  utf8_decode($fecundador->$observacion),1);
+  $pdf->Cell(46,10,  utf8_decode(fecundadorTableClass::getNameFieldForaneaRaza($fecundador->$id_raza)),1);
   $pdf->Ln();
   
 }
