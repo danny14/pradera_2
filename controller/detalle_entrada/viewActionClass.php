@@ -40,8 +40,8 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
 //            } else if(session::getInstance()->hasAttribute('detalleEntradaIndexFilters')){
 //            $where = session::getInstance()->getAttribute('detalleEntradaIndexFilters');
 //            }
-            $entradaBodegaId = request::getInstance()->getRequest(entradaBodegaTableClass::ID, TRUE);
-            if(request::getInstance()->hasRequest(entradaBodegaTableClass::ID)){
+            $entradaBodegaId = request::getInstance()->getRequest(detalleEntradaTableClass::ID_ENTRADA_BODEGA, TRUE);
+            if(request::getInstance()->hasRequest(detalleEntradaTableClass::ID_ENTRADA_BODEGA)){
             $fields = array(
             entradaBodegaTableClass::ID,
             entradaBodegaTableClass::FECHA,

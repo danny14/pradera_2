@@ -9,6 +9,7 @@
 <?php $correo = proveedorTableClass::CORREO?>
 <?php $id_ciudad =proveedorTableClass::ID_CIUDAD ?>
 <?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('provider')?></h1>
     <h1<i class="fa fa-smile-o"><?php echo i18n::__('provider') ?></i></h1>

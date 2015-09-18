@@ -16,6 +16,7 @@ use mvc\view\viewClass as view ?>
 <?php $horas_extras = pagoTrabajadoresTableClass::HORAS_EXTRAS; ?>
 <?php $cantidad_dias = pagoTrabajadoresTableClass::CANTIDAD_DIAS; ?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
   <h1<i class="fa fa-diamond"><?php echo i18n::__('payment of employee') ?></i></h1>
   <div class="row">

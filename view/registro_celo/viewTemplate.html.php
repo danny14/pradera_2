@@ -6,6 +6,7 @@
 <?php $id_fecundador = registroCeloTableClass::ID_FECUNDADOR;?>
 <?php $id_animal = registroCeloTableClass::ID_ANIMAL?>
 <?php view::includePartial('animal/menuPrincipal'); ?>
+<?php view::includePartial('animal/formTraductor')?>
 
 <div class="container container-fluid">
     <h1<i class="fa fa-github-alt"><?php echo i18n::__('register_celo') ?></i></h1>

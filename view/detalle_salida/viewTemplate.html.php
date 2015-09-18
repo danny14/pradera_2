@@ -21,6 +21,7 @@ use mvc\view\viewClass as view ?>
 <?php $id_trabajador = salidaBodegaTableClass::ID_TRABAJADOR ?>
 
 <?php view::includePartial('animal/menuPrincipal'); ?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
   <h1><i class="fa fa-paw"><?php echo i18n::__('Output_bodega') ?></i></h1>
   <div class="container container-fluid">

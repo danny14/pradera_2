@@ -31,7 +31,10 @@
     
     <div class="form-group <?php echo (session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA, TRUE)) === TRUE )? 'has-error has-feedback' : '' ;?>" >
         <label class="control-label" for="dose_vaccine"><?php echo i18n::__('dose_vaccine')?>:</label> 
+        <div class="input-group">
         <input class="form-control" type="number" value="<?php echo ((isset($objRegistroVacunacion)) ? $objRegistroVacunacion[0]->$dosis_vacuna : ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA, TRUE)) === TRUE ) ? request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA,TRUE)) : '') )?>" name="<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA, TRUE)?>" required placeholder="<?php echo i18n::__('enterDoseVaccine')?>">
+        <span class="input-group-addon" id="basic-addon1">ML/CM</span>
+        </div>
         <?php if(session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::DOSIS_VACUNA,TRUE)) === TRUE) : ?><span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><?php endif?>
     </div>
            

@@ -139,7 +139,7 @@
                                        <?php if(session::getInstance()->hasCredential('admin')) : ?>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('entrada_bodega','edit', array(entradaBodegaTableClass::ID => $entrada_bodega->$id)) ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                         <a data-toggle="modal" data-target="#myModalDelete<?php echo $entrada_bodega->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
-                                        <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_entrada', 'view', array(entradaBodegaTableClass::ID => $entrada_bodega->$id)) ?>" class="btn btn-info btn-xs"><?php echo i18n::__('detail') ?></a>
+                                        <a href="<?php echo routing::getInstance()->getUrlWeb('detalle_entrada', 'view', array(detalleEntradaTableClass::ID_ENTRADA_BODEGA => $entrada_bodega->$id)) ?>" class="btn btn-info btn-xs"><?php echo i18n::__('detail') ?></a>
                                         <?php endif;?>
                                         <!-- -->
                                     </div>

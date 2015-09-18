@@ -8,6 +8,7 @@
 <?php $observacion =fecundadorTableClass::OBSERVACION ?>
 <?php $id_raza =fecundadorTableClass::ID_RAZA ?>
 <?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <h1><?php echo i18n::__('fecundador')?></h1>
     <h1<i class="fa fa-mars-stoke"><?php echo i18n::__('fecundador') ?></i></h1>

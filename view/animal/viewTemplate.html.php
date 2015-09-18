@@ -9,7 +9,8 @@
 <?php $numero_partos = animalTableClass::NUMERO_PARTOS ?>
 <?php $id_raza = animalTableClass::ID_RAZA ?>
 <?php $id_estado = animalTableClass::ID_ESTADO ?>
-<?php view::includePartial('animal/menuPrincipal'); ?>
+<?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
     <h1><i class="fa fa-bug"><?php echo i18n::__('animal') ?></i></h1>
     <div class="row">

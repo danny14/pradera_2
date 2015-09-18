@@ -13,7 +13,7 @@ class trabajadorTableClass extends trabajadorBaseTableClass {
         public static function getTotalPages($lines, $where) {
         try {
             $sql = 'SELECT count(' . trabajadorTableClass::ID . ') AS cantidad ' .
-                    ' FROM ' . trabajadorTableClass::getNameTable(). ' ';
+                    ' FROM ' . trabajadorTableClass::getNameTable(). ' '.
                     ' WHERE '. trabajadorTableClass::DELETED_AT. ' IS NULL ';
             if (is_array($where) === TRUE) {
                 foreach ($where as $field => $value) {

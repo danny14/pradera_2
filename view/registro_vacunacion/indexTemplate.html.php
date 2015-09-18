@@ -137,6 +137,8 @@
             </div>
             <!--Fin Ventana Modal reportes-->
             <!-- -->
+          
+           <?php view::includePartial('animal/formTraductor')?>
             <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('registro_vacunacion', 'deleteSelect') ?>" method="POST">
                 <div id="botones">
                 <a href="<?php echo routing::getInstance()->getUrlWeb('registro_vacunacion', 'insert')?>" class="btn btn-success btn-xs">Nuevo</a>
@@ -165,7 +167,7 @@
                         <td><input type="checkbox" name="chk[]" value="<?php echo $registro_vacunacion->$id?>"></td>
                         <td><?php echo $registro_vacunacion->$fecha_registro?></td>
                        <td><?php echo $registro_vacunacion->$id_trabajador?></td>
-                       <td><?php echo $registro_vacunacion->$dosis_vacuna?></td>
+                       <td><?php echo $registro_vacunacion->$dosis_vacuna?>. ML/CM</td>
                        <td><?php echo $registro_vacunacion->$hora_vacuna?></td>
                        <td><?php echo registroVacunacionTableClass::getNameFieldForaneaAnimal($registro_vacunacion->$id_animal)?></td>
                        <td><?php echo registroVacunacionTableClass::getNameFieldForaneaInsumo($registro_vacunacion->$id_insumo)?></td>

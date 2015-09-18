@@ -8,6 +8,7 @@
 <?php $valor =insumoTableClass::VALOR ?>
 <?php $id_tipo_insumo =insumoTableClass::ID_TIPO_INSUMO ?>
 <?php view::includePartial('animal/menuPrincipal')?>
+<?php view::includePartial('animal/formTraductor')?>
 <div class="container container-fluid">
   <h1<i class="fa fa-beer"><?php echo i18n::__('insumo') ?></i></h1>
     <h1><?php echo i18n::__('insumo')?></h1>
