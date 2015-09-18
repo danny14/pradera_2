@@ -61,7 +61,7 @@
                                     </label>
                                     <div class="col-sm-10">
                                         <select class="form-control" id="filter<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE) ?>" name="filter[<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE) ?>]" required>
-                                            <option><?php echo i18n::__('selectAnimal') ?></option>
+                                            <option value=""><?php echo i18n::__('selectAnimal') ?></option>
                                             <?php foreach ($objAnimal as $animal): ?>
                                                 <option <?php echo ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) and request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) == $animal->$idAnimal) ? 'selected' : '') ?> value="<?php echo $animal->$idAnimal ?>"><?php echo $animal->$nombreAnimal ?></option>
                                             <?php endforeach; ?>
@@ -73,7 +73,7 @@
                                     <label class="col-sm-2 control-label" for="id_insumo"><?php echo i18n::__('id_input') ?></label>
                                     <div class="col-sm-10">
                                     <select class="form-control" id="filter<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE) ?>" name="filter[<?php echo registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_INSUMO, TRUE) ?>]" required>
-                                        <option><?php echo i18n::__('selectInput') ?></option>
+                                        <option value=""><?php echo i18n::__('selectInput') ?></option>
                                         <?php foreach ($objInsumo as $insumo): ?>
                                             <option <?php echo ((session::getInstance()->hasFlash(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) === TRUE) ? '' : (request::getInstance()->hasPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) and request::getInstance()->getPost(registroVacunacionTableClass::getNameField(registroVacunacionTableClass::ID_ANIMAL, TRUE)) == $insumo->$idInsumo) ? 'selected' : '') ?> value="<?php echo $insumo->$idInsumo ?>"><?php echo $insumo->$nombreInsumo ?></option>
                                         <?php endforeach; ?>
